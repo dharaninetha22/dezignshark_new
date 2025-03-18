@@ -1,10 +1,12 @@
 import React from "react";
 import Slider from "react-slick";
-import { Box, Typography, Container, Card, CardMedia, CardContent } from "@mui/material";
+import { Box, Typography, Container, Card, CardMedia, CardContent, styled, Button } from "@mui/material";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Home } from "../../assets";
 import AnimatedText from "../../Components/Inputs/AnimatedText";
+import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward"; // MUI Icon
+import { useNavigate } from "react-router-dom";
 
 
 // Blog Data
@@ -35,7 +37,72 @@ const blogs = [
   },
 ];
 
+
+const StyledButton = styled(Button)({
+  position: "relative",
+  display: "inline-flex",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: "10px",
+  background: "transparent !important", // 🔥 Fully Transparent Background
+  color: "white !important", // White text always
+  border: "1px solid #fff",
+  padding: "20px 35px",
+  borderRadius: "10px",
+  letterSpacing: "0.005em",
+  cursor: "pointer",
+  overflow: "hidden",
+  transition: "all 0.3s ease-out",
+  fontSize: "1.2rem",
+
+  "&:hover": {
+    background: "transparent !important", // Slight hover effect
+    border: "1px solid #fff !important",
+  },
+
+  "&:active": {
+    background: "transparent !important", // Ensure it stays transparent on click
+    color: "white !important",
+  },
+
+  "&:hover .btn-arrow-hover .arrow-first": {
+    transform: "translateX(200%) translateY(-200%) translateZ(0)",
+  },
+  "&:hover .btn-arrow-hover .arrow-second": {
+    transform: "translateX(0) translateY(0) translateZ(0)",
+  },
+});
+
+// Arrow Container
+const ArrowContainer = styled(Box)({
+  position: "relative",
+  overflow: "hidden",
+  display: "inline-flex",
+  width: "20px",
+  height: "20px",
+});
+
+// Styled MUI Icons
+const ArrowIconStyled = styled(ArrowOutwardIcon)({
+  fontSize: "16px",
+  transition: "transform 0.3s ease-out",
+  color: "white",
+});
+
+const ArrowIconFirst = styled(ArrowIconStyled)({
+  transform: "translateX(0) translateY(0) translateZ(0)",
+});
+
+const ArrowIconLast = styled(ArrowIconStyled)({
+  position: "absolute",
+  top: 0,
+  left: 0,
+  transform: "translateX(-200%) translateY(200%) translateZ(0)",
+});
+
+
 const BlogCarousel: React.FC = () => {
+  const navigate = useNavigate(); // Hook for navigation
   // Slick slider settings
   const sliderSettings = {
     dots: true,
@@ -166,6 +233,13 @@ const BlogCarousel: React.FC = () => {
             ))}
           </Slider>
         </Box>
+        <StyledButton  onClick={() => navigate("/blog")} sx={{width:'100%',height:'55px',mt:3}}>
+      See More
+      <ArrowContainer className="btn-arrow-hover">
+        <ArrowIconFirst className="arrow-first" />
+        <ArrowIconLast className="arrow-second" />
+      </ArrowContainer>
+    </StyledButton>
       </Container>
 
       {/* Keyframes for Shine Effect */}

@@ -10,6 +10,7 @@ import Portfolio from "./Portfolio";
 import Client from "./Client";
 import Testimonials from "./Testimonials";
 import Blog from "./Blog";
+import FeatureGrid from "./FeatureGrid";
 
 
 
@@ -22,7 +23,9 @@ const Index = () => {
             <Box sx={{}}>
                 <Banner />
                 <About />
-                <Counter />
+                {/* <Counter /> */}
+                {/* <Client/> */}
+                {/* <FeatureGrid/> */}
                 <Services />
                 <Portfolio />
                 <Testimonials />

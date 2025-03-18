@@ -3,27 +3,33 @@ import { Box, Typography, IconButton, Grid, Container } from "@mui/material";
 import { gsap } from "gsap";
 import { MdOutlineArrowUpward } from "react-icons/md";
 import { AboutImages } from "../../assets";
+import AnimatedText from "../../Components/Inputs/AnimatedText";
+import CustomButton from "../../Components/Inputs/CustomButton";
+import { useNavigate } from "react-router-dom";
+import MaskedText from "../../Components/Inputs/MaskedText";
 
 
 
 const faqData = [
     {
-        question: "A DOCUMENTARY FILMMAKING PORTFOLIO",
-        answer: "Details about the documentary filmmaking portfolio.",
+        question: "If I can design in Canva, why do I need an agency?",
+        answer: "Canva is great—for birthday invites. If you want a brand that actually converts, you might need more than drag-and-drop.",
     },
     {
-        question: "TRANSFORMING SPACES: AN INTERIOR DESIGN PORTFOLIO",
-        answer: "Details about the interior design portfolio.",
+        question: "Can’t I just post randomly on Instagram and get leads?",
+        answer: "Sure, if you believe in miracles. But if you prefer strategy over wishful thinking, that’s where we come in..",
     },
     {
-        question: "ADVENTURES IN CODE: A WEB DEVELOPMENT PORTFOLIO",
-        answer: "Details about the web development portfolio.",
+        question: "Why should I pay you when I can just boost my posts?",
+        answer: "Because ‘boosting’ without a plan is like throwing money into a bonfire—looks cool but burns fast.",
     },
 ];
 
 const FAQSection: React.FC = () => {
     const [openIndex, setOpenIndex] = useState<number | null>(null);
     const contentRefs = useRef<Array<HTMLDivElement | null>>([]);
+    const lineRef = useRef<HTMLDivElement | null>(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (openIndex !== null && contentRefs.current[openIndex]) {
@@ -35,16 +41,42 @@ const FAQSection: React.FC = () => {
         }
     }, [openIndex]);
 
+    useEffect(() => {
+        if (lineRef.current) {
+            const lastFaq = document.querySelector(".faq-item:last-child");
+            if (lastFaq) {
+                const lastFaqBottom = lastFaq.getBoundingClientRect().bottom;
+                const containerTop = lineRef.current.getBoundingClientRect().top;
+                const newHeight = lastFaqBottom - containerTop;
+
+                lineRef.current.style.height = `${newHeight}px`;
+            }
+        }
+    }, [faqData]);
+
     const toggleFAQ = (index: number): void => {
         setOpenIndex(openIndex === index ? null : index);
     };
 
     return (
         <Box py={5}>
-            <Container maxWidth="xl" sx={{py:5}}>
+            <Container maxWidth="xl" sx={{ py: 5 }}>
+
+                {/* <MaskedText text="Our Services" /> */}
+                <AnimatedText
+
+                    sx={{ mt: 1, textAlign: "center" }}
+                >
+                    FAQ'S
+                </AnimatedText>
+
                 <Grid container>
                     <Grid item xs={12} lg={6}>
-                        <Typography
+                        {/* <MaskedText sx={{ fontSize: { xs: "30px", lg: "50px" },textAlign:'left' }}  >
+
+                            FAQ'S
+                        </MaskedText> */}
+                        {/* <Typography
                             sx={{
                                 fontSize: "14px",
                                 textTransform: "uppercase",
@@ -55,77 +87,56 @@ const FAQSection: React.FC = () => {
                         >
                             Achievements
                         </Typography>
-                        <Typography
-                            variant="h2"
-                            sx={{ fontSize: "24px", fontWeight: "bold", mt: 1, textAlign: "left" }}
-                        >
-                            FREQUENTLY ASKED QUESTIONS
-                        </Typography>
+                       */}
+
                     </Grid>
                 </Grid>
 
                 <Box
                     sx={{
                         color: "#fff",
-                        // padding: "60px",
                         textAlign: "left",
                         display: "flex",
                         alignItems: "center",
-                        justifyContent: {xs:"center",lg:"space-between"},
-                        gap: "50px",
-                        mt:8,
-                        flexWrap:'wrap'
+                        justifyContent: { xs: "center", lg: "space-evenly" },
+                        gap: "10px",
+                        mt: 4,
+                        flexWrap: "wrap",
                     }}
                 >
                     {/* Left Side - Image */}
                     <Box
                         component="img"
-                        src={AboutImages.faqs}
+                        src={AboutImages.aboutshark}
                         alt="FAQ Visual"
                         sx={{
-                            width:  {
-                                xs:"100%",
-                                lg:"40%"
-                            },
-                            maxWidth: {
-                                xs:"100%",
-                                lg:"400px"
-                            },
+                            width: { xs: "100%", lg: "40%" },
+                            maxWidth: { xs: "100%", lg: "400px" },
                             height: "auto",
                             borderRadius: "8px",
                             objectFit: "cover",
-                            display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
                         }}
                     />
 
                     {/* Right Side - FAQ Section */}
-                    <Box sx={{ width: {xs:"100%",lg:"55%"}, position: "relative" }}>
-                        {/* Persistent Vertical Line Running Through FAQs */}
+                    <Box sx={{ width: { xs: "100%", lg: "55%" }, position: "relative" }}>
+                        {/* Vertical Line Stops at Last FAQ */}
                         <Box
+                            ref={lineRef}
                             sx={{
                                 position: "absolute",
                                 left: "120px",
                                 top: "0",
-                                bottom: "0",
                                 width: "1px",
                                 backgroundColor: "#2B2B2B",
+                                transition: "height 0.3s ease",
                             }}
                         />
 
-                        <Box
-                            sx={{
-                                display: "flex",
-                                flexDirection: "column",
-                                // mt: 3,
-                                borderTop: "1px solid #2B2B2B", // Top border line
-                               
-                            }}
-                        >
+                        <Box sx={{ display: "flex", flexDirection: "column", borderTop: "1px solid #2B2B2B" }}>
                             {faqData.map((faq, index) => (
-                                <Box key={index} sx={{ position: "relative" ,}}>
-                                    {/* Horizontal Separator Line */}
+                                <Box key={index} className="faq-item" sx={{ position: "relative" }}>
+                                    {/* Horizontal Line for Each FAQ */}
                                     {index !== 0 && (
                                         <Box
                                             sx={{
@@ -151,7 +162,6 @@ const FAQSection: React.FC = () => {
                                         }}
                                         onClick={() => toggleFAQ(index)}
                                     >
-                                        {/* Circular Expand Icon beside Line */}
                                         <Box sx={{ display: "flex", alignItems: "start", gap: "15px" }}>
                                             <IconButton
                                                 sx={{
@@ -170,8 +180,8 @@ const FAQSection: React.FC = () => {
                                                     style={{
                                                         transform: openIndex === index ? "rotate(180deg)" : "rotate(0deg)",
                                                         transition: "0.3s",
-                                                        fontSize:'50px',
-                                                        color:'#2b2b2b'
+                                                        fontSize: "50px",
+                                                        color: "#2b2b2b",
                                                     }}
                                                 />
                                             </IconButton>
@@ -179,13 +189,13 @@ const FAQSection: React.FC = () => {
 
                                         {/* Question Text */}
                                         <Typography
-                                        variant="h4"
+                                            variant="h4"
                                             sx={{
                                                 flex: 1,
                                                 fontSize: "16px",
                                                 fontWeight: 700,
                                                 textTransform: "uppercase",
-                                                pl:2
+                                                pl: 2,
                                             }}
                                         >
                                             {faq.question}
@@ -206,20 +216,29 @@ const FAQSection: React.FC = () => {
                                             marginBottom: openIndex === index ? "10px" : "0px",
                                         }}
                                     >
-                                        <Typography variant='body2' sx={{ fontSize: "14px", opacity: 0.8 ,pl:10}}>{faq.answer}</Typography>
+                                        <Typography variant="body2" sx={{ fontSize: "14px", opacity: 0.8, pl: 10 }}>
+                                            {faq.answer}
+                                        </Typography>
                                     </Box>
 
-                                    {/* Bottom Line */}
-                                    <Box
-                                        sx={{
-                                            width: "100%",
-                                            height: "1px",
-                                            backgroundColor: "#2B2B2B",
-                                            marginTop: "10px",
-                                        }}
-                                    />
+                                    {/* Last FAQ Bottom Line */}
+                                    {index === faqData.length - 1 && (
+                                        <Box
+                                            sx={{
+                                                width: "100%",
+                                                height: "1px",
+                                                backgroundColor: "#2B2B2B",
+                                                marginTop: "10px",
+                                            }}
+                                        />
+                                    )}
                                 </Box>
                             ))}
+                        </Box>
+
+                        {/* Read More Button - Positioned Below FAQs */}
+                        <Box sx={{ mt: 3, textAlign: "center" }}>
+                            <CustomButton onClick={() => navigate("/more-faqs")}>Read More</CustomButton>
                         </Box>
                     </Box>
                 </Box>

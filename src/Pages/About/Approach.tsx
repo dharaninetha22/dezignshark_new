@@ -3,6 +3,8 @@ import { Box, Grid, Typography, Container, styled } from "@mui/material";
 import { AboutImages } from "../../assets"; // Ensure correct import path
 import { IoMdArrowForward } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
+import AnimatedText from "../../Components/Inputs/AnimatedText";
+import Animated from "./Clients";
 
 // ✅ Define an interface for ApproachBox props
 interface ApproachBoxProps {
@@ -138,18 +140,18 @@ const ApproachSection: React.FC = () => {
                                 <Grid container>
                                     <Grid item xs={12} lg={12} sx={{ mb: 5, textAlign: "left" }}>
 
-                                    <Typography
-                                    variant="h3"
+                                    <AnimatedText
+                                    
                                     sx={{
-                                        fontWeight: 600,
-                                        lineHeight: "1.2",
-                                        display: "inline-block",
-                                        paddingBottom: "5px",
+                                        
                                         color: "#000",
                                     }}
                                 >
                                     Expertise in Strategy,  Design and Development
-                                </Typography>
+                                </AnimatedText>
+                                 
+                                    
+                              
                                     </Grid>
                                 </Grid>
                                 
@@ -189,6 +191,10 @@ const ApproachSection: React.FC = () => {
                                                             paddingBottom: "5px",
                                                             transition: "border-bottom 0.3s ease-in-out",
                                                             color: "#000",
+                                                            fontSize:{
+                                                                xs:'40px',
+                                                                lg:'24px'
+                                                            }
 
                                                         }}
                                                     >
@@ -202,7 +208,10 @@ const ApproachSection: React.FC = () => {
                                                     className="count"
 
                                                     sx={{
-                                                        fontSize: "40px",
+                                                        fontSize:{
+                                                            xs:'54px',
+                                                            lg:'40px'
+                                                        },
                                                         fontWeight: 700,
                                                         WebkitTextFillColor: "rgba(255, 255, 255, 0)",
                                                         WebkitTextStrokeWidth: "1px",
@@ -214,7 +223,11 @@ const ApproachSection: React.FC = () => {
                                             </Box>
 
                                             {/* ✅ Description */}
-                                            <Typography variant="body1" sx={{ color: "#333", mt: 1, textAlign: 'justify' }}>
+                                            <Typography variant="body1" sx={{ color: "#333", mt: 1, textAlign: 'justify',
+                                            fontSize:{
+                                                            xs:'30px',
+                                                            lg:'18px'
+                                                        }, }}>
                                                 {item.description}
                                             </Typography>
                                         </ApproachBox>

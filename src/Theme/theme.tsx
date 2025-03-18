@@ -120,7 +120,7 @@ export const theme = createTheme({
         fontSize: "16px",  // Decreased from 20px
       },
       "@media (min-width:900px)": {
-        fontSize: "20px",  // Decreased from 24px
+        fontSize: "30px",  // Decreased from 24px
       },
       "@media (min-width:1200px)": {
         fontSize: "24px",  // Decreased from 28px
@@ -192,7 +192,8 @@ export const theme = createTheme({
         fontSize: "14px",  // Decreased from 16px
       },
       "@media (min-width:900px)": {
-        fontSize: "16px",  // Decreased from 18px
+        // fontSize: "16px",  
+        fontSize: "18px",  // Decreased from 18px
        
       },
       "@media (min-width:1200px)": {
@@ -214,7 +215,8 @@ export const theme = createTheme({
         
       },
       "@media (min-width:900px)": {
-        fontSize: "14px",  // Decreased from 16px
+        fontSize: "14px",  
+        // fontSize: "24px",  // Decreased from 16px
         
       },
       "@media (min-width:1200px)": {

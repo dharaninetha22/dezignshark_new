@@ -7,7 +7,7 @@ const VideoSection = () => {
   return (
     <Box
       sx={{
-        backgroundImage: `url(${AboutImages.aboutbg})`,
+        backgroundImage: `url(${AboutImages.backgroundabout})`,
         height: "700px",
         backgroundAttachment: "fixed",
         backgroundRepeat: "no-repeat",

@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, Typography, Stack, Container, Grid } from "@mui/material";
 import {  Careers, servicebg } from "../../assets";
+import AnimatedText from "../../Components/Inputs/AnimatedText";
 
 const JobStepsHook = () => {
   return (
@@ -17,13 +18,11 @@ const JobStepsHook = () => {
           {/* Right Side: Text Content */}
           <Grid item xs={12} lg={6}>
             <Box sx={{ color: "#74787C", zIndex: 2 }}>
-              <Typography
-                variant="h4"
-                sx={{ fontWeight: "bold", mb: 2 ,textAlign:"start",color:'black'}}
-              >
-                Getting Applied by an
-                Expert Talent
-              </Typography>
+            
+              <AnimatedText sx={{ fontWeight: "bold", mb: 2 ,textAlign:"start",color:'black'}}>
+              Getting Applied by an
+              Expert Talent
+              </AnimatedText>
 
               <Typography sx={{ color: "#74787C", mb: 4,textAlign:'start' }}>
                 Sit amet, consectetur adipiscing elit, sed do eiusmod tempor

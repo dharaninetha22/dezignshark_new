@@ -35,7 +35,7 @@ const PartnerSection = styled(Box)({
   borderWidth: "1px 0px 1px 0px",
   borderColor: "#343434",
   transition: "background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s",
-  marginTop: "171px",
+  marginTop: "17px",
   padding: "50px 0px",
 });
 

@@ -38,7 +38,7 @@ const ContactInfo: React.FC = () => {
         <Box sx={{ flexGrow: 1, py: 10 }}>
           <Grid container spacing={3} justifyContent="center">
             {contactData.map((item) => (
-              <Grid item xs={12} sm={6} md={4} key={item.id}>
+              <Grid item xs={12}  lg={4} key={item.id}>
                 <Paper
                   elevation={4}
                   sx={{

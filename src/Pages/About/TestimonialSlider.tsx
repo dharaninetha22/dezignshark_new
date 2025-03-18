@@ -17,19 +17,31 @@ import { AboutImages } from "../../assets";
 const testimonials = [
     {
         id: 1,
-        name: "Bargman",
-        company: "ENVATO LLC",
+        name: "Abuzar Khan",
         image: AboutImages.textimonial, // Replace with actual image URL
         review:
-            "The group at Baroque is unimaginably committed, educated, and supportive. The completed item was delightful, and worth each penny. I would totally suggest Baroque...",
+            "Incredible experience! Dezign Shark tailored a digital marketing plan that really worked for us. Our leads and conversions are up!",
     },
     {
         id: 2,
-        name: "John Doe",
-        company: "Tech Corp",
+        name: "Ganesh Sunkara",
         image: AboutImages.textimonial,
         review:
-            "Great experience! The service was excellent, and the team was super professional. Highly recommended!",
+            "They’re the experts you can trust! Dezign Shark developed a cohesive digital plan that aligned perfectly with our goals, delivering outstanding results.",
+    },
+    {
+        id: 3,
+        name: "Ram Ramu",
+        image: AboutImages.textimonial,
+        review:
+            "Fantastic service for personal and organizational branding. Highly recommend!I feel so happy to work with them.",
+    },
+    {
+        id: 4,
+        name: "yamini chowdary",
+        image: AboutImages.textimonial,
+        review:
+            "Highly professional and creative. Excellent on-time delivery and always exceeding expectations.",
     },
 ];
 
@@ -85,11 +97,18 @@ const TestimonialSlider: React.FC = () => {
                                             variant="h6"
                                             sx={{
                                                 fontWeight: "bold",
-                                                textAlign: "center",
+                                                textAlign: {
+                                                    xs:"left",
+                                                    lg:'center'
+                                                },
                                                 color: "black",
+                                                fontSize:{
+                                                    xs:'30px',
+                                                    lg:'24px'
+                                                }
                                             }}
                                         >
-                                            TRUSTED FROM OVER <br /> 1,500 CLIENTS
+                                            TRUSTED FROM OVER 1,500 CLIENTS
                                         </Typography>
                                         <Avatar
                                             src={testimonial.image}
@@ -102,7 +121,10 @@ const TestimonialSlider: React.FC = () => {
                                     <Grid item xs={12} sm={8}>
                                         <Typography
                                             variant="h5"
-                                            sx={{ color: "#333", textAlign: "left" }}
+                                            sx={{ color: "#333", textAlign: "justify" ,fontSize:{
+                                                xs:'30px',
+                                                lg:'24px'
+                                            }}}
                                         >
                                             {testimonial.review}
                                         </Typography>
@@ -113,9 +135,13 @@ const TestimonialSlider: React.FC = () => {
                                                 marginTop: 2,
                                                 color: "black",
                                                 textAlign: "left",
+                                                fontSize:{
+                                                    xs:'28px',
+                                                    lg:'20px'
+                                                }
                                             }}
                                         >
-                                            {testimonial.name}, {testimonial.company}
+                                            {testimonial.name} 
                                         </Typography>
                                     </Grid>
                                 </Grid>
@@ -151,7 +177,7 @@ const TestimonialSlider: React.FC = () => {
                         bottom: "15px",
                         right:  {
                             xs:'80px',
-                            lg:"80px"
+                            lg:"10px"
                         }, // More space between arrows
                         border: "2px solid black",
                         borderRadius: "0px", // No border-radius (square shape)

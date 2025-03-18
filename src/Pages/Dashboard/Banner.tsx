@@ -68,9 +68,13 @@ const HeroSection: React.FC = () => {
         backgroundImage: `url(${Home.webbannerr})`,
         // padding:'100px 0px',
         height: {
-          xs:'40vh',
+          xs:'60vh',
           lg:'120vh'
         },
+        backgroundPosition:{
+          xs:'60% center',
+          lg:'auto'
+        }
         
       }}
     >

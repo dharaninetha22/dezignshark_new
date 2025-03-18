@@ -7,23 +7,26 @@ import { HiArrowSmallRight, HiArrowSmallLeft } from "react-icons/hi2";
 import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
 import { Home } from "../../assets"; // Ensure correct import
 import AnimatedText from "../../Components/Inputs/AnimatedText";
+import MaskedText from "../../Components/Inputs/MaskedText";
+import Animated from "../About/Clients";
 
 
 const testimonials = [
   {
-    name: "Johannes Times",
-    position: "CEO of REx Company",
-    feedback: "DigiCove helped us improve our online visibility and we saw a significant increase in website traffic. They are great to work with and I highly recommend their services.",
+    name: "Abuzar Khan",
+    feedback: "Incredible experience! Dezign Shark tailored a digital marketing plan that really worked for us. Our leads and conversions are up!",
   },
   {
-    name: "Sarah Lee",
-    position: "CEO of REx Company",
-    feedback: "DigiCove helped us improve our online visibility and we saw a significant increase in website traffic. They are great to work with and I highly recommend their services.",
+    name: "Ganesh Sunkara",
+    feedback: "They’re the experts you can trust! Dezign Shark developed a cohesive digital plan that aligned perfectly with our goals, delivering outstanding results.",
   },
   {
-    name: "John Smith",
-    position: "CEO of REx Company",
-    feedback: "DigiCove helped us improve our online visibility and we saw a significant increase in website traffic. They are great to work with and I highly recommend their services.",
+    name: "Ram Ramu",
+    feedback: "Fantastic service for personal and organizational branding. Highly recommend!I feel so happy to work with them.",
+  },
+  {
+    name: "yamini chowdary",
+    feedback: "Highly professional and creative. Excellent on-time delivery and always exceeding expectations.",
   },
 ];
 
@@ -49,7 +52,7 @@ const Testimonials: React.FC = () => {
   };
 
   return (
-    <Box sx={{ py: 8, position: "relative" }}>
+    <Box sx={{ py: 4, position: "relative" }}>
       <Container maxWidth="xl">
         <Grid container>
           <Grid item xs={12} lg={5} sx={{  mb: 5,  textAlign: "left" }}>
@@ -57,7 +60,9 @@ const Testimonials: React.FC = () => {
               <AnimatedText  >
                 WHAT CLIENTS SAY ABOUT US
               </AnimatedText>
+            
           </Grid>
+
         </Grid>
         {/* Title */}
 
@@ -123,18 +128,18 @@ const Testimonials: React.FC = () => {
                 </Box>
 
                 {/* Testimonial Text */}
-                <Typography variant="h6" sx={{ fontWeight: 400, fontSize: "24px", lineHeight: "34px", mb: 4, mt: 3 }}>
+                <Typography variant="h6" sx={{ fontWeight: 400, fontSize:{xs:'30px',lg:"24px"}, lineHeight: {xs:'1.5em',lg:'1.5em'}, mb: 4, mt: {xs:5,lg:3} }}>
                   "{item.feedback}"
                 </Typography>
 
                 {/* User Info */}
                 <Box sx={{ pt: 2, borderTop: "1px solid #3A3A3A" }}>
-                  <Typography variant="h6" sx={{ fontWeight: 600, fontSize: "24px", color: "#9f90ff" }}>
+                  <Typography variant="h6" sx={{ fontWeight: 600, fontSize: {xs:'30px',lg:"24px"}, color: "#fc0000" }}>
                     {item.name}
                   </Typography>
-                  <Typography variant="body2" sx={{ fontSize: "18px", color: "#bdbdbd" }}>
+                  {/* <Typography variant="body2" sx={{ fontSize: "18px", color: "#bdbdbd" }}>
                     {item.position}
-                  </Typography>
+                  </Typography> */}
                 </Box>
               </Paper>
             </Grid>

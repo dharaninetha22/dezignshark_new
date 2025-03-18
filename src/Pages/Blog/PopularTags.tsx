@@ -5,6 +5,7 @@ import Paper from "@mui/material/Paper";
 import Link from "@mui/material/Link";
 import { styled } from "@mui/material/styles";
 import { Typography } from "@mui/material";
+import AnimatedText from "../../Components/Inputs/AnimatedText";
 
 const tags = ["Marketing", "Digital", "Education", "Poor"];
 
@@ -36,10 +37,14 @@ const PopularTags: React.FC = () => {
        p:5,
         border: "1px solid #E6E9F0",
         mt: 4,
+        mb:4
       }}
     >
       <Box sx={{ textAlign: "start", marginBottom: "12px" }}>
-        <Typography variant="h6" sx={{ color: "#000", fontWeight: "600" ,mb:4}}>Post Tags</Typography>
+        <Typography variant="h6" sx={{ color: "#000", fontWeight: "600" ,mb:4}}></Typography>
+          <AnimatedText sx={{ color: "black", textAlign: "center", fontWeight: 700, mb: { xs: 1, lg: 4 } ,fontSize:{xs:"30px",lg:"20px"}}}>
+          Post Tags
+                                    </AnimatedText>
       </Box>
       <Grid container spacing={2}>
         {tags.map((tag, index) => (

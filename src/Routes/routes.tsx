@@ -13,6 +13,7 @@ import BlogContent from "../Pages/Blog/BlogDetails/BlogContent";
 import Contact from "../Pages/Contact";
 import PopUpHeader from "../Pages/PopUpHeader";
 import JobDetails from "../Pages/Careers/JobDetails";
+import SectionTwo from "../Pages/Services/ServicesDetails/SectionTwo";
 
 
 
@@ -70,6 +71,10 @@ const router = createBrowserRouter([
       {
         path: "/contactus",
         element: <Contact/>,
+      },
+      {
+        path: "/slider",
+        element: <SectionTwo/>,
       },
 
       

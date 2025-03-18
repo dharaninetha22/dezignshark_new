@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Box, Container, Grid, Typography, Button } from "@mui/material";
 import CustomInput from "../../Components/Inputs/CustomInput";
+import AnimatedText from "../../Components/Inputs/AnimatedText";
 
 
 const ContactForm: React.FC = () => {
@@ -25,14 +26,17 @@ const ContactForm: React.FC = () => {
       <Container maxWidth="lg">
         <Box sx={{ textAlign: "center", mb: 4 }}>
           <Typography variant="subtitle2" sx={{ textTransform: "uppercase", fontWeight: "bold", color: "black", textAlign: "left" }}>
-            Appointment
+          Get in touch!
           </Typography>
-          <Typography variant="h2" sx={{ fontWeight: "bold", mt: 1, color: "black", textAlign: "left" }}>
+          {/* <Typography variant="h2" sx={{ fontWeight: "bold", mt: 1, color: "black", textAlign: "left" }}>
+            
+          </Typography> */}
+          <AnimatedText sx={{ color: "black", textAlign: "left", fontWeight: 700, mt: { xs: 1, lg: 1 }, fontSize: { xs: "30px", lg: "35px" } }}>
             Love to hear from you
-          </Typography>
-          <Typography variant="h3" sx={{ fontStyle: "italic", mt: 1, color: "black", textAlign: "left" }}>
+          </AnimatedText>
+          {/* <Typography variant="h3" sx={{ fontStyle: "italic", mt: 1, color: "black", textAlign: "left" }}>
             Get in touch!
-          </Typography>
+          </Typography> */}
         </Box>
 
         <form onSubmit={handleSubmit}>
@@ -81,7 +85,7 @@ const ContactForm: React.FC = () => {
 
             <Grid item xs={12} lg={6}>
               <Typography variant="body1" sx={{ mb: 1, fontWeight: "bold", color: "black", textAlign: "left" }}>
-              What you are interested *
+                What you are interested *
               </Typography>
               <CustomInput
                 fullWidth
@@ -92,7 +96,7 @@ const ContactForm: React.FC = () => {
               />
             </Grid>
 
-           
+
             <Grid item xs={12}>
               <Typography variant="body1" sx={{ mb: 1, fontWeight: "bold", color: "black", textAlign: "left" }}>
                 Message *

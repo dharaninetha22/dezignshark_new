@@ -32,11 +32,12 @@ export const pageData = [
       images: {
         service1: Services.seobanner,
         // service2: Services.seo2,
-        service3: Services.seo3,
+        // service3: Services.seo3,
+        sliderImages: [Services.seo2, Services.seo3] 
       },
     },
     faqData: {
-      title: "Market Strategy Growth FAQ",
+      title: "FAQ'S",
       image: Services.faqservices,
       questions: [
         { question: "What is SEO and why is it important for my business?", answer: "SEO (Search Engine Optimization) is the process of optimizing your website to rank higher on search engine results pages (SERPs). It helps increase organic traffic, enhances brand visibility, and improves conversions, making it essential for any business aiming for online success." },
@@ -84,12 +85,12 @@ export const pageData = [
       },
       images: {
         service1: Services.ppcbanner,
-        service2: Services.service2,
-        service3: Services.service3,
+        service2: Services.ppc2,
+        // service3: Services.service3,
       },
     },
     faqData: {
-      title: "Digital Transformation FAQ",
+      title: "FAQ'S",
       image: Services.faqservices,
       questions: [
         { question: "What is PPC, and how does it work?", answer: "PPC (Pay-Per-Click) is an online advertising model where advertisers pay a fee each time their ad is clicked. It allows businesses to bid for ad placements on search engines and social media platforms, driving targeted traffic to their website." },
@@ -133,12 +134,12 @@ export const pageData = [
       },
       images: {
         service1: Services.smbanner,
-        service2: Services.service2,
-        service3: Services.service3,
+        service2: Services.sm2,
+       
       },
     },
     faqData: {
-      title: "Digital Transformation FAQ",
+      title: "FAQ'S",
       image: Services.faqservices,
       questions: [
         { question: " Why is social media marketing important?", answer: "It increases brand awareness, engagement, and lead generation, helping businesses connect with their audience." },
@@ -184,8 +185,16 @@ export const pageData = [
       },
       images: {
         service1: Services.webbanner,
-        service2: Services.service2,
-        service3: Services.service3,
+        sliderImages: [
+          Services.web2, 
+          Services.web3,
+          Services.web4,
+          Services.web5,
+          Services.web6,
+          Services.web7,
+          Services.web8,
+        ] 
+        
       },
     },
     faqData: {
@@ -238,12 +247,12 @@ export const pageData = [
       },
       images: {
         service1: Services.designbanner,
-        service2: Services.service2,
-        service3: Services.service3,
+        service2: Services.graphic2,
+        
       },
     },
     faqData: {
-      title: "Digital Transformation FAQ",
+      title: "FAQ'S",
       image: Services.faqservices,
       questions: [
         { question: " What is graphic design, and why is it important?", answer: "Graphic design is the process of creating visual content to communicate a message effectively. It plays a crucial role in brand identity, marketing, and audience engagement." },
@@ -271,10 +280,10 @@ export const pageData = [
       title: "Why Professional Graphic Design is a Game-Changer for Your Business",
       description: "Graphic design goes beyond aesthetics—it influences decisions, strengthens brand identity, and boosts engagement. Here’s why it matters:",
       subpoints:[
-        "Stronger Brand Identity – Visually compelling designs create a lasting impression.",
-        "Higher Engagement – Eye-catching visuals capture attention and improve user experience.",
-        "More Conversions – Professional design builds trust and drives customer action.",
-        "Competitive Edge – Unique, high-quality graphics set you apart in the market."
+        // "Stronger Brand Identity – Visually compelling designs create a lasting impression.",
+        // "Higher Engagement – Eye-catching visuals capture attention and improve user experience.",
+        // "More Conversions – Professional design builds trust and drives customer action.",
+        // "Competitive Edge – Unique, high-quality graphics set you apart in the market."
 
         
       ],
@@ -296,11 +305,13 @@ export const pageData = [
       },
     },
     faqData: {
-      title: "Digital Transformation FAQ",
+      title: "FAQ'S",
       image: Services.faqservices,
       questions: [
-        { question: "Why is digital transformation important?", answer: "It helps businesses stay competitive and meet evolving customer expectations." },
-        { question: "How do you start a digital transformation journey?", answer: "Start with a technology assessment and define clear objectives." },
+        { question: "What is branding, and why is it important?", answer: "Branding is the process of creating a unique identity for your business, including logo, colors, messaging, and customer experience. A strong brand builds trust, recognition, and customer loyalty." },
+        { question: "What does your branding service include?", answer: "We offer logo design, brand strategy, brand identity development, marketing collateral design, digital branding, and rebranding services." },
+        { question: "How long does the branding process take?", answer: "Branding timelines depend on the complexity of the project. A basic branding package may take a few weeks, while a complete brand strategy may take a month or more." },
+        { question: "Can you help with rebranding an existing business?", answer: "Absolutely! We specialize in brand refresh and rebranding strategies to give your business a fresh, modern, and relevant identity." },
       ],
     },
   },

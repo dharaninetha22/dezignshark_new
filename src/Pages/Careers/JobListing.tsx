@@ -5,6 +5,7 @@ import { CiLocationOn } from "react-icons/ci"; // Location Icon
 import { SlBriefcase } from "react-icons/sl"; // Job Icon
 import { servicebg, shark } from "../../assets";
 import { useNavigate } from "react-router-dom";
+import AnimatedText from "../../Components/Inputs/AnimatedText";
 
 
 // Job Data
@@ -84,9 +85,10 @@ const JobListing = () => {
       {/* Content Wrapper */}
       <Box sx={{ position: "relative", zIndex: 2, width: "100%" }}>
         {/* Title */}
-        <Typography variant="h4" sx={{ textAlign: "center", mb: 3, fontWeight: "bold", color: "#fff" }} data-aos="fade-down">
-          Featured Jobs
-        </Typography>
+       
+        <AnimatedText sx={{ textAlign: "center", mb: 3, fontWeight: "bold", color: "#fff" }}>
+        Featured Jobs
+        </AnimatedText>
 
         {/* Category Tabs */}
         <Box sx={{ display: "flex", justifyContent: "center", mb: 4 }}>

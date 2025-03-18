@@ -7,6 +7,8 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import AnimatedText from "../../../Components/Inputs/AnimatedText";
+import CustomButton from "../../../Components/Inputs/CustomButton";
 
 // Define Form Data Type
 type FormData = {
@@ -41,9 +43,12 @@ const ProjectForm: React.FC = () => {
           textAlign: "left",
         }}
       >
-        <Typography variant="h5" fontWeight="bold" gutterBottom sx={{color:'black', textAlign:'left',mb:3}}>
-          Let's start new project.
+        <Typography variant="h5" fontWeight="bold" gutterBottom >
+          
         </Typography>
+        <AnimatedText sx={{color:'black', textAlign:'left',mb:3,fontSize:{xs:"30px",lg:"20px"}}}>
+        Let's start new project.
+        </AnimatedText>
 
         {/* Name Input */}
         <TextField
@@ -87,19 +92,11 @@ const ProjectForm: React.FC = () => {
         />
 
         {/* Submit Button */}
-        <Button
-          type="submit"
-          fullWidth
-          variant="contained"
-          sx={{
-            background: "black",
-            color: "white",
-            fontWeight: "bold",
-            "&:hover": { background: "#333" },
-          }}
+        <CustomButton
+        
         >
           Start Project
-        </Button>
+        </CustomButton>
       </Box>
     </Container>
   );

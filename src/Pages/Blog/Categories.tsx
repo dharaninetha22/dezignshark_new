@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import Link from "@mui/material/Link";
 import { Typography } from "@mui/material";
 import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
+import AnimatedText from "../../Components/Inputs/AnimatedText";
 
 
 const categories = [
@@ -25,9 +26,12 @@ const Categories: React.FC = () => {
       }}
     >
       {/* Heading */}
-      <Typography variant="h6" sx={{ color: "#000", fontWeight: "600",mb:4 }}>
+      {/* <Typography variant="h6" sx={{ color: "#000", fontWeight: "600",mb:4 }}>
         Post Category
-      </Typography>
+      </Typography> */}
+      <AnimatedText sx={{ color: "black", textAlign: "center", fontWeight: 700, mb: { xs: 1, lg: 4 } ,fontSize:{xs:"30px",lg:"20px"}}}>
+      Post Category
+              </AnimatedText>
 
       {/* Category List */}
       <Box sx={{ display: "flex", flexDirection: "column", gap: "20px" }}>
@@ -61,7 +65,7 @@ const Categories: React.FC = () => {
                 pl: 2,
               }}
             >
-              <span style={{ color: "#007BFF", fontWeight: "bold" }}></span> {category.name}
+              <span style={{ color: "#007BFF", fontWeight: "bold",}}></span> {category.name}
             </Link>
             <Typography
             variant="body2"

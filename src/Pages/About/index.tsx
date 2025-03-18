@@ -10,6 +10,7 @@ import Faqs from './Faqs'
 import TestimonialSlider from './TestimonialSlider'
 import Breadcrumb from '../../Components/Breadcrumb'
 import { breadcrumbbanner } from '../../assets'
+import Clients from './Clients'
 
 const index = () => {
   return (
@@ -23,6 +24,7 @@ const index = () => {
       {/* <Banner/> */}
       <AboutContent/>
       <ApproachSection/>
+      
       {/* <Counter/> */}
       {/* <TeamSection/> */}
       <Faqs/>

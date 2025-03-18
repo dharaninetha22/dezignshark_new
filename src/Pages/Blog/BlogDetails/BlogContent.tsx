@@ -9,6 +9,7 @@ import PopularTags from "../PopularTags";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Form from "./Form";
+import AnimatedText from "../../../Components/Inputs/AnimatedText";
 
 
 
@@ -152,7 +153,7 @@ const BlogDetails: React.FC = () => {
         }}
       >
 
-        <Container maxWidth="xl" sx={{pb:5}}>
+        <Container maxWidth="xl" sx={{ pb: 5 }}>
           <Grid container>
             <Container maxWidth="xl">
               <Grid container spacing={2} alignItems="flex-start">
@@ -166,14 +167,18 @@ const BlogDetails: React.FC = () => {
                       style={{ backgroundImage: `url(${blog.bannerImage})` }}
                     />
                   </ThumbnailBanner>
-                  <Typography variant="h3"
+                  {/* <Typography variant="h3"
                     sx={{
                       color: 'black',
                       textAlign: 'start',
                       mt:4
                     }}>
                     {blog.title}
-                  </Typography>
+                  </Typography> */}
+
+                  <AnimatedText sx={{ color: "black", textAlign: "left", fontWeight: 700, mt: { xs: 1, lg: 4 }, fontSize: { xs: "30px", lg: "35px" } }}>
+                    {blog.title}
+                  </AnimatedText>
                   {blog.blogContent.map((item, index) =>
                     item.type === "text" ? (
                       <Typography variant="body1"
@@ -228,7 +233,7 @@ const BlogDetails: React.FC = () => {
                     </Grid>
                   </Grid>
                   <Box>
-                    <Form/>
+                    <Form />
                   </Box>
                 </Grid>
 

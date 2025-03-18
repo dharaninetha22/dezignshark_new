@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, ReactNode } from "react";
 import { Box, Typography, SxProps, Theme } from "@mui/material";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -6,12 +6,12 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 // Register GSAP Plugin
 gsap.registerPlugin(ScrollTrigger);
 
-interface AnimatedTextProps {
-  text: string;
+interface AnimatedProps {
+  children: ReactNode; // ✅ Allows passing text inside the component
   sx?: SxProps<Theme>; // ✅ Allows custom styling
 }
 
-const Animated: React.FC<AnimatedTextProps> = ({ text, sx }) => {
+const MaskedText: React.FC<AnimatedProps> = ({ children, sx }) => {
   const textRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -19,8 +19,8 @@ const Animated: React.FC<AnimatedTextProps> = ({ text, sx }) => {
 
     const textElement = textRef.current;
 
-    // Split text into words and wrap each word in a span
-    const words = text.split(" ").map((word) => `<span class="mask-word">${word}</span>`).join(" ");
+    // Get text content and split into words
+    const words = textElement.textContent!.split(" ").map((word) => `<span class="mask-word">${word}</span>`).join(" ");
     textElement.innerHTML = words;
 
     const wordSpans = textElement.querySelectorAll(".mask-word");
@@ -28,7 +28,7 @@ const Animated: React.FC<AnimatedTextProps> = ({ text, sx }) => {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: textElement,
-        start: "top 60%", // Starts animation when text enters viewport
+        start: "top 80%", // Start animation when text enters viewport
         end: "bottom 20%", // Ends when fully visible
         scrub: true, // Syncs animation with scrolling
         toggleActions: "play none none reverse", // Reverses when scrolling up
@@ -44,7 +44,7 @@ const Animated: React.FC<AnimatedTextProps> = ({ text, sx }) => {
           duration: 1, // Each word takes 1 second to fill
           ease: "power2.out",
         },
-        `+=${index * 0.3}` // Delay each word until the previous one is filled
+        `+=${index * 0.3}` // Delay to start next word only after previous one fills
       );
     });
   }, []);
@@ -74,10 +74,10 @@ const Animated: React.FC<AnimatedTextProps> = ({ text, sx }) => {
           },
         }}
       >
-        <Box ref={textRef} sx={{ display: "inline-block" }} />
+        <Box ref={textRef} sx={{ display: "inline-block" }}>{children}</Box>
       </Typography>
     </Box>
   );
 };
 
-export default Animated;
+export default MaskedText;

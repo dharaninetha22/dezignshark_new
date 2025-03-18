@@ -23,7 +23,13 @@
     height: 100%;
     width: 80%;
   }
-  
+  @media screen and (max-width: 1028px) {
+    .logo-img {
+        width: 100% !important; /* Force full width in mobile */
+        max-width: 100% !important; /* Override other max-width settings */
+        display: block; /* Ensure it behaves as a block element */
+    }
+}
   /* Navigation Links */
   /* .nav-links {
     display: flex;
@@ -67,7 +73,7 @@
     left: 0;
     width: 0;
     height: 2px;
-    background-color: white;
+    background-color: #910909cc !important;
     transition: width 0.3s ease-in-out;
   }
   
@@ -103,6 +109,32 @@
    
 
   }
+  .dropdown-item:hover {
+    color: #910909cc;
+  }
+  .dropdown-item {
+    color: white;
+    padding: 8px 15px;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+    cursor: pointer;
+    position: relative;
+    /* display: inline-block;  */
+  }
+  /* Underline that matches text width */
+  .dropdown-item::after {
+    content: "";
+    display: block;
+    width: 0%;
+    height: 2px;
+    background-color: #910909cc;
+    transition: width 0.3s ease-in-out;
+    margin: auto; /* Centers the underline */
+  }
+  .dropdown-item:hover::after {
+    width: 100%;
+  }
+  
   .sub-dropdown-menu{
 
   }
@@ -136,22 +168,7 @@
     width: 200px;
   } */
   
-  .sub-dropdown-menu {
-    position: absolute;
-    top: 0;
-    left: 100%;
-    background: black;
-    color: white;
-    padding: 10px;
-    width: 280px;
-    display: block;
-    /* border-top: 2px solid #fc0000;   
-    border-bottom: 2px solid #fc0000;  */
-    padding: 8px 20px;
-    border-radius: 5px;
-    text-align: left;
-  
-  }
+
   
   
   .dropdown-item {
@@ -163,10 +180,10 @@
     transition: all 0.3s ease-in-out;
   }
   
-  .dropdown-item:hover {
+  /* .dropdown-item:hover {
     background: rgba(255, 255, 255, 0.1);
     color: #fc0000;
-  }
+  } */
   
   /* Mobile Drawer */
   /* .mobile-menu {
@@ -196,37 +213,7 @@
       color: white;
     }
   }
-  /* Top Bar */
-/* .icon {
-    color: white;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-}
-
-.icon:hover {
-    color: orange;
-    transform: scale(1.1);
-} */
-
-/* GSAP Animated Bottom Border */
-.loader-line {
-    width: 100%;
-    height: 2px;
-    background-color: #ddd;
-    position: relative;
-    overflow: hidden;
-    margin: 0 auto;
-    border-radius: 20px;
-}
-
-.gsap-line {
-    height: 2px;
-    width: 40%;
-    background-color: #fc0000;
-    border-radius: 20px;
-    position: absolute;
-    left: 0;
-}
+ 
 
 /* Header Background */
 .MuiAppBar-root {

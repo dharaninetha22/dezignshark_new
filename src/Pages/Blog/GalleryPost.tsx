@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, Typography, Grid } from "@mui/material";
 import { Blog } from "../../assets";
+import AnimatedText from "../../Components/Inputs/AnimatedText";
 
 // Sample Gallery Images (Replace with actual URLs)
 const galleryImages = [
@@ -14,11 +15,12 @@ const galleryImages = [
 
 const GalleryPosts: React.FC = () => {
   return (
-    <Box sx={{ p: 4, mx: "auto", border: "1px solid #E6E9F0" }}>
+    <Box sx={{ p: 4, mx: "auto", border: "1px solid #E6E9F0",mt:4 }}>
       {/* Title */}
-      <Typography variant="h5" fontWeight="600" sx={{ mb: 4, color: "#000",textAlign:'left' }}>
-        Gallery Posts
-      </Typography>
+      
+      <AnimatedText sx={{ color: "black", textAlign: "center", fontWeight: 700, mb: { xs: 1, lg: 4 } ,fontSize:{xs:"30px",lg:"20px"}}}>
+      Gallery Posts
+                            </AnimatedText>
 
       {/* Grid Layout */}
       <Grid container spacing={2}>

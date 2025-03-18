@@ -7,6 +7,7 @@ import { Box } from "@mui/material";
 import { useNavigate } from "react-router-dom"; // ✅ Replaced Link with useNavigate()
 import gsap from "gsap";
 import { blogData, BlogPost } from "./BlogDetails/BlogData";
+import AnimatedText from "../../Components/Inputs/AnimatedText";
 
 
 const LatestBlogs: React.FC = () => {
@@ -14,8 +15,11 @@ const LatestBlogs: React.FC = () => {
     <Box sx={{ border: "1px solid #E6E9F0", padding: "20px", mt: 4 }}>
       <Box textAlign="start" mb={3}>
         <Typography variant="h6" sx={{ color: "#000", fontWeight: "600", mb: 4 }}>
-          Latest Posts
+          
         </Typography>
+        <AnimatedText sx={{ color: "black", textAlign: "center", fontWeight: 700, mb: { xs: 1, lg: 1 } ,fontSize:{xs:"30px",lg:"20px"}}}>
+              Post CategoryLatest Posts
+                      </AnimatedText>
       </Box>
 
       {blogData.map((post, index) => (

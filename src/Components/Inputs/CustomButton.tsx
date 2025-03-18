@@ -1,9 +1,9 @@
 import React from "react";
-import { Button, Box, styled } from "@mui/material";
+import { Button, Box, styled, SxProps, Theme } from "@mui/material";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward"; // MUI Icon
 
-// Styled MUI Button (Fixed with callback function)
-const StyledButton = styled(Button)(({ theme }) => ({
+// Styled MUI Button
+const StyledButton = styled(Button)({
   position: "relative",
   display: "inline-flex",
   alignItems: "center",
@@ -12,7 +12,7 @@ const StyledButton = styled(Button)(({ theme }) => ({
   background: "rgba(145, 9, 9, 0.8)", // 🔥 Red Transparent Background
   backdropFilter: "blur(20px)", // ✨ Blur Effect
   color: "white",
-  padding: "12px 35px",
+  // padding: "12px 35px",
   border: "none",
   borderRadius: "10px",
   letterSpacing: "0.005em",
@@ -36,22 +36,20 @@ const StyledButton = styled(Button)(({ theme }) => ({
     background: "transparent !important", // Ensure it stays transparent on click
     color: "white !important",
   },
-  // fontSize: theme.breakpoints.down("md") ? "30px" : "14px !important",
-  // width: theme.breakpoints.down("md") ? "300px" : "100px",
-}));
+});
 
 // Arrow Container
 const ArrowContainer = styled(Box)({
   position: "relative",
   overflow: "hidden",
   display: "inline-flex",
-  width: "20px",
-  height: "20px",
+  // width: "20px",
+  // height: "20px",
 });
 
 // Styled MUI Icons
 const ArrowIconStyled = styled(ArrowOutwardIcon)({
-  fontSize: "16px",
+
   transition: "transform 0.3s ease-out",
   color: "white", // Ensures visibility
 });
@@ -67,21 +65,36 @@ const ArrowIconLast = styled(ArrowIconStyled)({
   transform: "translateX(-200%) translateY(200%) translateZ(0)",
 });
 
-// Reusable Button Component
+// ✅ Reusable Button Component with Dynamic `sx`
 interface CustomButtonProps {
   children: React.ReactNode;
+  onClick?: () => void;
+  sx?: SxProps<Theme>; // ✅ Fully dynamic styles per file
 }
 
-const CustomButton: React.FC<CustomButtonProps> = ({ children }) => {
+const CustomButton: React.FC<CustomButtonProps> = ({ children, onClick, sx }) => {
   return (
-    <StyledButton>
+    <StyledButton onClick={onClick} sx={sx}>
       {children}
       <ArrowContainer className="btn-arrow-hover">
-        {/* First Arrow (Visible initially) */}
-        <ArrowIconFirst className="arrow-first" />
-
-        {/* Second Arrow (Hidden initially, appears on hover) */}
-        <ArrowIconLast className="arrow-second" />
+        <ArrowIconFirst
+          className="arrow-first"
+          sx={{
+            fontSize: {
+              xs:"32px",
+              lg:"16px"
+            }
+          }}
+        />
+        <ArrowIconLast 
+        className="arrow-second" 
+        sx={{
+          fontSize: {
+            xs:"32px",
+            lg:"16px"
+          }
+        }}
+        />
       </ArrowContainer>
     </StyledButton>
   );

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, ReactNode } from "react";
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, SxProps, Theme } from "@mui/material";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -8,9 +8,10 @@ gsap.registerPlugin(ScrollTrigger);
 
 interface AnimatedTextProps {
   children: ReactNode;
+  sx?: SxProps<Theme>; // ✅ Accepts Material-UI `sx` prop
 }
 
-const AnimatedText: React.FC<AnimatedTextProps> = ({ children }) => {
+const AnimatedText: React.FC<AnimatedTextProps> = ({ children, sx }) => {
   const textRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -50,6 +51,7 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({ children }) => {
           fontSize: { xs: "2em", md: "3.2em" },
           wordBreak: "break-word",
           whiteSpace: "normal",
+          ...sx, // ✅ Apply custom `sx` styles from props
         }}
       >
         <Box ref={textRef} className="letters" sx={{ display: "inline-block" }}>

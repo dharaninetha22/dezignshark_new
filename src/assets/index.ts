@@ -44,6 +44,8 @@ import team from './images/about/team.jpg'
 import faqs from './images/about/faqs.png'
 import aboutbg from './images/about/aboutbg.jpg'
 import textimonial from './images/about/testimonial.png'
+import aboutshark from './images/about/aboutshark.png'
+import backgroundabout from './images/about/backgroundabout.png'
 
 
 //services
@@ -52,6 +54,7 @@ import service2 from './images/Services/s2.jpg'
 import service3 from './images/Services/s3.jpg'
 import faqservices from './images/Services/faqservices.png'
 import seo2 from './images/Services/seo2.png'
+import seo4 from './images/Services/seo4.png'
 import seo3 from './images/Services/seo3.png'
 import seobanner from './images/Services/seo.png'
 import ppcbanner from './images/Services/ppc.png'
@@ -59,7 +62,16 @@ import webbanner from './images/Services/web.png'
 import brandingbanner from './images/Services/brand.png'
 import smbanner from './images/Services/sm.png'
 import designbanner from './images/Services/design.png'
-
+import web2 from './images/Services/web2.png'
+import web3 from './images/Services/web3.png'
+import web4 from './images/Services/web4.png'
+import web5 from './images/Services/web5.png'
+import web6 from './images/Services/web6.png'
+import web7 from './images/Services/web7.png'
+import web8 from './images/Services/web8.png'
+import graphic2 from './images/Services/graphic2.png'
+import sm2 from './images/Services/sm2.png'
+import ppc2 from './images/Services/ppc2.png'
 
 //blog
 
@@ -122,7 +134,7 @@ export{
 }
 
 export const AboutImages={
-    aboutimg,approach,team,faqs,aboutbg,textimonial
+    aboutimg,approach,team,faqs,aboutbg,textimonial,aboutshark,backgroundabout
 }
 
 export const Home={
@@ -147,7 +159,8 @@ export const Careers={
 
 export const Services={
     service1,service2,service3,faqservices,
-    seo2,seo3,seobanner,ppcbanner,webbanner,brandingbanner,smbanner,designbanner
+    seo2,seo3,seobanner,ppcbanner,webbanner,brandingbanner,smbanner,designbanner,
+    seo4,web2,web3,web4,web5,web6,web7,web8,sm2,ppc2,graphic2
 }
 
 export const Blog={

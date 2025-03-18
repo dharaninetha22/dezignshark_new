@@ -19,18 +19,37 @@ import {
   Instagram,
   LinkedIn,
   ArrowUpward,
+  YouTube,
 } from "@mui/icons-material";
 import { dslogo, Home } from "../../assets";
 
 import { gsap } from "gsap";
 import CustomInput from "../../Components/Inputs/CustomInput";
 import CustomButton from "../../Components/Inputs/CustomButton";
+import { useNavigate } from "react-router-dom";
 
 const socialIcons = [
-  { icon: <Facebook />, href: "#" },
-  { icon: <Twitter />, href: "#" },
-  { icon: <Instagram />, href: "#" },
-  { icon: <LinkedIn />, href: "#" },
+  { icon: <Facebook />, href: "https://www.facebook.com/profile.php?id=61554306921409", target: "_blank" },
+  { icon: <Twitter />, href: "https://twitter.com", target: "_blank" },
+  { icon: <Instagram />, href: "https://www.instagram.com/dezign_shark/", target: "_blank" },
+  { icon: <LinkedIn />, href: "https://www.linkedin.com/company/92636430/admin/feed/posts/", target: "_blank" },
+  { icon: <YouTube />, href: "https://www.youtube.com/@DezignShark", target: "_blank" },
+];
+const menuItems = [
+  { text: "About Us", path: "/aboutus" },
+  { text: "Services", path: "/services" },
+  { text: "Careers", path: "/careers" },
+  { text: "Blog", path: "/blog" },
+  { text: "Contact Us", path: "/contactus" },
+];
+const quickLinks = [
+  { text: "Branding", path: "/services/branding" },
+  { text: "Social Media Marketing", path: "/services/smo" },
+  { text: "Pay-Per-Click (PPC) Advertising", path: "/services/ppc" },
+  { text: "Web Development", path: "/services/web" },
+  { text: "Search Engine Optimization (SEO)", path: "/services/search-engine-optimization" },
+  { text: "Graphic Designing", path: "/services/content" },
+
 ];
 
 const Footer = () => {
@@ -38,6 +57,7 @@ const Footer = () => {
   const logoFirstRef = useRef<HTMLDivElement | null>(null);
   const logoSecondRef = useRef<HTMLDivElement | null>(null);
   const shineRef = useRef<HTMLSpanElement | null>(null);
+  const navigate = useNavigate(); // ✅ Initialize navigate function
 
   useEffect(() => {
     const btn = btnRef.current;
@@ -101,7 +121,7 @@ const Footer = () => {
         background: "linear-gradient(90deg, #2F057B 0%, #6441C1 100%)",
         color: "white",
         pt: 8,
-        pb:4,
+        pb: 4,
         backgroundImage: `url(${Home.bgfooterimg})`,
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
@@ -124,32 +144,34 @@ const Footer = () => {
       <Container maxWidth='xl'>
         <Grid container spacing={4}>
           {/* Contact Us Section */}
-          <Grid item xs={12}  lg={4}>
-            <Typography variant="h4" gutterBottom sx={{fontWeight:800,mb:4}}>
+          <Grid item xs={12} lg={3}>
+            <Typography variant="h4" gutterBottom sx={{ fontWeight: 800, mb: 4 }}>
               Contact Us
             </Typography>
-            <Typography variant="body2" >
-              <LocationOn sx={{ verticalAlign: "middle", mr: 1 }} />
-              68, 3rd Floor, Senore Colony, Film Nagar, Hyderabad, Telangana 500008
-            </Typography>
-            <Link
-              href="tel:+91 799 799 2885"
-              color="inherit"
-              sx={{ display: "block", mt: 2, textDecoration: "none" }}
-            >
-              <Phone sx={{ verticalAlign: "middle", mr: 1 }} />
-              +91 799 799 2885
-            </Link>
-            <Link
-              href="mailto:info@dezignshark.com"
-              color="inherit"
-              sx={{ display: "block", mt: 2, textDecoration: "none" }}
-            >
-              <Email sx={{ verticalAlign: "middle", mr: 1 }} />
-              info@dezignshark.com
-            </Link>
+
+            {/* Contact Info: Icons on Left, Text on Right */}
+            <Box sx={{ display: "flex", alignItems: "start", mb: 2 }}>
+              <LocationOn sx={{ fontSize: 24, color: "#fc0000", minWidth: "40px" }} />
+              <Typography variant="body2">
+                68, 3rd Floor, Senore Colony, Film Nagar, Hyderabad, Telangana 500008
+              </Typography>
+            </Box>
+
+            <Box sx={{ display: "flex", alignItems: "start", mb: 2 }}>
+              <Phone sx={{ fontSize: 24, color: "#fc0000", minWidth: "40px" }} />
+              <Link href="tel:+91 799 799 2885" color="inherit" sx={{ textDecoration: "none" }}>
+                +91 799 799 2885
+              </Link>
+            </Box>
+
+            <Box sx={{ display: "flex", alignItems: "start" }}>
+              <Email sx={{ fontSize: 24, color: "#fc0000", minWidth: "40px" }} />
+              <Link href="mailto:info@dezignshark.com" color="inherit" sx={{ textDecoration: "none" }}>
+                info@dezignshark.com
+              </Link>
+            </Box>
             {/* Social Icons */}
-            <Box sx={{ mt: 2, display: "flex", gap: 1 }}>
+            <Box sx={{ mt: 4, display: "flex", gap: 1 }}>
               {socialIcons.map((item, index) => (
                 <IconButton
                   key={index}
@@ -178,49 +200,67 @@ const Footer = () => {
             </Box>
           </Grid>
 
+
           {/* Menu Section */}
-          <Grid item xs={12}  lg={2}>
-            <Typography variant="h4" gutterBottom sx={{mb:4}}>
-              Menu
-            </Typography>
-            {["About Us", "Services", "Blog", "Pricing", "Contact Us"].map(
-              (text, index) => (
+          <Grid item xs={12} lg={3}
+
+          >
+            <Box sx={{
+              paddingLeft: {
+                xs: 0,
+                lg: 8
+              }
+            }}>
+
+              <Typography variant="h4" gutterBottom sx={{ mb: 4 }}>
+                Menu
+              </Typography>
+              {menuItems.map((item, index) => (
                 <Link
                   key={index}
-                  href={`${text.toLowerCase().replace(" ", "-")}.html`}
-                  color="inherit"
-                  display="block"
-                  sx={{ mt: 1, textDecoration: "none" }}
+                  onClick={() => navigate(item.path)} // ✅ Navigate on click
+                  sx={{
+                    display: "block",
+                    mt: 1,
+                    textDecoration: "none",
+                    color: "white",
+                    transition: "color 0.3s ease", // ✅ Smooth transition
+                    cursor: "pointer", // ✅ Indicate clickable
+                    "&:hover": { color: "red" }, // ✅ Change color on hover
+                  }}
                 >
-                  {text}
+                  {item.text}
                 </Link>
-              )
-            )}
+              ))}
+            </Box>
           </Grid>
 
           {/* Quick Links */}
-          <Grid item xs={12}  lg={2}>
-            <Typography variant="h4" gutterBottom sx={{mb:4}}>
+          <Grid item xs={12} lg={3}>
+            <Typography variant="h4" gutterBottom sx={{ mb: 4 }}>
               Quick Links
             </Typography>
-            {["Privacy Policy", "Terms & Conditions", "Cookie Policy"].map(
-              (text, index) => (
-                <Link
-                  key={index}
-                  href={`${text.toLowerCase().replace(" ", "-")}.html`}
-                  color="inherit"
-                  display="block"
-                  sx={{ mt: 1, textDecoration: "none" }}
-                >
-                  {text}
-                </Link>
-              )
-            )}
+            {quickLinks.map((item, index) => (
+              <Link
+                key={index}
+                href={item.path} // ✅ Link to correct page
+                sx={{
+                  display: "block",
+                  mt: 1,
+                  textDecoration: "none",
+                  color: "white",
+                  transition: "color 0.3s ease", // ✅ Smooth transition
+                  "&:hover": { color: "red" }, // ✅ Change color on hover
+                }}
+              >
+                {item.text}
+              </Link>
+            ))}
           </Grid>
 
           {/* Newsletter Section */}
-          <Grid item xs={12}  lg={4}>
-            <Typography variant="h4" gutterBottom sx={{mb:4}}>
+          <Grid item xs={12} lg={3}>
+            <Typography variant="h4" gutterBottom sx={{ mb: 4 }}>
               Subscribe to Our Newsletter
             </Typography>
             <Typography variant="body2">
@@ -235,7 +275,7 @@ const Footer = () => {
               }}
               sx={{ mt: 2, display: "flex", gap: 1 }}
             >
-              <CustomInput
+              {/* <CustomInput
 
                 type="email"
                 placeholder="Enter your email"
@@ -245,13 +285,24 @@ const Footer = () => {
                   borderRadius: 1,
                   "& .MuiInputBase-root": { color: "black" },
                 }}
-              />
-       
+              /> */}
 
-              <CustomButton>Subscribe</CustomButton>
+
+              <CustomButton
+                onClick={() => {
+                  window.open(
+                    "https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=7271814903529652224",
+                    "_blank", // ✅ Opens in a new tab
+                    
+                  );
+                }}
+              >
+                Subscribe
+              </CustomButton>
+
             </Box>
 
-          
+
           </Grid>
         </Grid>
 
@@ -350,9 +401,6 @@ const Footer = () => {
       >
         <Typography variant="body2">
           Copyright ©2025 <Link href="index.html" color="inherit" sx={{ textDecoration: "none", color: '#fc0000' }}>DezignShark</Link>. All rights reserved {" "}
-          {/* <Link href="https://themeforest.net/user/wpthemebooster" color="inherit" sx={{ textDecoration: "none" }}>
-            WPThemeBooster
-          </Link>. */}
         </Typography>
       </Box>
     </Box>

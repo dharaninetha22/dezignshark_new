@@ -41,6 +41,7 @@ import { Facebook, Twitter, YouTube, WhatsApp, Instagram, LinkedIn } from "@mui/
 import { dslogo } from "../assets";
 import CustomButton from "../Components/Inputs/CustomButton";
 import PopUpHeader from "../Pages/PopUpHeader";
+import PopupForm from "../Components/PopupForm";
 
 const Header: React.FC = () => {
   const navigate = useNavigate();
@@ -48,6 +49,7 @@ const Header: React.FC = () => {
   const [mobileOpen, setMobileOpen] = useState<boolean>(false);
   const [dropdownOpen, setDropdownOpen] = useState<string | null>(null);
   const [digitalMarketingOpen, setDigitalMarketingOpen] = useState<boolean>(false);
+  const [showFormPopup, setShowFormPopup] = useState(false);
   // const [drawerSubmenuOpen, setDrawerSubmenuOpen] = useState<string | null>(null);
   const lineRef = useRef<HTMLDivElement | null>(null);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
@@ -166,12 +168,12 @@ const Header: React.FC = () => {
       label: "Services",
       route: "services",
       submenu: [
-        { label: "Search Engine Optimization (SEO)", route: "/services/search-engine-optimization" },
-        { label: "Pay-Per-Click (PPC) Advertising", route: "/services/ppc" },
-        { label: "Social Media Marketing", route: "/services/smo" },
-        { label: "Web Development", route: "/services/web" },
-        { label: "Graphic Designing", route: "/services/content" },
         { label: "Branding", route: "/services/branding" },
+        { label: "Social Media Marketing", route: "/services/smo" },
+        { label: "Pay-Per-Click (PPC) Advertising", route: "/services/ppc" },
+        { label: "Web Development", route: "/services/web" },
+        { label: "Search Engine Optimization (SEO)", route: "/services/search-engine-optimization" },
+        { label: "Graphic Designing", route: "/services/content" },
       ],
     },
     { label: "Careers", route: "/careers" },
@@ -311,7 +313,8 @@ const Header: React.FC = () => {
           {navItems.map((item, index) => (
             <Box key={index}>
               <ListItemButton
-                onClick={() => (item.submenu ? handleMobileSubMenuToggle(item.label) : handleNavigate(item.route))}
+                // onClick={() => (item.submenu ? handleMobileSubMenuToggle(item.label) : handleNavigate(item.route))}
+                onClick={() => handleNavigate(item.route)}
                 sx={{
                   color: "#FFF",
                   fontSize: "18px",
@@ -320,7 +323,20 @@ const Header: React.FC = () => {
                 }}
               >
                 <ListItemText primary={item.label} />
-                {item.submenu && <ArrowDropDownIcon sx={{ transform: openSubMenu === item.label ? "rotate(180deg)" : "rotate(0deg)" }} />}
+                {/* {item.submenu && 
+                <ArrowDropDownIcon 
+                sx={{ transform: openSubMenu === item.label ? "rotate(180deg)" : "rotate(0deg)" }} />
+                } */}
+                {item.submenu && (
+                    <IconButton
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleMobileSubMenuToggle(item.label);
+                      }}
+                    >
+                      <ArrowDropDownIcon sx={{ transform: openSubMenu === item.label ? "rotate(180deg)" : "rotate(0deg)", color: "#FFF" }} />
+                    </IconButton>
+                  )}
               </ListItemButton>
               <Divider sx={{ backgroundColor: "#FFFFFF80" }} />
 
@@ -423,6 +439,11 @@ const Header: React.FC = () => {
         // position="sticky"
         sx={{
           // backgroundColor: 'transparent',
+          height:{
+            xs:'150px',
+            lg:'auto',
+            md:'auto'
+          },
           width: '100%',
           boxShadow: 'none',
           padding: "1px 0",
@@ -431,7 +452,12 @@ const Header: React.FC = () => {
         }}>
 
         <Container maxWidth='xl'>
-          <Toolbar sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: { xs: '7px 10px', lg: "0 10px" }, }}>
+          <Toolbar
+           sx={{ 
+            display: "flex", 
+            justifyContent: "space-between", alignItems: "center", 
+            padding: { xs: '32px 10px ', lg: "8px 10px",  },
+             }}>
             <Box sx={{ display: "flex", alignItems: "center", cursor: "pointer", py: 1 }} onClick={() => handleNavigate("/")}>
               <img src={dslogo} alt="logo" className="logo-img" />
             </Box>
@@ -441,6 +467,7 @@ const Header: React.FC = () => {
 
             <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "0 10px", gap: '20px' }}>
               <Box
+              
               sx={{
                 width:{
                   xs:'300px',
@@ -449,9 +476,31 @@ const Header: React.FC = () => {
               }}
               >
 
-                <CustomButton>
+                <CustomButton
+                    
+                sx={{
+                  width:{
+                    xs:"370px ",
+                    lg:"216px",
+                   
+                   
+                  },
+                  height:{
+                    xs:"64px  ",
+                    lg:"40px",
+                
+                  },
+                  fontSize:{
+                     xs:"26px  ",
+                    lg:"13px",
+                  
+                  },
+                }}
+                 onClick={() => setShowFormPopup(true)}
+                >
                   Download Brochure
                 </CustomButton>
+               
               </Box>
               {/* Mobile Toggle Button */}
 
@@ -472,8 +521,10 @@ const Header: React.FC = () => {
 
               {/* Mobile Toggle Button */}
               {isMobile && (
-                <IconButton color="inherit" onClick={handleDrawerToggle}>
-                  <MenuIcon />
+                <IconButton color="inherit" onClick={handleDrawerToggle} 
+                
+                >
+                  <MenuIcon  style={{fontSize:'50px'}}/>
                 </IconButton>
               )}
 
@@ -484,6 +535,8 @@ const Header: React.FC = () => {
 
       {/* Mobile Drawer */}
       {isMobile && renderMobileMenu()}
+
+      <PopupForm isOpen={showFormPopup} onClose={() => setShowFormPopup(false)} />
 
     </>
   );

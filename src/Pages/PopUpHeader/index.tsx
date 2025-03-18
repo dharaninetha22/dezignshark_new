@@ -61,7 +61,14 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
   const navigate = useNavigate();
   const [openSections, setOpenSections] = useState<Record<number, boolean>>({});
 
-  const handleToggle = (index: number) => {
+  // const handleToggle = (index: number) => {
+  //   setOpenSections((prev) => ({
+  //     ...prev,
+  //     [index]: !prev[index],
+  //   }));
+  // };
+  const handleToggle = (index: number, event: React.MouseEvent) => {
+    event.stopPropagation(); // Prevents navigation when clicking the expand icon
     setOpenSections((prev) => ({
       ...prev,
       [index]: !prev[index],
@@ -165,26 +172,32 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
           <Divider sx={{ bgcolor: "gray", width: "100%" }} />
 
           <List sx={{ width: "100%" }}>
-            {navItems.map((item, index) => (
+          {navItems.map((item, index) => (
               <React.Fragment key={index}>
                 <ListItemButton
-                  onClick={() => item.submenu ? handleToggle(index) : handleNavigation(item.route)}
-                  sx={{ px: 3 }}
+                  onClick={() => handleNavigation(item.route)}
+                  sx={{ px: 3, display: "flex", justifyContent: "space-between" ,"&:hover .MuiListItemText-primary": { color: "red" },}}
                 >
                   <ListItemText
                     primary={item.label}
-                    primaryTypographyProps={{ style: { fontSize: "30px", fontWeight: "bold", textAlign: "center" , color: "white",} }}
-                   
+                    primaryTypographyProps={{
+                      style: { fontSize: "30px", fontWeight: "bold", textAlign: "center", color: "white" },
+                    }}
                   />
-                  {item.submenu && (openSections[index] ? <ExpandLess /> : <ExpandMore />)}
+                  {item.submenu && (
+                    <IconButton onClick={(event) => handleToggle(index, event)} sx={{ color: "white", "&:hover": { color: "red" } }}>
+                      {openSections[index] ? <ExpandLess /> : <ExpandMore />}
+                    </IconButton>
+                  )}
                 </ListItemButton>
+
                 {item.submenu && (
                   <Collapse in={openSections[index]} timeout="auto" unmountOnExit>
                     <List component="div" disablePadding>
                       {item.submenu.map((sub, subIndex) => (
                         <ListItemButton
                           key={subIndex}
-                          sx={{ pl: 6 }}
+                          sx={{ pl: 6, "&:hover .MuiListItemText-primary": { color: "red" }, }}
                           onClick={() => handleNavigation(sub.route)}
                         >
                           <ListItemText primary={sub.label} sx={{ color: "white" }} />

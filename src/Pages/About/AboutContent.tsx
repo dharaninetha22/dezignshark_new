@@ -9,9 +9,18 @@ import { AboutImages } from "../../assets";
 gsap.registerPlugin(ScrollTrigger);
 
 const App = () => {
-  const [open, setOpen] = useState(false); // ✅ Video Modal State
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const [open, setOpen] = useState(false);
+  const [videoSrc, setVideoSrc] = useState("");
+
+  const handleOpen = () => {
+    setVideoSrc("https://dprstorage.b-cdn.net/dprstorage/dezign_shark.mp4"); // ✅ Set video source
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setVideoSrc(""); // ✅ Reset video source to stop playback
+    setOpen(false);
+  };
 
   useEffect(() => {
     const revealContainers = document.querySelectorAll(".reveal");
@@ -33,7 +42,7 @@ const App = () => {
 
   return (
     <>
-      <Container maxWidth="xl">
+      <Container maxWidth="xl" sx={{ py: 5 }}>
         <Box
           className="container"
           sx={{
@@ -41,17 +50,17 @@ const App = () => {
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
-            height:{
-              xs:'50%',
-              lg:'100%'
+            height: {
+              xs: "50%",
+              lg: "100%",
             },
             width: "100%",
             position: "relative",
-            px: 5,
-            mb:{
-              xs:5,
-              lg:0
-            }
+            // px: 5,
+            mb: {
+              xs: 5,
+              lg: 0,
+            },
           }}
         >
           {/* Image Container */}
@@ -61,12 +70,16 @@ const App = () => {
               visibility: "hidden",
               position: "relative",
               width: "100vw",
-              height:{
-                xs:'30vh',
-                lg: "95vh"
+              height: {
+                xs: "30vh",
+                lg: "95vh",
               },
               maxWidth: "100vw",
               overflow: "hidden",
+              ml:{
+                xs:4,
+                lg:8
+              }
             }}
           >
             <img
@@ -108,41 +121,44 @@ const App = () => {
 
       {/* ✅ Video Modal */}
       <Modal open={open} onClose={handleClose} sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-        <Box
-          sx={{
-            width: { xs: "95vw", lg: "70vw" },
-            height: { xs: "30vh", lg: "70vh" },
-            backgroundColor: "black",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            outline: "none",
-            position: "relative",
-          }}
-        >
-          {/* ✅ Close Button */}
+        <>
+          {/* ✅ Close Button Outside */}
           <IconButton
             onClick={handleClose}
             sx={{
               position: "absolute",
-              top: 10,
-              right: 10,
+              top: { xs: "33%", lg: "7%" },
+              right: { xs: 10, lg: "14%" },
               color: "white",
               backgroundColor: "rgba(0,0,0,0.6)",
+              zIndex: 2,
               "&:hover": { backgroundColor: "rgba(255, 0, 0, 0.8)" },
             }}
           >
             <CloseIcon sx={{ fontSize: "30px" }} />
           </IconButton>
 
-          <iframe
-            width="100%"
-            height="100%"
-            src="https://www.youtube.com/embed/dQw4w9WgXcQ" // ✅ Replace with your video link
-            title="Video"
-            allowFullScreen
-          ></iframe>
-        </Box>
+          <Box
+            sx={{
+              width: { xs: "95vw", lg: "70vw" },
+              height: { xs: "30vh", lg: "70vh" },
+              backgroundColor: "black",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              outline: "none",
+              position: "relative",
+            }}
+          >
+            {/* ✅ Auto-Playing Video */}
+            {videoSrc && (
+              <video width="100%" height="100%" controls autoPlay>
+                <source src={videoSrc} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            )}
+          </Box>
+        </>
       </Modal>
 
       {/* ✅ Keyframes for Pulse Animation */}

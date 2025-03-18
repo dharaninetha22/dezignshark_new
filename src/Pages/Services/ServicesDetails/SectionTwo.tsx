@@ -1,9 +1,28 @@
 import React from "react";
 import { Container, Grid, CardMedia, CardContent, Typography, Box } from "@mui/material";
+import Slider from "react-slick";
 import AddIcon from "@mui/icons-material/Add"; // "+" Icon
 import { Services } from "../../../assets"; // Your image imports
 
+// Import Slick Styles
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 const BusinessSections = () => {
+  // Slick Slider Settings
+  const sliderSettings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    arrows: false,
+  };
+
+  const sliderImages = [Services.service2, Services.service3, Services.service2]; // Add your images here
+
   return (
     <Container maxWidth="xl" sx={{ bgcolor: "white", color: "black", borderRadius: 2 }}>
       {/* First Section: Image on Top, Content Below */}
@@ -15,11 +34,11 @@ const BusinessSections = () => {
           sx={{ width: "100%", height: "auto", borderRadius: 2 }}
         />
         <CardContent sx={{ mt: 3 }}>
-          <Typography variant="h3"  gutterBottom sx={{ color: "black" ,fontWeight:700,mb:4}}>
+          <Typography variant="h3" gutterBottom sx={{ color: "black", fontWeight: 700, mb: 4 }}>
             Market Research
           </Typography>
           <Typography variant="body1" paragraph sx={{ color: "#74787c" }}>
-          Understand your target market’s needs, preferences, and behavior. Identify trends, competitors, and gaps in the market that your business can capitalize on. Conduct surveys, analyze data, and gather insights to inform your strategy. Divide your potential customers into distinct segments based on factors such as demographics, psychographics, and behaviors. This allows you to tailor your marketing efforts to specific audience groups and create personalized messaging.
+            Understand your target market’s needs, preferences, and behavior. Identify trends, competitors, and gaps in the market that your business can capitalize on. Conduct surveys, analyze data, and gather insights to inform your strategy.
           </Typography>
 
           {/* Flexbox for List & Services Challenge */}
@@ -28,8 +47,10 @@ const BusinessSections = () => {
             <Grid item xs={4} sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
               {["UI/UX Design", "Content Development", "Marketing Strategies", "Shopify Development"].map((item, index) => (
                 <Box key={index} sx={{ display: "flex", alignItems: "center" }}>
-                  <AddIcon sx={{ fontSize: 24, mr: 1 ,color: "#74787c"}} />
-                  <Typography variant="body2" sx={{ color: "#74787c" }}>{item}</Typography>
+                  <AddIcon sx={{ fontSize: 24, mr: 1, color: "#74787c" }} />
+                  <Typography variant="body2" sx={{ color: "#74787c" }}>
+                    {item}
+                  </Typography>
                 </Box>
               ))}
             </Grid>
@@ -49,35 +70,30 @@ const BusinessSections = () => {
                 Services Challenge
               </Typography>
               <Typography variant="body2" sx={{ color: "#74787c", mt: 2 }}>
-              Maintaining consistent service quality across all customer interactions can be difficult, leading to dissatisfaction and negative feedback.
-              
+                Maintaining consistent service quality across all customer interactions can be difficult, leading to dissatisfaction and negative feedback.
               </Typography>
               <Typography variant="body2" sx={{ color: "#74787c", mt: 1 }}>
-             
-              Solution: Implement clear service standards, provide comprehensive training to your team, and establish regular quality control checks. Solicit customer feedback and use it to make improvements.
+                Solution: Implement clear service standards, provide comprehensive training to your team, and establish regular quality control checks. Solicit customer feedback and use it to make improvements.
               </Typography>
             </Grid>
           </Grid>
         </CardContent>
       </Box>
 
-      {/* Second Section: Two Images in Grid, Content Below */}
+      {/* Second Section: Slick Slider for Images */}
       <Grid container spacing={2}>
-        <Grid item xs={12} md={5}>
-          <CardMedia
-            component="img"
-            image={Services.service2}
-            alt="Feedback"
-            sx={{ width: "100%", height: "250px" }}
-          />
-        </Grid>
-        <Grid item xs={12} md={7}>
-          <CardMedia
-            component="img"
-            image={Services.service3}
-            alt="Customer Support"
-            sx={{ width: "100%", height: "250px" }}
-          />
+        <Grid item xs={12} md={6} sx={{ mx: "auto" }}>
+          <Slider {...sliderSettings}>
+            {sliderImages.map((image, index) => (
+              <CardMedia
+                key={index}
+                component="img"
+                image={image}
+                alt={`Slide ${index + 1}`}
+                sx={{ width: "100%", height: "250px", borderRadius: 2 }}
+              />
+            ))}
+          </Slider>
         </Grid>
       </Grid>
 

@@ -97,7 +97,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, imageUrl,
       <Typography variant="h4" fontWeight={700} color="white" mb={2} textAlign="left">
         {title}
       </Typography>
-      <Typography variant="body1" color="white" textAlign="left">
+      <Typography variant="body1" color="white" textAlign="left" sx={{fontSize:{xs:'30px',lg:'18px'}}}>
         {description}
       </Typography>
 

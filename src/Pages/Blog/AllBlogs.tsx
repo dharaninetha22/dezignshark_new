@@ -4,6 +4,7 @@ import { Card, CardMedia, CardContent, Typography, Box, Grid, Container } from "
 import { useNavigate } from "react-router-dom"; // ✅ Replaced Link with useNavigate()
 import gsap from "gsap";
 import { blogData } from "./BlogDetails/BlogData";
+import AnimatedText from "../../Components/Inputs/AnimatedText";
 
 const CardList: React.FC = () => {
     return (
@@ -54,13 +55,16 @@ const HoverCard: React.FC<{ title: string; category: string; description: string
                     </Box>
 
                     <CardContent sx={{ p: 2, backgroundColor: "transparent" }}>
-                        <Typography variant="caption" color="text.secondary" sx={{ letterSpacing: 1, textTransform: "uppercase", fontWeight: 500 }}>{category}</Typography>
-                        <Typography variant="h4" sx={{ fontWeight: "bold", mt: 1, color: 'black' }}>{title}</Typography>
-                        <Typography variant="body2" color="#74787C" sx={{ mt: 1 }}>{description}</Typography>
+                        <Typography variant="caption" color="text.secondary" sx={{ letterSpacing: 1, textTransform: "uppercase", fontWeight: 500 ,fontSize:{xs:'20px',lg:'14px'} }}>{category}</Typography>
+                        {/* <Typography variant="h4" sx={{ fontWeight: "bold", mt: 1, color: 'black' }}>{title}</Typography> */}
+                        <AnimatedText sx={{ fontWeight: "bold", mt: 1, color: 'black',fontSize:{xs:'44px',lg:'30px'} }}>
+                        {title}
+                        </AnimatedText>
+                        <Typography variant="body2" color="#74787C" sx={{ mt: 1 ,fontSize:{xs:'21px',lg:'16px'}}}>{description}</Typography>
 
                         {/* ✅ Read More Link (onClick triggers navigation) */}
-                        <Box sx={{ mt: 2, borderBottom: "1px solid #74787C", pb: 1, width: "fit-content" }} onClick={handleNavigation} style={{ cursor: "pointer" }}>
-                            <Typography sx={{ fontWeight: 500, fontSize: "0.9rem", color: 'black', "&:hover": { color: "#fc0000" }, display: "block" }}>
+                        <Box sx={{ mt: 2, borderBottom: "1px solid #74787C", pb: 1, width:{xs:'fit-content',lg: "fit-content"} }} onClick={handleNavigation} style={{ cursor: "pointer" }}>
+                            <Typography sx={{ fontWeight: 500, fontSize: {xs:'1rem',lg:"0.9rem"}, color: 'black', "&:hover": { color: "#fc0000" }, display: "block" }}>
                                 Read More
                             </Typography>
                         </Box>

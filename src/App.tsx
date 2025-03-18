@@ -38,6 +38,7 @@ function App() {
         {/* <NewCursor /> */}
         <ToastContainer position="top-right" autoClose={5000} />
       </ThemeProvider>
+      
     </Box>
   );
 }

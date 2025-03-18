@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Box, Typography, IconButton, Container } from "@mui/material";
+import { Box, Typography, IconButton, Container, useMediaQuery } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Mousewheel } from "swiper/modules";
 import "swiper/css";
@@ -9,6 +9,7 @@ import { useInView } from "react-intersection-observer";
 import { ArrowForward } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import { Home } from "../../assets";
+import AnimatedText from "../../Components/Inputs/AnimatedText";
 
 // Define service type
 interface Service {
@@ -75,23 +76,24 @@ const ServicesSection: React.FC = () => {
   const controls = useAnimation();
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.3 });
   const navigate = useNavigate();
+  
+  // ✅ Check if screen size is mobile
+  const isMobile = useMediaQuery("(max-width:1080px)");
 
   useEffect(() => {
     if (inView) controls.start("visible");
   }, [controls, inView]);
 
   return (
-    <Box sx={{ pt: 10, pb: 10, background: "#f8f8f8" ,px:{xs:5,lg:0}}}>
+    <Box sx={{ pt: 10, pb: 10, background: "#f8f8f8", px: { xs: 5, lg: 0 } }}>
       <motion.div ref={ref} initial="hidden" animate={controls} variants={slideUp}>
         <Container maxWidth="xl">
           {/* Main Title */}
-          <Typography variant="h1" color="black" mb={1} fontWeight={700} textAlign="left">
-            Our Services
-          </Typography>
-          {/* Subtitle */}
-          <Typography variant="h5" color="#666" mb={5} fontWeight={400} textAlign="left">
-            Discover how we can help you grow
-          </Typography>
+
+            <AnimatedText sx={{color:'black',textAlign:"left",mb:5}}>
+              Our Services
+            </AnimatedText>
+
         </Container>
       </motion.div>
 
@@ -109,7 +111,7 @@ const ServicesSection: React.FC = () => {
           1024: { slidesPerView: 2.5 }, // ✅ Larger screens: Show 2.5 cards
         }}
         style={{ width: "100%", height: "500px" }}
-        
+
       >
         {services.map((service) => (
           <SwiperSlide key={service.id} id={service.id} >
@@ -119,7 +121,8 @@ const ServicesSection: React.FC = () => {
               variants={slideUp}
               onClick={() => navigate(`/services/${service.id}`)}
               style={{
-                height: "320px",
+                // height: "320px",
+                height: isMobile ? "480px" : "320px",
                 padding: "30px",
                 background: "#eeeeee",
                 borderRadius: "8px",
@@ -152,21 +155,39 @@ const ServicesSection: React.FC = () => {
                   >
                     <img src={service.image} alt={service.title} style={{ width: "60px", height: "60px" }} />
                   </Box>
-                  <Typography variant="h5" color="black" fontWeight={800}>
+                  <Typography variant="h5" color="black" fontWeight={800}
+                    sx={{
+                      fontSize: {
+                        xs: '40px',
+                        lg: '24px'
+                      },
+                    }}
+                  >
                     {service.title}
                   </Typography>
                 </Box>
 
-                <Typography variant="body1" color="#555" fontWeight={500} my={1}>
+                <Typography variant="body1" color="#555" fontWeight={500} my={2} 
+                sx={{
+                  fontSize: {
+                    xs: '30px',
+                    lg: '18px'
+                  },
+                }}>
                   {service.subtitle}
                 </Typography>
 
                 {/* List with Circular Bullets */}
-                <Box component="ul" sx={{ padding: 0, listStyle: "none", margin: 0 }}>
+                <Box component="ul" sx={{ padding: 0, listStyle: "none", margin: 0 ,
+                }}>
                   {service.description.map((point, i) => (
                     <Box component="li" key={i} sx={{ display: "flex", alignItems: "center", gap: "10px", mb: "8px", color: "#828282" }}>
                       <Box sx={{ width: "8px", height: "8px", borderRadius: "50%", backgroundColor: "black", flexShrink: 0 }} />
-                      <Typography variant="body2" sx={{ color: "#828282" }}>
+                      <Typography variant="body2" sx={{ color: "#828282",
+                      fontSize: {
+                        xs: '30px',
+                        lg: '16px'
+                      } }}>
                         {point}
                       </Typography>
                     </Box>
@@ -176,7 +197,10 @@ const ServicesSection: React.FC = () => {
 
               {/* Get Started Button */}
               <Box display="flex" alignItems="center" onClick={() => navigate(`/services/${service.id}`)} sx={{ cursor: "pointer" }}>
-                <Box sx={{ color: "black", fontSize: "16px", fontWeight: 500 }}>Get Started</Box>
+                <Box sx={{ color: "black", fontSize: {
+                        xs: '30px',
+                        lg: '16px'
+                      }, fontWeight: 500 }}>Get Started</Box>
                 <IconButton sx={{ color: "black", ml: 1 }}>
                   <ArrowForward />
                 </IconButton>

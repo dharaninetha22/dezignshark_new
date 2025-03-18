@@ -94,7 +94,11 @@ const MarketingLayout = () => {
                                     component="img"
                                     image={Home.about2}
                                     alt="Team meeting"
-                                    sx={{ position: "relative", }}
+                                    sx={{ position: "relative", 
+                                        display: {
+                                        lg: 'inline',
+                                        xs: 'none'
+                                    }}}
                                 />
                             </Card>
                         </Grid>
@@ -193,7 +197,7 @@ const MarketingLayout = () => {
                          sx={{ 
                             position: "relative", overflow: "visible", display: "flex", alignItems: "center", right: '40px', justifyContent: 'center' ,
                             mt:{
-                                    xs:2,
+                                    xs:5,
                                     lg:0
                                 }}}>
                             <Card sx={{ backgroundColor: "transparent", boxShadow: "none", overflow: "visible" }}>
