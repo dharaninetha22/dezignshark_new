@@ -1,0 +1,148 @@
+import React, { useRef } from "react";
+import { Box, Typography, IconButton, Container, Grid, Paper } from "@mui/material";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import { HiArrowSmallRight, HiArrowSmallLeft } from "react-icons/hi2";
+import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
+import { Home } from "../../assets"; // Ensure correct import
+import AnimatedText from "../../Components/Inputs/AnimatedText";
+
+
+const testimonials = [
+  {
+    name: "Johannes Times",
+    position: "CEO of REx Company",
+    feedback: "DigiCove helped us improve our online visibility and we saw a significant increase in website traffic. They are great to work with and I highly recommend their services.",
+  },
+  {
+    name: "Sarah Lee",
+    position: "CEO of REx Company",
+    feedback: "DigiCove helped us improve our online visibility and we saw a significant increase in website traffic. They are great to work with and I highly recommend their services.",
+  },
+  {
+    name: "John Smith",
+    position: "CEO of REx Company",
+    feedback: "DigiCove helped us improve our online visibility and we saw a significant increase in website traffic. They are great to work with and I highly recommend their services.",
+  },
+];
+
+const Testimonials: React.FC = () => {
+  const sliderRef = useRef<Slider | null>(null);
+
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 2, // 2 cards per row
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    arrows: false, // Disabled default arrows
+    pauseOnHover: false,
+    responsive: [
+      {
+        breakpoint: 1080,
+        settings: { slidesToShow: 1, slidesToScroll: 1 }, // 1 card per row on smaller screens
+      },
+    ],
+  };
+
+  return (
+    <Box sx={{ py: 8, position: "relative" }}>
+      <Container maxWidth="xl">
+        <Grid container>
+          <Grid item xs={12} lg={5} sx={{  mb: 5,  textAlign: "left" }}>
+
+              <AnimatedText  >
+                WHAT CLIENTS SAY ABOUT US
+              </AnimatedText>
+          </Grid>
+        </Grid>
+        {/* Title */}
+
+        {/* Arrows Below Title */}
+        <Box sx={{ display: "flex", justifyContent: "flex-start", mb: 4 }}>
+          <IconButton
+            onClick={() => sliderRef.current?.slickPrev()}
+            sx={{
+              border: "1px solid #3A3A3A",
+              "&:hover": { backgroundColor: "#1E1E1E" },
+              color: "#fff",
+              mr: 2,
+            }}
+          >
+            <HiArrowSmallLeft style={{ fontSize: "35px" }} />
+          </IconButton>
+          <IconButton
+            onClick={() => sliderRef.current?.slickNext()}
+            sx={{
+              border: "1px solid #3A3A3A",
+              "&:hover": { backgroundColor: "#1E1E1E" },
+              color: "#fff",
+            }}
+          >
+            <HiArrowSmallRight style={{ fontSize: "35px" }} />
+          </IconButton>
+        </Box>
+
+        {/* Testimonial Slider */}
+        <Slider ref={(slider) => { sliderRef.current = slider; }} {...settings}>
+          {testimonials.map((item, index) => (
+            <Grid key={index} item xs={12} lg={6} sx={{ px: 6 }}>
+              <Paper
+                sx={{
+                  position: "relative",
+                  padding: "100px 40px 65px",
+                  background: "#1E1E1E",
+                  borderRadius: "20px",
+                  color: "#fff",
+                  textAlign: "left",
+                  border: "1px solid #3A3A3A",
+                  margin: "0 20px",
+                }}
+              >
+                {/* Background Image Instead of Quote Icon */}
+                <Box
+                  sx={{
+                    position: "absolute",
+                    top: "25px",
+                    left: "-54px",
+                    backgroundImage: `url(${Home.testi})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    width: "137.5px",
+                    height: "88px",
+                    borderRadius: "20px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <FormatQuoteIcon sx={{ fontSize: "40px", color: "#fff" }} />
+                </Box>
+
+                {/* Testimonial Text */}
+                <Typography variant="h6" sx={{ fontWeight: 400, fontSize: "24px", lineHeight: "34px", mb: 4, mt: 3 }}>
+                  "{item.feedback}"
+                </Typography>
+
+                {/* User Info */}
+                <Box sx={{ pt: 2, borderTop: "1px solid #3A3A3A" }}>
+                  <Typography variant="h6" sx={{ fontWeight: 600, fontSize: "24px", color: "#9f90ff" }}>
+                    {item.name}
+                  </Typography>
+                  <Typography variant="body2" sx={{ fontSize: "18px", color: "#bdbdbd" }}>
+                    {item.position}
+                  </Typography>
+                </Box>
+              </Paper>
+            </Grid>
+          ))}
+        </Slider>
+      </Container>
+    </Box>
+  );
+};
+
+export default Testimonials;
