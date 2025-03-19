@@ -45,7 +45,7 @@ const services: Service[] = [
   },
   {
     id: "Graphic Designing",
-    title: "Content Marketing",
+    title: "Graphic Designing",
     subtitle: "Make a bold visual impact with cutting-edge designs that capture attention.",
     description: ["SEO-optimized blogs & articles.", "Video scripts & infographics."],
     image: Home.contenticon,
