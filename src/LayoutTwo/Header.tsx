@@ -267,7 +267,7 @@ const Header: React.FC = () => {
       onClose={handleDrawerToggle}
       sx={{
         "& .MuiDrawer-paper": {
-          width: "600px",
+          width: "700px",
           // background: "linear-gradient(135deg, #1E1E1E 0%, #000000 100%)", // 3D gradient background
           color: "white",
           border: "none",
@@ -278,7 +278,7 @@ const Header: React.FC = () => {
       }}
     >
       {/* Drawer Content */}
-      <Box className="drawer-content" sx={{ width: 600, display: "flex", flexDirection: "column", height: "100%" }}>
+      <Box className="drawer-content" sx={{ width: 700, display: "flex", flexDirection: "column", height: "100%" }}>
 
 
 
@@ -325,9 +325,10 @@ const Header: React.FC = () => {
           primary={item.label}
           primaryTypographyProps={{
             sx: {
-              fontSize: "40px !important", // Ensures it overrides any defaults
+              fontSize: "60px !important", // Ensures it overrides any defaults
               fontWeight: "bold",
               color: "white",
+              pl:5
             },
           }}
         />
@@ -343,6 +344,7 @@ const Header: React.FC = () => {
               sx={{
                 transform: openSubMenu === item.label ? "rotate(180deg)" : "rotate(0deg)",
                 color: "#FFF",
+                fontSize:'80px'
               }}
             />
           </IconButton>
@@ -372,7 +374,7 @@ const Header: React.FC = () => {
                     primary={subItem.label}
                     primaryTypographyProps={{
                       sx: {
-                        fontSize: "40px !important", // Forces MUI to apply it
+                        fontSize: "60px !important", // Forces MUI to apply it
                         fontWeight: "bold",
                         color: "white",
                       },
@@ -390,7 +392,7 @@ const Header: React.FC = () => {
 
 
         {/* Social Icons & Footer (Positioned at Bottom) */}
-        <Box sx={{}} />
+        <Box sx={{mt:4}} />
         <Box sx={{ display: "flex", justifyContent: "center", gap: 2, mt: 5 }}>
           <IconButton
             sx={{
@@ -398,50 +400,51 @@ const Header: React.FC = () => {
               backgroundColor: "#fc0000",
               "&:hover": { backgroundColor: "rgba(223, 10, 10, 0.2)" },
               borderRadius: "50%",
-              padding: "10px",
+              padding: "30px",
+              
             }}>
-            <WhatsAppIcon />
+            <WhatsAppIcon sx={{fontSize:'60px'}} />
           </IconButton>
           <IconButton sx={{
             color: "#FFFFFF",
             backgroundColor: "#fc0000",
             "&:hover": { backgroundColor: "rgba(223, 10, 10, 0.2)" },
             borderRadius: "50%",
-            padding: "10px",
+            padding: "25px",
           }}>
-            <TwitterIcon />
+            <TwitterIcon sx={{fontSize:'60px'}}/>
           </IconButton>
           <IconButton sx={{
             color: "#FFFFFF",
             backgroundColor: "#fc0000",
             "&:hover": { backgroundColor: "rgba(223, 10, 10, 0.2)" },
             borderRadius: "50%",
-            padding: "10px",
+            padding: "25px",
           }}>
-            <InstagramIcon />
+            <InstagramIcon sx={{fontSize:'60px'}}/>
           </IconButton>
           <IconButton sx={{
             color: "#FFFFFF",
             backgroundColor: "#fc0000",
             "&:hover": { backgroundColor: "rgba(223, 10, 10, 0.2)" },
             borderRadius: "50%",
-            padding: "10px",
+            padding: "25px",
           }}>
-            <FacebookIcon />
+            <FacebookIcon sx={{fontSize:'60px'}}/>
           </IconButton>
           <IconButton sx={{
             color: "#FFFFFF",
             backgroundColor: "#fc0000",
             "&:hover": { backgroundColor: "rgba(223, 10, 10, 0.2)" },
             borderRadius: "50%",
-            padding: "10px",
+            padding: "25px",
           }}>
-            <LinkedInIcon />
+            <LinkedInIcon sx={{fontSize:'60px'}} />
           </IconButton>
         </Box>
 
         {/* Footer Text */}
-        <Typography variant="body2" align="center" sx={{ mt: 5, color: "#FFFFFF80", }}>
+        <Typography variant="body2" align="center" sx={{ mt: 8, color: "#FFFFFF80", fontSize:'32px !important'}}>
           ©2025 All Rights Reserved. Designed by Dezign Shark.
         </Typography>
       </Box>

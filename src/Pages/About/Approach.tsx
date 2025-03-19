@@ -115,7 +115,7 @@ const ApproachSection: React.FC = () => {
                         <GridLine />
                     </GridLinesWrapper>
 
-                    <Grid container spacing={4} sx={{ position: "relative", zIndex: 10 }}>
+                    <Grid container spacing={4} sx={{ position: "relative", zIndex: 10,px:{xs:6,lg:0}}}>
                         {/* ✅ Left Section */}
                         <Grid item xs={12} lg={6}>
                             <Box>
@@ -127,11 +127,15 @@ const ApproachSection: React.FC = () => {
                                         border: "1px solid #000",
                                         color: "#000",
                                         maxWidth: "max-content",
-                                        marginBottom: "20px",
+                                        marginBottom: "20px", 
                                         display: "block",
                                         width:{
-                                            xs:'200px',
+                                            xs:'257px',
                                             lg:'auto'
+                                        },
+                                        fontSize:{
+                                             xs:'60px',
+                                            lg:'16px'
                                         }
                                     }}
                                 >
@@ -145,6 +149,7 @@ const ApproachSection: React.FC = () => {
                                     sx={{
                                         
                                         color: "#000",
+                                         fontSize: { xs: '5em', lg: "3.2em" } 
                                     }}
                                 >
                                     Expertise in Strategy,  Design and Development
@@ -155,10 +160,10 @@ const ApproachSection: React.FC = () => {
                                     </Grid>
                                 </Grid>
                                 
-                                <Typography variant="body2" sx={{ color: "#333", mt: 2, textAlign: 'justify' }}>
+                                <Typography variant="body2" sx={{ color: "#333", mt: 2, textAlign: 'justify' ,fontSize:{ xs:'16px',lg:'16px' },}}>
                                     Our expertise lies in crafting data-driven strategies, high-performance campaigns, and visually stunning branding that maximize visibility, engagement, and conversions.
                                 </Typography>
-                                <Typography variant="body2" sx={{ color: "#333", mt: 2, textAlign: 'justify' }}>
+                                <Typography variant="body2" sx={{ color: "#333", mt: 2, textAlign: 'justify' ,fontSize:{ xs:'16px',lg:'16px' }}}>
                                     We believe in trust, speed, accuracy, and revenue-driven results, ensuring our clients stay ahead of the competition. From lead generation to market domination, we provide tailored solutions that elevate brands and drive measurable success. With Dezign Shark, you don’t just market your business—you transform it.
                                 </Typography>
                             </Box>
@@ -176,6 +181,10 @@ const ApproachSection: React.FC = () => {
                                                     display: "flex",
                                                     alignItems: "center",
                                                     justifyContent: "space-between",
+                                                    py:{
+                                                        xs:5,
+                                                        lg:0
+                                                    }
                                                 }}
                                             >
                                                 <Box
@@ -192,8 +201,12 @@ const ApproachSection: React.FC = () => {
                                                             transition: "border-bottom 0.3s ease-in-out",
                                                             color: "#000",
                                                             fontSize:{
-                                                                xs:'40px',
+                                                                xs:'46px',
                                                                 lg:'24px'
+                                                            },
+                                                            mb:{
+                                                                xs:3,
+                                                                lg:0
                                                             }
 
                                                         }}
@@ -209,7 +222,7 @@ const ApproachSection: React.FC = () => {
 
                                                     sx={{
                                                         fontSize:{
-                                                            xs:'54px',
+                                                            xs:'60px',
                                                             lg:'40px'
                                                         },
                                                         fontWeight: 700,
@@ -225,7 +238,7 @@ const ApproachSection: React.FC = () => {
                                             {/* ✅ Description */}
                                             <Typography variant="body1" sx={{ color: "#333", mt: 1, textAlign: 'justify',
                                             fontSize:{
-                                                            xs:'30px',
+                                                            xs:'22px',
                                                             lg:'18px'
                                                         }, }}>
                                                 {item.description}

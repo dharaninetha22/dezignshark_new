@@ -17,31 +17,31 @@ import { AboutImages } from "../../assets";
 const testimonials = [
     {
         id: 1,
-        name: "Abuzar Khan",
+        name: "jagadeesh regulavalasa",
         image: AboutImages.textimonial, // Replace with actual image URL
         review:
-            "Incredible experience! Dezign Shark tailored a digital marketing plan that really worked for us. Our leads and conversions are up!",
+            "Their strategies helped me enhance my online presence, boost engagement, and drive quality leads to my business. A professional and results-driven team—I highly recommend them for anyone looking to grow their brand online. And it is a one-stop solution for all branding services that helps to generate leads and significant growth in any business",
     },
     {
         id: 2,
-        name: "Ganesh Sunkara",
+        name: "hc karthik",
         image: AboutImages.textimonial,
         review:
-            "They’re the experts you can trust! Dezign Shark developed a cohesive digital plan that aligned perfectly with our goals, delivering outstanding results.",
+            "We’ve had an amazing experience with Dezign Shark. They don’t just provide services—they truly partner with you to understand your business goals. Their insights and expertise have been invaluable for our growth. Highly recommend them to anyone searching for top-notch digital marketing in Hyderabad.",
     },
     {
         id: 3,
-        name: "Ram Ramu",
+        name: "Jade Ramu",
         image: AboutImages.textimonial,
         review:
-            "Fantastic service for personal and organizational branding. Highly recommend!I feel so happy to work with them.",
+            "The team at Dezign Shark is incredibly talented and supportive. They guided us through every step of our SEO and lead generation strategies, ensuring we got excellent results. Their content marketing is top-notch, and the web development they provided is clean and efficient. I also appreciate their innovative approach to real estate marketing and brand strategies. Hands down, the best digital marketing agency in Hyderabad!",
     },
     {
         id: 4,
-        name: "yamini chowdary",
+        name: "Engineer Edit",
         image: AboutImages.textimonial,
         review:
-            "Highly professional and creative. Excellent on-time delivery and always exceeding expectations.",
+            "Dezign Shark provides outstanding services in SEO, lead generation, content marketing, and more. Their web development and app development skills are unparalleled. As the best digital marketing agency in Hyderabad, they also specialize in real estate marketing and innovative brand strategies.",
     },
 ];
 
@@ -88,7 +88,7 @@ const TestimonialSlider: React.FC = () => {
                                     <Grid
                                         item
                                         xs={12}
-                                        sm={4}
+                                        lg={4}
                                         display="flex"
                                         flexDirection="column"
                                         alignItems="center"
@@ -118,7 +118,7 @@ const TestimonialSlider: React.FC = () => {
                                     </Grid>
 
                                     {/* Right Section: Testimonial Content */}
-                                    <Grid item xs={12} sm={8}>
+                                    <Grid item xs={12} lg={8}>
                                         <Typography
                                             variant="h5"
                                             sx={{ color: "#333", textAlign: "justify" ,fontSize:{

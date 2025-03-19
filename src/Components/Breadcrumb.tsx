@@ -14,7 +14,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ title, subtitle, backgroundImag
       sx={{
         backgroundImage: `url(${backgroundImage})`,
         height: {
-          xs:'30vh',
+          xs:'38vh',
           lg:'70vh'
         },
         display: "flex",
@@ -36,7 +36,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ title, subtitle, backgroundImag
                 variant="subtitle1"
                 sx={{
                   color: "#fff",
-                  fontSize: { xs: "26px", sm: "20px" },
+                  fontSize: { xs: "26px", lg: "20px" },
                   fontWeight: "500",
                 }}
               >
@@ -47,9 +47,9 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ title, subtitle, backgroundImag
               variant="h1"
               sx={{
                 color: "#fff",
-                fontSize: { xs: "36px", sm: "50px", md: "54px", lg: "80px" },
+                fontSize: { xs: "75px", lg: "80px" },
                 fontWeight: "600",
-                mt: 5,
+                mt: {xs:5,lg:5},
               }}
             >
               {title}
@@ -58,12 +58,12 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ title, subtitle, backgroundImag
               <Typography
                 sx={{
                   color: "rgba(255, 255, 255, 0.03)",
-                  fontSize: { xs: "128px", lg: "180px !important" },
+                  fontSize: { xs: "160px", lg: "180px !important" },
                   fontWeight: "400",
                   position: "absolute",
                   left: "50%",
                   zIndex: "10",
-                  top: { xs: "66%", sm: "55%", md: "50%" },
+                  top: { xs: "66%", sm: "55%", lg: "50%" },
                   transform: "translate(-50%, -50%)",
                   whiteSpace: "nowrap",
                 }}

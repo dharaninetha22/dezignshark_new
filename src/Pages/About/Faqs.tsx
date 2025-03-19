@@ -192,10 +192,10 @@ const FAQSection: React.FC = () => {
                                             variant="h4"
                                             sx={{
                                                 flex: 1,
-                                                fontSize: "16px",
+                                                fontSize: { xs: '38px', lg: '28px' },
                                                 fontWeight: 700,
                                                 textTransform: "uppercase",
-                                                pl: 2,
+                                                pl: { xs: 5, lg: 4 },
                                             }}
                                         >
                                             {faq.question}
@@ -216,7 +216,7 @@ const FAQSection: React.FC = () => {
                                             marginBottom: openIndex === index ? "10px" : "0px",
                                         }}
                                     >
-                                        <Typography variant="body2" sx={{ fontSize: "14px", opacity: 0.8, pl: 10 }}>
+                                        <Typography variant="body2" sx={{ fontSize: { xs: '38px', lg: '14px' }, opacity: 0.8, pl: { xs: 12, lg: 10 } }}>
                                             {faq.answer}
                                         </Typography>
                                     </Box>
@@ -237,8 +237,20 @@ const FAQSection: React.FC = () => {
                         </Box>
 
                         {/* Read More Button - Positioned Below FAQs */}
-                        <Box sx={{ mt: 3, textAlign: "center" }}>
-                            <CustomButton onClick={() => navigate("/more-faqs")}>Read More</CustomButton>
+                        <Box sx={{
+                            mt: { xs: 5, lg: 3 }
+
+                        }}>
+                            <CustomButton
+                                sx={{
+                                    textAlign: "center",
+                                    height: { xs: '120px', lg: '40px' },
+                                    width: { xs: '400px', lg: '160px' },
+                                    fontSize: { xs: '35px', lg: '14px' }
+                                }}
+                                onClick={() => navigate("/more-faqs")}>
+                                Read More
+                            </CustomButton>
                         </Box>
                     </Box>
                 </Box>
