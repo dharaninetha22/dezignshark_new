@@ -30,7 +30,7 @@ import { useNavigate } from "react-router-dom";
 import XIcon from '@mui/icons-material/X';
 
 const socialIcons = [
-  { icon: <Facebook sx={{ fontSize: { xs: "40px", lg: "20px" } }} />, href: "https://www.instagram.com/dezign__shark?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==", target: "_blank" },
+  { icon: <Facebook sx={{ fontSize: { xs: "40px", lg: "20px" } }} />, href: "https://www.facebook.com/share/1BZTYjKt2H/", target: "_blank" },
   { icon: <XIcon sx={{ fontSize: { xs: "40px", lg: "20px" } }}/>, href: "https://x.com/DezignShark", target: "_blank" },
   { icon: <Instagram sx={{ fontSize: { xs: "40px", lg: "20px" } }}/>, href: "https://www.instagram.com/dezign__shark?igsh=YTZyMWd1N244MXZx", target: "_blank" },
   { icon: <LinkedIn sx={{ fontSize: { xs: "40px", lg: "20px" } }}/>, href: "https://www.linkedin.com/company/dezignshark/", target: "_blank" },

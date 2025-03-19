@@ -302,7 +302,7 @@ const Header: React.FC = () => {
 
         {/* Logo */}
         <Box sx={{my:8,display:'flex',justifyContent:'center'}}>
-          <Box component="img" src={Home.logosidebar} alt="Logo" sx={{ height: "auto" }} />
+          <Box component="img" src={Home.logosidebar} alt="Logo" sx={{ height: "auto" }} onClick={() => handleNavigate("/")} />
         </Box>
         {/* Navigation List */}
 
@@ -487,7 +487,7 @@ const Header: React.FC = () => {
           padding: "20px",
         }}
       >
-        <WhatsAppIcon sx={{ fontSize: "60px" }} />
+        <YouTube sx={{ fontSize: "60px" }} />
       </IconButton>
 
       <IconButton
