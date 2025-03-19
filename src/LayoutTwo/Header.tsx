@@ -300,7 +300,7 @@ const Header: React.FC = () => {
 
 
         {/* Logo */}
-        <Box >
+        <Box sx={{my:8,display:'flex',justifyContent:'center'}}>
           <Box component="img" src={Home.logosidebar} alt="Logo" sx={{ height: "auto" }} />
         </Box>
         {/* Navigation List */}
@@ -392,54 +392,86 @@ const Header: React.FC = () => {
         {/* Social Icons & Footer (Positioned at Bottom) */}
         <Box sx={{ mt: 4 }} />
         <Box sx={{ display: "flex", justifyContent: "center", gap: 2, mt: 5 }}>
-          <IconButton
-            sx={{
-              color: "#FFFFFF",
-              backgroundColor: "#fc0000",
-              "&:hover": { backgroundColor: "rgba(223, 10, 10, 0.2)" },
-              borderRadius: "50%",
-              padding: "30px",
+      {/* <IconButton
+        component="a"
+        href="https://wa.me/1234567890" // WhatsApp Link
+        target="_blank"
+        rel="noopener noreferrer"
+        sx={{
+          color: "#FFFFFF",
+          backgroundColor: "#fc0000",
+          "&:hover": { backgroundColor: "rgba(223, 10, 10, 0.2)" },
+          borderRadius: "50%",
+          padding: "20px",
+        }}
+      >
+        <WhatsAppIcon sx={{ fontSize: "60px" }} />
+      </IconButton> */}
 
-            }}>
-            <WhatsAppIcon sx={{ fontSize: '60px' }} />
-          </IconButton>
-          <IconButton sx={{
-            color: "#FFFFFF",
-            backgroundColor: "#fc0000",
-            "&:hover": { backgroundColor: "rgba(223, 10, 10, 0.2)" },
-            borderRadius: "50%",
-            padding: "25px",
-          }}>
-            <TwitterIcon sx={{ fontSize: '60px' }} />
-          </IconButton>
-          <IconButton sx={{
-            color: "#FFFFFF",
-            backgroundColor: "#fc0000",
-            "&:hover": { backgroundColor: "rgba(223, 10, 10, 0.2)" },
-            borderRadius: "50%",
-            padding: "25px",
-          }}>
-            <InstagramIcon sx={{ fontSize: '60px' }} />
-          </IconButton>
-          <IconButton sx={{
-            color: "#FFFFFF",
-            backgroundColor: "#fc0000",
-            "&:hover": { backgroundColor: "rgba(223, 10, 10, 0.2)" },
-            borderRadius: "50%",
-            padding: "25px",
-          }}>
-            <FacebookIcon sx={{ fontSize: '60px' }} />
-          </IconButton>
-          <IconButton sx={{
-            color: "#FFFFFF",
-            backgroundColor: "#fc0000",
-            "&:hover": { backgroundColor: "rgba(223, 10, 10, 0.2)" },
-            borderRadius: "50%",
-            padding: "25px",
-          }}>
-            <LinkedInIcon sx={{ fontSize: '60px' }} />
-          </IconButton>
-        </Box>
+      <IconButton
+        component="a"
+        href="https://twitter.com/yourprofile" // Twitter Link
+        target="_blank"
+        rel="noopener noreferrer"
+        sx={{
+          color: "#FFFFFF",
+          backgroundColor: "#fc0000",
+          "&:hover": { backgroundColor: "rgba(223, 10, 10, 0.2)" },
+          borderRadius: "50%",
+          padding: "20px",
+        }}
+      >
+        <TwitterIcon sx={{ fontSize: "60px" }} />
+      </IconButton>
+
+      <IconButton
+        component="a"
+        href="https://www.instagram.com/dezign_shark/" // Instagram Link
+        target="_blank"
+        rel="noopener noreferrer"
+        sx={{
+          color: "#FFFFFF",
+          backgroundColor: "#fc0000",
+          "&:hover": { backgroundColor: "rgba(223, 10, 10, 0.2)" },
+          borderRadius: "50%",
+          padding: "20px",
+        }}
+      >
+        <InstagramIcon sx={{ fontSize: "60px" }} />
+      </IconButton>
+
+      <IconButton
+        component="a"
+        href="https://www.facebook.com/profile.php?id=61554306921409" // Facebook Link
+        target="_blank"
+        rel="noopener noreferrer"
+        sx={{
+          color: "#FFFFFF",
+          backgroundColor: "#fc0000",
+          "&:hover": { backgroundColor: "rgba(223, 10, 10, 0.2)" },
+          borderRadius: "50%",
+          padding: "20px",
+        }}
+      >
+        <FacebookIcon sx={{ fontSize: "60px" }} />
+      </IconButton>
+
+      <IconButton
+        component="a"
+        href="https://www.linkedin.com/company/92636430/admin/feed/posts/" // LinkedIn Link
+        target="_blank"
+        rel="noopener noreferrer"
+        sx={{
+          color: "#FFFFFF",
+          backgroundColor: "#fc0000",
+          "&:hover": { backgroundColor: "rgba(223, 10, 10, 0.2)" },
+          borderRadius: "50%",
+          padding: "20px",
+        }}
+      >
+        <LinkedInIcon sx={{ fontSize: "60px" }} />
+      </IconButton>
+    </Box>
 
         {/* Footer Text */}
         <Typography variant="body2" align="center" sx={{ mt: 8, color: "#FFFFFF80", fontSize: '32px !important' }}>

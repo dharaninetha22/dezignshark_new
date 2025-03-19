@@ -15,10 +15,10 @@ const jobs = [
   { id: 3, title: "General Ledger Accountant", category: "Design", location: "New York", type: "Full Time", urgent: false },
   { id: 4, title: "Assistant / Store Keeper", category: "Automotive Jobs", location: "New York", type: "Part Time", urgent: false },
   { id: 5, title: "Group Marketing Manager", category: "Customer", location: "Miami", type: "Part Time", urgent: false },
-  { id: 6, title: "Product Sales Specialist", category: "Project Management", location: "New York", type: "Internship", urgent: false },
-  { id: 7, title: "UX/UI Designer Web", category: "Design", location: "Paris", type: "Freelance", urgent: false },
-  { id: 8, title: "Executive, HR Operations", category: "Customer", location: "New York", type: "Temporary", urgent: true },
-  { id: 9, title: "Senior/Staff Nurse", category: "Health and Care", location: "Paris", type: "Part Time", urgent: false },
+  // { id: 6, title: "Product Sales Specialist", category: "Project Management", location: "New York", type: "Internship", urgent: false },
+  // { id: 7, title: "UX/UI Designer Web", category: "Design", location: "Paris", type: "Freelance", urgent: false },
+  // { id: 8, title: "Executive, HR Operations", category: "Customer", location: "New York", type: "Temporary", urgent: true },
+  // { id: 9, title: "Senior/Staff Nurse", category: "Health and Care", location: "Paris", type: "Part Time", urgent: false },
 ];
 
 const categories = ["All Categories", "Design", "Development", "Marketing", "Customer"];
@@ -116,7 +116,7 @@ const JobListing = () => {
         {/* Job Cards Grid */}
         <Grid container spacing={3} justifyContent="center" data-aos="fade-down">
           {filteredJobs.map((job) => (
-            <Grid item xs={12} sm={6} lg={4} key={job.id}>
+            <Grid item xs={12}  lg={4} key={job.id}>
               <Card
                 className="job-card"
                 sx={{
@@ -129,11 +129,14 @@ const JobListing = () => {
                   borderRadius: "12px",
                   transition: "transform 0.3s",
                   "&:hover": { transform: "scale(1.03)" },
-                  cursor: "pointer",
+                  cursor: "none",
+                  
+                  
+                  
                 }}
                 onClick={() => handleNavigation(job.id)}
               >
-                <CardContent>
+                <CardContent sx={{py:{xs:6,lg:0},pb:{xs:6,lg:0},}}>
                   <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
                     {/* Profile Icon */}
                     <Box >
@@ -146,10 +149,36 @@ const JobListing = () => {
                   </Box>
 
                   {/* Category & Location with Icons */}
-                  <Typography variant="body2" sx={{ color: "#757575", mb: 1, display: "flex", alignItems: "center", gap: 1, justifyContent: "center" }}>
-                    <SlBriefcase style={{ fontSize: "16px" }} /> {job.category}
-                    <CiLocationOn style={{ fontSize: "16px" }} /> {job.location}
-                  </Typography>
+                  {/* <Typography variant="body2" sx={{ color: "#757575", mb: 1, display: "flex", alignItems: "center", gap: 1, justifyContent: "center" }}>
+                    <SlBriefcase style={{ fontSize: {xs:'30px',lg:'16px'} }} /> {job.category}
+                    <CiLocationOn style={{ fontSize: {xs:'30px',lg:'16px'} }} /> {job.location}
+                  </Typography> */}
+
+
+<Typography
+  variant="body2"
+  sx={{
+    color: "#757575",
+    mb: 1,
+    display: "flex",
+    alignItems: "center",
+    gap: 1,
+    justifyContent: "center",
+  }}
+>
+  {/* Category Icon */}
+  <Box component="span" sx={{ fontSize: { xs: "30px", lg: "16px" } }}>
+    <SlBriefcase />
+  </Box>
+  {job.category}
+
+  {/* Location Icon */}
+  <Box component="span" sx={{ fontSize: { xs: "30px", lg: "16px" } }}>
+    <CiLocationOn />
+  </Box>
+  {job.location}
+</Typography>
+
 
                   {/* Job Type Labels */}
                   <Box sx={{ display: "flex", gap: 1, alignItems: "center" }}>

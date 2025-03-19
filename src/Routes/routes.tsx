@@ -14,6 +14,7 @@ import Contact from "../Pages/Contact";
 import PopUpHeader from "../Pages/PopUpHeader";
 import JobDetails from "../Pages/Careers/JobDetails";
 import SectionTwo from "../Pages/Services/ServicesDetails/SectionTwo";
+import Faqs from "../Pages/Faqs";
 
 
 
@@ -75,6 +76,10 @@ const router = createBrowserRouter([
       {
         path: "/slider",
         element: <SectionTwo/>,
+      },
+      {
+        path: "/faqs",
+        element: <Faqs/>,
       },
 
       

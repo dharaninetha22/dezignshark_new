@@ -206,7 +206,7 @@ const MarketingLayout = () => {
                                     component="img"
                                     image={Home.about1}
                                     alt="Conference"
-                                    sx={{ position: "relative", zIndex: 10 }}
+                                    sx={{ position: "relative", zIndex: 10 ,ml:{xs:5,lg:0}}}
                                 />
                             </Card>
                         </Grid>

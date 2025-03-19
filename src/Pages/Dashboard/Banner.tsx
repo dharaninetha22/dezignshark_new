@@ -7,9 +7,7 @@ import { Home } from "../../assets"; // Import your assets
 // Styled components for the Hero Section
 const HeroSectionWrapper = styled(Box)({
   position: "relative",
- 
   width: "100%", // Ensure full width
-  // minHeight: "120vh",
   backgroundSize: "cover", // Ensures full fit
   backgroundPosition: "center", // Centers the image
   backgroundRepeat: "no-repeat",
@@ -46,87 +44,88 @@ const Subheading = styled(Typography)({
   display: "inline-block",
   padding: "11px 21px 10px",
   color: "#FFFFFF",
-  letterSpacing:'3px',
+  letterSpacing: "3px",
   fontWeight: 700,
   textTransform: "uppercase",
   lineHeight: "45px",
   marginTop: "30px",
 });
 
-const CircleSVGWrapper = styled(Box)({
-  position: "absolute",
-  bottom: "-334px",
-  width: "100%",
-  textAlign: "center",
-  zIndex: 100,
-});
-
 const HeroSection: React.FC = () => {
   return (
-    <HeroSectionWrapper
-      sx={{
-        backgroundImage: `url(${Home.webbannerr})`,
-        // padding:'100px 0px',
-        height: {
-          xs:'60vh',
-          lg:'120vh'
-        },
-        backgroundPosition:{
-          xs:'60% center',
-          lg:'auto'
-        }
-        
-      }}
-    >
-      <Container maxWidth="xl">
-        <ContentWrapper>
-          <Heading>
-            <Box sx={{ display: "flex", alignItems: "center", gap: 4 }}>
-              <Typography
-                variant="h1"
-                fontWeight={700}
+    <Box>
+      {/* Desktop View */}
+      <HeroSectionWrapper
+        sx={{
+          backgroundImage: `url(${Home.webbannerr})`,
+          height: {
+            xs: "50vh",
+            lg: "120vh",
+          },
+          backgroundPosition: {
+            xs: "75% center",
+            lg: "center",
+          },
+          display: { xs: "none", lg: "block" }, // Hides on mobile
+        }}
+      >
+        <Container maxWidth="xl">
+          <ContentWrapper sx={{mt:24}}>
+            <Heading>
+              <Box sx={{ display: "flex", alignItems: "center", gap: 4 }}>
+                <Typography
+                  variant="h1"
+                  fontWeight={700}
+                  sx={{
+                    fontSize: {
+                      lg: "80px !important",
+                      xs: "80px",
+                    },
+                  }}
+                >
+                  360°{" "}
+                </Typography>
+              </Box>
+            </Heading>
+            <Heading>
+              <OutlineText>Digital&nbsp;</OutlineText>{" "}
+              <Box
                 sx={{
-                  fontSize: {
-                    lg: "80px !important",
-                    xs: "80px",
-                  },
+                  fontSize: "80px !important", // Ensures Typical text is 80px
+                  fontWeight: 700,
+                  display: "inline-block",
+                  color: "#FFFFFF",
                 }}
               >
-               360°{" "}
+                Agency
+              </Box>
+            </Heading>
+            <Subheading>
+              <Typography variant="h4">
+                Design the Future, Transform the Digital World
               </Typography>
-              {/* <img
-                src={Home.slidelayer}
-                alt="img"
-                style={{ verticalAlign: "middle" }}
-              /> */}
-            </Box>
-          </Heading>
-          <Heading>
-            <OutlineText>Digital&nbsp;</OutlineText>{" "}
-            <Box
-              sx={{
-                fontSize: "80px !important", // Ensures Typical text is 80px
-                fontWeight: 700,
-                display: "inline-block",
-                color: "#FFFFFF",
-              }}
-            >
-              {/* <Typical
-                steps={["Studio", 2000, "Agency", 2000, "Design", 2000]}
-                loop={Infinity}
-                wrapper="span"
-              /> */}
-              Agency
-            </Box>
-          </Heading>
-          <Subheading>
-            <Typography variant="h4">Design the Future, Transform the Digital World</Typography>
-          </Subheading>
-        </ContentWrapper>
-      </Container>
+            </Subheading>
+          </ContentWrapper>
+        </Container>
+      </HeroSectionWrapper>
 
-   
-    </HeroSectionWrapper>
+      {/* Mobile View */}
+      <Box
+        sx={{
+          display: { xs: "block", lg: "none" }, // Shows on mobile, hides on desktop
+          textAlign: "center",
+          mt: 2,
+          position: "relative", // Added for zIndex to take effect
+          zIndex: 100, // Ensures it's above other elements
+        }}
+      >
+        <img
+          src={Home.mobileviewbanner}
+          alt="Mobile Banner"
+          style={{ width: "100%", height: "auto" }}
+        />
+      </Box>
+    </Box>
   );
 };
 

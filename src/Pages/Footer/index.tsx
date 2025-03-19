@@ -29,11 +29,11 @@ import CustomButton from "../../Components/Inputs/CustomButton";
 import { useNavigate } from "react-router-dom";
 
 const socialIcons = [
-  { icon: <Facebook />, href: "https://www.facebook.com/profile.php?id=61554306921409", target: "_blank" },
-  { icon: <Twitter />, href: "https://twitter.com", target: "_blank" },
-  { icon: <Instagram />, href: "https://www.instagram.com/dezign_shark/", target: "_blank" },
-  { icon: <LinkedIn />, href: "https://www.linkedin.com/company/92636430/admin/feed/posts/", target: "_blank" },
-  { icon: <YouTube />, href: "https://www.youtube.com/@DezignShark", target: "_blank" },
+  { icon: <Facebook sx={{ fontSize: { xs: "40px", lg: "20px" } }} />, href: "https://www.facebook.com/profile.php?id=61554306921409", target: "_blank" },
+  { icon: <Twitter sx={{ fontSize: { xs: "40px", lg: "20px" } }}/>, href: "https://twitter.com", target: "_blank" },
+  { icon: <Instagram sx={{ fontSize: { xs: "40px", lg: "20px" } }}/>, href: "https://www.instagram.com/dezign_shark/", target: "_blank" },
+  { icon: <LinkedIn sx={{ fontSize: { xs: "40px", lg: "20px" } }}/>, href: "https://www.linkedin.com/company/92636430/admin/feed/posts/", target: "_blank" },
+  { icon: <YouTube sx={{ fontSize: { xs: "40px", lg: "20px" } }}/>, href: "https://www.youtube.com/@DezignShark", target: "_blank" },
 ];
 const menuItems = [
   { text: "About Us", path: "/aboutus" },
@@ -141,8 +141,8 @@ const Footer = () => {
         },
       }}
     >
-      <Container maxWidth='xl' sx={{px:{xs:'63px',lg:'0'}}}>
-        <Grid container spacing={4}>
+      <Container maxWidth='xl' >
+        <Grid container spacing={4} sx={{px:{xs:'63px',lg:'0'}}}>
           {/* Contact Us Section */}
           <Grid item xs={12} lg={3}>
             <Typography variant="h4" gutterBottom sx={{ fontWeight: 800, mb: 4 }}>
@@ -179,7 +179,7 @@ const Footer = () => {
                   sx={{
                     position: "relative",
                     overflow: "hidden",
-                    fontSize: {xs:'50px',lg:'16px'},
+                    // fontSize: {xs:'50px',lg:'16px'},
                     textAlign: "center",
                     color: "white",
                     background: "rgba(255, 255, 255, 0.2)",
@@ -198,6 +198,7 @@ const Footer = () => {
                 </IconButton>
               ))}
             </Box>
+
           </Grid>
 
 
@@ -301,7 +302,7 @@ const Footer = () => {
 
               <CustomButton
               sx={{
-                width: { xs: '330px', lg: '100%' },
+                width: { xs: '330px', lg: '80%' },
                 height: { xs: '90px', lg: '55px' },
                 fontSize: { xs: "2.2rem", lg: "1.2rem" },
                 mt:{xs:4,lg:0}
