@@ -103,7 +103,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, imageUrl,
 
       {/* ✅ Error Icon & Read More Text */}
       <Box display="flex" alignItems="center" justifyContent="flex-end" mt={3}>
-        <Typography variant="body2" color="#fc0000" sx={{ fontWeight: 600, cursor: "none !important",}}>
+        <Typography variant="body2" color="#fc0000" sx={{ fontWeight: 600, cursor: "none !important", fontSize:{xs:'38px',lg:'14px'}}}>
           Read More
         </Typography>
         <ArrowOutwardIcon sx={{ color: "#fc0000", ml: 1, fontSize: {xs:'48px',lg:"18px"} }} />
@@ -122,11 +122,11 @@ const ServicesSection: React.FC = () => {
   ];
 
   return (
-    <Box sx={{ borderTop: "1px solid #343434", py: 5 }}>
+    <Box sx={{ borderTop: "1px solid #343434", py: 5,px:{xs:'63px',lg:'0'} }}>
       <Container maxWidth="xl">
         <Box sx={{ py: 5 }}>
           <Box textAlign="center" mb={5}>
-            <AnimatedText>Our Services</AnimatedText>
+            <AnimatedText sx={{fontSize:{xs:'5.2em',lg:'3.2em'}}}>Our Services</AnimatedText>
           </Box>
           <Grid container spacing={3} justifyContent="center">
             {services.map((service, index) => (

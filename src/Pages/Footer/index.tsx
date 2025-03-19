@@ -141,7 +141,7 @@ const Footer = () => {
         },
       }}
     >
-      <Container maxWidth='xl'>
+      <Container maxWidth='xl' sx={{px:{xs:'63px',lg:'0'}}}>
         <Grid container spacing={4}>
           {/* Contact Us Section */}
           <Grid item xs={12} lg={3}>
@@ -150,23 +150,23 @@ const Footer = () => {
             </Typography>
 
             {/* Contact Info: Icons on Left, Text on Right */}
-            <Box sx={{ display: "flex", alignItems: "start", mb: 2 }}>
-              <LocationOn sx={{ fontSize: 24, color: "#fc0000", minWidth: "40px" }} />
-              <Typography variant="body2">
+            <Box sx={{ display: "flex", alignItems: "start", mb: 2 ,gap:{xs:2,lg:0}}}>
+              <LocationOn sx={{ fontSize: {xs:50,lg:24}, color: "#fc0000", minWidth: "40px" }} />
+              <Typography variant="body2" sx={{fontSize: {xs:"30px",lg:"16px"}}}>
                 68, 3rd Floor, Senore Colony, Film Nagar, Hyderabad, Telangana 500008
               </Typography>
             </Box>
 
-            <Box sx={{ display: "flex", alignItems: "start", mb: 2 }}>
-              <Phone sx={{ fontSize: 24, color: "#fc0000", minWidth: "40px" }} />
-              <Link href="tel:+91 799 799 2885" color="inherit" sx={{ textDecoration: "none" }}>
+            <Box sx={{ display: "flex", alignItems: "start", mb: 2 ,gap:{xs:2,lg:0}}}>
+              <Phone sx={{ fontSize: 24, color: "#fc0000", minWidth: "40px" ,}} />
+              <Link href="tel:+91 799 799 2885" color="inherit" sx={{ textDecoration: "none",fontSize: {xs:"30px",lg:"16px"} }}>
                 +91 799 799 2885
               </Link>
             </Box>
 
-            <Box sx={{ display: "flex", alignItems: "start" }}>
+            <Box sx={{ display: "flex", alignItems: "start" ,gap:{xs:2,lg:0}}}>
               <Email sx={{ fontSize: 24, color: "#fc0000", minWidth: "40px" }} />
-              <Link href="mailto:info@dezignshark.com" color="inherit" sx={{ textDecoration: "none" }}>
+              <Link href="mailto:info@dezignshark.com" color="inherit" sx={{ textDecoration: "none",fontSize: {xs:"30px",lg:"16px"} }}>
                 info@dezignshark.com
               </Link>
             </Box>
@@ -179,12 +179,12 @@ const Footer = () => {
                   sx={{
                     position: "relative",
                     overflow: "hidden",
-                    fontSize: "16px",
+                    fontSize: {xs:'50px',lg:'16px'},
                     textAlign: "center",
                     color: "white",
                     background: "rgba(255, 255, 255, 0.2)",
-                    width: "40px",
-                    height: "40px",
+                    width: {xs:'100px',lg:'40px'},
+                    height: {xs:'100px',lg:'40px'},
                     lineHeight: "40px",
                     borderRadius: "100%",
                     transition: "0.3s",
@@ -221,12 +221,13 @@ const Footer = () => {
                   onClick={() => navigate(item.path)} // ✅ Navigate on click
                   sx={{
                     display: "block",
-                    mt: 1,
+                    mt: 2,
                     textDecoration: "none",
                     color: "white",
                     transition: "color 0.3s ease", // ✅ Smooth transition
                     cursor: "pointer", // ✅ Indicate clickable
                     "&:hover": { color: "red" }, // ✅ Change color on hover
+                    fontSize: {xs:"30px",lg:"16px"}
                   }}
                 >
                   {item.text}
@@ -246,11 +247,12 @@ const Footer = () => {
                 href={item.path} // ✅ Link to correct page
                 sx={{
                   display: "block",
-                  mt: 1,
+                  mt: 2,
                   textDecoration: "none",
                   color: "white",
                   transition: "color 0.3s ease", // ✅ Smooth transition
                   "&:hover": { color: "red" }, // ✅ Change color on hover
+                  fontSize: {xs:"30px",lg:"16px"}
                 }}
               >
                 {item.text}
@@ -263,7 +265,7 @@ const Footer = () => {
             <Typography variant="h4" gutterBottom sx={{ mb: 4 }}>
               Subscribe to Our Newsletter
             </Typography>
-            <Typography variant="body2">
+            <Typography variant="body2" sx={{fontSize: {xs:"30px",lg:"16px"},mb:2}}>
               Stay up-to-date with the latest trends in digital marketing and
               receive exclusive tips and insights.
             </Typography>
@@ -289,6 +291,11 @@ const Footer = () => {
 
 
               <CustomButton
+              sx={{
+                height:{xs:'80px',lg:'40px'},
+                width:{xs:'150px',lg:'100px'},
+                
+              }}
                 onClick={() => {
                   window.open(
                     "https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=7271814903529652224",
@@ -399,7 +406,7 @@ const Footer = () => {
           textAlign: "center",
         }}
       >
-        <Typography variant="body2">
+        <Typography variant="body2" sx={{fontSize: {xs:"30px",lg:"16px"}}}>
           Copyright ©2025 <Link href="index.html" color="inherit" sx={{ textDecoration: "none", color: '#fc0000' }}>DezignShark</Link>. All rights reserved {" "}
         </Typography>
       </Box>

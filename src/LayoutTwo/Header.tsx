@@ -169,11 +169,11 @@ const Header: React.FC = () => {
       route: "services",
       submenu: [
         { label: "Branding", route: "/services/branding" },
-        { label: "Social Media Marketing", route: "/services/smo" },
-        { label: "Pay-Per-Click (PPC) Advertising", route: "/services/ppc" },
-        { label: "Web Development", route: "/services/web" },
+        { label: "Social Media Marketing", route: "/services/social-media-marketing" },
+        { label: "Pay-Per-Click (PPC) Advertising", route: "/services/pay-per-click" },
+        { label: "Web Development", route: "/services/web-development" },
         { label: "Search Engine Optimization (SEO)", route: "/services/search-engine-optimization" },
-        { label: "Graphic Designing", route: "/services/content" },
+        { label: "Graphic Designing", route: "/services/graphic-designing" },
       ],
     },
     { label: "Careers", route: "/careers" },
@@ -267,7 +267,7 @@ const Header: React.FC = () => {
       onClose={handleDrawerToggle}
       sx={{
         "& .MuiDrawer-paper": {
-          width: "400px",
+          width: "600px",
           // background: "linear-gradient(135deg, #1E1E1E 0%, #000000 100%)", // 3D gradient background
           color: "white",
           border: "none",
@@ -278,12 +278,12 @@ const Header: React.FC = () => {
       }}
     >
       {/* Drawer Content */}
-      <Box className="drawer-content" sx={{ width: 400, display: "flex", flexDirection: "column", height: "100%" }}>
+      <Box className="drawer-content" sx={{ width: 600, display: "flex", flexDirection: "column", height: "100%" }}>
 
 
 
         {/* Close Button */}
-        <Box sx={{ display: "flex", justifyContent: "space-between", mt: 6, px: 2, mb: 4 }}>
+        <Box sx={{ display: "flex", justifyContent: "space-between", mt: 10, px: 2, mb: 8 }}>
 
 
           {/* Logo */}
@@ -310,64 +310,84 @@ const Header: React.FC = () => {
 
 
         <List>
-          {navItems.map((item, index) => (
-            <Box key={index}>
-              <ListItemButton
-                // onClick={() => (item.submenu ? handleMobileSubMenuToggle(item.label) : handleNavigate(item.route))}
-                onClick={() => handleNavigate(item.route)}
-                sx={{
-                  color: "#FFF",
-                  fontSize: "18px",
-                  transition: "border-left 0.3s ease-in-out",
-                  borderLeft: openSubMenu === item.label ? "3px solid red" : "3px solid transparent",
-                }}
-              >
-                <ListItemText primary={item.label} />
-                {/* {item.submenu && 
-                <ArrowDropDownIcon 
-                sx={{ transform: openSubMenu === item.label ? "rotate(180deg)" : "rotate(0deg)" }} />
-                } */}
-                {item.submenu && (
-                    <IconButton
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleMobileSubMenuToggle(item.label);
-                      }}
-                    >
-                      <ArrowDropDownIcon sx={{ transform: openSubMenu === item.label ? "rotate(180deg)" : "rotate(0deg)", color: "#FFF" }} />
-                    </IconButton>
-                  )}
-              </ListItemButton>
-              <Divider sx={{ backgroundColor: "#FFFFFF80" }} />
+  {navItems.map((item, index) => (
+    <Box key={index}>
+      <ListItemButton
+        onClick={() => handleNavigate(item.route)}
+        sx={{
+          color: "#FFF",
+          transition: "border-left 0.3s ease-in-out",
+          borderLeft: openSubMenu === item.label ? "3px solid red" : "3px solid transparent",
+        }}
+      >
+        {/* Correctly apply font size using `primaryTypographyProps` */}
+        <ListItemText
+          primary={item.label}
+          primaryTypographyProps={{
+            sx: {
+              fontSize: "40px !important", // Ensures it overrides any defaults
+              fontWeight: "bold",
+              color: "white",
+            },
+          }}
+        />
 
-              {/* Submenu */}
-              {item.submenu && (
-                <Collapse in={openSubMenu === item.label} timeout="auto" unmountOnExit>
-                  <List sx={{ pl: 4 }}>
-                    {item.submenu.map((subItem, subIndex) => {
-                      const isSubActive = location.pathname === subItem.route;
-                      return (
-                        <ListItemButton
-                          key={subIndex}
-                          onClick={() => handleNavigate(subItem.route)}
-                          sx={{
-                            color: "#FFF",
-                            fontSize: "16px",
-                            borderLeft: isSubActive ? "3px solid red" : "3px solid transparent",
-                            transition: "border-left 0.3s ease-in-out",
-                            "&:hover": { borderLeft: "3px solid red" },
-                          }}
-                        >
-                          <ListItemText primary={subItem.label} />
-                        </ListItemButton>
-                      );
-                    })}
-                  </List>
-                </Collapse>
-              )}
-            </Box>
-          ))}
-        </List>
+        {item.submenu && (
+          <IconButton
+            onClick={(e) => {
+              e.stopPropagation();
+              handleMobileSubMenuToggle(item.label);
+            }}
+          >
+            <ArrowDropDownIcon
+              sx={{
+                transform: openSubMenu === item.label ? "rotate(180deg)" : "rotate(0deg)",
+                color: "#FFF",
+              }}
+            />
+          </IconButton>
+        )}
+      </ListItemButton>
+      <Divider sx={{ backgroundColor: "#FFFFFF80" }} />
+
+      {/* Submenu */}
+      {item.submenu && (
+        <Collapse in={openSubMenu === item.label} timeout="auto" unmountOnExit>
+          <List sx={{ pl: 4 }}>
+            {item.submenu.map((subItem, subIndex) => {
+              const isSubActive = location.pathname === subItem.route;
+              return (
+                <ListItemButton
+                  key={subIndex}
+                  onClick={() => handleNavigate(subItem.route)}
+                  sx={{
+                    color: "#FFF",
+                    borderLeft: isSubActive ? "3px solid red" : "3px solid transparent",
+                    transition: "border-left 0.3s ease-in-out",
+                    "&:hover": { borderLeft: "3px solid red" },
+                  }}
+                >
+                  {/* Apply font size using `primaryTypographyProps` */}
+                  <ListItemText
+                    primary={subItem.label}
+                    primaryTypographyProps={{
+                      sx: {
+                        fontSize: "40px !important", // Forces MUI to apply it
+                        fontWeight: "bold",
+                        color: "white",
+                      },
+                    }}
+                  />
+                </ListItemButton>
+              );
+            })}
+          </List>
+        </Collapse>
+      )}
+    </Box>
+  ))}
+</List>
+
 
         {/* Social Icons & Footer (Positioned at Bottom) */}
         <Box sx={{}} />

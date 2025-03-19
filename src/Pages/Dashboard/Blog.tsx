@@ -114,28 +114,28 @@ const BlogCarousel: React.FC = () => {
     autoplaySpeed: 3000,
     arrows: false,
     centerMode: false, // Prevents partial slides from showing
-    pauseOnHover:false,
+    pauseOnHover: false,
     responsive: [
       {
-        breakpoint: 1024, 
+        breakpoint: 1024,
         settings: {
           slidesToShow: 1,
         },
       },
       {
-        breakpoint: 768, 
+        breakpoint: 768,
         settings: {
           slidesToShow: 1,
         },
       },
       {
-        breakpoint: 480,  
+        breakpoint: 480,
         settings: {
           slidesToShow: 1,
         },
       },
       {
-        breakpoint: 360, 
+        breakpoint: 360,
         settings: {
           slidesToShow: 1,
         },
@@ -147,8 +147,8 @@ const BlogCarousel: React.FC = () => {
     <Box sx={{ py: 8 }}>
       <Container maxWidth='xl'>
         {/* Section Heading */}
-        <Box sx={{ textAlign: "center", mb: 6}}>
-          <AnimatedText >
+        <Box sx={{ textAlign: "center", mb: 6 }}>
+          <AnimatedText sx={{ fontSize: { xs: '4.2em', lg: "3.2em" } }}>
             Latest Blog
           </AnimatedText>
         </Box>
@@ -217,12 +217,12 @@ const BlogCarousel: React.FC = () => {
                     borderTop: "none", // Removes border from the top
                     borderBottomLeftRadius: "15px", // Rounds bottom-left corner
                     borderBottomRightRadius: "15px", // Rounds bottom-right corner
-                    py:5
+                    py: 5
                   }}>
-                    <Typography variant="h6" sx={{ color: "#fff", mb: 1 ,textAlign:'left'}}>
+                    <Typography variant="h6" sx={{ color: "#fff", mb: 1, textAlign: 'left', fontSize: { xs: '38px', lg: "16px" } }}>
                       By <strong style={{ color: "#fc0000", }}>{blog.author}</strong>
                     </Typography>
-                    <Typography variant="h4" sx={{ fontWeight: "bold", color: "#fff", fontSize: "18px",textAlign:'left' }}>
+                    <Typography variant="h4" sx={{ fontWeight: "bold", color: "#fff", fontSize: "18px", textAlign: 'left' }}>
                       <a href={blog.link} style={{ textDecoration: "none", color: "inherit" }}>
                         {blog.title}
                       </a>
@@ -233,13 +233,20 @@ const BlogCarousel: React.FC = () => {
             ))}
           </Slider>
         </Box>
-        <StyledButton  onClick={() => navigate("/blog")} sx={{width:'100%',height:'55px',mt:3}}>
-      See More
-      <ArrowContainer className="btn-arrow-hover">
-        <ArrowIconFirst className="arrow-first" />
-        <ArrowIconLast className="arrow-second" />
-      </ArrowContainer>
-    </StyledButton>
+        <StyledButton onClick={() => navigate("/blog")}
+           sx={{
+            width: {xs:'330px',lg:'100%'},
+            height: { xs: '115px', lg: '55px' },
+            fontSize: {xs:"2.2rem",lg:"1.2rem"},
+            mt:{xs:5,lg:4}
+          }}
+          >
+          See More
+          <ArrowContainer className="btn-arrow-hover">
+            <ArrowIconFirst className="arrow-first"  sx={{ fontSize: { xs: '30px', lg: '16px ' } }}/>
+            <ArrowIconLast className="arrow-second"  sx={{ fontSize: { xs: '30px', lg: '16px ' } }}/>
+          </ArrowContainer>
+        </StyledButton>
       </Container>
 
       {/* Keyframes for Shine Effect */}

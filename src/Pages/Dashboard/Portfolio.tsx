@@ -68,7 +68,7 @@ const StyledButton = styled(Button)({
   cursor: "pointer",
   overflow: "hidden",
   transition: "all 0.3s ease-out",
-  fontSize: "1.2rem",
+
 
   "&:hover": {
     background: "transparent !important", // Slight hover effect
@@ -93,13 +93,13 @@ const ArrowContainer = styled(Box)({
   position: "relative",
   overflow: "hidden",
   display: "inline-flex",
-  width: "20px",
-  height: "20px",
+  // width: "20px",
+  // height: "20px",
 });
 
 // Styled MUI Icons
 const ArrowIconStyled = styled(ArrowOutwardIcon)({
-  fontSize: "16px",
+
   transition: "transform 0.3s ease-out",
   color: "white",
 });
@@ -129,25 +129,25 @@ const projects: ProjectCardProps[] = [
 
 const CreativeWorksSection: React.FC = () => {
   const navigate = useNavigate(); // Hook for navigation
-  
+
   return (
-    <Box sx={{ py: 10 }}>
+    <Box sx={{ py: 10, p: { xs: 6, lg: 0 } }}>
       <Container maxWidth="xl">
         <Grid container spacing={4}>
           {/* Header */}
           <Grid item xs={12} lg={6}>
-          <Box sx={{ textAlign: { xs: "center", md: "left" } }}>
-            <AnimatedText>OUR CREATIVE WORKS ARE OUR IDENTITY</AnimatedText>
-          </Box>
-        </Grid>
+            <Box sx={{ textAlign: { xs: "center", md: "left" } }}>
+              <AnimatedText>OUR CREATIVE WORKS ARE OUR IDENTITY</AnimatedText>
+            </Box>
+          </Grid>
           <Grid item xs={12} lg={6}>
-            <Typography variant="body1" color="white" textAlign={'left'}>
-            We develop powerful, data-driven marketing strategies to elevate your brand and maximize its digital impact. If you're unsure how to achieve more, we’ll redefine your branding, identify new growth opportunities, and position your business for success in the ever-evolving digital landscape. 
+            <Typography variant="body1" color="white" textAlign={'left'} sx={{ mb: { xs: 3, lg: 0 } }}>
+              We develop powerful, data-driven marketing strategies to elevate your brand and maximize its digital impact. If you're unsure how to achieve more, we’ll redefine your branding, identify new growth opportunities, and position your business for success in the ever-evolving digital landscape.
             </Typography>
           </Grid>
 
           {/* First 3 images in column layout */}
-          <Grid item xs={12}  lg={6} sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+          <Grid item xs={12} lg={6} sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
             {projects.slice(0, 3).map((project, index) => (
               <Project key={index}>
                 <ImageContainer>
@@ -167,7 +167,7 @@ const CreativeWorksSection: React.FC = () => {
           </Grid>
 
           {/* Next 3 images in column layout */}
-          <Grid item xs={12}  lg={6} sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+          <Grid item xs={12} lg={6} sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
             {projects.slice(3, 6).map((project, index) => (
               <Project key={index}>
                 <ImageContainer>
@@ -205,13 +205,18 @@ const CreativeWorksSection: React.FC = () => {
           </Grid>
 
           <Grid item xs={12}>
-          <StyledButton  onClick={() => navigate("/portfolio")} sx={{width:'100%',height:'55px'}}>
-      See More
-      <ArrowContainer className="btn-arrow-hover">
-        <ArrowIconFirst className="arrow-first" />
-        <ArrowIconLast className="arrow-second" />
-      </ArrowContainer>
-    </StyledButton>
+            <StyledButton onClick={() => navigate("/portfolio")}
+              sx={{
+                width: { xs: '330px', lg: '100%' },
+                height: { xs: '115px', lg: '55px' },
+                fontSize: { xs: "2.2rem", lg: "1.2rem" }
+              }}>
+              See More
+              <ArrowContainer className="btn-arrow-hover">
+                <ArrowIconFirst className="arrow-first" sx={{ fontSize: { xs: '30px', lg: '16px ' } }} />
+                <ArrowIconLast className="arrow-second" />
+              </ArrowContainer>
+            </StyledButton>
           </Grid>
         </Grid>
       </Container>

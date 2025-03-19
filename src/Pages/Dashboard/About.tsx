@@ -83,7 +83,7 @@ const MarketingLayout = () => {
 
     return (
         <Box>
-            <Container maxWidth="xl">
+            <Container maxWidth="xl" sx={{p:{xs:6,lg:0}}}>
                 <Box sx={{ color: "white", position: "relative", overflow: "visible" }}>
                     <Grid container spacing={4}>
                         {/* Left Section - about2 Image */}

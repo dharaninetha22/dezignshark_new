@@ -74,15 +74,15 @@ const PartnerCarousel: React.FC = () => {
         loop={true}
         autoplay={{ delay: 2000, disableOnInteraction: false }}
         breakpoints={{
-          320: { slidesPerView: 4 }, // ✅ 4 slides in mobile
-          480: { slidesPerView: 4 }, // ✅ 4 slides in small devices
-          768: { slidesPerView: 4 }, // Medium tablets
+          320: { slidesPerView: 2 }, // ✅ 4 slides in mobile
+          480: { slidesPerView: 3 }, // ✅ 4 slides in small devices
+          768: { slidesPerView: 3 }, // Medium tablets
           1024: { slidesPerView: 6 }, // Large screens
         }}
       >
         {partnerLogos.map((logo, index) => (
           <SwiperSlide key={index}>
-            <PartnerImageWrapper>
+            <PartnerImageWrapper >
               <a href="#">
                 {/* Original Image */}
                 <img src={logo} alt={`Partner ${index}`} />

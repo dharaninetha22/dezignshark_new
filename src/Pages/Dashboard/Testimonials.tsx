@@ -13,20 +13,20 @@ import Animated from "../About/Clients";
 
 const testimonials = [
   {
-    name: "Abuzar Khan",
-    feedback: "Incredible experience! Dezign Shark tailored a digital marketing plan that really worked for us. Our leads and conversions are up!",
+    name: "jagadeesh regulavalasa",
+    feedback: "Their strategies helped me enhance my online presence, boost engagement, and drive quality leads to my business. A professional and results-driven team—I highly recommend them for anyone looking to grow their brand online. And it is a one-stop solution for all branding services that helps to generate leads and significant growth in any business",
   },
   {
-    name: "Ganesh Sunkara",
-    feedback: "They’re the experts you can trust! Dezign Shark developed a cohesive digital plan that aligned perfectly with our goals, delivering outstanding results.",
+    name: "hc karthik",
+    feedback: "We’ve had an amazing experience with Dezign Shark. They don’t just provide services—they truly partner with you to understand your business goals. Their insights and expertise have been invaluable for our growth. Highly recommend them to anyone searching for top-notch digital marketing in Hyderabad.",
   },
   {
-    name: "Ram Ramu",
-    feedback: "Fantastic service for personal and organizational branding. Highly recommend!I feel so happy to work with them.",
+    name: "Jade Ramu",
+    feedback: "The team at Dezign Shark is incredibly talented and supportive. They guided us through every step of our SEO and lead generation strategies, ensuring we got excellent results. Their content marketing is top-notch, and the web development they provided is clean and efficient. I also appreciate their innovative approach to real estate marketing and brand strategies. Hands down, the best digital marketing agency in Hyderabad!",
   },
   {
-    name: "yamini chowdary",
-    feedback: "Highly professional and creative. Excellent on-time delivery and always exceeding expectations.",
+    name: "Engineer Edit",
+    feedback: "Dezign Shark provides outstanding services in SEO, lead generation, content marketing, and more. Their web development and app development skills are unparalleled. As the best digital marketing agency in Hyderabad, they also specialize in real estate marketing and innovative brand strategies.",
   },
 ];
 
@@ -55,7 +55,7 @@ const Testimonials: React.FC = () => {
     <Box sx={{ py: 4, position: "relative" }}>
       <Container maxWidth="xl">
         <Grid container>
-          <Grid item xs={12} lg={5} sx={{  mb: 5,  textAlign: "left" }}>
+          <Grid item xs={12} lg={5} sx={{  mb: 5,  textAlign: "left",px:{xs:'63px',lg:'0'}  }}>
 
               <AnimatedText  >
                 WHAT CLIENTS SAY ABOUT US
@@ -67,7 +67,7 @@ const Testimonials: React.FC = () => {
         {/* Title */}
 
         {/* Arrows Below Title */}
-        <Box sx={{ display: "flex", justifyContent: "flex-start", mb: 4 }}>
+        <Box sx={{ display: "flex", justifyContent: "flex-start", mb: 4 ,px:{xs:'63px',lg:'0'}}}>
           <IconButton
             onClick={() => sliderRef.current?.slickPrev()}
             sx={{
@@ -105,6 +105,13 @@ const Testimonials: React.FC = () => {
                   textAlign: "left",
                   border: "1px solid #3A3A3A",
                   margin: "0 20px",
+                  height:{
+                    xs:'755px',
+                    lg:'450px'
+                  },
+                  display:'flex',
+                  flexDirection:'column',
+                  justifyContent:'space-evenly'
                 }}
               >
                 {/* Background Image Instead of Quote Icon */}
@@ -128,8 +135,8 @@ const Testimonials: React.FC = () => {
                 </Box>
 
                 {/* Testimonial Text */}
-                <Typography variant="h6" sx={{ fontWeight: 400, fontSize:{xs:'30px',lg:"24px"}, lineHeight: {xs:'1.5em',lg:'1.5em'}, mb: 4, mt: {xs:5,lg:3} }}>
-                  "{item.feedback}"
+                <Typography variant="h6" sx={{ fontWeight: 400, fontSize:{xs:'40px',lg:"24px"}, lineHeight: {xs:'1.5em',lg:'1.5em'}, mb: 4, mt: {xs:5,lg:3} }}>
+                  {item.feedback}
                 </Typography>
 
                 {/* User Info */}
