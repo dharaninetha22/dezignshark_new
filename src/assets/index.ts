@@ -73,6 +73,7 @@ import graphic2 from './images/Services/graphic2.png'
 import sm2 from './images/Services/sm2.png'
 import ppc2 from './images/Services/ppc2.png'
 import branding2 from './images/Services/branding2.png'
+import branding3 from './images/Services/branding3.png'
 
 //blog
 
@@ -161,7 +162,7 @@ export const Careers={
 export const Services={
     service1,service2,service3,faqservices,
     seo2,seo3,seobanner,ppcbanner,webbanner,brandingbanner,smbanner,designbanner,
-    seo4,web2,web3,web4,web5,web6,web7,web8,sm2,ppc2,graphic2,branding2
+    seo4,web2,web3,web4,web5,web6,web7,web8,sm2,ppc2,graphic2,branding2,branding3
 }
 
 export const Blog={

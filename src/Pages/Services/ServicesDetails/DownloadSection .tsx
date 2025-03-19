@@ -3,6 +3,7 @@ import { Box, Typography, IconButton, List, ListItem, ListItemIcon, ListItemText
 import { BsDownload } from "react-icons/bs";
 import { ImFilePdf } from "react-icons/im";
 import { IoDocumentTextOutline } from "react-icons/io5";
+import DownloadForOfflineIcon from '@mui/icons-material/DownloadForOffline';
 
 // Import the PDF file
 import brochurePDF from "../../../assets/ds-brochure-design-Recovered.pdf";
@@ -25,13 +26,13 @@ const DownloadSection = () => {
         >
           Download
         </Typography> */}
-        <AnimatedText sx={{ color: "black", textAlign: "center", fontWeight: 700, mb: { xs: 1, lg: 1 } ,fontSize:{xs:"30px",lg:"20px"}}}>
+        <AnimatedText sx={{ color: "black", textAlign: "center", fontWeight: 700, mb: { xs: 1, lg: 1 } , mt: { xs: 4, lg: 1 },fontSize: { xs: "54px", lg: "20px" }}}>
         Download
         </AnimatedText>
 
         <List>
           {downloads.map((item, index) => (
-            <ListItem key={index} sx={{ display: "flex", justifyContent: "space-between", gap: 2, mt: 3 }}>
+            <ListItem key={index} sx={{ display: "flex", justifyContent: "space-between", gap: 2, mt: 2 }}>
               <ListItemIcon sx={{ fontSize: { xs: "86px", lg: "50px" } }}>{item.icon}</ListItemIcon>
               <ListItemText
                 primary={
@@ -64,7 +65,7 @@ const DownloadSection = () => {
                 download
                 sx={{ color: "black" }}
               >
-                <BsDownload />
+                <DownloadForOfflineIcon sx={{fontSize: { xs: "3.5rem", lg: "1.2rem" }}} />
               </IconButton>
             </ListItem>
           ))}

@@ -300,7 +300,10 @@ export const pageData = [
       },
       images: {
         service1: Services.brandingbanner,
-        service2: Services.branding2,
+        sliderImages: [
+          Services.branding2, 
+          Services.branding3,
+        ] 
         
       },
     },

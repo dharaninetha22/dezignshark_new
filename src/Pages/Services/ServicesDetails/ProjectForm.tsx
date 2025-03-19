@@ -46,7 +46,7 @@ const ProjectForm: React.FC = () => {
         <Typography variant="h5" fontWeight="bold" gutterBottom >
           
         </Typography>
-        <AnimatedText sx={{color:'black', textAlign:'left',mb:3,fontSize:{xs:"30px",lg:"20px"}}}>
+        <AnimatedText sx={{color:'black', textAlign:'center',mb:{xs:5,lg:3},fontSize: { xs: "54px", lg: "20px" }}}>
         Let's start new project.
         </AnimatedText>
 
@@ -93,7 +93,13 @@ const ProjectForm: React.FC = () => {
 
         {/* Submit Button */}
         <CustomButton
-        
+         sx={{
+          textAlign: "center",
+          height: { xs: '90px', lg: '40px' },
+          width: { xs: '400px', lg: '160px' },
+          fontSize: { xs: '35px', lg: '14px' },
+          mt:{xs:4,lg:1}
+      }}
         >
           Start Project
         </CustomButton>
