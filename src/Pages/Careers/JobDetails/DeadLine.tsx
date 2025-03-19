@@ -10,6 +10,16 @@ import CustomButton from "../../../Components/Inputs/CustomButton";
 const ApplicationStatus = () => {
   const [open, setOpen] = useState(false);
 
+  // Function to handle opening the popup
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  // Function to handle closing the popup
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
     <Box display="flex" alignItems="center" flexDirection="column" gap={2} sx={{ width: "fit-content" }}>
       <Typography variant="body2" sx={{ color: "black" }}>
@@ -20,10 +30,10 @@ const ApplicationStatus = () => {
       </Typography>
 
       {/* Apply Button */}
-      <CustomButton >Apply</CustomButton>
+      <CustomButton onClick={handleOpen} >Apply</CustomButton>
 
       {/* Application Form Popup */}
-      <ApplicationFormPopup open={open} handleClose={() => setOpen(false)} />
+      <ApplicationFormPopup open={open} handleClose={handleClose} />
     </Box>
   );
 };

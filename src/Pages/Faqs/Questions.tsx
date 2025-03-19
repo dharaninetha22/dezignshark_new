@@ -3,7 +3,7 @@ import { Box, Typography, IconButton, Grid, Container } from "@mui/material";
 import { gsap } from "gsap";
 import { MdOutlineArrowUpward } from "react-icons/md";
 import { AboutImages } from "../../assets";
-
+import AnimatedText from "../../Components/Inputs/AnimatedText";
 
 
 const faqData = [
@@ -97,9 +97,14 @@ const FAQSection: React.FC = () => {
 
     return (
         <Box py={5}>
-            <Container maxWidth="xl" sx={{py:5}}>
-               
+            <Container maxWidth="xl" sx={{ py: 5 }}>
 
+                <AnimatedText
+
+                    sx={{  textAlign: "center",fontSize: { xs: '5em', lg: "3.2em" }  }}
+                >
+                    FAQ'S
+                </AnimatedText>
                 <Box
                     sx={{
                         color: "#fff",
@@ -108,14 +113,14 @@ const FAQSection: React.FC = () => {
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        
-                        mt:8
+
+                        mt: 8
                     }}
                 >
-                   
+
 
                     {/* Right Side - FAQ Section */}
-                    <Box sx={{  position: "relative" }}>
+                    <Box sx={{ position: "relative" }}>
                         {/* Persistent Vertical Line Running Through FAQs */}
                         <Box
                             sx={{
@@ -134,11 +139,11 @@ const FAQSection: React.FC = () => {
                                 flexDirection: "column",
                                 // mt: 3,
                                 borderTop: "1px solid #2B2B2B", // Top border line
-                               
+
                             }}
                         >
                             {faqData.map((faq, index) => (
-                                <Box key={index} sx={{ position: "relative" ,cursor:'none'}}>
+                                <Box key={index} sx={{ position: "relative", cursor: 'none' }}>
                                     {/* Horizontal Separator Line */}
                                     {index !== 0 && (
                                         <Box
@@ -184,8 +189,8 @@ const FAQSection: React.FC = () => {
                                                     style={{
                                                         transform: openIndex === index ? "rotate(180deg)" : "rotate(0deg)",
                                                         transition: "0.3s",
-                                                        fontSize:'50px',
-                                                        color:'#2b2b2b'
+                                                        fontSize: '50px',
+                                                        color: '#2b2b2b'
                                                     }}
                                                 />
                                             </IconButton>
@@ -193,14 +198,14 @@ const FAQSection: React.FC = () => {
 
                                         {/* Question Text */}
                                         <Typography
-                                        variant="h4"
+                                            variant="h4"
                                             sx={{
                                                 flex: 1,
                                                 fontSize: { xs: '38px', lg: '28px' },
                                                 fontWeight: 700,
                                                 textTransform: "uppercase",
                                                 pl: { xs: 5, lg: 4 },
-                                                cursor:'none'
+                                                cursor: 'none'
                                             }}
                                         >
                                             {faq.question}
@@ -221,8 +226,8 @@ const FAQSection: React.FC = () => {
                                             marginBottom: openIndex === index ? "10px" : "0px",
                                         }}
                                     >
-                                        <Typography variant='body2' 
-                                        sx={{ fontSize: { xs: '38px', lg: '18px' }, opacity: 0.8 ,pl:10}}>{faq.answer}</Typography>
+                                        <Typography variant='body2'
+                                            sx={{ fontSize: { xs: '38px', lg: '18px' }, opacity: 0.8, pl: 10 }}>{faq.answer}</Typography>
                                     </Box>
 
                                     {/* Bottom Line */}

@@ -207,7 +207,7 @@ const CreativeWorksSection: React.FC = () => {
           </Grid>
 
           <Grid item xs={12}>
-            <StyledButton onClick={() => navigate("/portfolio")}
+            <StyledButton onClick={() => navigate(window.location.href = "https://portfolio.dezignshark.com/folders")}
               sx={{
                 width: { xs: '330px', lg: '100%' },
                 height: { xs: '115px', lg: '55px' },

@@ -17,9 +17,10 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import YouTubeIcon from "@mui/icons-material/YouTube";
+import XIcon from '@mui/icons-material/X';
 import { dslogo, Home } from "../../assets";
 import { useNavigate } from "react-router-dom";
-
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
 interface SidebarProps {
   open: boolean;
   onClose: () => void;
@@ -34,11 +35,11 @@ const navItems = [
     route: "/services",
     submenu: [
       { label: "Branding", route: "/services/branding" },
-        { label: "Social Media Marketing", route: "/services/social-media-marketing" },
-        { label: "Pay-Per-Click (PPC) Advertising", route: "/services/pay-per-click" },
-        { label: "Web Development", route: "/services/web-development" },
-        { label: "Search Engine Optimization (SEO)", route: "/services/search-engine-optimization" },
-        { label: "Graphic Designing", route: "/services/graphic-designing" },
+      { label: "Social Media Marketing", route: "/services/social-media-marketing" },
+      { label: "Pay-Per-Click (PPC) Advertising", route: "/services/pay-per-click" },
+      { label: "Web Development", route: "/services/web-development" },
+      { label: "Search Engine Optimization (SEO)", route: "/services/search-engine-optimization" },
+      { label: "Graphic Designing", route: "/services/graphic-designing" },
     ],
   },
   { label: "Careers", route: "/careers" },
@@ -55,6 +56,13 @@ const images = [
   Home.homenav,
   Home.homenav,
 
+];
+const socialLinks = [
+  { icon: <FacebookIcon />, url: "https://x.com/DezignShark" },
+  { icon: <LinkedInIcon />, url: "https://www.linkedin.com/company/dezignshark/" },
+  { icon: <XIcon />, url: "https://x.com/DezignShark?t=T_FrlJGy1jR1dcCMOpYlCA&s=09" },
+  { icon: <InstagramIcon />, url: "https://www.instagram.com/dezign__shark?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },
+  { icon: <YouTubeIcon />, url: "https://www.youtube.com/@yourchannel" },
 ];
 
 const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
@@ -122,8 +130,17 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
             <Typography variant="h6" sx={{ fontWeight: "bold", mb: 2 }}>
               Get in touch
             </Typography>
-            <Typography variant="body1" sx={{ mb: 1 }}>+91 799 799 2885</Typography>
-            <Typography variant="body2" sx={{ mb: 1 }}>info@dezignshark.com</Typography>
+            <Typography variant="body1" sx={{ mb: 1 }}>
+              <a href="tel:+917997992885" style={{ textDecoration: "none", color: "inherit" }}>
+                +91 799 799 2885
+              </a>
+            </Typography>
+
+            <Typography variant="body2" sx={{ mb: 1 }}>
+              <a href="mailto:info@dezignshark.com" style={{ textDecoration: "none", color: "inherit" }}>
+                info@dezignshark.com
+              </a>
+            </Typography>
             <Typography variant="body2" sx={{ mb: 1 }}>
               68, 3rd Floor, Senore Colony, Film Nagar, Hyderabad, Telangana 500008
             </Typography>
@@ -133,7 +150,7 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
           <Divider sx={{ bgcolor: "gray", my: 2, width: "100%" }} />
 
           {/* Social Icons */}
-          <Box sx={{ display: "flex", gap: 1 }}>
+          {/* <Box sx={{ display: "flex", gap: 1 }}>
             <IconButton sx={{ color: "white" }}>
               <FacebookIcon />
             </IconButton>
@@ -146,7 +163,21 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
             <IconButton sx={{ color: "white" }}>
               <YouTubeIcon />
             </IconButton>
-          </Box>
+          </Box> */}
+          <Box sx={{ display: "flex", gap: 1 }}>
+  {socialLinks.map(({ icon, url }, index) => (
+    <IconButton
+      key={index}
+      component="a"
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+      sx={{ color: "white" }}
+    >
+      {icon}
+    </IconButton>
+  ))}
+</Box>
         </Grid>
 
         {/* Vertical Divider */}
@@ -172,11 +203,11 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
           <Divider sx={{ bgcolor: "gray", width: "100%" }} />
 
           <List sx={{ width: "100%" }}>
-          {navItems.map((item, index) => (
+            {navItems.map((item, index) => (
               <React.Fragment key={index}>
                 <ListItemButton
                   onClick={() => handleNavigation(item.route)}
-                  sx={{ px: 3, display: "flex", justifyContent: "space-between" ,"&:hover .MuiListItemText-primary": { color: "red" },}}
+                  sx={{ px: 3, display: "flex", justifyContent: "space-between", "&:hover .MuiListItemText-primary": { color: "red" }, }}
                 >
                   <ListItemText
                     primary={item.label}

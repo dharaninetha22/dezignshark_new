@@ -92,7 +92,7 @@ const MarketingLayout = () => {
                                 <CardMedia
                                     ref={about1ImageRef}
                                     component="img"
-                                    image={Home.about2}
+                                    image={Home.about4}
                                     alt="Team meeting"
                                     sx={{ position: "relative", 
                                         display: {
@@ -204,7 +204,7 @@ const MarketingLayout = () => {
                                 <CardMedia
                                     ref={about2ImageRef}
                                     component="img"
-                                    image={Home.about1}
+                                    image={Home.about3}
                                     alt="Conference"
                                     sx={{ position: "relative", zIndex: 10 ,ml:{xs:5,lg:0}}}
                                 />

@@ -32,6 +32,7 @@ import { TbMailDown } from "react-icons/tb";
 import { PiPhoneListBold } from "react-icons/pi";
 import { RxLapTimer } from "react-icons/rx";
 import FacebookIcon from "@mui/icons-material/Facebook";
+import XIcon from '@mui/icons-material/X';
 import TwitterIcon from "@mui/icons-material/Twitter";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
@@ -307,7 +308,7 @@ const Header: React.FC = () => {
 
 
 
-        <List>
+        {/* <List>
           {navItems.map((item, index) => (
             <Box key={index}>
               <ListItemButton
@@ -318,12 +319,12 @@ const Header: React.FC = () => {
                   borderLeft: openSubMenu === item.label ? "3px solid red" : "3px solid transparent",
                 }}
               >
-                {/* Correctly apply font size using `primaryTypographyProps` */}
+                
                 <ListItemText
                   primary={item.label}
                   primaryTypographyProps={{
                     sx: {
-                      fontSize: "60px !important", // Ensures it overrides any defaults
+                      fontSize: "60px !important", 
                       fontWeight: "bold",
                       color: "white",
                       pl: 5
@@ -350,7 +351,7 @@ const Header: React.FC = () => {
               </ListItemButton>
               <Divider sx={{ backgroundColor: "#FFFFFF80" }} />
 
-              {/* Submenu */}
+              
               {item.submenu && (
                 <Collapse in={openSubMenu === item.label} timeout="auto" unmountOnExit>
                   <List sx={{ pl: 4 }}>
@@ -367,12 +368,12 @@ const Header: React.FC = () => {
                             "&:hover": { borderLeft: "3px solid red" },
                           }}
                         >
-                          {/* Apply font size using `primaryTypographyProps` */}
+                          
                           <ListItemText
                             primary={subItem.label}
                             primaryTypographyProps={{
                               sx: {
-                                fontSize: "60px !important", // Forces MUI to apply it
+                                fontSize: "60px !important", 
                                 fontWeight: "bold",
                                 color: "white",
                               },
@@ -386,15 +387,96 @@ const Header: React.FC = () => {
               )}
             </Box>
           ))}
-        </List>
+        </List> */}
+        <List>
+  {navItems.map((item, index) => (
+    <Box key={index}>
+      <ListItemButton
+        onClick={() => handleNavigate(item.route)}
+        sx={{
+          color: "#FFF",
+          transition: "border-left 0.3s ease-in-out",
+          borderLeft: openSubMenu === item.label ? "3px solid red" : "3px solid transparent",
+        }}
+      >
+        <ListItemText
+          primary={item.label}
+          primaryTypographyProps={{
+            sx: {
+              fontSize: "60px !important",
+              fontWeight: "bold",
+              color: "white",
+              pl: 5,
+            },
+          }}
+        />
+
+        {item.submenu && (
+          <IconButton
+            onClick={(e) => {
+              e.stopPropagation();
+              handleMobileSubMenuToggle(item.label);
+            }}
+          >
+            <ArrowDropDownIcon
+              sx={{
+                transform: openSubMenu === item.label ? "rotate(180deg)" : "rotate(0deg)",
+                color: "#FFF",
+                fontSize: "80px",
+              }}
+            />
+          </IconButton>
+        )}
+      </ListItemButton>
+      <Divider sx={{ backgroundColor: "#FFFFFF80" }} />
+
+      {/* Submenu */}
+      {item.submenu && (
+        <Collapse in={openSubMenu === item.label} timeout="auto" unmountOnExit>
+          <List sx={{ pl: 4 }}>
+            {item.submenu.map((subItem, subIndex) => {
+              const isSubActive = location.pathname === subItem.route;
+              return (
+                <Box key={subIndex}>
+                  <ListItemButton
+                    onClick={() => handleNavigate(subItem.route)}
+                    sx={{
+                      color: "#FFF",
+                      borderLeft: isSubActive ? "3px solid red" : "3px solid transparent",
+                      transition: "border-left 0.3s ease-in-out",
+                      "&:hover": { borderLeft: "3px solid red" },
+                    }}
+                  >
+                    <ListItemText
+                      primary={subItem.label}
+                      primaryTypographyProps={{
+                        sx: {
+                          fontSize: item.label === "Services" ? "46px !important" : "46px !important", // Adjusted font size for "Services"
+                          fontWeight: "bold",
+                          color: "white",
+                        },
+                      }}
+                    />
+                  </ListItemButton>
+                  <Divider sx={{ backgroundColor: "#FFFFFF80" }} />
+                </Box>
+              );
+            })}
+          </List>
+        </Collapse>
+      )}
+    </Box>
+  ))}
+</List>
+
 
 
         {/* Social Icons & Footer (Positioned at Bottom) */}
         <Box sx={{ mt: 4 }} />
         <Box sx={{ display: "flex", justifyContent: "center", gap: 2, mt: 5 }}>
-      {/* <IconButton
+      <IconButton
         component="a"
-        href="https://wa.me/1234567890" // WhatsApp Link
+        href="https://youtube.com/@dezignshark?si=7-aInZhNlvvwWfx7 " // WhatsApp Link
         target="_blank"
         rel="noopener noreferrer"
         sx={{
@@ -406,11 +488,11 @@ const Header: React.FC = () => {
         }}
       >
         <WhatsAppIcon sx={{ fontSize: "60px" }} />
-      </IconButton> */}
+      </IconButton>
 
       <IconButton
         component="a"
-        href="https://twitter.com/yourprofile" // Twitter Link
+        href="https://x.com/DezignShark" // Twitter Link
         target="_blank"
         rel="noopener noreferrer"
         sx={{
@@ -421,12 +503,12 @@ const Header: React.FC = () => {
           padding: "20px",
         }}
       >
-        <TwitterIcon sx={{ fontSize: "60px" }} />
+        <XIcon sx={{ fontSize: "60px" }} />
       </IconButton>
 
       <IconButton
         component="a"
-        href="https://www.instagram.com/dezign_shark/" // Instagram Link
+        href="https://www.instagram.com/dezign__shark?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" // Instagram Link
         target="_blank"
         rel="noopener noreferrer"
         sx={{
@@ -442,7 +524,7 @@ const Header: React.FC = () => {
 
       <IconButton
         component="a"
-        href="https://www.facebook.com/profile.php?id=61554306921409" // Facebook Link
+        href="https://www.facebook.com/share/1BZTYjKt2H/" // Facebook Link
         target="_blank"
         rel="noopener noreferrer"
         sx={{
@@ -458,7 +540,7 @@ const Header: React.FC = () => {
 
       <IconButton
         component="a"
-        href="https://www.linkedin.com/company/92636430/admin/feed/posts/" // LinkedIn Link
+        href="https://www.linkedin.com/company/dezignshark/" // LinkedIn Link
         target="_blank"
         rel="noopener noreferrer"
         sx={{
@@ -509,7 +591,7 @@ const Header: React.FC = () => {
             sx={{
               display: "flex",
               justifyContent: "space-between", alignItems: "center",
-              padding: { xs: '32px 10px ', lg: "8px 10px", },
+              padding: { xs: '60px 10px ', lg: "8px 10px", },
             }}>
             <Box sx={{ display: "flex", alignItems: "center", cursor: "pointer", py: 1 }} onClick={() => handleNavigate("/")}>
               <img src={dslogo} alt="logo" className="logo-img" />

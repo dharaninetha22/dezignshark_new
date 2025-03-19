@@ -148,7 +148,7 @@ const ServicesDetails = () => {
             <Grid item lg={8} xs={12}>
               <Typography variant="h1" >
               </Typography>
-              <AnimatedText sx={{ color: "#000", fontWeight: 700, fontSize: { md: "72px", xs: "50px" }, textAlign: "left", mb: 4, mt: { xs: 5, lg: 0 } }}>
+              <AnimatedText sx={{ color: "#000", fontWeight: 700, fontSize: { md: "72px", xs: "50px" }, textAlign: "left", mb: 4, mt: { xs: 14, lg: 0 } }}>
 
                 {marketStrategy.title}
               </AnimatedText>
@@ -533,7 +533,7 @@ const ServicesDetails = () => {
                 color="#74787C"
                 sx={{
                   textAlign: "justify",
-                  fontSize: { xs: "16px", lg: "18px" },
+                  fontSize: { xs: "30px", lg: "18px" },
                 }}
               >
                 {faq.answer}

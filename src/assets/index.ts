@@ -22,6 +22,8 @@ import homenav from './images/home/homenav.jpg'
 import webbannerr from './images/home/dswebsitebanner.png'
 import logosidebar from './images/home/logosidebar.png'
 import mobileviewbanner from './images/home/mobileviewbanner.png'
+import about3 from './images/home/about3.png'
+import about4 from './images/home/about4.png'
 
 import seoicon from './images/home/seoicon.png'
 import webicon from './images/home/website.png'
@@ -151,7 +153,7 @@ export const Home={
     portfolio7,
     testi,clientlogo,blog,bgfooterimg,
  imageeffect ,seoicon,branding,webicon,smmicon,contenticon,ppc,
- homenav,webbannerr,logosidebar,mobileviewbanner
+ homenav,webbannerr,logosidebar,mobileviewbanner,about3,about4
 
     
 

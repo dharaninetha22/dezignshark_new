@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Box, Typography, IconButton, Container, useMediaQuery } from "@mui/material";
+import { Box, Typography, IconButton, Container, useMediaQuery, useTheme } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Mousewheel } from "swiper/modules";
 import "swiper/css";
@@ -76,9 +76,11 @@ const ServicesSection: React.FC = () => {
   const controls = useAnimation();
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.3 });
   const navigate = useNavigate();
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("lg")); // Mobile detection
 
   // ✅ Check if screen size is mobile
-  const isMobile = useMediaQuery("(max-width:1080px)");
+  // const isMobile = useMediaQuery("(max-width:1080px)");
 
   useEffect(() => {
     if (inView) controls.start("visible");
@@ -110,8 +112,10 @@ const ServicesSection: React.FC = () => {
           768: { slidesPerView: 1 }, // ✅ Tablets: Show 1.5 cards
           1024: { slidesPerView: 2.5 }, // ✅ Larger screens: Show 2.5 cards
         }}
-        style={{ width: "100%", height: "700px" }}
-
+        style={{ 
+          width: "100%", 
+          height: isMobile ? "700px" : "450px", // ✅ Responsive Swiper height
+        }}
       >
         {services.map((service) => (
           <SwiperSlide key={service.id} id={service.id} >

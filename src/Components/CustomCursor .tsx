@@ -7,9 +7,9 @@ const CustomCursor: React.FC = () => {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    // Check if the device is mobile (Reacts to viewport changes)
+    // Function to check if the device is a mobile device
     const checkIfMobile = () => {
-      const mobileCheck = window.matchMedia("(max-width: 768px)").matches;
+      const mobileCheck = window.matchMedia("(max-width: 768px)").matches || navigator.maxTouchPoints > 0;
       setIsMobile(mobileCheck);
     };
 
@@ -23,15 +23,10 @@ const CustomCursor: React.FC = () => {
       }
     };
 
-    // Disable cursor when touch is detected
-    const disableCursorOnTouch = () => setIsMobile(true);
-
     document.addEventListener("mousemove", moveCursor);
-    document.addEventListener("touchstart", disableCursorOnTouch);
 
     return () => {
       document.removeEventListener("mousemove", moveCursor);
-      document.removeEventListener("touchstart", disableCursorOnTouch);
       window.removeEventListener("resize", checkIfMobile);
     };
   }, [isMobile]);

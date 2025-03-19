@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Box, Tabs, Tab, Typography, Card, CardContent, Chip, Grid } from "@mui/material";
+import { Box, Tabs, Tab, Typography, Card, CardContent, Chip, Grid, useMediaQuery, useTheme } from "@mui/material";
 import { gsap } from "gsap";
 import { CiLocationOn } from "react-icons/ci"; // Location Icon
 import { SlBriefcase } from "react-icons/sl"; // Job Icon
@@ -13,7 +13,7 @@ const jobs = [
   { id: 1, title: "Junior Graphic Designer (Web)", category: "Design", location: "New York", type: "Full Time", urgent: true },
   { id: 2, title: "Finance Manager & Health", category: "Design", location: "New York", type: "Full Time", urgent: true },
   { id: 3, title: "General Ledger Accountant", category: "Design", location: "New York", type: "Full Time", urgent: false },
-  { id: 4, title: "Assistant / Store Keeper", category: "Automotive Jobs", location: "New York", type: "Part Time", urgent: false },
+  { id: 4, title: "Assistant / Store Keeper", category: "Development", location: "New York", type: "Part Time", urgent: false },
   { id: 5, title: "Group Marketing Manager", category: "Customer", location: "Miami", type: "Part Time", urgent: false },
   // { id: 6, title: "Product Sales Specialist", category: "Project Management", location: "New York", type: "Internship", urgent: false },
   // { id: 7, title: "UX/UI Designer Web", category: "Design", location: "Paris", type: "Freelance", urgent: false },
@@ -21,13 +21,16 @@ const jobs = [
   // { id: 9, title: "Senior/Staff Nurse", category: "Health and Care", location: "Paris", type: "Part Time", urgent: false },
 ];
 
-const categories = ["All Categories", "Design", "Development", "Marketing", "Customer"];
+const categories = ["All Categories", "Design", "Development", "Marketing", ];
 
 const JobListing = () => {
   const [selectedCategory, setSelectedCategory] = useState("All Categories");
   const [filteredJobs, setFilteredJobs] = useState(jobs);
 
    const navigate = useNavigate();
+ const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("lg")); // Mobile detection
+
   
    const handleNavigation = (jobid: number) => {
     navigate(`/job/${jobid}`);
@@ -114,7 +117,7 @@ const JobListing = () => {
         </Box>
 
         {/* Job Cards Grid */}
-        <Grid container spacing={3} justifyContent="center" data-aos="fade-down">
+        <Grid container spacing={3} justifyContent="center" data-aos="fade-down" sx={{mt:{xs:5,lg:0}}}>
           {filteredJobs.map((job) => (
             <Grid item xs={12}  lg={4} key={job.id}>
               <Card
@@ -136,74 +139,58 @@ const JobListing = () => {
                 }}
                 onClick={() => handleNavigation(job.id)}
               >
-                <CardContent sx={{py:{xs:6,lg:0},pb:{xs:6,lg:0},}}>
-                  <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-                    {/* Profile Icon */}
-                    <Box >
-                      <img src={shark} alt="Company Logo" width={60} height={60} />
-                    </Box>
-                    <Typography variant="body2" sx={{ fontWeight: "bold", color: "#000", fontSize: {xs:'30px',lg:'16px'},textAlign:{xs:'left',lg:'center'} }}>
-                      {job.title}
-                    </Typography>
-                    <Box sx={{ flexGrow: 1 }} />
-                  </Box>
+                <CardContent >
+                  <Box sx={{py:{xs:6,lg:0},}}>
 
-                  {/* Category & Location with Icons */}
-                  {/* <Typography variant="body2" sx={{ color: "#757575", mb: 1, display: "flex", alignItems: "center", gap: 1, justifyContent: "center" }}>
-                    <SlBriefcase style={{ fontSize: {xs:'30px',lg:'16px'} }} /> {job.category}
-                    <CiLocationOn style={{ fontSize: {xs:'30px',lg:'16px'} }} /> {job.location}
-                  </Typography> */}
+                      <Box sx={{ display: "flex", alignItems: "center", gap: 1,}}>
+                        {/* Profile Icon */}
+                        <Box >
+                          <img src={shark} alt="Company Logo" width={60} height={60} />
+                        </Box>
+                        <Typography variant="body2" sx={{ fontWeight: "bold", color: "#000", fontSize: {xs:'30px',lg:'16px'},textAlign:{xs:'center',lg:'center'} }}>
+                          {job.title}
+                        </Typography>
+                        <Box sx={{ flexGrow: 1 }} />
+                      </Box>
 
+                      {/* Category & Location with Icons */}
+                      <Typography variant="body2" sx={{ color: "#757575", mb: 1, display: "flex", alignItems: "center", gap: 1, justifyContent: {xs:'start',lg:"center"} ,fontSize:{xs:'30px',lg:'16px'},pl:{xs:6,lg:0}}}>
+                        <SlBriefcase 
+                        style={{
+                          
+                          fontSize: isMobile ? "30px" : "16px", 
+                          }} 
+                          />
+                            {job.category}
+                        <CiLocationOn style={{ fontSize: isMobile ? "30px" : "16px", }} /> {job.location}
+                      </Typography>
 
-<Typography
-  variant="body2"
-  sx={{
-    color: "#757575",
-    mb: 1,
-    display: "flex",
-    alignItems: "center",
-    gap: 1,
-    justifyContent: "center",
-  }}
->
-  {/* Category Icon */}
-  <Box component="span" sx={{ fontSize: { xs: "30px", lg: "16px" } }}>
-    <SlBriefcase />
-  </Box>
-  {job.category}
+                      {/* Job Type Labels */}
+                      <Box sx={{ display: "flex", gap: 1, alignItems: "center" ,mt:{xs:5,lg:0}}}>
+                        <Chip
+                          label={job.type}
+                          sx={{
+                            backgroundColor: "#e3f2fd",
+                            color: "#1976d2",
+                            fontSize: {xs:'30px',lg:'14px'}, // 🔥 Increased Font Size
+                            fontWeight: "bold",
+                            padding: {xs:'32px 50px',lg:"5px 10px"},
+                          }}
+                        />
+                        {job.urgent && (
+                          <Chip
+                            label="Urgent"
+                            sx={{
+                              backgroundColor: "#fff3cd",
+                              color: "#856404",
+                              fontSize: {xs:'25px',lg:'14px'}, // 🔥 Increased Font Size
+                              fontWeight: "bold",
+                              padding: {xs:'32px 50px',lg:"5px 10px"},
 
-  {/* Location Icon */}
-  <Box component="span" sx={{ fontSize: { xs: "30px", lg: "16px" } }}>
-    <CiLocationOn />
-  </Box>
-  {job.location}
-</Typography>
-
-
-                  {/* Job Type Labels */}
-                  <Box sx={{ display: "flex", gap: 1, alignItems: "center" }}>
-                    <Chip
-                      label={job.type}
-                      sx={{
-                        backgroundColor: "#e3f2fd",
-                        color: "#1976d2",
-                        fontSize: {xs:'25px',lg:'14px'}, // 🔥 Increased Font Size
-                        fontWeight: "bold",
-                        padding: "4px 10px",
-                      }}
-                    />
-                    {job.urgent && (
-                      <Chip
-                        label="Urgent"
-                        sx={{
-                          backgroundColor: "#fff3cd",
-                          color: "#856404",
-                          fontSize: {xs:'25px',lg:'14px'}, // 🔥 Increased Font Size
-                          fontWeight: "bold",
-                          padding: "4px 10px",
-                        }}
-                      />
-                    )}
+                            }}
+                          />
+                        )}
+                      </Box>
                   </Box>
                 </CardContent>
               </Card>

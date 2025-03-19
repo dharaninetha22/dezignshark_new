@@ -249,7 +249,7 @@ const FAQSection: React.FC = () => {
                                     width: { xs: '400px', lg: '160px' },
                                     fontSize: { xs: '35px', lg: '14px' }
                                 }}
-                                onClick={() => navigate("/more-faqs")}>
+                                onClick={() => navigate("/faqs")}>
                                 Read More
                             </CustomButton>
                         </Box>

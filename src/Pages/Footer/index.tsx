@@ -27,13 +27,14 @@ import { gsap } from "gsap";
 import CustomInput from "../../Components/Inputs/CustomInput";
 import CustomButton from "../../Components/Inputs/CustomButton";
 import { useNavigate } from "react-router-dom";
+import XIcon from '@mui/icons-material/X';
 
 const socialIcons = [
-  { icon: <Facebook sx={{ fontSize: { xs: "40px", lg: "20px" } }} />, href: "https://www.facebook.com/profile.php?id=61554306921409", target: "_blank" },
-  { icon: <Twitter sx={{ fontSize: { xs: "40px", lg: "20px" } }}/>, href: "https://twitter.com", target: "_blank" },
-  { icon: <Instagram sx={{ fontSize: { xs: "40px", lg: "20px" } }}/>, href: "https://www.instagram.com/dezign_shark/", target: "_blank" },
-  { icon: <LinkedIn sx={{ fontSize: { xs: "40px", lg: "20px" } }}/>, href: "https://www.linkedin.com/company/92636430/admin/feed/posts/", target: "_blank" },
-  { icon: <YouTube sx={{ fontSize: { xs: "40px", lg: "20px" } }}/>, href: "https://www.youtube.com/@DezignShark", target: "_blank" },
+  { icon: <Facebook sx={{ fontSize: { xs: "40px", lg: "20px" } }} />, href: "https://www.instagram.com/dezign__shark?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==", target: "_blank" },
+  { icon: <XIcon sx={{ fontSize: { xs: "40px", lg: "20px" } }}/>, href: "https://x.com/DezignShark", target: "_blank" },
+  { icon: <Instagram sx={{ fontSize: { xs: "40px", lg: "20px" } }}/>, href: "https://www.instagram.com/dezign__shark?igsh=YTZyMWd1N244MXZx", target: "_blank" },
+  { icon: <LinkedIn sx={{ fontSize: { xs: "40px", lg: "20px" } }}/>, href: "https://www.linkedin.com/company/dezignshark/", target: "_blank" },
+  { icon: <YouTube sx={{ fontSize: { xs: "40px", lg: "20px" } }}/>, href: "https://youtube.com/@dezignshark?si=7-aInZhNlvvwWfx7 ", target: "_blank" },
 ];
 const menuItems = [
   { text: "About Us", path: "/aboutus" },
@@ -44,11 +45,11 @@ const menuItems = [
 ];
 const quickLinks = [
   { text: "Branding", path: "/services/branding" },
-  { text: "Social Media Marketing", path: "/services/smo" },
-  { text: "Pay-Per-Click (PPC) Advertising", path: "/services/ppc" },
-  { text: "Web Development", path: "/services/web" },
+  { text: "Social Media Marketing", path: "/services/social-media-marketing" },
+  { text: "Pay-Per-Click (PPC) Advertising", path: "/services/pay-per-click" },
+  { text: "Web Development", path: "/services/web-development" },
   { text: "Search Engine Optimization (SEO)", path: "/services/search-engine-optimization" },
-  { text: "Graphic Designing", path: "/services/content" },
+  { text: "Graphic Designing", path: "/services/graphic-designing" },
 
 ];
 

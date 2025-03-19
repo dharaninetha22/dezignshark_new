@@ -5,9 +5,11 @@ export const pageData = [
     id: "Search Engine Optimisation",
     marketStrategy: {
       title: "Search Engine Optimisation",
-      description:
-        "Boost Your Business with Page #1 Google Rankings Hire our expert SEO team to enhance your online presence and secure top rankings on search engine results pages (SERPs).",
-      checklist: [
+      subtitle:
+        " #1 Google Rankings Hire our expert SEO team to enhance your online presence and secure top rankings on search engine results pages (SERPs).",
+        description:
+        "",
+        checklist: [
         "Social media profile optimization.",
         "Engaging content creation & campaign management.",
         "Targeted audience growth & analytics tracking.",
@@ -53,8 +55,10 @@ export const pageData = [
     id: "Pay-Per-Click",
     marketStrategy: {
       title: "Pay-Per-Click",
+      subtitle:'Top PPC Company in Hyderabad – Maximize Your Conversions Today',
+
       description:
-        "Top PPC Company in Hyderabad – Maximize Your Conversions Today",
+        "",
       
       checklist: [
         "A/B tested high-converting ad creatives.",

@@ -116,9 +116,9 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, imageUrl,
 const ServicesSection: React.FC = () => {
   const services: ServiceCardProps[] = [
     { title: "Branding", description: "Create a powerful brand identity with expert branding & design. We craft unique logos, visuals, and messaging.", imageUrl: Home.branding, route: "/services/branding" },
-    { title: "Social Media Management", description: "Elevate your brand with expert Social Media Marketing (SMM). We create engaging, data-driven campaigns to boost.", imageUrl: Home.smmicon, route: "/services/smm" },
-    { title: "Pay-Per-Click (PPC)", description: "Accelerate growth with result-driven Pay-Per-Click (PPC) advertising. Our targeted, data-backed campaigns maximize.", imageUrl: Home.ppc, route: "/services/ppc" },
-    { title: "Search Engine Optimization", description: "Boost your online presence with expert SEO services. We help you rank higher on Google, improve brand credibility.", imageUrl: Home.seoicon, route: "/services/seo" },
+    { title: "Social Media Management", description: "Elevate your brand with expert Social Media Marketing (SMM). We create engaging, data-driven campaigns to boost.", imageUrl: Home.smmicon, route: "services/social-media-marketing" },
+    { title: "Pay-Per-Click (PPC)", description: "Accelerate growth with result-driven Pay-Per-Click (PPC) advertising. Our targeted, data-backed campaigns maximize.", imageUrl: Home.ppc, route: "/services/pay-per-click" },
+    { title: "Search Engine Optimization", description: "Boost your online presence with expert SEO services. We help you rank higher on Google, improve brand credibility.", imageUrl: Home.seoicon, route: "/services/search-engine-optimization" },
   ];
 
   return (
