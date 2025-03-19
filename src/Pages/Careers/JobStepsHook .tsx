@@ -31,8 +31,8 @@ const JobStepsHook = () => {
           zIndex: 1,
         }}
       /> */}
-      <Container maxWidth='xl'>
-        <Grid container spacing={4} alignItems="center" py={5}>
+      <Container maxWidth='xl' >
+        <Grid container spacing={4} alignItems="center" py={5} sx={{px:{xs:6,lg:0}}}>
           {/* Left Side: 3D Illustration */}
           <Grid item xs={12} lg={6}>
             <Box
@@ -55,7 +55,7 @@ const JobStepsHook = () => {
               Find Jobs with 3 Easy Steps
               </AnimatedText>
 
-              <Typography sx={{ color: "#74787C", mb: 4,textAlign:'start' }}>
+              <Typography sx={{ color: "#74787C", mb: 4,textAlign:'start', my:{xs:4,lg:0} }}>
                 Sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                 incididunt. Labore et dolore magna aliqua. Ut enim ad minim veniam,
                 quis nostrud exercitation.
@@ -72,7 +72,7 @@ const JobStepsHook = () => {
                     <Typography variant="h5" sx={{ fontWeight: "bold", color: "#74787C" }}>
                       {step.number}
                     </Typography>
-                    <Typography variant="body1" color="#74787C">{step.text}</Typography>
+                    <Typography variant="body1" color="#74787C" sx={{fontSize:{xs:'34px',lg:'14px'}}}>{step.text}</Typography>
                   </Stack>
                 ))}
               </Stack>

@@ -98,7 +98,7 @@ const BlogDetails: React.FC = () => {
       <Container maxWidth="lg">
         <Grid container spacing={2} alignItems="flex-start"
           sx={{
-            height: '100vh',
+            height: { xs: '50vh', lg: '100vh' },
             display: "flex",
             alignItems: "center",
             justifyContent: "flex-start",
@@ -108,11 +108,11 @@ const BlogDetails: React.FC = () => {
             <Typography
               sx={{
                 color: "#FFF",
-                fontSize: 13,
+                fontSize: { xs: '32px', lg: '14px' },
                 textTransform: "uppercase",
                 letterSpacing: 2.6,
                 mb: 2,
-                textAlign: "left",
+                textAlign: { xs: 'center', lg: 'left' },
               }}
             >
               {blog.category}
@@ -122,23 +122,26 @@ const BlogDetails: React.FC = () => {
               data-text="Creative Pattern Limited: A Designer UI/UX Complete Checklist."
               sx={{
                 color: "#FFF",
-                fontSize: { xs: 28, sm: 45, md: 60 },
+                fontSize: { xs: 66, lg: 60 },
                 fontWeight: 600,
                 lineHeight: { xs: "40px", sm: "60px", md: "70px" },
-                textAlign: "left",
+                textAlign: { xs: 'center', lg: 'left' },
                 whiteSpace: "pre-wrap",
+                mt: { xs: 4, lg: 0 },
               }}
             >
               {blog.title}
             </Typography>
-            <Box sx={{ display: "flex", alignItems: "center", gap: 2, mt: 4 }}>
+            <Box sx={{
+              display: "flex", alignItems: "center", justifyContent: { xs: 'center', lg: 'start' }, gap: 2, mt: { xs: 6, lg: 4 }, 
+            }}>
               <Avatar
                 alt={blog.author.name}
                 src={blog.author.avatar}
                 sx={{ width: 56, height: 56 }}
               />
               <Box>
-                <Typography sx={{ color: "#FFF", fontSize: 18, fontWeight: 600 }}>
+                <Typography sx={{ color: "#FFF", fontSize: { xs: '32px', lg: '18px' }, fontWeight: 600 }}>
                   {blog.author.name}
                 </Typography>
               </Box>
@@ -176,14 +179,14 @@ const BlogDetails: React.FC = () => {
                     {blog.title}
                   </Typography> */}
 
-                  <AnimatedText sx={{ color: "black", textAlign: "left", fontWeight: 700, mt: { xs: 1, lg: 4 }, fontSize: { xs: "30px", lg: "35px" } }}>
+                  <AnimatedText sx={{ color: "black", textAlign: "left", fontWeight: 700, mt: { xs: 5, lg: 4 }, fontSize: { xs: "44px", lg: "35px" } }}>
                     {blog.title}
                   </AnimatedText>
                   {blog.blogContent.map((item, index) =>
                     item.type === "text" ? (
                       <Typography variant="body1"
                         color="#74787c"
-                        textAlign='left'
+                        textAlign='justify'
                         mt={3}
                         key={index}>
                         {item.content}
@@ -206,7 +209,7 @@ const BlogDetails: React.FC = () => {
                         }}
                       >
                         <img src={blog.quoteImage} alt="blog-quote" />
-                        <Typography variant="h6" color="black">
+                        <Typography variant="h6" color="black" sx={{fontSize: { xs: "32px", lg: "16px" }}}>
                           “{item.quoteText}”
                         </Typography>
                       </Box>
@@ -220,13 +223,13 @@ const BlogDetails: React.FC = () => {
                       </Grid>
                     ))}
                     <Grid item xs={12} sm={12}>
-                      <Typography variant="h6" color="black" sx={{ textAlign: "left" }}>
+                      <Typography variant="h6" color="black" sx={{ textAlign: "left",fontSize: { xs: "44px", lg: "35px" } }}>
                         {blog.extraContent.title}
                       </Typography>
                       <Typography
                         variant="body1"
                         color="#74787c"
-                        sx={{ mt: 3, textAlign: "left" }}
+                        sx={{ mt: 3, textAlign: "justify" }}
                       >
                         {blog.extraContent.description}
                       </Typography>

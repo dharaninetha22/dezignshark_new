@@ -301,9 +301,10 @@ const Footer = () => {
 
               <CustomButton
               sx={{
-                height:{xs:'80px',lg:'40px'},
-                width:{xs:'150px',lg:'100px'},
-
+                width: { xs: '330px', lg: '100%' },
+                height: { xs: '90px', lg: '55px' },
+                fontSize: { xs: "2.2rem", lg: "1.2rem" },
+                mt:{xs:4,lg:0}
               }}
                 onClick={() => {
                   window.open(

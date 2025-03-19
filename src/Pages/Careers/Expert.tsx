@@ -12,14 +12,14 @@ const JobStepsHook = () => {
     >
 
       <Container maxWidth='xl' >
-        <Grid container spacing={4} alignItems="center" pt={5}  pb={8} >
+        <Grid container spacing={4} alignItems="center" pt={5}  pb={8} sx={{px:{xs:6,lg:0}}}>
         
 
           {/* Right Side: Text Content */}
           <Grid item xs={12} lg={6}>
             <Box sx={{ color: "#74787C", zIndex: 2 }}>
             
-              <AnimatedText sx={{ fontWeight: "bold", mb: 2 ,textAlign:"start",color:'black'}}>
+              <AnimatedText sx={{ fontWeight: "bold", mb: 2 ,textAlign:"start",color:'black',fontSize: { xs: '5em', lg: '3.2em' }}}>
               Getting Applied by an
               Expert Talent
               </AnimatedText>

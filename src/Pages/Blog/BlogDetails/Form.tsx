@@ -8,10 +8,10 @@ const CommentForm: React.FC = () => {
       {/* Title Section */}
       <Grid container spacing={2} sx={{ paddingTop: "50px" }}>
         <Grid item xs={12}>
-          <Typography variant="h4" sx={{ fontWeight: 600,textAlign:'left',color:'black' }}>
+          <Typography variant="h4" sx={{ fontWeight: 600,textAlign:'left',color:'black' ,fontSize: { xs: "44px", lg: "28px" }}}>
             Leave a Reply
           </Typography>
-          <Typography sx={{ color: "#74787C", fontSize: 16,textAlign:'left' }}>
+          <Typography sx={{ color: "#74787C", fontSize: { xs: "32px", lg: "16px" },textAlign:'left',mt:{xs:4,lg:0} }}>
             Your email address will not be published. Required fields are marked *
           </Typography>
         </Grid>
@@ -21,7 +21,7 @@ const CommentForm: React.FC = () => {
       <Grid container spacing={3} sx={{ marginTop: "30px" }} component="form">
         {/* Name Field */}
         <Grid item xs={12} md={4}>
-          <Typography variant="body2" sx={{ color: "#74787C", fontSize: 16, fontWeight: 500, mb: 1,textAlign:'left' }}>
+          <Typography variant="body2" sx={{ color: "#74787C", fontSize: { xs: "26px", lg: "16px" }, fontWeight: 500, mb: 1,textAlign:'left' ,}}>
             Name*
           </Typography>
           <TextField
@@ -47,7 +47,7 @@ const CommentForm: React.FC = () => {
 
         {/* Email Field */}
         <Grid item xs={12} md={4}>
-          <Typography  variant="body2" sx={{ color: "#74787C", fontSize: 16, fontWeight: 500, mb: 1 ,textAlign:'left'}}>
+          <Typography  variant="body2" sx={{ color: "#74787C", fontSize: { xs: "26px", lg: "16px" }, fontWeight: 500, mb: 1 ,textAlign:'left'}}>
             Email*
           </Typography>
           <TextField
@@ -74,7 +74,7 @@ const CommentForm: React.FC = () => {
 
         {/* Website Field */}
         <Grid item xs={12} md={4}>
-          <Typography  variant="body2" sx={{ color: "#74787C", fontSize: 16, fontWeight: 500, mb: 1 ,textAlign:'left'}}>
+          <Typography  variant="body2" sx={{ color: "#74787C", fontSize: { xs: "26px", lg: "16px" }, fontWeight: 500, mb: 1 ,textAlign:'left'}}>
             Number*
           </Typography>
           <TextField
@@ -99,7 +99,7 @@ const CommentForm: React.FC = () => {
 
         {/* Comment Field */}
         <Grid item xs={12} sx={{ marginTop: "10px" }}>
-          <Typography  variant="body2" sx={{ color: "#74787C", fontSize: 16, fontWeight: 500, mb: 1,textAlign:'left' }}>
+          <Typography  variant="body2" sx={{ color: "#74787C", fontSize: { xs: "26px", lg: "16px" }, fontWeight: 500, mb: 1,textAlign:'left' }}>
             Comment*
           </Typography>
           <TextField
@@ -133,7 +133,11 @@ const CommentForm: React.FC = () => {
         }}
         >
           <CustomButton
-            
+            sx={{
+              width: { xs: '330px', lg: '100%' },
+              height: { xs: '90px', lg: '55px' },
+              fontSize: { xs: "2.2rem", lg: "1.2rem" }
+            }}
           >
             Post Comment
           </CustomButton>

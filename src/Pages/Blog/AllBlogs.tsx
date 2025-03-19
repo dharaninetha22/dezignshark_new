@@ -47,7 +47,7 @@ const HoverCard: React.FC<{ title: string; category: string; description: string
     };
 
     return (
-        <Container maxWidth="xl">
+        <Container maxWidth="xl" sx={{px:{xs:2,lg:0}}}>
             <Grid item md={12} sm={6} xs={12} ref={cardRef}>
                 <Card sx={{ border: "1px solid #E6E9F0", boxShadow: 0, backgroundColor: "transparent", p: 4, textAlign: "left", mt: 4 }} onClick={handleNavigation} style={{ cursor: "pointer" }}>
                     <Box sx={{ overflow: "hidden" }}>
@@ -63,8 +63,8 @@ const HoverCard: React.FC<{ title: string; category: string; description: string
                         <Typography variant="body2" color="#74787C" sx={{ mt: 1 ,fontSize:{xs:'21px',lg:'16px'}}}>{description}</Typography>
 
                         {/* ✅ Read More Link (onClick triggers navigation) */}
-                        <Box sx={{ mt: 2, borderBottom: "1px solid #74787C", pb: 1, width:{xs:'fit-content',lg: "fit-content"} }} onClick={handleNavigation} style={{ cursor: "pointer" }}>
-                            <Typography sx={{ fontWeight: 500, fontSize: {xs:'1rem',lg:"0.9rem"}, color: 'black', "&:hover": { color: "#fc0000" }, display: "block" }}>
+                        <Box sx={{ mt: {xs:5,lg:2}, borderBottom: "1px solid #74787C", pb: 1, width:{xs:'148px',lg: "fit-content"} }} onClick={handleNavigation} style={{ cursor: "pointer" }}>
+                            <Typography sx={{ fontWeight: 500, fontSize: {xs:'28px',lg:"0.9rem"}, color: 'black', "&:hover": { color: "#fc0000" }, display: "block" }}>
                                 Read More
                             </Typography>
                         </Box>

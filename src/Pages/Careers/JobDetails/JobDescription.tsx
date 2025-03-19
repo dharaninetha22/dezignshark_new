@@ -15,7 +15,7 @@ const JobDescription = () => {
 
   return (
     <Box sx={{ maxWidth: 800, mx: "auto", p: 3 }}>
-      <Typography variant="h5" fontWeight="bold" gutterBottom sx={{ color: "#fc0000" ,textAlign:'start'}}>
+      <Typography variant="h5" fontWeight="bold" gutterBottom sx={{ color: "#fc0000" ,textAlign:'start',fontSize:{xs:'34px',lg:'16px'}}}>
         {job.jobTitle}
       </Typography>
 
@@ -25,7 +25,7 @@ const JobDescription = () => {
 
       {job.sections.map((section, index) => (
         <Box key={index} sx={{ mt: 3 }}>
-          <Typography variant="h6" fontWeight="bold" gutterBottom sx={{ color: "#fc0000",textAlign:'start' }}>
+          <Typography variant="h6" fontWeight="bold" gutterBottom sx={{ color: "#fc0000",textAlign:'start' ,fontSize:{xs:'34px',lg:'16px'}}}>
             {section.title}
           </Typography>
           <List>

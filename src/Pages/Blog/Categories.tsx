@@ -20,8 +20,8 @@ const Categories: React.FC = () => {
       sx={{
         textAlign: "start",
         border: "1px solid #E6E9F0",
-        p:5,
-        mb:4,
+        p: 5,
+        mb: 4,
         // width:'100%'
       }}
     >
@@ -29,9 +29,9 @@ const Categories: React.FC = () => {
       {/* <Typography variant="h6" sx={{ color: "#000", fontWeight: "600",mb:4 }}>
         Post Category
       </Typography> */}
-      <AnimatedText sx={{ color: "black", textAlign: "center", fontWeight: 700, mb: { xs: 1, lg: 4 } ,fontSize:{xs:"30px",lg:"20px"}}}>
-      Post Category
-              </AnimatedText>
+      <AnimatedText sx={{ color: "black", textAlign: "center", fontWeight: 700,mt: { xs: 4, lg: 0 }, mb: { xs: 4, lg: 4 }, fontSize: { xs: "54px", lg: "20px" } }}>
+        Post Category
+      </AnimatedText>
 
       {/* Category List */}
       <Box sx={{ display: "flex", flexDirection: "column", gap: "20px" }}>
@@ -48,8 +48,11 @@ const Categories: React.FC = () => {
               "&:hover": {
                 transform: "translateY(-2px)",
                 boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.15)",
-                
+
               },
+              height:{xs:'120px',lg:'50px'},
+              mt:{xs:3,lg:0}
+
             }}
           >
             <Link
@@ -57,7 +60,10 @@ const Categories: React.FC = () => {
               sx={{
                 textDecoration: "none",
                 color: "#000",
-                fontSize: "14px",
+                 fontSize: {
+                          xs: '38px',
+                          lg: '18px'
+                        },
                 fontWeight: "500",
                 display: "flex",
                 alignItems: "center",
@@ -65,16 +71,19 @@ const Categories: React.FC = () => {
                 pl: 2,
               }}
             >
-              <span style={{ color: "#007BFF", fontWeight: "bold",}}></span> {category.name}
+              <span style={{ color: "#007BFF", fontWeight: "bold", }}></span> {category.name}
             </Link>
             <Typography
-            variant="body2"
+              variant="body2"
               sx={{
                 color: "#5C5C5C",
-                fontSize: "14px",
+                 fontSize: {
+                          xs: '38px',
+                          lg: '18px'
+                        },
                 fontWeight: "bold",
                 background: '#efefef',
-              padding: '12px 12px',
+                padding: '12px 12px',
               }}
             >
               ({category.count})

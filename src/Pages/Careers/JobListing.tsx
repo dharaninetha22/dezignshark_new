@@ -86,7 +86,7 @@ const JobListing = () => {
       <Box sx={{ position: "relative", zIndex: 2, width: "100%" }}>
         {/* Title */}
        
-        <AnimatedText sx={{ textAlign: "center", mb: 3, fontWeight: "bold", color: "#fff" }}>
+        <AnimatedText sx={{ textAlign: "center", mb: {xs:5,lg:3},my: {xs:5,lg:0}, fontWeight: "bold", color: "#fff" ,fontSize: { xs: '5em', lg: '3.2em' }}}>
         Featured Jobs
         </AnimatedText>
 
@@ -102,7 +102,7 @@ const JobListing = () => {
                 centered
                 sx={{
                   "& .MuiTabs-indicator": { backgroundColor: "#7c4dff" },
-                  "& .MuiTab-root": { textTransform: "none", fontSize: "20px", color: "#fc0000" },
+                  "& .MuiTab-root": { textTransform: "none", fontSize: {xs:'30px',lg:"20px"}, color: "#fc0000" },
                   "& .Mui-selected": { color: "#fff", fontWeight: "bold" },
                 }}
               >
@@ -139,7 +139,7 @@ const JobListing = () => {
                     <Box >
                       <img src={shark} alt="Company Logo" width={60} height={60} />
                     </Box>
-                    <Typography variant="body2" sx={{ fontWeight: "bold", color: "#000", fontSize: "16px" }}>
+                    <Typography variant="body2" sx={{ fontWeight: "bold", color: "#000", fontSize: {xs:'30px',lg:'16px'},textAlign:{xs:'left',lg:'center'} }}>
                       {job.title}
                     </Typography>
                     <Box sx={{ flexGrow: 1 }} />
@@ -158,7 +158,7 @@ const JobListing = () => {
                       sx={{
                         backgroundColor: "#e3f2fd",
                         color: "#1976d2",
-                        fontSize: "14px", // 🔥 Increased Font Size
+                        fontSize: {xs:'25px',lg:'14px'}, // 🔥 Increased Font Size
                         fontWeight: "bold",
                         padding: "4px 10px",
                       }}
@@ -169,7 +169,7 @@ const JobListing = () => {
                         sx={{
                           backgroundColor: "#fff3cd",
                           color: "#856404",
-                          fontSize: "14px", // 🔥 Increased Font Size
+                          fontSize: {xs:'25px',lg:'14px'}, // 🔥 Increased Font Size
                           fontWeight: "bold",
                           padding: "4px 10px",
                         }}

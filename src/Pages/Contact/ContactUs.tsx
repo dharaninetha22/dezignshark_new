@@ -22,16 +22,16 @@ const ContactForm: React.FC = () => {
   };
 
   return (
-    <Box sx={{ backgroundColor: "white", py: 8 }}>
+    <Box sx={{ backgroundColor: "white", py: 8 ,px:{xs:6,lg:0}}}>
       <Container maxWidth="lg">
         <Box sx={{ textAlign: "center", mb: 4 }}>
-          <Typography variant="subtitle2" sx={{ textTransform: "uppercase", fontWeight: "bold", color: "black", textAlign: "left" }}>
+          <Typography variant="subtitle2" sx={{ textTransform: "uppercase", fontWeight: "bold", color: "black", textAlign: "left" ,fontSize: { xs: "28px", lg: "16px" }}}>
           Get in touch!
           </Typography>
           {/* <Typography variant="h2" sx={{ fontWeight: "bold", mt: 1, color: "black", textAlign: "left" }}>
             
           </Typography> */}
-          <AnimatedText sx={{ color: "black", textAlign: "left", fontWeight: 700, mt: { xs: 1, lg: 1 }, fontSize: { xs: "30px", lg: "35px" } }}>
+          <AnimatedText sx={{ color: "black", textAlign: "left", fontWeight: 700, mt: { xs: 1, lg: 1 }, fontSize: { xs: "55px", lg: "35px" } }}>
             Love to hear from you
           </AnimatedText>
           {/* <Typography variant="h3" sx={{ fontStyle: "italic", mt: 1, color: "black", textAlign: "left" }}>

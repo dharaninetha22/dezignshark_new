@@ -38,7 +38,7 @@ const JobCard: React.FC = () => {
         {/* Job Details */}
         <Grid item xs={12}>
           <CardContent sx={{ padding: 0 }}>
-            <Typography variant="h6" fontWeight="bold" color="white" textAlign='start'>
+            <Typography variant="h6" fontWeight="bold" color="white" textAlign='start' sx={{fontSize:{xs:'34px',lg:'16px'}}}>
               Finance Manager & Health
             </Typography>
 

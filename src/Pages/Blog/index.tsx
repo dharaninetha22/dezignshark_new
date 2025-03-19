@@ -19,7 +19,7 @@ const index = () => {
                 overlayText="Blog Posts"
             />
 
-            <Grid container sx={{ backgroundColor: "#fff" }}>
+            <Grid container sx={{ backgroundColor: "#fff",px:{xs:6,lg:0} }}>
                 <Container maxWidth='xl'>
 
                     <Grid container spacing={2}>

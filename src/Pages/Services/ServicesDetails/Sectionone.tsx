@@ -458,9 +458,9 @@ const ServicesDetails = () => {
                       {faqData.title}
                     </AnimatedText>
                     <Divider />
-                    {faqData.questions.map((faq, index) => (
+                    {/* {faqData.questions.map((faq, index) => (
                       <Box key={index}>
-                        {/* Accordion with First One Open */}
+                        
                         <Accordion
                           expanded={expanded === index}
                           onChange={() => handleAccordionChange(index)}
@@ -484,7 +484,7 @@ const ServicesDetails = () => {
                           <AccordionDetails>
                             <Typography variant="body2" color="#74787C" sx={{
                               textAlign: "justify", fontSize: {
-                                xs: '16px',
+                                xs: '32px',
                                 lg: '18px'
                               }
                             }}>
@@ -493,10 +493,59 @@ const ServicesDetails = () => {
                           </AccordionDetails>
                         </Accordion>
 
-                        {/* Divider below every FAQ */}
+                        
                         <Divider sx={{}} />
                       </Box>
-                    ))}
+                    ))} */}
+                     <Box mt={5}>
+      {faqData.questions.map((faq, index) => (
+        <Box key={index}>
+          <Accordion
+            expanded={expanded === index}
+            onChange={() => handleAccordionChange(index)}
+            sx={{ boxShadow: "none" }}
+          >
+            <AccordionSummary
+              expandIcon={expanded === index ? <RemoveIcon /> : <AddIcon />}
+              sx={{
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              {/* Question & Icon Side by Side */}
+              <Box sx={{ display: "flex", alignItems: "center", width: "100%", justifyContent: "space-between" }}>
+                <Typography
+                  variant="body1"
+                  color="black"
+                  sx={{
+                    textAlign: "left",
+                    fontSize: { xs: "38px", lg: "18px" },
+                    flexGrow: 1, // Makes sure text takes available space
+                  }}
+                >
+                  {faq.question}
+                </Typography>
+              </Box>
+            </AccordionSummary>
+            <AccordionDetails>
+              <Typography
+                variant="body2"
+                color="#74787C"
+                sx={{
+                  textAlign: "justify",
+                  fontSize: { xs: "16px", lg: "18px" },
+                }}
+              >
+                {faq.answer}
+              </Typography>
+            </AccordionDetails>
+          </Accordion>
+
+          {/* Divider below every FAQ */}
+          <Divider />
+        </Box>
+      ))}
+    </Box>
                   </Grid>
                 </Grid>
               </Box>

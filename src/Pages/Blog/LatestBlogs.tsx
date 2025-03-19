@@ -17,7 +17,7 @@ const LatestBlogs: React.FC = () => {
         <Typography variant="h6" sx={{ color: "#000", fontWeight: "600", mb: 4 }}>
           
         </Typography>
-        <AnimatedText sx={{ color: "black", textAlign: "center", fontWeight: 700, mb: { xs: 1, lg: 1 } ,fontSize:{xs:"30px",lg:"20px"}}}>
+        <AnimatedText sx={{ color: "black", textAlign: "center", mt: { xs: 4, lg: 0 },fontWeight: 700, mb: { xs: 3, lg: 1 } ,fontSize: { xs: "54px", lg: "20px" }}}>
               Post CategoryLatest Posts
                       </AnimatedText>
       </Box>
@@ -56,7 +56,7 @@ const BlogItem: React.FC<{ post: BlogPost }> = ({ post }) => {
   };
 
   return (
-    <Box sx={{ marginBottom: 3, boxShadow: "none", borderRadius: "10px" }} onClick={handleNavigation} style={{ cursor: "pointer" }}>
+    <Box sx={{ marginBottom: 3, boxShadow: "none", borderRadius: "10px" ,pb:{xs:5,lg:0}}} onClick={handleNavigation} style={{ cursor: "pointer" }}>
       <Grid container spacing={2} alignItems="center">
         <Grid item xs={4} sm={4}>
           <ButtonBase>
@@ -66,11 +66,11 @@ const BlogItem: React.FC<{ post: BlogPost }> = ({ post }) => {
           </ButtonBase>
         </Grid>
 
-        <Grid item xs={8} sm={8}>
+        <Grid item xs={8} sm={8} sx={{mt:{xs:6,lg:0}}}>
           <Typography variant="body2"
             sx={{
               color: "#000",
-              fontSize: "0.7rem",
+              fontSize: {xs:'40px',lg:"0.7rem"},
               textAlign: 'start'
             }}
           >
@@ -80,7 +80,7 @@ const BlogItem: React.FC<{ post: BlogPost }> = ({ post }) => {
             sx={{
               textDecoration: "none",
               color: "#000",
-              fontSize: "14px",
+              fontSize:  {xs:'30px',lg:"14px"},
               fontWeight: "600",
               textAlign: 'left'
             }}

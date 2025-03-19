@@ -131,7 +131,7 @@ const CreativeWorksSection: React.FC = () => {
   const navigate = useNavigate(); // Hook for navigation
 
   return (
-    <Box sx={{ py: 10, p: { xs: 6, lg: 0 } }}>
+    <Box sx={{ py: 10, px: { xs: 6, lg: 0 } }}>
       <Container maxWidth="xl">
         <Grid container spacing={4}>
           {/* Header */}

@@ -38,7 +38,7 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import { Facebook, Twitter, YouTube, WhatsApp, Instagram, LinkedIn } from "@mui/icons-material";
-import { dslogo } from "../assets";
+import { dslogo, Home } from "../assets";
 import CustomButton from "../Components/Inputs/CustomButton";
 import PopUpHeader from "../Pages/PopUpHeader";
 import PopupForm from "../Components/PopupForm";
@@ -183,75 +183,75 @@ const Header: React.FC = () => {
 
   const renderDesktopMenu = () => (
     <Box sx={{ display: { xs: "none", md: "flex" }, gap: 3 }}>
-    {navItems.map((item, index) => {
-      // Define active routes (Home & Services)
-      const isActive =
-        location.pathname === item.route ||
-        (item.label === "Services" && location.pathname.startsWith("/services")) ||
-        (item.label === "Home" && location.pathname === "/");
-  
-      return (
-        <Box
-          key={index}
-          sx={{ position: "relative", display: "flex", flexDirection: "column", alignItems: "center" }}
-          onMouseEnter={() => handleDropdownToggle(item.label)}
-          onMouseLeave={() => setDropdownOpen(null)}
-        >
-          {/* Main Navigation Item */}
-          <Typography
-            className={`nav-link ${isActive ? "active" : ""}`}
-            variant="body2"
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-             
-              position: "relative",
-              paddingLeft: isActive ? "10px" : "0", // Push text if active
-              transition: "padding-left 0.2s ease-in-out",
-              "&:hover": { paddingLeft: "10px" },
-              cursor: "none !important",
-            }}
-            
-            onClick={() => handleNavigate(item.route)}
-          >
-            {item.label} {item.submenu && <ArrowDropDownIcon />}
-          </Typography>
-  
-          {/* Underline Effect */}
+      {navItems.map((item, index) => {
+        // Define active routes (Home & Services)
+        const isActive =
+          location.pathname === item.route ||
+          (item.label === "Services" && location.pathname.startsWith("/services")) ||
+          (item.label === "Home" && location.pathname === "/");
+
+        return (
           <Box
-            className="nav-underline"
-            sx={{
-              position: "absolute",
-              bottom: "-4px",
-              left: 0,
-              width: isActive ? "100%" : "0%", // Active pages have full underline
-              height: "2px",
-              backgroundColor: "white",
-              transition: "width 0.3s ease-in-out",
-            }}
-          />
-  
-          {/* Dropdown Menu */}
-          {item.submenu && dropdownOpen === item.label && (
-            <Box className="dropdown-menu" ref={dropdownRef}>
-              {item.submenu.map((subItem, subIndex) => (
-                <Typography
-                  key={subIndex}
-                  className="dropdown-item"
-                  variant="body2"
-                  onClick={() => handleNavigate(subItem.route)}
-                >
-                  {subItem.label}
-                </Typography>
-              ))}
-            </Box>
-          )}
-        </Box>
-      );
-    })}
-  </Box>
-  
+            key={index}
+            sx={{ position: "relative", display: "flex", flexDirection: "column", alignItems: "center" }}
+            onMouseEnter={() => handleDropdownToggle(item.label)}
+            onMouseLeave={() => setDropdownOpen(null)}
+          >
+            {/* Main Navigation Item */}
+            <Typography
+              className={`nav-link ${isActive ? "active" : ""}`}
+              variant="body2"
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+
+                position: "relative",
+                paddingLeft: isActive ? "10px" : "0", // Push text if active
+                transition: "padding-left 0.2s ease-in-out",
+                "&:hover": { paddingLeft: "10px" },
+                cursor: "none !important",
+              }}
+
+              onClick={() => handleNavigate(item.route)}
+            >
+              {item.label} {item.submenu && <ArrowDropDownIcon />}
+            </Typography>
+
+            {/* Underline Effect */}
+            <Box
+              className="nav-underline"
+              sx={{
+                position: "absolute",
+                bottom: "-4px",
+                left: 0,
+                width: isActive ? "100%" : "0%", // Active pages have full underline
+                height: "2px",
+                backgroundColor: "white",
+                transition: "width 0.3s ease-in-out",
+              }}
+            />
+
+            {/* Dropdown Menu */}
+            {item.submenu && dropdownOpen === item.label && (
+              <Box className="dropdown-menu" ref={dropdownRef}>
+                {item.submenu.map((subItem, subIndex) => (
+                  <Typography
+                    key={subIndex}
+                    className="dropdown-item"
+                    variant="body2"
+                    onClick={() => handleNavigate(subItem.route)}
+                  >
+                    {subItem.label}
+                  </Typography>
+                ))}
+              </Box>
+            )}
+          </Box>
+        );
+      })}
+    </Box>
+
 
 
 
@@ -271,7 +271,7 @@ const Header: React.FC = () => {
           // background: "linear-gradient(135deg, #1E1E1E 0%, #000000 100%)", // 3D gradient background
           color: "white",
           border: "none",
-          overflow: "hidden",
+          overflowY: "auto", // Enables scrolling
           backgroundColor: "rgba(0, 0, 0, 0.2)", // Semi-transparent black
           backdropFilter: "blur(10px)", // Blur effect
         },
@@ -280,119 +280,117 @@ const Header: React.FC = () => {
       {/* Drawer Content */}
       <Box className="drawer-content" sx={{ width: 700, display: "flex", flexDirection: "column", height: "100%" }}>
 
-
+        {/* Close Button (Top Right Corner) */}
+        <IconButton
+          onClick={handleDrawerToggle}
+          sx={{
+            position: "absolute",
+            top: 20,
+            right: 20,
+            backgroundColor: "#fc0000",
+            "&:hover": { backgroundColor: "rgba(223, 10, 10, 0.2)" },
+            borderRadius: "50%",
+            padding: "10px",
+          }}
+        >
+          <CloseIcon sx={{ color: "#FFFFFF", fontSize: "30px" }} />
+        </IconButton>
 
         {/* Close Button */}
-        <Box sx={{ display: "flex", justifyContent: "space-between", mt: 10, px: 2, mb: 8 }}>
 
 
-          {/* Logo */}
-          <Box >
-            <Box component="img" src={dslogo} alt="Logo" sx={{ height: "auto" }} />
-          </Box>
-
-          <IconButton
-            onClick={handleDrawerToggle}
-            sx={{
-              backgroundColor: "#fc0000",
-              "&:hover": { backgroundColor: "rgba(223, 10, 10, 0.2)" },
-              borderRadius: "50%",
-              padding: "10px",
-              mr: 2
-            }}
-          >
-            <CloseIcon sx={{ color: "#FFFFFF", fontSize: "24px" }} />
-          </IconButton>
+        {/* Logo */}
+        <Box >
+          <Box component="img" src={Home.logosidebar} alt="Logo" sx={{ height: "auto" }} />
         </Box>
-
         {/* Navigation List */}
 
 
 
         <List>
-  {navItems.map((item, index) => (
-    <Box key={index}>
-      <ListItemButton
-        onClick={() => handleNavigate(item.route)}
-        sx={{
-          color: "#FFF",
-          transition: "border-left 0.3s ease-in-out",
-          borderLeft: openSubMenu === item.label ? "3px solid red" : "3px solid transparent",
-        }}
-      >
-        {/* Correctly apply font size using `primaryTypographyProps` */}
-        <ListItemText
-          primary={item.label}
-          primaryTypographyProps={{
-            sx: {
-              fontSize: "60px !important", // Ensures it overrides any defaults
-              fontWeight: "bold",
-              color: "white",
-              pl:5
-            },
-          }}
-        />
-
-        {item.submenu && (
-          <IconButton
-            onClick={(e) => {
-              e.stopPropagation();
-              handleMobileSubMenuToggle(item.label);
-            }}
-          >
-            <ArrowDropDownIcon
-              sx={{
-                transform: openSubMenu === item.label ? "rotate(180deg)" : "rotate(0deg)",
-                color: "#FFF",
-                fontSize:'80px'
-              }}
-            />
-          </IconButton>
-        )}
-      </ListItemButton>
-      <Divider sx={{ backgroundColor: "#FFFFFF80" }} />
-
-      {/* Submenu */}
-      {item.submenu && (
-        <Collapse in={openSubMenu === item.label} timeout="auto" unmountOnExit>
-          <List sx={{ pl: 4 }}>
-            {item.submenu.map((subItem, subIndex) => {
-              const isSubActive = location.pathname === subItem.route;
-              return (
-                <ListItemButton
-                  key={subIndex}
-                  onClick={() => handleNavigate(subItem.route)}
-                  sx={{
-                    color: "#FFF",
-                    borderLeft: isSubActive ? "3px solid red" : "3px solid transparent",
-                    transition: "border-left 0.3s ease-in-out",
-                    "&:hover": { borderLeft: "3px solid red" },
+          {navItems.map((item, index) => (
+            <Box key={index}>
+              <ListItemButton
+                onClick={() => handleNavigate(item.route)}
+                sx={{
+                  color: "#FFF",
+                  transition: "border-left 0.3s ease-in-out",
+                  borderLeft: openSubMenu === item.label ? "3px solid red" : "3px solid transparent",
+                }}
+              >
+                {/* Correctly apply font size using `primaryTypographyProps` */}
+                <ListItemText
+                  primary={item.label}
+                  primaryTypographyProps={{
+                    sx: {
+                      fontSize: "60px !important", // Ensures it overrides any defaults
+                      fontWeight: "bold",
+                      color: "white",
+                      pl: 5
+                    },
                   }}
-                >
-                  {/* Apply font size using `primaryTypographyProps` */}
-                  <ListItemText
-                    primary={subItem.label}
-                    primaryTypographyProps={{
-                      sx: {
-                        fontSize: "60px !important", // Forces MUI to apply it
-                        fontWeight: "bold",
-                        color: "white",
-                      },
+                />
+
+                {item.submenu && (
+                  <IconButton
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleMobileSubMenuToggle(item.label);
                     }}
-                  />
-                </ListItemButton>
-              );
-            })}
-          </List>
-        </Collapse>
-      )}
-    </Box>
-  ))}
-</List>
+                  >
+                    <ArrowDropDownIcon
+                      sx={{
+                        transform: openSubMenu === item.label ? "rotate(180deg)" : "rotate(0deg)",
+                        color: "#FFF",
+                        fontSize: '80px'
+                      }}
+                    />
+                  </IconButton>
+                )}
+              </ListItemButton>
+              <Divider sx={{ backgroundColor: "#FFFFFF80" }} />
+
+              {/* Submenu */}
+              {item.submenu && (
+                <Collapse in={openSubMenu === item.label} timeout="auto" unmountOnExit>
+                  <List sx={{ pl: 4 }}>
+                    {item.submenu.map((subItem, subIndex) => {
+                      const isSubActive = location.pathname === subItem.route;
+                      return (
+                        <ListItemButton
+                          key={subIndex}
+                          onClick={() => handleNavigate(subItem.route)}
+                          sx={{
+                            color: "#FFF",
+                            borderLeft: isSubActive ? "3px solid red" : "3px solid transparent",
+                            transition: "border-left 0.3s ease-in-out",
+                            "&:hover": { borderLeft: "3px solid red" },
+                          }}
+                        >
+                          {/* Apply font size using `primaryTypographyProps` */}
+                          <ListItemText
+                            primary={subItem.label}
+                            primaryTypographyProps={{
+                              sx: {
+                                fontSize: "60px !important", // Forces MUI to apply it
+                                fontWeight: "bold",
+                                color: "white",
+                              },
+                            }}
+                          />
+                        </ListItemButton>
+                      );
+                    })}
+                  </List>
+                </Collapse>
+              )}
+            </Box>
+          ))}
+        </List>
 
 
         {/* Social Icons & Footer (Positioned at Bottom) */}
-        <Box sx={{mt:4}} />
+        <Box sx={{ mt: 4 }} />
         <Box sx={{ display: "flex", justifyContent: "center", gap: 2, mt: 5 }}>
           <IconButton
             sx={{
@@ -401,9 +399,9 @@ const Header: React.FC = () => {
               "&:hover": { backgroundColor: "rgba(223, 10, 10, 0.2)" },
               borderRadius: "50%",
               padding: "30px",
-              
+
             }}>
-            <WhatsAppIcon sx={{fontSize:'60px'}} />
+            <WhatsAppIcon sx={{ fontSize: '60px' }} />
           </IconButton>
           <IconButton sx={{
             color: "#FFFFFF",
@@ -412,7 +410,7 @@ const Header: React.FC = () => {
             borderRadius: "50%",
             padding: "25px",
           }}>
-            <TwitterIcon sx={{fontSize:'60px'}}/>
+            <TwitterIcon sx={{ fontSize: '60px' }} />
           </IconButton>
           <IconButton sx={{
             color: "#FFFFFF",
@@ -421,7 +419,7 @@ const Header: React.FC = () => {
             borderRadius: "50%",
             padding: "25px",
           }}>
-            <InstagramIcon sx={{fontSize:'60px'}}/>
+            <InstagramIcon sx={{ fontSize: '60px' }} />
           </IconButton>
           <IconButton sx={{
             color: "#FFFFFF",
@@ -430,7 +428,7 @@ const Header: React.FC = () => {
             borderRadius: "50%",
             padding: "25px",
           }}>
-            <FacebookIcon sx={{fontSize:'60px'}}/>
+            <FacebookIcon sx={{ fontSize: '60px' }} />
           </IconButton>
           <IconButton sx={{
             color: "#FFFFFF",
@@ -439,12 +437,12 @@ const Header: React.FC = () => {
             borderRadius: "50%",
             padding: "25px",
           }}>
-            <LinkedInIcon sx={{fontSize:'60px'}} />
+            <LinkedInIcon sx={{ fontSize: '60px' }} />
           </IconButton>
         </Box>
 
         {/* Footer Text */}
-        <Typography variant="body2" align="center" sx={{ mt: 8, color: "#FFFFFF80", fontSize:'32px !important'}}>
+        <Typography variant="body2" align="center" sx={{ mt: 8, color: "#FFFFFF80", fontSize: '32px !important' }}>
           ©2025 All Rights Reserved. Designed by Dezign Shark.
         </Typography>
       </Box>
@@ -462,10 +460,10 @@ const Header: React.FC = () => {
         // position="sticky"
         sx={{
           // backgroundColor: 'transparent',
-          height:{
-            xs:'150px',
-            lg:'auto',
-            md:'auto'
+          height: {
+            xs: '150px',
+            lg: 'auto',
+            md: 'auto'
           },
           width: '100%',
           boxShadow: 'none',
@@ -476,11 +474,11 @@ const Header: React.FC = () => {
 
         <Container maxWidth='xl'>
           <Toolbar
-           sx={{ 
-            display: "flex", 
-            justifyContent: "space-between", alignItems: "center", 
-            padding: { xs: '32px 10px ', lg: "8px 10px",  },
-             }}>
+            sx={{
+              display: "flex",
+              justifyContent: "space-between", alignItems: "center",
+              padding: { xs: '32px 10px ', lg: "8px 10px", },
+            }}>
             <Box sx={{ display: "flex", alignItems: "center", cursor: "pointer", py: 1 }} onClick={() => handleNavigate("/")}>
               <img src={dslogo} alt="logo" className="logo-img" />
             </Box>
@@ -490,40 +488,40 @@ const Header: React.FC = () => {
 
             <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "0 10px", gap: '20px' }}>
               <Box
-              
-              sx={{
-                width:{
-                  xs:'300px',
-                  md:"auto"
-                }
-              }}
+
+                sx={{
+                  width: {
+                    xs: '300px',
+                    md: "auto"
+                  }
+                }}
               >
 
                 <CustomButton
-                    
-                sx={{
-                  width:{
-                    xs:"370px ",
-                    lg:"216px",
-                   
-                   
-                  },
-                  height:{
-                    xs:"64px  ",
-                    lg:"40px",
-                
-                  },
-                  fontSize:{
-                     xs:"26px  ",
-                    lg:"13px",
-                  
-                  },
-                }}
-                 onClick={() => setShowFormPopup(true)}
+
+                  sx={{
+                    width: {
+                      xs: "370px ",
+                      lg: "216px",
+
+
+                    },
+                    height: {
+                      xs: "64px  ",
+                      lg: "40px",
+
+                    },
+                    fontSize: {
+                      xs: "26px  ",
+                      lg: "13px",
+
+                    },
+                  }}
+                  onClick={() => setShowFormPopup(true)}
                 >
                   Download Brochure
                 </CustomButton>
-               
+
               </Box>
               {/* Mobile Toggle Button */}
 
@@ -544,10 +542,10 @@ const Header: React.FC = () => {
 
               {/* Mobile Toggle Button */}
               {isMobile && (
-                <IconButton color="inherit" onClick={handleDrawerToggle} 
-                
+                <IconButton color="inherit" onClick={handleDrawerToggle}
+
                 >
-                  <MenuIcon  style={{fontSize:'50px'}}/>
+                  <MenuIcon style={{ fontSize: '50px' }} />
                 </IconButton>
               )}
 

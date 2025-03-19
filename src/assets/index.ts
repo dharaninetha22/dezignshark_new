@@ -20,6 +20,7 @@ import imageeffect from  './images/home/image_effects.jpg'
 import ppc from './images/home/pay-per-click.png'
 import homenav from './images/home/homenav.jpg'
 import webbannerr from './images/home/dswebsitebanner.png'
+import logosidebar from './images/home/logosidebar.png'
 
 import seoicon from './images/home/seoicon.png'
 import webicon from './images/home/website.png'
@@ -149,7 +150,7 @@ export const Home={
     portfolio7,
     testi,clientlogo,blog,bgfooterimg,
  imageeffect ,seoicon,branding,webicon,smmicon,contenticon,ppc,
- homenav,webbannerr
+ homenav,webbannerr,logosidebar
 
     
 
