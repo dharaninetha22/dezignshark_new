@@ -23,42 +23,42 @@ interface Service {
 // Services Data
 const services: Service[] = [
   {
-    id: "seo",
+    id: "Search Engine Optimisation",
     title: "Search Engine Optimization (SEO)",
     subtitle: "We drive engagement & credibility with data-driven social media strategies.",
     description: ["Social media profile optimization.", "Engaging content creation & campaign management."],
     image: Home.seoicon,
   },
   {
-    id: "web",
+    id: "Web Development",
     title: "Website Design & Development",
     subtitle: "Transform Visitors into Customers with a Stunning Website",
     description: ["UX/UI-optimized website designs.", "SEO-friendly website structure."],
     image: Home.webicon,
   },
   {
-    id: "ppc",
+    id: "Pay-Per-Click",
     title: "Pay-Per-Click (PPC) Advertising",
     subtitle: "Our PPC campaigns drive leads & sales with Google Ads, Facebook Ads & retargeting.",
     description: ["A/B tested high-converting ad creatives.", "Data-driven bid management & audience segmentation."],
     image: Home.ppc,
   },
   {
-    id: "content",
+    id: "Graphic Designing",
     title: "Content Marketing",
-    subtitle: "Our experts craft keyword-optimized content that educates, engages & converts.",
+    subtitle: "Make a bold visual impact with cutting-edge designs that capture attention.",
     description: ["SEO-optimized blogs & articles.", "Video scripts & infographics."],
     image: Home.contenticon,
   },
   {
-    id: "branding",
+    id: "Branding",
     title: "Creative Design & Branding",
     subtitle: "We craft creative designs for a strong, distinctive brand presence.",
-    description: ["SEO-optimized blogs & articles.", "Video scripts & infographics."],
+    description: ["Logo design & complete brand identity.", "Website, social media & ad creatives"],
     image: Home.branding,
   },
   {
-    id: "smo",
+    id: "Social Media Marketing",
     title: "Social Media Optimization (SMO)",
     subtitle: "We drive engagement & credibility with data-driven social media strategies.",
     description: ["Social media profile optimization.", "Engaging content creation & campaign management."],
@@ -76,7 +76,7 @@ const ServicesSection: React.FC = () => {
   const controls = useAnimation();
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.3 });
   const navigate = useNavigate();
-  
+
   // ✅ Check if screen size is mobile
   const isMobile = useMediaQuery("(max-width:1080px)");
 
@@ -85,14 +85,14 @@ const ServicesSection: React.FC = () => {
   }, [controls, inView]);
 
   return (
-    <Box sx={{ pt: 10, pb: 10, background: "#f8f8f8", px: { xs: 5, lg: 0 } }}>
+    <Box sx={{ pt: 10, pb: 10, background: "#f8f8f8", px: { xs: 6, lg: 0 } }}>
       <motion.div ref={ref} initial="hidden" animate={controls} variants={slideUp}>
         <Container maxWidth="xl">
           {/* Main Title */}
 
-            <AnimatedText sx={{color:'black',textAlign:"left",mb:5}}>
-              Our Services
-            </AnimatedText>
+          <AnimatedText sx={{ color: 'black', textAlign: "left", mb: 5, fontSize: { xs: '5em', lg: '3.2em' } }}>
+            Our Services
+          </AnimatedText>
 
         </Container>
       </motion.div>
@@ -110,7 +110,7 @@ const ServicesSection: React.FC = () => {
           768: { slidesPerView: 1 }, // ✅ Tablets: Show 1.5 cards
           1024: { slidesPerView: 2.5 }, // ✅ Larger screens: Show 2.5 cards
         }}
-        style={{ width: "100%", height: "500px" }}
+        style={{ width: "100%", height: "700px" }}
 
       >
         {services.map((service) => (
@@ -122,7 +122,7 @@ const ServicesSection: React.FC = () => {
               onClick={() => navigate(`/services/${service.id}`)}
               style={{
                 // height: "320px",
-                height: isMobile ? "480px" : "320px",
+                height: isMobile ? "700px" : "320px",
                 padding: "30px",
                 background: "#eeeeee",
                 borderRadius: "8px",
@@ -142,8 +142,8 @@ const ServicesSection: React.FC = () => {
                 <Box display="flex" alignItems="center" gap={3} sx={{ mt: 1 }}>
                   <Box
                     sx={{
-                      width: 100,
-                      height: 100,
+                      width: { xs: '160px', lg: '100px' },
+                      height: { xs: '160px', lg: '100px' },
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
@@ -153,7 +153,16 @@ const ServicesSection: React.FC = () => {
                       overflow: "hidden",
                     }}
                   >
-                    <img src={service.image} alt={service.title} style={{ width: "60px", height: "60px" }} />
+                    {/* <img src={service.image} alt={service.title} style={{ width: "60px", height: "60px" }} /> */}
+                    <Box
+                      component="img"
+                      src={service.image}
+                      alt={service.title}
+                      sx={{
+                        width: { xs: "100px", lg: "60px" }, // Image size responsive
+                        height:{ xs: "100px", lg: "60px" },
+                      }}
+                    />
                   </Box>
                   <Typography variant="h5" color="black" fontWeight={800}
                     sx={{
@@ -167,27 +176,47 @@ const ServicesSection: React.FC = () => {
                   </Typography>
                 </Box>
 
-                <Typography variant="body1" color="#555" fontWeight={500} my={2} 
-                sx={{
-                  fontSize: {
-                    xs: '30px',
-                    lg: '18px'
-                  },
-                }}>
+                <Typography variant="body1" color="#555" fontWeight={500} my={2}
+                  sx={{
+                    fontSize: {
+                      xs: '36px',
+                      lg: '18px'
+                    },
+                  }}>
                   {service.subtitle}
                 </Typography>
 
                 {/* List with Circular Bullets */}
-                <Box component="ul" sx={{ padding: 0, listStyle: "none", margin: 0 ,
+                <Box component="ul" sx={{
+                  padding: 0, listStyle: "none", margin: 0,
                 }}>
                   {service.description.map((point, i) => (
-                    <Box component="li" key={i} sx={{ display: "flex", alignItems: "center", gap: "10px", mb: "8px", color: "#828282" }}>
-                      <Box sx={{ width: "8px", height: "8px", borderRadius: "50%", backgroundColor: "black", flexShrink: 0 }} />
-                      <Typography variant="body2" sx={{ color: "#828282",
-                      fontSize: {
-                        xs: '30px',
-                        lg: '16px'
-                      } }}>
+                    <Box component="li" key={i} sx={{
+                      display: "flex", alignItems: "center", gap: {
+                        xs: '15px',
+                        lg: '10px'
+                      }, mb: "8px", color: "#828282"
+                    }}>
+                      <Box sx={{
+                        width: {
+                          xs: '15px',
+                          lg: '8px'
+                        },
+                        height: {
+                          xs: '15px',
+                          lg: '8px'
+                        },
+                        borderRadius: "50%",
+                        backgroundColor: "black",
+                        flexShrink: 0
+                      }} />
+                      <Typography variant="body2" sx={{
+                        color: "#828282",
+                        fontSize: {
+                          xs: '36px',
+                          lg: '16px'
+                        }
+                      }}>
                         {point}
                       </Typography>
                     </Box>
@@ -197,11 +226,18 @@ const ServicesSection: React.FC = () => {
 
               {/* Get Started Button */}
               <Box display="flex" alignItems="center" onClick={() => navigate(`/services/${service.id}`)} sx={{ cursor: "pointer" }}>
-                <Box sx={{ color: "black", fontSize: {
-                        xs: '30px',
-                        lg: '16px'
-                      }, fontWeight: 500 }}>Get Started</Box>
-                <IconButton sx={{ color: "black", ml: 1 }}>
+                <Box sx={{
+                  color: "black", fontSize: {
+                    xs: '34px',
+                    lg: '16px'
+                  }, fontWeight: 500
+                }}>Get Started</Box>
+                <IconButton sx={{
+                  color: "black", ml: 1, fontSize: {
+                    xs: '2.5rem',
+                    lg: '1.5rem'
+                  }
+                }}>
                   <ArrowForward />
                 </IconButton>
               </Box>

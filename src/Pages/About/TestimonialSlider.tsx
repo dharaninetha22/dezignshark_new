@@ -103,9 +103,10 @@ const TestimonialSlider: React.FC = () => {
                                                 },
                                                 color: "black",
                                                 fontSize:{
-                                                    xs:'30px',
+                                                    xs:'35px',
                                                     lg:'24px'
-                                                }
+                                                },
+                                                mb: {xs:4,lg:2}
                                             }}
                                         >
                                             TRUSTED FROM OVER 1,500 CLIENTS
@@ -113,7 +114,8 @@ const TestimonialSlider: React.FC = () => {
                                         <Avatar
                                             src={testimonial.image}
                                             alt={testimonial.name}
-                                            sx={{ width: 200, height: 200, marginTop: 2 }}
+                                                
+                                            sx={{ width: 200, height: 200, marginTop: 2 , mb: {xs:2,lg:0}}}
                                         />
                                     </Grid>
 
@@ -122,7 +124,7 @@ const TestimonialSlider: React.FC = () => {
                                         <Typography
                                             variant="h5"
                                             sx={{ color: "#333", textAlign: "justify" ,fontSize:{
-                                                xs:'30px',
+                                                xs:'36px',
                                                 lg:'24px'
                                             }}}
                                         >
@@ -131,12 +133,12 @@ const TestimonialSlider: React.FC = () => {
                                         <Typography
                                             variant="subtitle2"
                                             sx={{
-                                                fontWeight: "bold",
-                                                marginTop: 2,
+                                                fontWeight: 600,
+                                                marginTop: {xs:5,lg:2},
                                                 color: "black",
                                                 textAlign: "left",
                                                 fontSize:{
-                                                    xs:'28px',
+                                                    xs:'32px',
                                                     lg:'20px'
                                                 }
                                             }}
