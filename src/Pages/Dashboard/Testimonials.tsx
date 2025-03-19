@@ -57,7 +57,7 @@ const Testimonials: React.FC = () => {
         <Grid container>
           <Grid item xs={12} lg={5} sx={{  mb: 5,  textAlign: "left",px:{xs:'63px',lg:'0'}  }}>
 
-              <AnimatedText  >
+              <AnimatedText sx={{fontSize:{xs:'5em',lg:'3.2em'},mb:{xs:3,lg:1}}} >
                 WHAT CLIENTS SAY ABOUT US
               </AnimatedText>
             

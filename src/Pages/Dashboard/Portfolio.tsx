@@ -137,11 +137,13 @@ const CreativeWorksSection: React.FC = () => {
           {/* Header */}
           <Grid item xs={12} lg={6}>
             <Box sx={{ textAlign: { xs: "center", md: "left" } }}>
-              <AnimatedText>OUR CREATIVE WORKS ARE OUR IDENTITY</AnimatedText>
+              <AnimatedText sx={{fontSize:{xs:'5em',lg:'3.2em'},md:{xs:3,lg:0}}}>
+                OUR CREATIVE WORKS ARE OUR IDENTITY
+                </AnimatedText>
             </Box>
           </Grid>
           <Grid item xs={12} lg={6}>
-            <Typography variant="body1" color="white" textAlign={'left'} sx={{ mb: { xs: 3, lg: 0 } }}>
+            <Typography variant="body1" color="white" sx={{ mb: { xs: 3, lg: 0 } ,textAlign:{xs:'justify',lg:'left'}}}>
               We develop powerful, data-driven marketing strategies to elevate your brand and maximize its digital impact. If you're unsure how to achieve more, we’ll redefine your branding, identify new growth opportunities, and position your business for success in the ever-evolving digital landscape.
             </Typography>
           </Grid>

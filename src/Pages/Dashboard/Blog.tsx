@@ -148,7 +148,7 @@ const BlogCarousel: React.FC = () => {
       <Container maxWidth='xl'>
         {/* Section Heading */}
         <Box sx={{ textAlign: "center", mb: 6 }}>
-          <AnimatedText sx={{ fontSize: { xs: '4.2em', lg: "3.2em" } }}>
+          <AnimatedText sx={{ fontSize: { xs: '5em', lg: "3.2em" } }}>
             Latest Blog
           </AnimatedText>
         </Box>

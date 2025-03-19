@@ -158,20 +158,20 @@ const Footer = () => {
             </Box>
 
             <Box sx={{ display: "flex", alignItems: "start", mb: 2 ,gap:{xs:2,lg:0}}}>
-              <Phone sx={{ fontSize: 24, color: "#fc0000", minWidth: "40px" ,}} />
+              <Phone sx={{  fontSize: {xs:50,lg:24}, color: "#fc0000", minWidth: "40px" ,}} />
               <Link href="tel:+91 799 799 2885" color="inherit" sx={{ textDecoration: "none",fontSize: {xs:"30px",lg:"16px"} }}>
                 +91 799 799 2885
               </Link>
             </Box>
 
             <Box sx={{ display: "flex", alignItems: "start" ,gap:{xs:2,lg:0}}}>
-              <Email sx={{ fontSize: 24, color: "#fc0000", minWidth: "40px" }} />
+              <Email sx={{ fontSize: {xs:50,lg:24}, color: "#fc0000", minWidth: "40px" }} />
               <Link href="mailto:info@dezignshark.com" color="inherit" sx={{ textDecoration: "none",fontSize: {xs:"30px",lg:"16px"} }}>
                 info@dezignshark.com
               </Link>
             </Box>
             {/* Social Icons */}
-            <Box sx={{ mt: 4, display: "flex", gap: 1 }}>
+            <Box sx={{ mt: {xs:5,lg:4}, display: "flex", gap: 1 }}>
               {socialIcons.map((item, index) => (
                 <IconButton
                   key={index}
@@ -202,13 +202,17 @@ const Footer = () => {
 
 
           {/* Menu Section */}
-          <Grid item xs={12} lg={3}
+          <Grid item xs={5} lg={3}
 
           >
             <Box sx={{
               paddingLeft: {
                 xs: 0,
                 lg: 8
+              },
+              mt: {
+                xs: 3,
+                lg: 0
               }
             }}>
 
@@ -221,13 +225,13 @@ const Footer = () => {
                   onClick={() => navigate(item.path)} // ✅ Navigate on click
                   sx={{
                     display: "block",
-                    mt: 2,
+                    mt: {xs:3,lg:2},
                     textDecoration: "none",
                     color: "white",
                     transition: "color 0.3s ease", // ✅ Smooth transition
                     cursor: "pointer", // ✅ Indicate clickable
                     "&:hover": { color: "red" }, // ✅ Change color on hover
-                    fontSize: {xs:"30px",lg:"16px"}
+                    fontSize: {xs:"34px",lg:"16px"}
                   }}
                 >
                   {item.text}
@@ -237,7 +241,12 @@ const Footer = () => {
           </Grid>
 
           {/* Quick Links */}
-          <Grid item xs={12} lg={3}>
+          <Grid item xs={7} lg={3} 
+          sx={{
+            mt: {
+                xs: 3,
+                lg: 0
+              }}}>
             <Typography variant="h4" gutterBottom sx={{ mb: 4 }}>
               Quick Links
             </Typography>
@@ -247,12 +256,12 @@ const Footer = () => {
                 href={item.path} // ✅ Link to correct page
                 sx={{
                   display: "block",
-                  mt: 2,
+                  mt: {xs:3,lg:2},
                   textDecoration: "none",
                   color: "white",
                   transition: "color 0.3s ease", // ✅ Smooth transition
                   "&:hover": { color: "red" }, // ✅ Change color on hover
-                  fontSize: {xs:"30px",lg:"16px"}
+                  fontSize: {xs:"34px",lg:"16px"}
                 }}
               >
                 {item.text}
@@ -262,10 +271,10 @@ const Footer = () => {
 
           {/* Newsletter Section */}
           <Grid item xs={12} lg={3}>
-            <Typography variant="h4" gutterBottom sx={{ mb: 4 }}>
+            <Typography variant="h4" gutterBottom sx={{ mb: 4,mt: {xs:3,lg:0}, }}>
               Subscribe to Our Newsletter
             </Typography>
-            <Typography variant="body2" sx={{fontSize: {xs:"30px",lg:"16px"},mb:2}}>
+            <Typography variant="body2" sx={{fontSize: {xs:"34px",lg:"16px"},mb:2}}>
               Stay up-to-date with the latest trends in digital marketing and
               receive exclusive tips and insights.
             </Typography>
@@ -294,7 +303,7 @@ const Footer = () => {
               sx={{
                 height:{xs:'80px',lg:'40px'},
                 width:{xs:'150px',lg:'100px'},
-                
+
               }}
                 onClick={() => {
                   window.open(
