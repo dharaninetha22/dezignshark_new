@@ -29,7 +29,8 @@ function App() {
       <ThemeProvider theme={theme}>
         <QueryClientProvider client={queryClient}>
           {loading ? (
-            <Preloader onFinish={() => setLoading(false)}/>
+            // <Preloader onFinish={() => setLoading(false)}/>
+            <Preloader videoSrc="./dspreloader.mp4" onEnd={() => setLoading(false)} />
           ) : (
             <RouterProvider router={router} />
           )}

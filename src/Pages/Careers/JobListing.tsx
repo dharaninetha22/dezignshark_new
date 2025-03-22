@@ -14,7 +14,7 @@ const jobs = [
   { id: 2, title: "Finance Manager & Health", category: "Design", location: "New York", type: "Full Time", urgent: true },
   { id: 3, title: "General Ledger Accountant", category: "Design", location: "New York", type: "Full Time", urgent: false },
   { id: 4, title: "Assistant / Store Keeper", category: "Development", location: "New York", type: "Part Time", urgent: false },
-  { id: 5, title: "Group Marketing Manager", category: "Customer", location: "Miami", type: "Part Time", urgent: false },
+  // { id: 5, title: "Group Marketing Manager", category: "Customer", location: "Miami", type: "Part Time", urgent: false },
   // { id: 6, title: "Product Sales Specialist", category: "Project Management", location: "New York", type: "Internship", urgent: false },
   // { id: 7, title: "UX/UI Designer Web", category: "Design", location: "Paris", type: "Freelance", urgent: false },
   // { id: 8, title: "Executive, HR Operations", category: "Customer", location: "New York", type: "Temporary", urgent: true },
@@ -119,7 +119,7 @@ const JobListing = () => {
         {/* Job Cards Grid */}
         <Grid container spacing={3} justifyContent="center" data-aos="fade-down" sx={{mt:{xs:5,lg:0}}}>
           {filteredJobs.map((job) => (
-            <Grid item xs={12}  lg={4} key={job.id}>
+            <Grid item xs={12}  lg={6} key={job.id}>
               <Card
                 className="job-card"
                 sx={{

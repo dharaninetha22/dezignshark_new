@@ -41,7 +41,7 @@ const GridLine = styled(Box)({
 
 // ✅ Styled Approach Box with Hover Effect
 const ApproachBox = styled(Box)<ApproachBoxProps>(({ bgImage }) => ({
-    padding: "32px",
+    padding: "12px",
     borderRadius: "6px",
     position: "relative",
     transition: "0.3s",
@@ -56,7 +56,7 @@ const ApproachBox = styled(Box)<ApproachBoxProps>(({ bgImage }) => ({
         transform: "translateX(5px)",
     },
     " &:hover p": {
-        color: "#fff",
+        color: "#000",
     },
     "&:hover .title, &:hover .count": {
         color: "#fc0000",
@@ -64,20 +64,6 @@ const ApproachBox = styled(Box)<ApproachBoxProps>(({ bgImage }) => ({
     },
     "&:hover .title": {
         borderBottom: "2px solid #fff",
-    },
-    "&::before": {
-        content: '""',
-        position: "absolute",
-        right: 0,
-        top: 0,
-        width: "0%",
-        height: "100%",
-        backgroundImage: `url(${bgImage})`,
-        backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
-        backgroundPosition: "center",
-        transition: "width 0.6s ease-in-out",
-        zIndex: "-1",
     },
     "&:hover::before": {
         width: "100%",
@@ -135,7 +121,7 @@ const ApproachSection: React.FC = () => {
                                         },
                                         fontSize:{
                                              xs:'60px',
-                                            lg:'16px'
+                                            lg:'20px'
                                         }
                                     }}
                                 >

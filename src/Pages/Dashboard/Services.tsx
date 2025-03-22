@@ -56,7 +56,7 @@ const FancyBox = styled(Card)({
   "&:hover": {
     "&::before, &::after": { width: "100%" },
     "& .hover-lines::before, & .hover-lines::after": { height: "100%" },
-    "& img": { transform: "scale(-1) rotate(180deg)" },
+    // "& img": { transform: "scale(-1) rotate(180deg)" },
   },
 });
 
@@ -65,9 +65,9 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, imageUrl,
   const navigate = useNavigate();
 
   return (
-    <FancyBox elevation={3} sx={{ border: "1px solid #444", width: "100%",cursor: "none !important", }} onClick={() => navigate(route)}>
+    <FancyBox elevation={3} sx={{ border: "1px solid #444", width: "100%", cursor: "none !important", }} onClick={() => navigate(route)}>
       <Box className="hover-lines"></Box>
-      <Box display="flex" justifyContent="start" mb={3} sx={{py:{xs:3,lg:0}}}>
+      <Box display="flex" justifyContent="start" mb={3} sx={{ py: { xs: 3, lg: 0 } }}>
         {/* <img
           src={imageUrl}
           alt={title}
@@ -80,33 +80,42 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, imageUrl,
             
           }}
         /> */}
-
         <Box
-          component="img"
-          src={imageUrl}
-          alt={title}
-          sx={{
-            width: { xs: "21%", lg: "80px" }, // ✅ 200px on mobile, 80px on larger screens
-            height: { xs: "100%", lg: "80px" },
-            transition: "500ms ease",
-            objectFit: "contain",
-            filter: "brightness(0) invert(1)", // Makes image white
-          }}
-        />
+        sx={{
+          border: "3px solid red", // ✅ Adds red border
+              borderRadius: "50%", // ✅ Optional: Adds rounded corners
+              padding: "15px", // ✅ Optional: Adds space inside the border
+        }}
+        >
+
+          <Box
+            component="img"
+            src={imageUrl}
+            alt={title}
+            sx={{
+              width: { xs: "21%", lg: "50px" }, // ✅ 200px on mobile, 80px on larger screens
+              height: { xs: "100%", lg: "50px" },
+              transition: "500ms ease",
+              objectFit: "contain",
+              filter: "brightness(0) invert(1)", // Makes image white
+              
+            }}
+          />
+        </Box>
       </Box>
       <Typography variant="h4" fontWeight={700} color="white" mb={2} textAlign="left">
         {title}
       </Typography>
-      <Typography variant="body1" color="white" textAlign="left" sx={{fontSize:{xs:'30px',lg:'18px'}}}>
+      <Typography variant="body1" color="white" textAlign="left" sx={{ fontSize: { xs: '30px', lg: '18px' } }}>
         {description}
       </Typography>
 
       {/* ✅ Error Icon & Read More Text */}
       <Box display="flex" alignItems="center" justifyContent="flex-end" mt={3}>
-        <Typography variant="body2" color="#fc0000" sx={{ fontWeight: 600, cursor: "none !important", fontSize:{xs:'38px',lg:'14px'}}}>
+        <Typography variant="body2" color="#fff" sx={{ fontWeight: 600, cursor: "none !important", fontSize: { xs: '38px', lg: '18px' } }}>
           Read More
         </Typography>
-        <ArrowOutwardIcon sx={{ color: "#fc0000", ml: 1, fontSize: {xs:'48px',lg:"18px"} }} />
+        <ArrowOutwardIcon sx={{ color: "#fc0000", ml: 1, fontSize: { xs: '48px', lg: "20px" } }} />
       </Box>
     </FancyBox>
   );
@@ -122,11 +131,11 @@ const ServicesSection: React.FC = () => {
   ];
 
   return (
-    <Box sx={{ borderTop: "1px solid #343434", py: 5,px:{xs:'63px',lg:'0'} }}>
+    <Box sx={{ borderTop: "1px solid #343434", py: 5, px: { xs: '63px', lg: '0' } }}>
       <Container maxWidth="xl">
         <Box sx={{ py: 5 }}>
           <Box textAlign="center" mb={5}>
-            <AnimatedText sx={{fontSize:{xs:'5.2em',lg:'3.2em'}}}>Our Services</AnimatedText>
+            <AnimatedText sx={{ fontSize: { xs: '5.2em', lg: '3.2em' } }}> Services</AnimatedText>
           </Box>
           <Grid container spacing={3} justifyContent="center">
             {services.map((service, index) => (

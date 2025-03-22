@@ -25,6 +25,19 @@ import mobileviewbanner from './images/home/mobileviewbanner.png'
 import about3 from './images/home/about3.png'
 import about4 from './images/home/about4.png'
 
+
+import port1 from './images/home/portfolio1.png'
+import port2 from './images/home/portfolio2.png'
+import port3 from './images/home/portfolio3.png'
+import port5 from './images/home/portfolio5.jpg'
+import port6 from './images/home/portfolio6.jpg'
+import port7 from './images/home/portfolio7.jpg'
+import brochure1 from './images/home/brochure1.png'
+import brochure2 from './images/home/brochure2.png'
+import brochure3 from './images/home/brochure3.png'
+import brochure4 from './images/home/brochure4.png'
+import downloadbrochure1 from './images/home/downloadbrouchreimg.png'
+
 import seoicon from './images/home/seoicon.png'
 import webicon from './images/home/website.png'
 import smmicon from './images/home/smm.png'
@@ -38,6 +51,10 @@ import mobile from './images/careers/mobile.png'
 import steps from './images/careers/steps.png'
 import servicebg  from './images/servicebg.jpg'
 import shark from './images/shark.png'
+import careersshark1 from './images/careers/careersshark.png'
+import contactusshark1 from  './images/home/contactusshark1.png'
+import contactusshark2 from  './images/home/contactusshark2.png'
+import contactusshark3 from  './images/home/contactusshark3.png'
 
 
 //about
@@ -111,7 +128,31 @@ import slider18 from './logos/Slider/slider18.png';
 import slider19 from './logos/Slider/slider19.png';
 
 
+
+import logo1 from './images/weblogos/LOGO-01.png'
+import logo2 from './images/weblogos/LOGO-02.png'
+import logo3 from './images/weblogos/LOGO-03.png'
+import logo4 from './images/weblogos/LOGO-04.png'
+import logo5 from './images/weblogos/LOGO-05.png'
+import logo6 from './images/weblogos/LOGO-06.png'
+import logo7 from './images/weblogos/LOGO-07.png'
+import logo8 from './images/weblogos/LOGO-08.png'
+import logo9 from './images/weblogos/LOGO-09.png'
+import logo10 from './images/weblogos/LOGO-10.png'
+import logo11 from './images/weblogos/LOGO-11.png'
+import logo12 from './images/weblogos/LOGO-12.png'
+import logo13 from './images/weblogos/LOGO-13.png'
+import logo14 from './images/weblogos/LOGO-14.png'
+import logo15 from './images/weblogos/LOGO-15.png'
+import logo16 from './images/weblogos/LOGO-16.png'
+import logo17 from './images/weblogos/LOGO-17.png'
+import logo18 from './images/weblogos/LOGO-18.png'
+
+
+import logos1 from './images/weblogos/slider1.png'
+
 export const SliderLogos = {
+    logos1,
     slider1,
     slider2,
     slider3,
@@ -131,12 +172,15 @@ export const SliderLogos = {
     slider17,
     slider18,
     slider19,
+
+
+    logo1,logo2,logo3,logo4,logo5,logo6,logo7,logo8,logo9,logo10,logo11,logo12,logo13,logo14,logo15,logo16,logo17,logo18
 }
  
 
 export{
     dslogo,
-    breadcrumbbanner,servicebg,shark
+    breadcrumbbanner,servicebg,shark,careersshark1,contactusshark1,contactusshark2,contactusshark3
 }
 
 export const AboutImages={
@@ -153,7 +197,8 @@ export const Home={
     portfolio7,
     testi,clientlogo,blog,bgfooterimg,
  imageeffect ,seoicon,branding,webicon,smmicon,contenticon,ppc,
- homenav,webbannerr,logosidebar,mobileviewbanner,about3,about4
+ homenav,webbannerr,logosidebar,mobileviewbanner,about3,about4,
+ port1,port2,port3,port5,port6,port7,brochure1,brochure2,brochure3,brochure4,downloadbrochure1
 
     
 

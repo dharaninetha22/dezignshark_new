@@ -141,7 +141,7 @@ const Testimonials: React.FC = () => {
 
                 {/* User Info */}
                 <Box sx={{ pt: 2, borderTop: "1px solid #3A3A3A" }}>
-                  <Typography variant="h6" sx={{ fontWeight: 600, fontSize: {xs:'30px',lg:"24px"}, color: "#fc0000" }}>
+                  <Typography variant="h6" sx={{ fontWeight: 600, fontSize: {xs:'30px',lg:"24px"}, color: "#fc0000" ,textAlign:'right'}}>
                     {item.name}
                   </Typography>
                   {/* <Typography variant="body2" sx={{ fontSize: "18px", color: "#bdbdbd" }}>

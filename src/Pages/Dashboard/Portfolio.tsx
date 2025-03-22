@@ -1,46 +1,14 @@
-import React from "react";
-import { Box, Container, Grid, Typography, Card, Button } from "@mui/material";
-import { styled } from "@mui/system";
+import React, { useEffect, useRef } from "react";
+import { Box, Button, Container, Grid, Typography } from "@mui/material";
+import { display, styled } from "@mui/system";
+import hoverEffect from "hover-effect";
 import { Home } from "../../assets";
 import AnimatedText from "../../Components/Inputs/AnimatedText";
-import CustomButton from "../../Components/Inputs/CustomButton";
-import { useNavigate } from "react-router-dom";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward"; // MUI Icon
+import { useNavigate } from "react-router-dom";
+import Slider from "react-slick";
 
-
-// TypeScript Interface
-interface ProjectCardProps {
-  title: string;
-  image: string;
-  link: string;
-}
-
-// Styled Components for Animation
-const Project = styled(Card)({
-  position: "relative",
-  overflow: "hidden",
-  cursor: "pointer",
-  background: "none !important", // Remove background
-  borderRadius: "0 !important", // Remove border-radius
-  boxShadow: "none !important", // Remove shadow
-
-  "&:hover .content": {
-    transform: "perspective(250px) rotateY(0)",
-  },
-});
-
-const ImageContainer = styled(Box)({
-  position: "relative",
-  overflow: "hidden",
-  display: "flex",
-  flexDirection: "column",
-  img: {
-    width: "100%",
-    display: "block",
-    borderRadius: "0 !important", // Remove image radius
-  },
-});
-
+// Styled Content Box for Text Animation
 const Content = styled(Box)({
   position: "absolute",
   right: "-1px",
@@ -48,11 +16,25 @@ const Content = styled(Box)({
   padding: "15px 25px",
   maxWidth: "320px",
   backgroundColor: "#1e1e1e",
+  color: "#fff",
   transformOrigin: "right",
   transform: "perspective(250px) rotateY(-90deg)",
   transition: "all 400ms ease-in-out",
+  zIndex: 2,
 });
-// Styled Animated Button
+
+const ImageContainer = styled(Box)({
+  position: "relative",
+  width: "100%",
+  height: "100%",
+  overflow: "hidden",
+  cursor: "pointer",
+  "&:hover .content": {
+    transform: "perspective(250px) rotateY(0deg)",
+  },
+});
+
+
 const StyledButton = styled(Button)({
   position: "relative",
   display: "inline-flex",
@@ -68,7 +50,7 @@ const StyledButton = styled(Button)({
   cursor: "pointer",
   overflow: "hidden",
   transition: "all 0.3s ease-out",
-
+  fontSize: "1.2rem",
 
   "&:hover": {
     background: "transparent !important", // Slight hover effect
@@ -93,13 +75,13 @@ const ArrowContainer = styled(Box)({
   position: "relative",
   overflow: "hidden",
   display: "inline-flex",
-  // width: "20px",
-  // height: "20px",
+  width: "20px",
+  height: "20px",
 });
 
 // Styled MUI Icons
 const ArrowIconStyled = styled(ArrowOutwardIcon)({
-
+  fontSize: "16px",
   transition: "transform 0.3s ease-out",
   color: "white",
 });
@@ -116,111 +98,206 @@ const ArrowIconLast = styled(ArrowIconStyled)({
 });
 
 
-// Project Data
-const projects: ProjectCardProps[] = [
-  { title: "AI & Robotics", image: Home.portfolio1, link: "case-details.html" },
-  { title: "Gaming & Virtual Reality", image: Home.portfolio2, link: "case-details.html" },
-  { title: "Augmented Reality", image: Home.portfolio5, link: "case-details.html" },
-  { title: "Cybernetics", image: Home.portfolio4, link: "case-details.html" },
-  { title: "Digital Advertising", image: Home.portfolio3, link: "case-details.html" },
-  { title: "Underwater Dreams", image: Home.portfolio6, link: "case-details.html" },
-  { title: "Cyberpunk City", image: Home.portfolio7, link: "case-details.html" },
-];
 
 const CreativeWorksSection: React.FC = () => {
+  const itemRefs = useRef<Array<HTMLDivElement | null>>([]);
   const navigate = useNavigate(); // Hook for navigation
+
+  // ✅ First column (All images with "type")
+  const imagesFirstColumn = [
+    { image1: Home.port1, image2: Home.port1, displacementImage: Home.imageeffect, width: "660px", height: "450px", title: "Social Media Marketing" },
+    { image1: Home.port2, image2: Home.port2, displacementImage: Home.imageeffect, width: "660px", height: "703px", title: "Project 2" },
+    { image1: Home.port3, image2: Home.port3, displacementImage: Home.imageeffect, width: "660px", height: "703px", title: "Project 3" },
+  ];
+
+  // ✅ Second column (Video + Images)
+  const videoSrc = "https://dprstorage.b-cdn.net/dezignshark/portfoliovedio.mp4";
+  const imagesSecondColumn = [
+    { type: "video", src: videoSrc, width: "660px", height: "703px" }, // Video
+    { image1: Home.port5, image2: Home.port5, displacementImage: Home.imageeffect, width: "660px", height: "630px", title: "Project 4" },
+    { image1: Home.port6, image2: Home.port6, displacementImage: Home.imageeffect, width: "660px", height: "520px", title: "Project 5" },
+  ];
+
+  // ✅ Third column (Single additional image)
+  const imagesThirdColumn = [
+    { image1: Home.brochure1, image2: Home.brochure1, displacementImage: Home.imageeffect, width: "1437px", height: "500px", title: "Project 6" },
+    { image1: Home.brochure2, image2: Home.brochure2, displacementImage: Home.imageeffect, width: "1437px", height: "500px", title: "Project 6" },
+    { image1: Home.brochure3, image2: Home.brochure3, displacementImage: Home.imageeffect, width: "1437px", height: "500px", title: "Project 6" },
+    { image1: Home.brochure4, image2: Home.brochure4, displacementImage: Home.imageeffect, width: "1437px", height: "500px", title: "Project 6" },
+  ];
+
+  useEffect(() => {
+    const allImages = [...imagesFirstColumn, ...imagesSecondColumn, ...imagesThirdColumn];
+
+    allImages.forEach((data, index) => {
+      if (data.image1 && itemRefs.current[index]) {
+        new hoverEffect({
+          parent: itemRefs.current[index]!,
+          intensity: 0.2,
+          image1: data.image1,
+          image2: data.image2,
+          displacementImage: data.displacementImage,
+        });
+      }
+    });
+  }, []);
 
   return (
     <Box sx={{ py: 10, px: { xs: 6, lg: 0 } }}>
       <Container maxWidth="xl">
-        <Grid container spacing={4}>
-          {/* Header */}
-          <Grid item xs={12} lg={6}>
-            <Box sx={{ textAlign: { xs: "center", md: "left" } }}>
-              <AnimatedText sx={{fontSize:{xs:'5em',lg:'3.2em'},md:{xs:3,lg:0}}}>
-                OUR CREATIVE WORKS ARE OUR IDENTITY
-                </AnimatedText>
-            </Box>
-          </Grid>
-          <Grid item xs={12} lg={6}>
-            <Typography variant="body1" color="white" sx={{ mb: { xs: 3, lg: 0 } ,textAlign:{xs:'justify',lg:'left'}}}>
-              We develop powerful, data-driven marketing strategies to elevate your brand and maximize its digital impact. If you're unsure how to achieve more, we’ll redefine your branding, identify new growth opportunities, and position your business for success in the ever-evolving digital landscape.
+        <Grid container spacing={4} sx={{mb:5}}>
+        <Grid item xs={12} md={6}>
+          <Box sx={{ textAlign: { xs: "center", md: "left" }, }}>
+            <AnimatedText>OUR CREATIVE WORKS ARE OUR IDENTITY</AnimatedText>
+          </Box>
+        </Grid>
+          <Grid item xs={12} md={6}>
+            <Typography variant="body1" color="white">
+              We will implement a marketing strategy for your brand. If you would like to achieve more but do not know how – 
+              we will define new directions of your branding.
             </Typography>
           </Grid>
+        </Grid>
+        <Grid container spacing={4} flexDirection="column" alignItems="center">
+          
 
-          {/* First 3 images in column layout */}
-          <Grid item xs={12} lg={6} sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
-            {projects.slice(0, 3).map((project, index) => (
-              <Project key={index}>
-                <ImageContainer>
-                  <a href={project.link}>
-                    <img src={project.image} alt={project.title} />
-                  </a>
-                </ImageContainer>
-                <Content className="content">
-                  <Typography variant="h5" color="white">
-                    <a href={project.link} style={{ color: "#fff", textDecoration: "none" }}>
-                      {project.title}
-                    </a>
-                  </Typography>
-                </Content>
-              </Project>
-            ))}
+          {/* Image Grid */}
+          <Grid item xs={12} lg={12}>
+            <Grid container spacing={4}>
+              {/* First Column */}
+              <Grid item xs={12} lg={6}>
+                <Box sx={{ display: "flex", flexDirection: "column", gap: "20px", alignItems: "center" }}>
+                  {imagesFirstColumn.map((img, index) => (
+                    <ImageContainer
+                      key={index}
+                      ref={(el) => (itemRefs.current[index] = el as HTMLDivElement | null)} // Explicit type casting
+                      sx={{
+                        width: img.width,
+                        height: img.height,
+                      }}
+                    >
+                      <Content className="content">
+                        <Typography variant="h5">
+                          {img.title}
+                        </Typography>
+                      </Content>
+                    </ImageContainer>
+                  ))}
+                </Box>
+              </Grid>
+
+              {/* Second Column */}
+              <Grid item xs={12} lg={6}>
+                <Box sx={{ display: "flex", flexDirection: "column", gap: "20px", alignItems: "center" }}>
+                  {imagesSecondColumn.map((item, index) =>
+                    item.type === "video" ? (
+                      <ImageContainer
+                        key={index}
+                        sx={{
+                          width: item.width,
+                          height: item.height,
+                        }}
+                      >
+                        <video
+                          autoPlay
+                          loop
+                          muted
+                          playsInline
+                          style={{
+                            width: "100%",
+                            height: "100%",
+                            objectFit: "cover",
+                          }}
+                        >
+                          <source src={item.src} type="video/mp4" />
+                          Your browser does not support the video tag.
+                        </video>
+                        <Content className="content">
+                          <Typography variant="h5">Video {index + 1}</Typography>
+                        </Content>
+                      </ImageContainer>
+                    ) : (
+                      <ImageContainer
+                        key={index + imagesFirstColumn.length}
+                        ref={(el) => (itemRefs.current[index + imagesFirstColumn.length] = el as HTMLDivElement | null)} // Explicit type casting
+                        sx={{
+                          width: item.width,
+                          height: item.height,
+                        }}
+                      >
+                        <Content className="content">
+                          <Typography variant="h5">
+                            {item.title}
+                          </Typography>
+                        </Content>
+                      </ImageContainer>
+                    )
+                  )}
+                </Box>
+              </Grid>
+            </Grid>
           </Grid>
 
-          {/* Next 3 images in column layout */}
-          <Grid item xs={12} lg={6} sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
-            {projects.slice(3, 6).map((project, index) => (
-              <Project key={index}>
-                <ImageContainer>
-                  <a href={project.link}>
-                    <img src={project.image} alt={project.title} />
-                  </a>
-                </ImageContainer>
-                <Content className="content">
-                  <Typography variant="h5" color="white">
-                    <a href={project.link} style={{ color: "#fff", textDecoration: "none" }}>
-                      {project.title}
-                    </a>
-                  </Typography>
-                </Content>
-              </Project>
-            ))}
-          </Grid>
+          {/* Third Column: Single Image */}
+            <Grid item xs={12}>
+            <Box sx={{ width: "100%", }}>
+                <Slider
+                infinite={true}
+                speed={200}
+                slidesToShow={1}
+                slidesToScroll={1}
+                autoplay={true}
+                autoplaySpeed={2000}
+                pauseOnHover={false}
+                arrows={false} // Disable arrows
+                >
+              {imagesThirdColumn.map((img, index) => (
+                <Box
+                key={index}
+                sx={{
+                  width: img.width,
+                  height: img.height,
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  overflow: "hidden",
+                }}
+                >
+                <img
+                  src={img.image1}
+                  alt={img.title}
+                  style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  }}
+                />
+                </Box>
+              ))}
+              </Slider>
+            </Box>
+            </Grid>
 
-          {/* Last image taking full width */}
-          <Grid item xs={12}>
-            <Project>
-              <ImageContainer>
-                <a href={projects[6].link}>
-                  <img src={projects[6].image} alt={projects[6].title} />
-                </a>
-              </ImageContainer>
-              <Content className="content">
-                <Typography variant="h5" color="white">
-                  <a href={projects[6].link} style={{ color: "#fff", textDecoration: "none" }}>
-                    {projects[6].title}
-                  </a>
-                </Typography>
-              </Content>
-            </Project>
-          </Grid>
 
-          <Grid item xs={12}>
-            <StyledButton onClick={() => navigate(window.location.href = "https://portfolio.dezignshark.com/folders")}
+           
+        </Grid>
+         <StyledButton
+              onClick={() => window.location.href = "https://portfolio.dezignshark.com/folders"} // Navigate to the specified URL
               sx={{
-                width: { xs: '330px', lg: '100%' },
-                height: { xs: '115px', lg: '55px' },
-                fontSize: { xs: "2.2rem", lg: "1.2rem" }
-              }}>
-              See More
+                width: "100%", // Full width within the container
+                maxWidth: "1400px", // Ensure it doesn't exceed the container's max width
+                height: { xs: '115px', lg: '75px' },
+                fontSize: { xs: "2.2rem", lg: "1.4rem" },
+                mt: { xs: 5, lg: 4 },
+                mx: "auto", // Center the button horizontally
+              }}
+            >
+              Click to Visit Our Works
               <ArrowContainer className="btn-arrow-hover">
-                <ArrowIconFirst className="arrow-first" sx={{ fontSize: { xs: '30px', lg: '16px ' } }} />
-                <ArrowIconLast className="arrow-second" />
+                <ArrowIconFirst className="arrow-first" sx={{ fontSize: { xs: '30px', lg: '20px ' } }} />
+                <ArrowIconLast className="arrow-second" sx={{ fontSize: { xs: '30px', lg: '20px ' } }} />
               </ArrowContainer>
             </StyledButton>
-          </Grid>
-        </Grid>
       </Container>
     </Box>
   );

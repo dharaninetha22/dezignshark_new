@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import CloseIcon from "@mui/icons-material/Close";
 import CustomInput from "./Inputs/CustomInput";
 import CustomButton from "./Inputs/CustomButton";
-
+import { Home } from "../assets"; // Ensure this import is correct
 
 // Ensure your video is inside `public/videos/popup.mp4`
 const videoUrl = "https://dprstorage.b-cdn.net/dezignshark/popup.mp4";
@@ -95,7 +95,7 @@ const PopupForm: React.FC<PopupFormProps> = ({ isOpen, onClose }) => {
       >
         <Grid container spacing={0}>
           {/* Left Side - Video Animation (Hidden on Mobile) */}
-          <Grid
+            <Grid
             item
             md={6}
             sx={{
@@ -103,20 +103,17 @@ const PopupForm: React.FC<PopupFormProps> = ({ isOpen, onClose }) => {
               position: "relative",
               overflow: "hidden",
             }}
-          >
-            <video
-              src={videoUrl}
-              autoPlay
-              loop
-              muted
-              playsInline
+            >
+            <img
+              src={Home.downloadbrochure1} // Ensure this property exists in the Home object
+              alt="Popup Illustration"
               style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
               }}
             />
-          </Grid>
+            </Grid>
 
           {/* Right Side - Form (Full Width on Mobile) */}
           <Grid

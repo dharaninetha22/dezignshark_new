@@ -8,25 +8,24 @@ import { SliderLogos } from "../../assets";
 
 // Partner logos
 const partnerLogos = [
-  SliderLogos.slider1,
-  SliderLogos.slider2,
-  SliderLogos.slider3,
-  SliderLogos.slider4,
-  SliderLogos.slider5,
-  SliderLogos.slider6,
-  SliderLogos.slider7,
-  SliderLogos.slider8,
-  SliderLogos.slider9,
-  SliderLogos.slider10,
-  SliderLogos.slider11,
-  SliderLogos.slider12,
-  SliderLogos.slider13,
-  SliderLogos.slider14,
-  SliderLogos.slider15,
-  SliderLogos.slider16,
-  SliderLogos.slider17,
-  SliderLogos.slider18,
-  SliderLogos.slider19,
+  SliderLogos.logo1,
+  SliderLogos.logo2,
+  SliderLogos.logo3,
+  SliderLogos.logo4,
+  SliderLogos.logo5,
+  SliderLogos.logo6,
+  SliderLogos.logo7,
+  SliderLogos.logo8,
+  SliderLogos.logo9,
+  SliderLogos.logo10,
+  SliderLogos.logo11,
+  SliderLogos.logo12,
+  SliderLogos.logo13,
+  SliderLogos.logo14,
+  SliderLogos.logo15,
+  SliderLogos.logo16,
+  SliderLogos.logo17,
+  SliderLogos.logo18,
 ];
 
 // Styled Components
@@ -43,9 +42,16 @@ const PartnerImageWrapper = styled(Box)({
   position: "relative",
   display: "inline-block",
   textAlign: "center",
+  // "& img": {
+  //   maxHeight: "110px",
+  //   transition: "all 0.3s",
+  // },
   "& img": {
     maxHeight: "110px",
     transition: "all 0.3s",
+    "@media (max-width: 1048px)": {
+      minHeight: "200px", // Ensures minimum height on mobile screens
+    },
   },
   "& img:nth-of-type(2)": {
     position: "absolute",
@@ -66,7 +72,7 @@ const PartnerImageWrapper = styled(Box)({
 
 const PartnerCarousel: React.FC = () => {
   return (
-    <PartnerSection>
+    <PartnerSection sx={{mt:8}}>
       <Swiper
         modules={[Autoplay]}
         spaceBetween={30}
@@ -74,9 +80,9 @@ const PartnerCarousel: React.FC = () => {
         loop={true}
         autoplay={{ delay: 2000, disableOnInteraction: false }}
         breakpoints={{
-          320: { slidesPerView: 2 }, // ✅ 4 slides in mobile
-          480: { slidesPerView: 3 }, // ✅ 4 slides in small devices
-          768: { slidesPerView: 3 }, // Medium tablets
+          320: { slidesPerView: 2 }, 
+          480: { slidesPerView: 2 }, 
+          768: { slidesPerView: 2 }, 
           1024: { slidesPerView: 6 }, // Large screens
         }}
       >

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Box, Typography, IconButton, Container, useMediaQuery, useTheme } from "@mui/material";
+import { Box, Typography, IconButton, Container, useMediaQuery, useTheme, styled, Card } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Mousewheel } from "swiper/modules";
 import "swiper/css";
@@ -19,6 +19,49 @@ interface Service {
   description: string[];
   image: string;
 }
+const FancyBox = styled(Card)({
+  position: "relative",
+  // padding: "20px 25px",
+  // border: "2px solid transparent",
+  // backgroundColor: "#171717",
+  // transition: "border 0.4s ease-in-out",
+  // overflow: "hidden",
+  // display: "flex",
+  // flexDirection: "column",
+  // justifyContent: "space-between",
+  // height: "100%", // Ensure all cards have the same height
+  // cursor: "pointer",
+
+  "&::before, &::after": {
+    content: '""',
+    position: "absolute",
+    width: "0",
+    height: "2px",
+    backgroundColor: "#fc0000",
+    transition: "width 0.3s ease-in-out",
+  },
+
+  "&::before": { top: 0, left: 0, right: 0, margin: "auto" },
+  "&::after": { bottom: 0, left: 0, right: 0, margin: "auto" },
+
+  "& .hover-lines::before, & .hover-lines::after": {
+    content: '""',
+    position: "absolute",
+    width: "1px",
+    height: "0",
+    backgroundColor: "#fc0000",
+    transition: "height 0.3s ease-in-out",
+  },
+
+  "& .hover-lines::before": { left: 0, top: 0, bottom: 0, margin: "auto" },
+  "& .hover-lines::after": { right: 0, top: 0, bottom: 0, margin: "auto" },
+
+  "&:hover": {
+    "&::before, &::after": { width: "100%" },
+    "& .hover-lines::before, & .hover-lines::after": { height: "100%" },
+    // "& img": { transform: "scale(-1) rotate(180deg)" },
+  },
+});
 
 // Services Data
 const services: Service[] = [
@@ -115,10 +158,13 @@ const ServicesSection: React.FC = () => {
         style={{ 
           width: "100%", 
           height: isMobile ? "700px" : "450px", // ✅ Responsive Swiper height
+          cursor:'none'
         }}
       >
         {services.map((service) => (
           <SwiperSlide key={service.id} id={service.id} >
+             <FancyBox elevation={3} sx={{ border: "1px solid #444", width: "100%", cursor: "none !important", }} >
+<Box className="hover-lines"></Box>
             <motion.div
               initial="hidden"
               animate={controls}
@@ -136,8 +182,9 @@ const ServicesSection: React.FC = () => {
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "space-evenly",
-                border: "1px solid #dadada",
-                cursor: "pointer",
+                border: "2px solid transparent",
+                backgroundColor: "#171717",
+                cursor: "none",
               }}
             >
               {/* Service Title, Subtitle, and Description List */}
@@ -152,9 +199,10 @@ const ServicesSection: React.FC = () => {
                       alignItems: "center",
                       justifyContent: "center",
                       borderRadius: "50%",
-                      border: "1px solid black",
-                      backgroundColor: "rgba(255, 255, 255, 0.1)",
+                      border: "3px solid #fc0000",
+                      // backgroundColor: "rgba(255, 255, 255, 0.1)",
                       overflow: "hidden",
+                      cursor:'none'
                     }}
                   >
                     {/* <img src={service.image} alt={service.title} style={{ width: "60px", height: "60px" }} /> */}
@@ -165,10 +213,11 @@ const ServicesSection: React.FC = () => {
                       sx={{
                         width: { xs: "100px", lg: "60px" }, // Image size responsive
                         height:{ xs: "100px", lg: "60px" },
+                        filter: "brightness(0) invert(1)", // Makes image white
                       }}
                     />
                   </Box>
-                  <Typography variant="h5" color="black" fontWeight={800}
+                  <Typography variant="h5" color="#fff" fontWeight={800}
                     sx={{
                       fontSize: {
                         xs: '40px',
@@ -180,11 +229,11 @@ const ServicesSection: React.FC = () => {
                   </Typography>
                 </Box>
 
-                <Typography variant="body1" color="#555" fontWeight={500} my={2}
+                <Typography variant="body1" color="#fff" fontWeight={500} my={2}
                   sx={{
                     fontSize: {
                       xs: '36px',
-                      lg: '18px'
+                      lg: '22px'
                     },
                   }}>
                   {service.subtitle}
@@ -199,7 +248,7 @@ const ServicesSection: React.FC = () => {
                       display: "flex", alignItems: "center", gap: {
                         xs: '15px',
                         lg: '10px'
-                      }, mb: "8px", color: "#828282"
+                      }, mb: "8px", color: "#fff"
                     }}>
                       <Box sx={{
                         width: {
@@ -211,14 +260,14 @@ const ServicesSection: React.FC = () => {
                           lg: '8px'
                         },
                         borderRadius: "50%",
-                        backgroundColor: "black",
+                        backgroundColor: "white",
                         flexShrink: 0
                       }} />
                       <Typography variant="body2" sx={{
-                        color: "#828282",
+                        color: "#fff",
                         fontSize: {
                           xs: '36px',
-                          lg: '16px'
+                          lg: '18px'
                         }
                       }}>
                         {point}
@@ -229,23 +278,24 @@ const ServicesSection: React.FC = () => {
               </Box>
 
               {/* Get Started Button */}
-              <Box display="flex" alignItems="center" onClick={() => navigate(`/services/${service.id}`)} sx={{ cursor: "pointer" }}>
+              <Box display="flex" alignItems="center" onClick={() => navigate(`/services/${service.id}`)} sx={{ cursor: "none" }}>
                 <Box sx={{
-                  color: "black", fontSize: {
+                  color: "white", fontSize: {
                     xs: '34px',
                     lg: '16px'
-                  }, fontWeight: 500
-                }}>Get Started</Box>
+                  }, fontWeight: 500,cursor:'none'
+                }}>Read More</Box>
                 <IconButton sx={{
-                  color: "black", ml: 1, fontSize: {
+                  color: "white", ml: 1, fontSize: {
                     xs: '2.5rem',
-                    lg: '1.5rem'
+                    lg: '1.8rem'
                   }
                 }}>
                   <ArrowForward />
                 </IconButton>
               </Box>
             </motion.div>
+             </FancyBox>
           </SwiperSlide>
         ))}
       </Swiper>

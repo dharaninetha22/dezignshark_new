@@ -12,7 +12,7 @@ import Breadcrumb from '../../Components/Breadcrumb'
 import { breadcrumbbanner } from '../../assets'
 import Clients from './Clients'
 
-const index = () => {
+const About = () => {
   return (
     <Box>
        <Breadcrumb
@@ -34,4 +34,4 @@ const index = () => {
   )
 }
 
-export default index
+export default About

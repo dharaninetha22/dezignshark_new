@@ -237,14 +237,14 @@ const BlogCarousel: React.FC = () => {
            sx={{
             width: {xs:'330px',lg:'100%'},
             height: { xs: '115px', lg: '55px' },
-            fontSize: {xs:"2.2rem",lg:"1.2rem"},
+            fontSize: {xs:"2.2rem",lg:"1.4rem"},
             mt:{xs:5,lg:4}
           }}
           >
-          See More
+         Click to Enter Blogs Section
           <ArrowContainer className="btn-arrow-hover">
-            <ArrowIconFirst className="arrow-first"  sx={{ fontSize: { xs: '30px', lg: '16px ' } }}/>
-            <ArrowIconLast className="arrow-second"  sx={{ fontSize: { xs: '30px', lg: '16px ' } }}/>
+            <ArrowIconFirst className="arrow-first"  sx={{ fontSize: { xs: '30px', lg: '20px ' } }}/>
+            <ArrowIconLast className="arrow-second"  sx={{ fontSize: { xs: '30px', lg: '20px ' } }}/>
           </ArrowContainer>
         </StyledButton>
       </Container>

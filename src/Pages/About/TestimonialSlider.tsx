@@ -93,7 +93,7 @@ const TestimonialSlider: React.FC = () => {
                                         flexDirection="column"
                                         alignItems="center"
                                     >
-                                        <Typography
+                                        {/* <Typography
                                             variant="h6"
                                             sx={{
                                                 fontWeight: "bold",
@@ -110,7 +110,7 @@ const TestimonialSlider: React.FC = () => {
                                             }}
                                         >
                                             TRUSTED FROM OVER 1,500 CLIENTS
-                                        </Typography>
+                                        </Typography> */}
                                         <Avatar
                                             src={testimonial.image}
                                             alt={testimonial.name}

@@ -23,6 +23,11 @@ const faqData = [
         question: "Why should I pay you when I can just boost my posts?",
         answer: "Because ‘boosting’ without a plan is like throwing money into a bonfire—looks cool but burns fast.",
     },
+    {
+        question: "My cousin knows SEO. Why should I hire an agency?",
+        answer: "If ranking on Google was as easy as ‘adding keywords,’ your cousin would be a billionaire. Spoiler: He’s not.",
+    },
+
 ];
 
 const FAQSection: React.FC = () => {
@@ -61,200 +66,165 @@ const FAQSection: React.FC = () => {
     return (
         <Box py={5}>
             <Container maxWidth="xl" sx={{ py: 5 }}>
-
-                {/* <MaskedText text="Our Services" /> */}
-                <AnimatedText
-
-                    sx={{ mt: 1, textAlign: "center" }}
-                >
-                    FAQ'S
-                </AnimatedText>
-
-                <Grid container>
-                    <Grid item xs={12} lg={6}>
-                        {/* <MaskedText sx={{ fontSize: { xs: "30px", lg: "50px" },textAlign:'left' }}  >
-
-                            FAQ'S
-                        </MaskedText> */}
-                        {/* <Typography
-                            sx={{
-                                fontSize: "14px",
-                                textTransform: "uppercase",
-                                letterSpacing: "2px",
-                                opacity: 0.7,
-                                textAlign: "left",
-                            }}
-                        >
-                            Achievements
-                        </Typography>
-                       */}
-
+                <Grid container spacing={2} alignItems="center" justifyContent="center">
+                    {/* Grid Item 1 - Left Side Image */}
+                    <Grid item xs={12} lg={5} sx={{ display: "flex", justifyContent: "center" }}>
+                        <Box>
+                            
+                            <Box
+                                component="img"
+                                src={AboutImages.aboutshark}
+                                alt="FAQ Visual"
+                                sx={{
+                                    width: { xs: "100%", lg: "100%" },
+                                    borderRadius: "8px",
+                                    objectFit: "cover",
+                                }}
+                            />
+                        </Box>
                     </Grid>
-                </Grid>
 
-                <Box
-                    sx={{
-                        color: "#fff",
-                        textAlign: "left",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: { xs: "center", lg: "space-evenly" },
-                        gap: "10px",
-                        mt: 4,
-                        flexWrap: "wrap",
-                    }}
-                >
-                    {/* Left Side - Image */}
-                    <Box
-                        component="img"
-                        src={AboutImages.aboutshark}
-                        alt="FAQ Visual"
-                        sx={{
-                            width: { xs: "100%", lg: "40%" },
-                            maxWidth: { xs: "100%", lg: "400px" },
-                            height: "auto",
-                            borderRadius: "8px",
-                            objectFit: "cover",
-                        }}
-                    />
+                    {/* Grid Item 2 - Right Side FAQ Section */}
+                    <Grid item xs={12} lg={7}>
+                    <AnimatedText sx={{ mb: 4, textAlign: "left" }}>
+                                FAQ'S
+                            </AnimatedText>
+                        <Box sx={{ width: "100%", position: "relative" }}>
+                            {/* Vertical Line Stops at Last FAQ */}
+                            <Box
+                                ref={lineRef}
+                                sx={{
+                                    position: "absolute",
+                                    left: "120px",
+                                    top: "0",
+                                    width: "1px",
+                                    backgroundColor: "#2B2B2B",
+                                    transition: "height 0.3s ease",
+                                }}
+                            />
+                            <Box sx={{ display: "flex", flexDirection: "column", borderTop: "1px solid #2B2B2B" }}>
+                                {faqData.map((faq, index) => (
+                                    <Box key={index} className="faq-item" sx={{ position: "relative" }}>
+                                        {/* Horizontal Line for Each FAQ */}
+                                        {index !== 0 && (
+                                            <Box
+                                                sx={{
+                                                    position: "absolute",
+                                                    top: 0,
+                                                    left: 0,
+                                                    width: "100%",
+                                                    height: "1px",
+                                                    backgroundColor: "#2B2B2B",
+                                                }}
+                                            />
+                                        )}
 
-                    {/* Right Side - FAQ Section */}
-                    <Box sx={{ width: { xs: "100%", lg: "55%" }, position: "relative" }}>
-                        {/* Vertical Line Stops at Last FAQ */}
-                        <Box
-                            ref={lineRef}
-                            sx={{
-                                position: "absolute",
-                                left: "120px",
-                                top: "0",
-                                width: "1px",
-                                backgroundColor: "#2B2B2B",
-                                transition: "height 0.3s ease",
-                            }}
-                        />
-
-                        <Box sx={{ display: "flex", flexDirection: "column", borderTop: "1px solid #2B2B2B" }}>
-                            {faqData.map((faq, index) => (
-                                <Box key={index} className="faq-item" sx={{ position: "relative" }}>
-                                    {/* Horizontal Line for Each FAQ */}
-                                    {index !== 0 && (
+                                        {/* Question Section */}
                                         <Box
                                             sx={{
-                                                position: "absolute",
-                                                top: 0,
-                                                left: 0,
-                                                width: "100%",
-                                                height: "1px",
-                                                backgroundColor: "#2B2B2B",
+                                                display: "flex",
+                                                alignItems: "center",
+                                                cursor: "pointer",
+                                                padding: "10px 0",
+                                                gap: "15px",
+                                                position: "relative",
                                             }}
-                                        />
-                                    )}
+                                            onClick={() => toggleFAQ(index)}
+                                        >
+                                            <Box sx={{ display: "flex", alignItems: "start", gap: "15px" }}>
+                                                <IconButton
+                                                    sx={{
+                                                        color: "#fff",
+                                                        border: "1px solid #2B2B2B",
+                                                        borderRadius: "50%",
+                                                        transition: "0.3s",
+                                                        width: "100px",
+                                                        height: "100px",
+                                                        display: "flex",
+                                                        alignItems: "center",
+                                                        justifyContent: "center",
+                                                    }}
+                                                >
+                                                    <MdOutlineArrowUpward
+                                                        style={{
+                                                            transform: openIndex === index ? "rotate(180deg)" : "rotate(0deg)",
+                                                            transition: "0.3s",
+                                                            fontSize: "50px",
+                                                            color: "#2b2b2b",
+                                                        }}
+                                                    />
+                                                </IconButton>
+                                            </Box>
 
-                                    {/* Question Section */}
-                                    <Box
-                                        sx={{
-                                            display: "flex",
-                                            alignItems: "center",
-                                            cursor: "pointer",
-                                            padding: "20px 0",
-                                            gap: "15px",
-                                            position: "relative",
-                                        }}
-                                        onClick={() => toggleFAQ(index)}
-                                    >
-                                        <Box sx={{ display: "flex", alignItems: "start", gap: "15px" }}>
-                                            <IconButton
+                                            {/* Question Text */}
+                                            <Typography
+                                                variant="h4"
                                                 sx={{
-                                                    color: "#fff",
-                                                    border: "1px solid #2B2B2B",
-                                                    borderRadius: "50%",
-                                                    transition: "0.3s",
-                                                    width: "100px",
-                                                    height: "100px",
-                                                    display: "flex",
-                                                    alignItems: "center",
-                                                    justifyContent: "center",
+                                                    flex: 1,
+                                                    fontSize: { xs: '38px', lg: '18px' },
+                                                    fontWeight: 700,
+                                                    textTransform: "uppercase",
+                                                    pl: { xs: 5, lg: 4 },
+                                                    textAlign:'left'
                                                 }}
                                             >
-                                                <MdOutlineArrowUpward
-                                                    style={{
-                                                        transform: openIndex === index ? "rotate(180deg)" : "rotate(0deg)",
-                                                        transition: "0.3s",
-                                                        fontSize: "50px",
-                                                        color: "#2b2b2b",
-                                                    }}
-                                                />
-                                            </IconButton>
+                                                {faq.question}
+                                            </Typography>
                                         </Box>
 
-                                        {/* Question Text */}
-                                        <Typography
-                                            variant="h4"
+                                        {/* Answer Section */}
+                                        <Box
+                                            ref={(el) => {
+                                                contentRefs.current[index] = el as HTMLDivElement | null;
+                                            }}
                                             sx={{
-                                                flex: 1,
-                                                fontSize: { xs: '38px', lg: '28px' },
-                                                fontWeight: 700,
-                                                textTransform: "uppercase",
-                                                pl: { xs: 5, lg: 4 },
+                                                maxHeight: openIndex === index ? "100px" : "0px",
+                                                overflow: "hidden",
+                                                opacity: openIndex === index ? 1 : 0,
+                                                transition: "max-height 0.5s ease, opacity 0.3s ease",
+                                                paddingLeft: "60px",
+                                                marginBottom: openIndex === index ? "10px" : "0px",
                                             }}
                                         >
-                                            {faq.question}
-                                        </Typography>
-                                    </Box>
+                                            <Typography variant="body2"
+                                                sx={{ fontSize: { xs: '38px', lg: '20px' }, opacity: 0.8, pl: { xs: 12, lg: 10 } ,textAlign:'left'}}>
+                                                {faq.answer}
+                                            </Typography>
+                                        </Box>
 
-                                    {/* Answer Section */}
-                                    <Box
-                                        ref={(el) => {
-                                            contentRefs.current[index] = el as HTMLDivElement | null;
-                                        }}
-                                        sx={{
-                                            maxHeight: openIndex === index ? "100px" : "0px",
-                                            overflow: "hidden",
-                                            opacity: openIndex === index ? 1 : 0,
-                                            transition: "max-height 0.5s ease, opacity 0.3s ease",
-                                            paddingLeft: "60px",
-                                            marginBottom: openIndex === index ? "10px" : "0px",
-                                        }}
-                                    >
-                                        <Typography variant="body2"
-                                         sx={{ fontSize: { xs: '38px', lg: '14px' }, opacity: 0.8, pl: { xs: 12, lg: 10 } }}>
-                                            {faq.answer}
-                                        </Typography>
+                                        {/* Last FAQ Bottom Line */}
+                                        {index === faqData.length - 1 && (
+                                            <Box
+                                                sx={{
+                                                    width: "100%",
+                                                    height: "1px",
+                                                    backgroundColor: "#2B2B2B",
+                                                    marginTop: "10px",
+                                                }}
+                                            />
+                                        )}
                                     </Box>
-
-                                    {/* Last FAQ Bottom Line */}
-                                    {index === faqData.length - 1 && (
-                                        <Box
-                                            sx={{
-                                                width: "100%",
-                                                height: "1px",
-                                                backgroundColor: "#2B2B2B",
-                                                marginTop: "10px",
-                                            }}
-                                        />
-                                    )}
-                                </Box>
-                            ))}
+                                ))}
+                            </Box>
                         </Box>
+                    </Grid>
 
-                        {/* Read More Button - Positioned Below FAQs */}
-                        <Box sx={{
-                            mt: { xs: 5, lg: 3 }
-
-                        }}>
+                    {/* Grid Item 3 - Read More Button */}
+                    <Grid item xs={12}>
+                        <Box sx={{ mt: { xs: 5, lg: 3 }, textAlign: "center" }}>
                             <CustomButton
                                 sx={{
-                                    textAlign: "center",
                                     height: { xs: '120px', lg: '40px' },
                                     width: { xs: '400px', lg: '160px' },
                                     fontSize: { xs: '35px', lg: '14px' }
                                 }}
-                                onClick={() => navigate("/faqs")}>
+                                onClick={() => navigate("/faqs")}
+                            >
                                 Read More
                             </CustomButton>
                         </Box>
-                    </Box>
-                </Box>
+                    </Grid>
+                </Grid>
             </Container>
         </Box>
     );

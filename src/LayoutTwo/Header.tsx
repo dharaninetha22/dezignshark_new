@@ -43,6 +43,7 @@ import { dslogo, Home } from "../assets";
 import CustomButton from "../Components/Inputs/CustomButton";
 import PopUpHeader from "../Pages/PopUpHeader";
 import PopupForm from "../Components/PopupForm";
+import { MdKeyboardArrowDown } from "react-icons/md";
 
 const Header: React.FC = () => {
   const navigate = useNavigate();
@@ -177,8 +178,9 @@ const Header: React.FC = () => {
         { label: "Graphic Designing", route: "/services/graphic-designing" },
       ],
     },
+    { label: "Gallery", route: "/gallery" },
+    { label: "Blogs", route: "/blog" },
     { label: "Careers", route: "/careers" },
-    { label: "Blog", route: "/blog" },
     { label: "Contact Us", route: "/contactus" },
   ];
 
@@ -197,6 +199,7 @@ const Header: React.FC = () => {
             sx={{ position: "relative", display: "flex", flexDirection: "column", alignItems: "center" }}
             onMouseEnter={() => handleDropdownToggle(item.label)}
             onMouseLeave={() => setDropdownOpen(null)}
+            className="menu"
           >
             {/* Main Navigation Item */}
             <Typography
@@ -213,10 +216,10 @@ const Header: React.FC = () => {
                 "&:hover": { paddingLeft: "10px" },
                 cursor: "none !important",
               }}
-
+              
               onClick={() => handleNavigate(item.route)}
             >
-              {item.label} {item.submenu && <ArrowDropDownIcon />}
+              {item.label} {item.submenu && <MdKeyboardArrowDown className="dropdown-arrow" />}
             </Typography>
 
             {/* Underline Effect */}
@@ -260,7 +263,9 @@ const Header: React.FC = () => {
 
   const renderMobileMenu = () => (
 
+<Box 
 
+>
 
     <Drawer
       anchor="right"
@@ -561,6 +566,8 @@ const Header: React.FC = () => {
         </Typography>
       </Box>
     </Drawer>
+</Box>
+
 
   );
 
@@ -637,21 +644,6 @@ const Header: React.FC = () => {
                 </CustomButton>
 
               </Box>
-              {/* Mobile Toggle Button */}
-
-              {/* PopUp Sidebar (Mobile Menu) */}
-              <Box sx={{
-                display: {
-                  lg: 'inline',
-                  md: "none",
-                  xs: 'none'
-                }
-              }}>
-                <IconButton color="inherit" onClick={() => setShowPopup(true)}>
-                  <MenuIcon />
-                </IconButton>
-              </Box>
-              <PopUpHeader open={showPopup} onClose={() => setShowPopup(false)} />
 
 
               {/* Mobile Toggle Button */}

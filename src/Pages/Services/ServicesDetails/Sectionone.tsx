@@ -200,7 +200,7 @@ const ServicesDetails = () => {
                     <Typography
                       sx={{
                         color: "#74787C",
-                        fontSize: { xs: "32px", lg: "16px" }, // Responsive font size
+                        fontSize: { xs: "32px", lg: "18px" }, // Responsive font size
                         textAlign: 'left'
                       }}
                     >

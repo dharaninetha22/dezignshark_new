@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Typography, Container } from "@mui/material";
+import { Box, Typography, Container, Grid } from "@mui/material";
 import { styled } from "@mui/system";
 import Typical from "react-typical";
 import { Home } from "../../assets"; // Import your assets
@@ -23,20 +23,23 @@ const ContentWrapper = styled(Box)({
 });
 
 const Heading = styled(Typography)({
-  fontFamily: "Arial, sans-serif",
-  fontSize: "113px",
+  fontSize: "80px",
   fontWeight: 700,
-  lineHeight: "124px",
+  lineHeight: "80px", // Adjusted line height for better spacing
   color: "#FFFFFF",
   marginBottom: 0,
-  textTransform: "capitalize",
+  textTransform: "uppercase",
 });
 
 const OutlineText = styled("span")({
   color: "transparent",
-  WebkitTextStroke: "2px #FFFFFF",
+  WebkitTextStroke: "3px #fc0000",
   transition: "0.3s ease-in-out",
-  fontSize: "80px !important", // Ensures the outline text is 80px
+  fontSize: "140px !important",
+  fontFamily: "Arial, sans-serif",
+  display: "inline-block",
+  marginTop: "10px", // Fine-tuned spacing
+  lineHeight: "120px", // Ensures extra spacing between lines
 });
 
 const Subheading = styled(Typography)({
@@ -66,14 +69,14 @@ const HeroSection: React.FC = () => {
             xs: "75% center",
             lg: "center",
           },
-          display: { xs: "none", lg: "block" }, // Hides on mobile
+          display: { xs: "none", lg: "flex" }, // Hides on mobile
         }}
       >
         <Container maxWidth="xl">
-          <ContentWrapper sx={{mt:24}}>
+          <ContentWrapper sx={{ display: "flex", alignItems: "center", justifyContent: 'center' }} >
             <Heading>
-              <Box sx={{ display: "flex", alignItems: "center", gap: 4 }}>
-                <Typography
+              <Box sx={{ display: "flex", alignItems: "center", }}>
+                {/* <Typography
                   variant="h1"
                   fontWeight={700}
                   sx={{
@@ -84,27 +87,60 @@ const HeroSection: React.FC = () => {
                   }}
                 >
                   360°{" "}
-                </Typography>
+                </Typography> */}
               </Box>
             </Heading>
-            <Heading>
-              <OutlineText>Digital&nbsp;</OutlineText>{" "}
-              <Box
-                sx={{
-                  fontSize: "80px !important", // Ensures Typical text is 80px
-                  fontWeight: 700,
-                  display: "inline-block",
-                  color: "#FFFFFF",
-                }}
-              >
-                Agency
-              </Box>
-            </Heading>
-            <Subheading>
+            <Grid container >
+              <Grid item lg={7}>
+
+              <Heading>
+      <Box
+        sx={{
+          fontSize: "70px !important",
+          fontWeight: 700,
+          color: "#FFFFFF",
+          display: "flex",
+          flexDirection: "column",
+          
+        }}
+      >
+        <span>Dominating the</span>
+        <span>
+           <OutlineText>Real Estate</OutlineText>
+        </span>
+        <span>Marketing Space</span>
+      </Box>
+    </Heading>
+              </Grid>
+            </Grid>
+
+            {/* <Grid container>
+              <Grid item lg={8}>
+                <Box
+                  sx={{
+                    fontSize: "70px !important", 
+                    fontWeight: 700,
+                    color: "#FFFFFF",
+                    display: "flex",
+                    flexDirection: "column",
+                    lineHeight: "100px",
+                    textTransform: "uppercase",
+                    fontFamily: '"FuturaBook", sans-serif',
+                  }}
+                >
+                  <span>Dominating the</span>
+                  <span style={{marginTop:'40px !important'}}>
+                    <OutlineText sx={{mt:6}}>Real Estate</OutlineText>
+                  </span>
+                  <span>Marketing Space</span>
+                </Box>
+              </Grid>
+            </Grid> */}
+            {/* <Subheading>
               <Typography variant="h4">
                 Design the Future, Transform the Digital World
               </Typography>
-            </Subheading>
+            </Subheading> */}
           </ContentWrapper>
         </Container>
       </HeroSectionWrapper>

@@ -11,8 +11,18 @@ import {
   Divider,
   Grid,
   IconButton,
+  Link
 } from "@mui/material";
-import { ExpandLess, ExpandMore, Search, Close } from "@mui/icons-material";
+import {
+  ExpandLess,
+  ExpandMore,
+  Search,
+  Close,
+  LocationOn,
+  Phone,
+  Email,
+}
+  from "@mui/icons-material";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
@@ -114,11 +124,18 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
             justifyContent: "space-between",
             alignItems: "center",
             textAlign: "center",
-            py: 3,
+            py: 8,
+
           }}
         >
           {/* Logo Section */}
-          <Box>
+          <Box sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            // py:6
+
+          }}>
             <img src={dslogo} alt="logo" className="logo-img" width="auto" />
           </Box>
 
@@ -127,10 +144,10 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
 
           {/* Contact Info */}
           <Box sx={{ textAlign: "left", px: 5 }}>
-            <Typography variant="h6" sx={{ fontWeight: "bold", mb: 2 }}>
+            <Typography variant="h6" sx={{ fontWeight: "bold", mb: 5 }}>
               Get in touch
             </Typography>
-            <Typography variant="body1" sx={{ mb: 1 }}>
+            {/* <Typography variant="body1" sx={{ mb: 1 }}>
               <a href="tel:+917997992885" style={{ textDecoration: "none", color: "inherit" }}>
                 +91 799 799 2885
               </a>
@@ -143,7 +160,27 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
             </Typography>
             <Typography variant="body2" sx={{ mb: 1 }}>
               68, 3rd Floor, Senore Colony, Film Nagar, Hyderabad, Telangana 500008
-            </Typography>
+            </Typography> */}
+            <Box sx={{ display: "flex", alignItems: "start", mb: 2, gap: { xs: 2, lg: 0 } }}>
+              <LocationOn sx={{ fontSize: { xs: 50, lg: 24 }, color: "#fc0000", minWidth: "40px" }} />
+              <Typography variant="body2" sx={{ fontSize: { xs: "30px", lg: "16px" } }}>
+                68, 3rd Floor, Senore Colony, Film Nagar, Hyderabad, Telangana 500008
+              </Typography>
+            </Box>
+
+            <Box sx={{ display: "flex", alignItems: "start", mb: 2, gap: { xs: 2, lg: 0 } }}>
+              <Phone sx={{ fontSize: { xs: 50, lg: 24 }, color: "#fc0000", minWidth: "40px", }} />
+              <Link href="tel:+91 799 799 2885" color="inherit" sx={{ textDecoration: "none", fontSize: { xs: "30px", lg: "16px" } }}>
+                +91 799 799 2885
+              </Link>
+            </Box>
+
+            <Box sx={{ display: "flex", alignItems: "start", gap: { xs: 2, lg: 0 } }}>
+              <Email sx={{ fontSize: { xs: 50, lg: 24 }, color: "#fc0000", minWidth: "40px" }} />
+              <Link href="mailto:info@dezignshark.com" color="inherit" sx={{ textDecoration: "none", fontSize: { xs: "30px", lg: "16px" } }}>
+                info@dezignshark.com
+              </Link>
+            </Box>
           </Box>
 
           {/* Divider BELOW contact info */}
@@ -165,19 +202,31 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
             </IconButton>
           </Box> */}
           <Box sx={{ display: "flex", gap: 1 }}>
-  {socialLinks.map(({ icon, url }, index) => (
-    <IconButton
-      key={index}
-      component="a"
-      href={url}
-      target="_blank"
-      rel="noopener noreferrer"
-      sx={{ color: "white" }}
-    >
-      {icon}
-    </IconButton>
-  ))}
-</Box>
+            {socialLinks.map(({ icon, url }, index) => (
+              <IconButton
+                key={index}
+                component="a"
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                sx={{
+                  color: "white",
+                  background: "rgba(255, 255, 255, 0.2)",
+                  width: '40px',
+                  height: '40px',
+                  lineHeight: "40px",
+                  borderRadius: "100%",
+                  transition: "0.3s",
+                  "&:hover": {
+                    background: "white",
+                    color: "#fc0000",
+                  },
+                }}
+              >
+                {icon}
+              </IconButton>
+            ))}
+          </Box>
         </Grid>
 
         {/* Vertical Divider */}
@@ -202,12 +251,12 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
           {/* Divider ABOVE menu items */}
           <Divider sx={{ bgcolor: "gray", width: "100%" }} />
 
-          <List sx={{ width: "100%" }}>
+          <List sx={{ width: "100%",cursor:'none' }}>
             {navItems.map((item, index) => (
               <React.Fragment key={index}>
                 <ListItemButton
                   onClick={() => handleNavigation(item.route)}
-                  sx={{ px: 3, display: "flex", justifyContent: "space-between", "&:hover .MuiListItemText-primary": { color: "red" }, }}
+                  sx={{ px: 3, display: "flex", justifyContent: "space-between", "&:hover .MuiListItemText-primary": { color: "red" }, cursor:'none'}}
                 >
                   <ListItemText
                     primary={item.label}
@@ -224,11 +273,12 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
 
                 {item.submenu && (
                   <Collapse in={openSections[index]} timeout="auto" unmountOnExit>
-                    <List component="div" disablePadding>
+                    <List component="div" disablePadding >
                       {item.submenu.map((sub, subIndex) => (
                         <ListItemButton
                           key={subIndex}
-                          sx={{ pl: 6, "&:hover .MuiListItemText-primary": { color: "red" }, }}
+                          sx={{ pl: 24, "&:hover .MuiListItemText-primary": { color: "red" }, cursor:'none'
+                          }}
                           onClick={() => handleNavigation(sub.route)}
                         >
                           <ListItemText primary={sub.label} sx={{ color: "white" }} />

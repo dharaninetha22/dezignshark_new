@@ -14,6 +14,7 @@ import FeatureGrid from "./FeatureGrid";
 
 
 
+
 const Index = () => {
     return (
         <Box sx={{ position: "relative", }}>
@@ -28,6 +29,7 @@ const Index = () => {
                 {/* <FeatureGrid/> */}
                 <Services />
                 <Portfolio />
+                {/* <Hovering/> */}
                 <Testimonials />
                 <Client />
                 <Blog />

@@ -109,9 +109,9 @@
    
 
   }
-  .dropdown-item:hover {
+  /* .dropdown-item:hover {
     color: #910909cc;
-  }
+  } */
   .dropdown-item {
     color: white;
     padding: 8px 15px;
@@ -411,3 +411,16 @@
   opacity: 0;
 }
 
+/* Dropdown arrow animation */
+.menu {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-arrow {
+  transition: transform 0.3s ease;
+}
+
+.menu:hover .dropdown-arrow {
+  transform: rotate(180deg);
+}

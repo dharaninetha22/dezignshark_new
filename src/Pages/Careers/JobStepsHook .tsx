@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Typography, Stack, Container, Grid } from "@mui/material";
-import { Careers, servicebg } from "../../assets";
+import { Careers, careersshark1, servicebg } from "../../assets";
 import AnimatedText from "../../Components/Inputs/AnimatedText";
 
 const JobStepsHook = () => {
@@ -37,7 +37,7 @@ const JobStepsHook = () => {
           <Grid item xs={12} lg={6}>
             <Box
               component="img"
-              src='https://dprstorage.b-cdn.net/dezignshark/careers/steps.png'
+              src={careersshark1}
               alt="Job Search Illustration"
               sx={{
                 width: "100%",
