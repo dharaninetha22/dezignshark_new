@@ -106,16 +106,16 @@ const CreativeWorksSection: React.FC = () => {
   // ✅ First column (All images with "type")
   const imagesFirstColumn = [
     { image1: Home.port1, image2: Home.port1, displacementImage: Home.imageeffect, width: "660px", height: "450px", title: "Social Media Marketing" },
-    { image1: Home.port2, image2: Home.port2, displacementImage: Home.imageeffect, width: "660px", height: "703px", title: "Project 2" },
-    { image1: Home.port3, image2: Home.port3, displacementImage: Home.imageeffect, width: "660px", height: "703px", title: "Project 3" },
+    { image1: Home.port2, image2: Home.port2, displacementImage: Home.imageeffect, width: "660px", height: "703px", title: "Web Development" },
+    { image1: Home.port3, image2: Home.port3, displacementImage: Home.imageeffect, width: "660px", height: "703px", title: "SEO Results" },
   ];
 
   // ✅ Second column (Video + Images)
   const videoSrc = "https://dprstorage.b-cdn.net/dezignshark/portfoliovedio.mp4";
   const imagesSecondColumn = [
-    { type: "video", src: videoSrc, width: "660px", height: "703px" }, // Video
-    { image1: Home.port5, image2: Home.port5, displacementImage: Home.imageeffect, width: "660px", height: "630px", title: "Project 4" },
-    { image1: Home.port6, image2: Home.port6, displacementImage: Home.imageeffect, width: "660px", height: "520px", title: "Project 5" },
+    { type: "video", src: videoSrc, width: "660px", height: "703px" ,title: "Reels"}, // Video
+    { image1: Home.port5, image2: Home.port5, displacementImage: Home.imageeffect, width: "660px", height: "630px", title: "Branding" },
+    { image1: Home.port6, image2: Home.port6, displacementImage: Home.imageeffect, width: "660px", height: "520px", title: " Hodings" },
   ];
 
   // ✅ Third column (Single additional image)
@@ -143,16 +143,16 @@ const CreativeWorksSection: React.FC = () => {
   }, []);
 
   return (
-    <Box sx={{ py: 10, px: { xs: 6, lg: 0 } }}>
+    <Box sx={{ py: 10,  }}>
       <Container maxWidth="xl">
-        <Grid container spacing={4} sx={{mb:5}}>
-        <Grid item xs={12} md={6}>
+        <Grid container spacing={4} sx={{mb:5,px: { xs: 6, lg: 0 }}}>
+        <Grid item xs={12} lg={6}>
           <Box sx={{ textAlign: { xs: "center", md: "left" }, }}>
-            <AnimatedText>OUR CREATIVE WORKS ARE OUR IDENTITY</AnimatedText>
+            <AnimatedText> CREATIVE WORKS ARE OUR IDENTITY</AnimatedText>
           </Box>
         </Grid>
-          <Grid item xs={12} md={6}>
-            <Typography variant="body1" color="white">
+          <Grid item xs={12} lg={6}>
+            <Typography variant="body1" color="white" sx={{fontSize: { xs: '30px', lg: '18px' ,textAlign:'left'}}}>
               We will implement a marketing strategy for your brand. If you would like to achieve more but do not know how – 
               we will define new directions of your branding.
             </Typography>
@@ -172,8 +172,8 @@ const CreativeWorksSection: React.FC = () => {
                       key={index}
                       ref={(el) => (itemRefs.current[index] = el as HTMLDivElement | null)} // Explicit type casting
                       sx={{
-                        width: img.width,
-                        height: img.height,
+                        width: { xs: "100vw", lg: img.width }, // 100vw for mobile view, original width for desktop
+                        height: img.height, // Original image height
                       }}
                     >
                       <Content className="content">
@@ -194,8 +194,8 @@ const CreativeWorksSection: React.FC = () => {
                       <ImageContainer
                         key={index}
                         sx={{
-                          width: item.width,
-                          height: item.height,
+                          width: { xs: "100vw", lg: item.width }, // 100vw for mobile view, original width for desktop
+                          height: item.height, // Original image height
                         }}
                       >
                         <video
@@ -213,7 +213,7 @@ const CreativeWorksSection: React.FC = () => {
                           Your browser does not support the video tag.
                         </video>
                         <Content className="content">
-                          <Typography variant="h5">Video {index + 1}</Typography>
+                          <Typography variant="h5">{item.title}</Typography> {/* Use the title property */}
                         </Content>
                       </ImageContainer>
                     ) : (
@@ -221,8 +221,8 @@ const CreativeWorksSection: React.FC = () => {
                         key={index + imagesFirstColumn.length}
                         ref={(el) => (itemRefs.current[index + imagesFirstColumn.length] = el as HTMLDivElement | null)} // Explicit type casting
                         sx={{
-                          width: item.width,
-                          height: item.height,
+                          width: { xs: "100vw", lg: item.width }, // 100vw for mobile view, original width for desktop
+                          height: item.height, // Original image height
                         }}
                       >
                         <Content className="content">
@@ -255,8 +255,8 @@ const CreativeWorksSection: React.FC = () => {
                 <Box
                 key={index}
                 sx={{
-                  width: img.width,
-                  height: img.height,
+                  width: { xs: "100vw", lg: img.width }, // 100vw for mobile view, original width for desktop
+                  height: img.height, // Original image height
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",

@@ -2,6 +2,10 @@ import React from "react";
 import { Box, styled } from "@mui/material";
 import { GlobalStyles } from "@mui/system";
 
+interface BodyBackgroundProps {
+    image: string;
+}
+
 // Global animation styles
 const GlobalAnimationStyles = () => (
   <GlobalStyles
@@ -50,10 +54,6 @@ const BackgroundContainer = styled(Box)({
   top: 0,
   right: 0,
   bottom: 0,
-  width: "100%",
-  height: "100%",
-  pointerEvents: "none",
-  overflow: "hidden",
 });
 
 // Background component

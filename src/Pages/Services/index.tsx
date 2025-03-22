@@ -11,8 +11,8 @@ const index = () => {
   return (
     <Box>
         <Breadcrumb
-        title="Our Story"
-        subtitle="Our Selected Works"
+        title="Services"
+        // subtitle="Our Selected Works"
         backgroundImage={breadcrumbbanner}
         overlayText=" Services"
       />

@@ -52,27 +52,27 @@ const JobStepsHook = () => {
             <Box sx={{ color: "#74787C", zIndex: 2 }}>
               
               <AnimatedText sx={{ fontWeight: "bold", mb: 2 ,color:'black',textAlign:'start'}}>
-              Find Jobs with 3 Easy Steps
+              Discover Your Dream Career in 3 Simple Steps!
+
               </AnimatedText>
 
               <Typography sx={{ color: "#74787C", mb: 4,textAlign:'start', my:{xs:4,lg:0} }}>
-                Sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                incididunt. Labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation.
+              Looking for your next big career move? We’ve made the process as breezy as a walk in the park. No account sign-ups, no endless forms—just pure, unadulterated opportunity!
+
               </Typography>
 
               {/* Steps List */}
-              <Stack spacing={2}>
+              <Stack spacing={2} sx={{mt:4}}>
                 {[ 
-                  { number: "01", text: "Register an account to start" },
-                  { number: "02", text: "Explore over thousands of resumes" },
-                  { number: "03", text: "Find the most suitable candidate" },
+                  { number: "01", text: "Discover Opportunities : Browse our curated job listings and find roles that excite you." },
+                  { number: "02", text: "Apply Effortlessly : Send in your resume with just a click—no hassle, no fuss" },
+                  { number: "03", text: "Land Your Dream Job : Connect with top employers and kick-start your new adventure!" },
                 ].map((step, index) => (
                   <Stack key={index} direction="row" alignItems="center" spacing={1}>
                     <Typography variant="h5" sx={{ fontWeight: "bold", color: "#74787C" }}>
                       {step.number}
                     </Typography>
-                    <Typography variant="body1" color="#74787C" sx={{fontSize:{xs:'34px',lg:'14px'}}}>{step.text}</Typography>
+                    <Typography variant="body1" color="#74787C" sx={{fontSize:{xs:'34px',lg:'18px'},textAlign:'left'}}>{step.text}</Typography>
                   </Stack>
                 ))}
               </Stack>

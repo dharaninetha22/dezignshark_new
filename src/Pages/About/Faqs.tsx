@@ -49,15 +49,17 @@ const FAQSection: React.FC = () => {
     useEffect(() => {
         if (lineRef.current) {
             const lastFaq = document.querySelector(".faq-item:last-child");
-            if (lastFaq) {
+            const lastFaqAnswer = contentRefs.current[faqData.length - 1];
+            if (lastFaq && lastFaqAnswer) {
                 const lastFaqBottom = lastFaq.getBoundingClientRect().bottom;
                 const containerTop = lineRef.current.getBoundingClientRect().top;
-                const newHeight = lastFaqBottom - containerTop;
+                const answerHeight = openIndex === faqData.length - 1 ? lastFaqAnswer.scrollHeight : 0;
+                const newHeight = lastFaqBottom + answerHeight - containerTop;
 
                 lineRef.current.style.height = `${newHeight}px`;
             }
         }
-    }, [faqData]);
+    }, [faqData, openIndex]);
 
     const toggleFAQ = (index: number): void => {
         setOpenIndex(openIndex === index ? null : index);
@@ -65,7 +67,7 @@ const FAQSection: React.FC = () => {
 
     return (
         <Box py={5}>
-            <Container maxWidth="xl" sx={{ py: 5 }}>
+            <Container maxWidth="xl" sx={{ py: 2 }}>
                 <Grid container spacing={2} alignItems="center" justifyContent="center">
                     {/* Grid Item 1 - Left Side Image */}
                     <Grid item xs={12} lg={5} sx={{ display: "flex", justifyContent: "center" }}>
@@ -77,6 +79,7 @@ const FAQSection: React.FC = () => {
                                 alt="FAQ Visual"
                                 sx={{
                                     width: { xs: "100%", lg: "100%" },
+                                    
                                     borderRadius: "8px",
                                     objectFit: "cover",
                                 }}
@@ -95,7 +98,7 @@ const FAQSection: React.FC = () => {
                                 ref={lineRef}
                                 sx={{
                                     position: "absolute",
-                                    left: "120px",
+                                    left: "100px",
                                     top: "0",
                                     width: "1px",
                                     backgroundColor: "#2B2B2B",
@@ -138,8 +141,8 @@ const FAQSection: React.FC = () => {
                                                         border: "1px solid #2B2B2B",
                                                         borderRadius: "50%",
                                                         transition: "0.3s",
-                                                        width: "100px",
-                                                        height: "100px",
+                                                        width: "70px",
+                                                        height: "70px",
                                                         display: "flex",
                                                         alignItems: "center",
                                                         justifyContent: "center",
@@ -211,7 +214,7 @@ const FAQSection: React.FC = () => {
 
                     {/* Grid Item 3 - Read More Button */}
                     <Grid item xs={12}>
-                        <Box sx={{ mt: { xs: 5, lg: 3 }, textAlign: "center" }}>
+                        <Box sx={{ mt: { xs: 5, lg: 0 }, textAlign: "center" }}>
                             <CustomButton
                                 sx={{
                                     height: { xs: '120px', lg: '40px' },

@@ -25,31 +25,31 @@ const ContactForm: React.FC = () => {
   };
 
   return (
-    <Box sx={{ backgroundColor: "white", py: 8 ,px:{xs:6,lg:0}}}>
+    <Box sx={{ backgroundColor: "black",  px: { xs: 6, lg: 0 },}}>
       <Container maxWidth="lg">
         <Box sx={{ textAlign: "center", mb: 4 }}>
 
-          <AnimatedText sx={{ color: "black", textAlign: "left", fontWeight: 700, mt: { xs: 1, lg: 1 }, fontSize: { xs: "55px", lg: "35px" } }}>
-          Get in touch!
+          <AnimatedText sx={{ color: "white", textAlign: "left", fontWeight: 700, mt: { xs: 1, lg: 4 }, fontSize: { xs: "55px", lg: "45px" } ,}}>
+            Struggling online? We’re here to help.
           </AnimatedText>
-          {/* <Typography variant="h3" sx={{ fontStyle: "italic", mt: 1, color: "black", textAlign: "left" }}>
+          {/* <Typography variant="h3" sx={{ fontStyle: "italic", mt: 1, color: "white", textAlign: "left" }}>
             Get in touch!
           </Typography> */}
         </Box>
 
-        <Grid container spacing={2}>
+        <Grid container spacing={4} >
           {/* Form Section */}
-          <Grid item xs={12} lg={6}>
+          <Grid item xs={12} lg={6} mt={2}>
             <form onSubmit={handleSubmit}>
               <Grid container spacing={2}>
                 {/* Name Field */}
-                <Grid item xs={12} lg={12}>
+                <Grid item xs={12} lg={12} mb={1}>
                   <Typography
                     variant="body1"
                     sx={{
                       mb: 2,
                       fontWeight: "bold",
-                      color: "black",
+                      color: "white",
                       textAlign: "left",
                       fontSize: { xs: "30px", lg: "18px" }, // Font size for mobile and desktop
                     }}
@@ -58,26 +58,28 @@ const ContactForm: React.FC = () => {
                   </Typography>
                   <CustomInput
                     fullWidth
-                    placeholder="Your Name"
+                    placeholder="Enter Your Name"
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
                     sx={{
-                      height: { xs: "60px", lg: "30px" }, // Increased height for mobile
+                      height: { xs: "60px", lg: "25px" }, // Increased height for mobile
                       "&::placeholder": {
-                        fontSize: { xs: "20px", lg: "14px" }, // Increased placeholder font size for mobile
+                        fontSize: { xs: "30px", lg: "18px" }, // Increased placeholder font size for mobile
+                        color: 'white'
                       },
+
                     }}
                   />
                 </Grid>
                 {/* Phone Number Field */}
-                <Grid item xs={12} lg={12}>
+                <Grid item xs={12} lg={6} mb={1}>
                   <Typography
                     variant="body1"
                     sx={{
                       mb: 2,
                       fontWeight: "bold",
-                      color: "black",
+                      color: "white",
                       textAlign: "left",
                       fontSize: { xs: "30px", lg: "18px" }, // Font size for mobile and desktop
                     }}
@@ -86,26 +88,26 @@ const ContactForm: React.FC = () => {
                   </Typography>
                   <CustomInput
                     fullWidth
-                    placeholder="Phone Number"
+                    placeholder="Enter Your Phone Number"
                     name="number"
                     value={formData.number}
                     onChange={handleChange}
                     sx={{
-                      height: { xs: "60px", lg: "30px" }, // Increased height for mobile
+                      height: { xs: "60px", lg: "25px" }, // Increased height for mobile
                       "&::placeholder": {
-                        fontSize: { xs: "20px", lg: "14px" }, // Increased placeholder font size for mobile
+                        fontSize: { xs: "30px", lg: "18px" }, // Increased placeholder font size for mobile
                       },
                     }}
                   />
                 </Grid>
                 {/* Email Field */}
-                <Grid item xs={12} lg={12}>
+                <Grid item xs={12} lg={6} mb={1}>
                   <Typography
                     variant="body1"
                     sx={{
                       mb: 2,
                       fontWeight: "bold",
-                      color: "black",
+                      color: "white",
                       textAlign: "left",
                       fontSize: { xs: "30px", lg: "18px" }, // Font size for mobile and desktop
                     }}
@@ -114,14 +116,14 @@ const ContactForm: React.FC = () => {
                   </Typography>
                   <CustomInput
                     fullWidth
-                    placeholder="Your Email"
+                    placeholder="Enter Your Email"
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
                     sx={{
-                      height: { xs: "60px", lg: "30px" }, // Increased height for mobile
+                      height: { xs: "60px", lg: "25px" }, // Increased height for mobile
                       "&::placeholder": {
-                        fontSize: { xs: "20px", lg: "14px" }, // Increased placeholder font size for mobile
+                        fontSize: { xs: "30px", lg: "18px" }, // Increased placeholder font size for mobile
                       },
                     }}
                   />
@@ -133,7 +135,7 @@ const ContactForm: React.FC = () => {
                     sx={{
                       mb: 1,
                       fontWeight: "bold",
-                      color: "black",
+                      color: "white",
                       textAlign: "left",
                       fontSize: { xs: "30px", lg: "18px" }, // Font size for mobile and desktop
                     }}
@@ -147,13 +149,32 @@ const ContactForm: React.FC = () => {
                     onChange={(e) => setFormData({ ...formData, service: e.target.value })}
                     displayEmpty
                     sx={{
-                      height: "40px",
-                      textAlign: "left", // Align text to the left
+                      height: { xs: "60px", lg: "45px" },
+                      textAlign: "left",
+                      backgroundColor: "transparent", // Ensure background stays transparent
+                      color: "white",
+
+                      // Ensuring no background color on focus
+                      "& .MuiOutlinedInput-root": {
+                        backgroundColor: "transparent !important",
+                      },
+
+                      // Ensuring text color for both placeholder and selected value
+                      "& .MuiSelect-select": {
+                        color: formData.service ? "white" : "rgba(255, 255, 255, 0.7)",
+                      },
+
+                      // Dropdown icon color change
+                      "& .MuiSvgIcon-root": {
+                        color: "white", // Make dropdown icon white
+                      },
+
+                      // Border color adjustments
                       "&:hover .MuiOutlinedInput-notchedOutline": {
-                        borderColor: "#fc0000", // Change border color to red on hover
+                        borderColor: "#fc0000",
                       },
                       "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                        borderColor: "#fc0000", // Change border color to red on focus (click)
+                        borderColor: "#fc0000",
                       },
                     }}
                   >
@@ -161,44 +182,38 @@ const ContactForm: React.FC = () => {
                       value=""
                       disabled
                       sx={{
+                        color: "white", // Placeholder color
                         "&:hover": {
-                          color: "#fc0000", // Change text color to red on hover
+                          color: "#fc0000",
                         },
                       }}
                     >
                       Select a Service
                     </MenuItem>
-                    <MenuItem
-                      value="Web Development"
-                      sx={{
-                        "&:hover": {
-                          color: "#fc0000", // Change text color to red on hover
-                        },
-                      }}
-                    >
+                    <MenuItem value="Branding" sx={{ "&:hover": { color: "#fc0000" } }}>
+
+                      Branding
+                    </MenuItem>
+
+                    <MenuItem value="SEO" sx={{ "&:hover": { color: "#fc0000" } }}>
+                      Social Media Marketing
+                    </MenuItem><MenuItem value="SEO" sx={{ "&:hover": { color: "#fc0000" } }}>
+                      Pay-Per-Click Advertising
+                    </MenuItem>
+                    <MenuItem value="SEO" sx={{ "&:hover": { color: "#fc0000" } }}>
                       Web Development
                     </MenuItem>
-                    <MenuItem
-                      value="SEO"
-                      sx={{
-                        "&:hover": {
-                          color: "#fc0000", // Change text color to red on hover
-                        },
-                      }}
-                    >
-                      SEO
+                    <MenuItem value="SEO" sx={{ "&:hover": { color: "#fc0000" } }}>
+                      Search Engine Optimization
                     </MenuItem>
-                    <MenuItem
-                      value="PPC"
-                      sx={{
-                        "&:hover": {
-                          color: "#fc0000", // Change text color to red on hover
-                        },
-                      }}
-                    >
-                      PPC
+                    <MenuItem value="PPC" sx={{ "&:hover": { color: "#fc0000" } }}>
+                      Graphic Designing
                     </MenuItem>
                   </Select>
+
+
+
+
                 </Grid>
                 {/* Message Field */}
                 <Grid item xs={12}>
@@ -207,8 +222,9 @@ const ContactForm: React.FC = () => {
                     sx={{
                       mb: 1,
                       fontWeight: "bold",
-                      color: "black",
+                      color: "white",
                       textAlign: "left",
+
                       fontSize: { xs: "30px", lg: "18px" }, // Font size for mobile and desktop
                     }}
                   >
@@ -216,15 +232,15 @@ const ContactForm: React.FC = () => {
                   </Typography>
                   <CustomInput
                     fullWidth
-                    placeholder="Message"
+                    placeholder="Enter Your Message"
                     multiline
-                    rows={4}
+                    rows={3}
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
                     sx={{
                       "&::placeholder": {
-                        fontSize: { xs: "20px", lg: "14px" }, // Increased placeholder font size for mobile
+                        fontSize: { xs: "30px", lg: "18px" }, // Increased placeholder font size for mobile
                       },
                     }}
                   />

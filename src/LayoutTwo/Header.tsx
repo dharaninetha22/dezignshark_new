@@ -132,8 +132,12 @@ const Header: React.FC = () => {
     }
   }, [mobileOpen]);
 
-  const handleNavigate = (route: string) => {
-    navigate(route);
+  const handleNavigate = (route: string, external?: boolean) => {
+    if (external) {
+      window.open(route, "_blank"); // Open external links in a new tab
+    } else {
+      navigate(route);
+    }
     setDropdownOpen(null);
     setMobileOpen(false);
   };
@@ -178,7 +182,11 @@ const Header: React.FC = () => {
         { label: "Graphic Designing", route: "/services/graphic-designing" },
       ],
     },
-    { label: "Gallery", route: "/gallery" },
+    {
+      label: "Gallery",
+      route: "https://www.google.com/maps/place/Dezign+Shark+%7C+Branding+%26+Digital+Marketing+Agency+in+Hyderabad/@17.4111823,78.4016813,3a,75y,90t/data=!3m8!1e2!3m6!1sAF1QipN9OMv3de-XAH8Rt02q0m94SMvLUKqY93opYdkS!2e10!3e12!6shttps:%2F%2Flh5.googleusercontent.com%2Fp%2FAF1QipN9OMv3de-XAH8Rt02q0m94SMvLUKqY93opYdkS%3Dw86-h86-k-no!7i1600!8i1600!4m7!3m6!1s0x6b43765a51d595d:0x888192e0597f0421!8m2!3d17.4112721!4d78.4018151!10e5!16s%2Fg%2F11kq3q5yrp?authuser=0&entry=ttu&g_ep=EgoyMDI1MDMxOS4yIKXMDSoASAFQAw%3D%3D",
+      external: true, // Add a flag to indicate external links
+    },
     { label: "Blogs", route: "/blog" },
     { label: "Careers", route: "/careers" },
     { label: "Contact Us", route: "/contactus" },
@@ -217,7 +225,7 @@ const Header: React.FC = () => {
                 cursor: "none !important",
               }}
               
-              onClick={() => handleNavigate(item.route)}
+              onClick={() => handleNavigate(item.route, item.external)} // Pass the external flag
             >
               {item.label} {item.submenu && <MdKeyboardArrowDown className="dropdown-arrow" />}
             </Typography>
@@ -397,7 +405,7 @@ const Header: React.FC = () => {
   {navItems.map((item, index) => (
     <Box key={index}>
       <ListItemButton
-        onClick={() => handleNavigate(item.route)}
+        onClick={() => handleNavigate(item.route, item.external)}
         sx={{
           color: "#FFF",
           transition: "border-left 0.3s ease-in-out",
@@ -589,7 +597,7 @@ const Header: React.FC = () => {
           width: '100%',
           boxShadow: 'none',
           padding: "1px 0",
-          backgroundColor: "rgba(0, 0, 0, 0.9)", // Semi-transparent black
+          backgroundColor: "rgba(0, 0, 0, 0.9) !important", // Semi-transparent black
           backdropFilter: "blur(2px)", // Blur effect
         }}>
 

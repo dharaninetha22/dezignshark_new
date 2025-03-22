@@ -43,6 +43,9 @@ import webicon from './images/home/website.png'
 import smmicon from './images/home/smm.png'
 import contenticon from './images/home/content.png'
 import branding from './images/home/branding.png'
+import sharkbgred from './images/sharkbgred.png'
+import sharkbgmaroon from './images/sharkbgmaroon.png'
+
 
 
 
@@ -55,6 +58,8 @@ import careersshark1 from './images/careers/careersshark.png'
 import contactusshark1 from  './images/home/contactusshark1.png'
 import contactusshark2 from  './images/home/contactusshark2.png'
 import contactusshark3 from  './images/home/contactusshark3.png'
+import mobilebgshark1 from './images/home/mobilebgshark1.png'
+import mobilebgshark2 from './images/home/mobilebgshark2.png'
 
 
 //about
@@ -180,7 +185,8 @@ export const SliderLogos = {
 
 export{
     dslogo,
-    breadcrumbbanner,servicebg,shark,careersshark1,contactusshark1,contactusshark2,contactusshark3
+    breadcrumbbanner,servicebg,shark,careersshark1,contactusshark1,contactusshark2,contactusshark3,sharkbgred,sharkbgmaroon,
+    mobilebgshark2,mobilebgshark1
 }
 
 export const AboutImages={

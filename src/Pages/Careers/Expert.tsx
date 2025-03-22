@@ -20,19 +20,16 @@ const JobStepsHook = () => {
             <Box sx={{ color: "#74787C", zIndex: 2 }}>
             
               <AnimatedText sx={{ fontWeight: "bold", mb: 2 ,textAlign:"start",color:'black',fontSize: { xs: '5em', lg: '3.2em' }}}>
-              Getting Applied by an
-              Expert Talent
+              Getting Applied by an Expert Talent
+
               </AnimatedText>
 
               <Typography sx={{ color: "#74787C", mb: 4,textAlign:'start' }}>
-                Sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                incididunt. Labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation.
+              When it comes to landing your dream job, our expert team acts as your personal career matchmaker connecting your unique skills with the perfect opportunity.
+
               </Typography>
               <Typography sx={{ color: "#74787C", mb: 4,textAlign:'start' }}>
-                Sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                incididunt. Labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation.
+              Our specialists dive deep into every application, ensuring your potential shines through. Experience a personalized, engaging approach that turns every application into a step toward success!
               </Typography>
 
 

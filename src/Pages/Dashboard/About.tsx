@@ -83,7 +83,7 @@ const MarketingLayout = () => {
 
     return (
         <Box>
-            <Container maxWidth="xl" sx={{ p: { xs: 6, lg: 0 } }}>
+            <Container maxWidth="xl" sx={{ p: { xs: 6, lg: 0 } ,py:{xs:0,lg:5}}}>
                 <Box sx={{ color: "white", position: "relative", overflow: "visible" }}>
                     <Grid container spacing={4}>
                         {/* Left Section - about2 Image */}
@@ -114,7 +114,7 @@ const MarketingLayout = () => {
                         {/* Right Section - ABOUT Text */}
                         <Grid item xs={12} lg={5} sx={{ display: "flex", flexDirection: "column", justifyContent: "center" }}>
                             <Typography
-                                ref={aboutRef}
+                                // ref={aboutRef}
                                 variant="h3"
                                 fontWeight="bold"
                                 sx={{
@@ -167,86 +167,9 @@ const MarketingLayout = () => {
                             >
                                 At Dezign Shark, we don’t just follow trends—we create them. Our data-driven strategies and creative marketing solutions help businesses thrive in today’s competitive digital space.
                             </Typography>
-                            {/* <Typography
-                                ref={aboutRef}
-                                variant="h3"
-                                fontWeight="bold"
-                                sx={{
-                                    mt: 2,
-                                    fontSize: { lg: "110px", xs: "50px" },
-                                    lineHeight: "120px",
-                                    color: "#937171",
-                                    whiteSpace: "nowrap",
-                                    display: {
-                                        lg: 'inline',
-                                        xs: 'none'
-                                    }
-                                }}
-                            >
-                                ABOUT
-                            </Typography> */}
+                            
                         </Grid>
 
-                        {/* Left Section - US Text */}
-                        {/* <Grid item xs={12} lg={5} sx={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
-                            <Typography
-                                ref={usRef}
-                                variant="h3"
-                                fontWeight="bold"
-                                sx={{
-                                    textAlign: "center",
-                                    fontSize: { lg: "110px", xs: "50px" },
-                                    lineHeight: "120px",
-                                    color: "#937171",
-                                    whiteSpace: "nowrap",
-                                    display: {
-                                        lg: 'inline',
-                                        xs: 'none'
-                                    }
-                                }}
-                            >
-                                US
-                            </Typography>
-                            <Typography variant="body1"
-                                sx={{
-                                    fontSize:
-                                    {
-                                        xs: "18px",
-                                        lg: '1em'
-                                    },
-                                   textAlign: 'justify',
-                                    mt: -1,
-                                    maxWidth: {
-                                        xs: '100%',
-                                        lg: '400px'
-                                    },
-                                    mb: {
-                                        xs: 8,
-                                        lg: 0
-                                    }
-                                }}>
-                                
-                            </Typography>
-                        </Grid> */}
-
-                        {/* Right Section - about1 Image */}
-                        {/* <Grid item xs={12} lg={7}
-                         sx={{ 
-                            position: "relative", overflow: "visible", display: "flex", alignItems: "center", right: '40px', justifyContent: 'center' ,
-                            mt:{
-                                    xs:5,
-                                    lg:0
-                                }}}>
-                            <Card sx={{ backgroundColor: "transparent", boxShadow: "none", overflow: "visible" }}>
-                                <CardMedia
-                                    ref={about2ImageRef}
-                                    component="img"
-                                    image={Home.about3}
-                                    alt="Conference"
-                                    sx={{ position: "relative", zIndex: 10 ,ml:{xs:5,lg:0}}}
-                                />
-                            </Card>
-                        </Grid> */}
                     </Grid>
                 </Box>
             </Container>

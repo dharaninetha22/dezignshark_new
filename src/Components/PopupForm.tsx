@@ -6,8 +6,6 @@ import CustomInput from "./Inputs/CustomInput";
 import CustomButton from "./Inputs/CustomButton";
 import { Home } from "../assets"; // Ensure this import is correct
 
-// Ensure your video is inside `public/videos/popup.mp4`
-const videoUrl = "https://dprstorage.b-cdn.net/dezignshark/popup.mp4";
 
 interface PopupFormProps {
   isOpen: boolean;
@@ -69,6 +67,7 @@ const PopupForm: React.FC<PopupFormProps> = ({ isOpen, onClose }) => {
             "&:hover": {
               background: "rgba(255, 255, 255, 0.4)",
             },
+            cursor:'none'
           }}
         >
           <CloseIcon fontSize="large" />
@@ -125,7 +124,7 @@ const PopupForm: React.FC<PopupFormProps> = ({ isOpen, onClose }) => {
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
-              background: "rgba(255, 255, 255, 0.8)",
+              background: "black",
               // borderRadius: "10px",
               borderTopLeftRadius:'none',
             }}
@@ -134,19 +133,19 @@ const PopupForm: React.FC<PopupFormProps> = ({ isOpen, onClose }) => {
               <Typography
                 variant="h4"
                 sx={{
-                  color: "#910909cc",
+                  color: "#fff",
                   padding: 2,
                   fontWeight: 600,
-                  mb: 3,
+                  mb: 2,
                   textAlign: "left",
                 }}
               >
                 We Would Love to Hear From You
               </Typography>
-              <CustomInput placeholder="Name" type="text" fullWidth required size="small" />
-              <CustomInput placeholder="Email" type="email" fullWidth required size="small" />
-              <CustomInput placeholder="Phone Number" type="number" fullWidth required size="small" />
-              <CustomInput placeholder="Message" type="text" fullWidth required size="small" />
+              <CustomInput placeholder="Name" type="text" fullWidth required size="small" sx={{ borderColor: "white" }} />
+              <CustomInput placeholder="Email" type="email" fullWidth required size="small" sx={{ borderColor: "white" }} />
+              <CustomInput placeholder="Phone Number" type="number" fullWidth required size="small"  sx={{ borderColor: "white" }}/>
+              <CustomInput placeholder="Message" type="text" fullWidth required size="small" sx={{ borderColor: "white" }} />
 
               <CustomButton>Send</CustomButton>
             </Form>

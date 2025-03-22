@@ -6,6 +6,7 @@ import './Layout.css';
 import ScrollToTopButton from './ScrollToTopButton';
 import BodyBackground from '../Components/BodyBackground';
 import Footer from '../Pages/Footer';
+import { mobilebgshark2 ,sharkbgmaroon} from '../assets';
 
 const Layout: React.FC = () => {
   const location = useLocation();
@@ -41,9 +42,32 @@ const Layout: React.FC = () => {
         <Header    />
         <ScrollToTopButton />
       </Box>
-      <Box className="content-container">
-        
+     
+      <Box className="content-container" 
+    
+      >
+        <Box
+          //  sx={{
+          //   position: "relative",
+          //   backgroundImage: `url(${sharkbgmaroon})`,
+          //   backgroundAttachment: "fixed",
+          //   backgroundPosition: "center",
+          //   backgroundRepeat: "no-repeat",
+          //   backgroundSize: "cover",
+          //   minHeight: "100vh",
+            
+          //   // opacity: 0.8,
+          //   "@media (max-width: 1040px)": {
+          //       backgroundImage: `url(${mobilebgshark2})`,
+          //       // backgroundAttachment: "scroll",
+          //       backgroundSize: "contain", // Adjust to ensure the full image appears
+          //       opacity: 0.8, // Decrease the opacity for mobile as well
+          //   },
+          //   }}
+        >
+
         <Outlet />
+        </Box>
       </Box>
       <Box>
         <Footer />

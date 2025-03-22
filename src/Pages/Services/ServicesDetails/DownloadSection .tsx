@@ -7,11 +7,12 @@ import DownloadForOfflineIcon from '@mui/icons-material/DownloadForOffline';
 
 // Import the PDF file
 import brochurePDF from "../../../assets/ds-brochure-design-Recovered.pdf";
+import seoPDF from "../../../assets/seo-checklist.pdf";
 import AnimatedText from "../../../Components/Inputs/AnimatedText";
 
 const downloads = [
   { name: "Our Brochure", file: brochurePDF, icon: <ImFilePdf style={{ color: "black" }} /> },
-  { name: "Documentation", file: "documentation.pdf", icon: <IoDocumentTextOutline style={{ color: "black" }} /> },
+  { name: "SEO Check List", file: seoPDF, icon: <IoDocumentTextOutline style={{ color: "black" }} /> },
 ];
 
 const DownloadSection = () => {
@@ -65,7 +66,7 @@ const DownloadSection = () => {
                 download
                 sx={{ color: "black" }}
               >
-                <DownloadForOfflineIcon sx={{fontSize: { xs: "3.5rem", lg: "1.2rem" }}} />
+                <DownloadForOfflineIcon sx={{fontSize: { xs: "3.5rem", lg: "2.0rem" }}} />
               </IconButton>
             </ListItem>
           ))}

@@ -47,7 +47,7 @@ const ProjectForm: React.FC = () => {
           
         </Typography>
         <AnimatedText sx={{color:'black', textAlign:'center',mb:{xs:5,lg:3},fontSize: { xs: "54px", lg: "20px" }}}>
-        Let's start new project.
+        Struggling online? We’re here to help.
         </AnimatedText>
 
         {/* Name Input */}
@@ -96,12 +96,12 @@ const ProjectForm: React.FC = () => {
          sx={{
           textAlign: "center",
           height: { xs: '90px', lg: '40px' },
-          width: { xs: '400px', lg: '160px' },
+          width: { xs: '400px', lg: '200px' },
           fontSize: { xs: '35px', lg: '14px' },
           mt:{xs:4,lg:1}
       }}
         >
-          Start Project
+          Send Message
         </CustomButton>
       </Box>
     </Container>

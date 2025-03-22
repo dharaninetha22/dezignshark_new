@@ -81,24 +81,27 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, imageUrl,
           }}
         /> */}
         <Box
-        sx={{
-          border: "3px solid red", // ✅ Adds red border
-              borderRadius: "50%", // ✅ Optional: Adds rounded corners
-              padding: "15px", // ✅ Optional: Adds space inside the border
-        }}
+          sx={{
+            border: "2px solid red", // ✅ Adds red border
+            borderRadius: "50%", // ✅ Optional: Adds rounded corners
+            padding: { xs: "0px", lg: "15px" }, // ✅ Optional: Adds space inside the border
+            width: { xs: "150px", lg: "70px" }, // ✅ Width for the border
+            height: { xs: "150px", lg: "70px" }, // ✅ Height for the border
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
         >
-
           <Box
             component="img"
             src={imageUrl}
             alt={title}
             sx={{
-              width: { xs: "21%", lg: "50px" }, // ✅ 200px on mobile, 80px on larger screens
-              height: { xs: "100%", lg: "50px" },
+              width: { xs: "50%", lg: "50px" }, // ✅ Adjusted width for the image
+              height: { xs: "100%", lg: "50px" }, // ✅ Adjusted height for the image
               transition: "500ms ease",
               objectFit: "contain",
               filter: "brightness(0) invert(1)", // Makes image white
-              
             }}
           />
         </Box>

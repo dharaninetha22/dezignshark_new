@@ -33,6 +33,7 @@ import AnimatedText from "../../../Components/Inputs/AnimatedText";
 import Animated from "../../About/Clients";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import EastIcon from '@mui/icons-material/East';
+import { shark } from "../../../assets";
 
 
 // Styled Components
@@ -60,7 +61,9 @@ const CircleWrapper = styled(Box)({
   width: "200px",
   height: "200px",
   borderRadius: "50%",
+  background:'black',
   border: "1px solid rgba(94, 94, 94, 0.18)",
+  color:'white'
 });
 
 const RotatingTextContainer = styled(Box)({
@@ -75,11 +78,11 @@ const RotatingTextContainer = styled(Box)({
 const RotatingLetter = styled(Typography)({
   position: "absolute",
   fontSize: "5px",
-  color: "#000",
   transformOrigin: "center",
   textTransform: "uppercase",
   fontWeight: 600,
-  letterSpacing: '1px'
+  letterSpacing: '1px',
+  color:'white'
 });
 
 // Services list extracted from JSON
@@ -238,24 +241,28 @@ const ServicesDetails = () => {
             </Grid>
             <Grid item lg={4} xs={12} sx={{ display: { xs: "none", lg: 'flex' } }} justifyContent="center">
               <CircleWrapper className="circle-spin">
-                <RotatingTextContainer ref={rotatingTextRef}>
-                  {marketStrategy.rotatingText.split("").map((char, index) => {
-                    const angle = (index / marketStrategy.rotatingText.length) * 360;
-                    const radius = 80;
-                    return (
-                      <RotatingLetter key={index}
-                        style={{
-                          transform: `translate(${radius * Math.cos((angle * Math.PI) / 180)}px, 
-                         ${radius * Math.sin((angle * Math.PI) / 180)}px) rotate(${angle}deg)`,
-                          fontSize: '12px',
-                        }}
-                      >
-                        {char}
-                      </RotatingLetter>
-                    );
-                  })}
-                </RotatingTextContainer>
-                <Star sx={{ fontSize: "40px", color: "#919090" }} />
+              <RotatingTextContainer ref={rotatingTextRef}>
+                {marketStrategy.rotatingText.split("").map((char, index) => {
+                const angle = (index / marketStrategy.rotatingText.length) * 360;
+                const radius = 80;
+                return (
+                  <RotatingLetter key={index}
+                  style={{
+                    transform: `translate(${radius * Math.cos((angle * Math.PI) / 180)}px, 
+                   ${radius * Math.sin((angle * Math.PI) / 180)}px) rotate(${angle}deg)`,
+                    fontSize: '12px',
+                  }}
+                  >
+                  {char}
+                  </RotatingLetter>
+                );
+                })}
+              </RotatingTextContainer>
+              <img
+                src={shark}
+                alt="Rotating Center"
+                style={{ width: "50px", height: "50px", borderRadius: "50%" }}
+              />
               </CircleWrapper>
             </Grid>
           </Grid>
@@ -497,7 +504,7 @@ const ServicesDetails = () => {
                         <Divider sx={{}} />
                       </Box>
                     ))} */}
-                     <Box mt={5}>
+                     <Box mt={1}>
       {faqData.questions.map((faq, index) => (
         <Box key={index}>
           <Accordion

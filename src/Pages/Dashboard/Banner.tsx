@@ -63,7 +63,7 @@ const HeroSection: React.FC = () => {
           backgroundImage: `url(${Home.webbannerr})`,
           height: {
             xs: "50vh",
-            lg: "120vh",
+            lg: "130vh",
           },
           backgroundPosition: {
             xs: "75% center",
@@ -91,26 +91,26 @@ const HeroSection: React.FC = () => {
               </Box>
             </Heading>
             <Grid container >
-              <Grid item lg={7}>
+              <Grid item lg={7} pb={4}>
 
-              <Heading>
-      <Box
-        sx={{
-          fontSize: "70px !important",
-          fontWeight: 700,
-          color: "#FFFFFF",
-          display: "flex",
-          flexDirection: "column",
-          
-        }}
-      >
-        <span>Dominating the</span>
-        <span>
-           <OutlineText>Real Estate</OutlineText>
-        </span>
-        <span>Marketing Space</span>
-      </Box>
-    </Heading>
+                <Heading>
+                  <Box
+                    sx={{
+                      fontSize: "70px !important",
+                      fontWeight: 700,
+                      color: "#FFFFFF",
+                      display: "flex",
+                      flexDirection: "column",
+
+                    }}
+                  >
+                    <span>Dominating the</span>
+                    <span>
+                      <OutlineText>Real Estate</OutlineText>
+                    </span>
+                    <span>Marketing Space</span>
+                  </Box>
+                </Heading>
               </Grid>
             </Grid>
 

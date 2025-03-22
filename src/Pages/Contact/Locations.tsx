@@ -7,6 +7,9 @@ import { IoCallSharp } from "react-icons/io5";
 const FancyBox = styled(Card)({
   position: "relative",
   overflow: "hidden",
+  backgroundColor: "#171717",
+  border: "1px solid #444",
+  transition: "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out",
 
   "&::before, &::after, & .hover-lines-left, & .hover-lines-right": {
     content: '""',
@@ -36,7 +39,6 @@ const FancyBox = styled(Card)({
 });
 
 const ContactInfo: React.FC = () => {
-  
   const contactData = [
     {
       id: 1,
@@ -61,15 +63,20 @@ const ContactInfo: React.FC = () => {
   ];
 
   return (
-    <Box sx={{ background: "white", px: { xs: 6, lg: 0 } }}>
+    <Box sx={{ background: "white", px: { xs: 2, lg: 0 } }}>
       <Container maxWidth="lg">
         <Box sx={{ flexGrow: 1, py: 10 }}>
           <Grid container spacing={3} justifyContent="center">
             {contactData.map((item) => (
-              <Grid item xs={12} sm={4} md={4} key={item.id}>
+              <Grid item xs={12} lg={4} key={item.id} sx={{ width: "100%" }}>
                 <FancyBox
                   elevation={3}
-                  sx={{ border: "1px solid #444", width: "100%", cursor: "none !important", position: "relative" ,backgroundColor: "#171717",}}
+                  sx={{
+                    border: "1px solid #444",
+                    width: "100%", // Ensure FancyBox spans full width
+                    position: "relative",
+                    backgroundColor: "#171717",
+                  }}
                 >
                   {/* Side Borders for Hover Effect */}
                   <Box className="hover-lines-left"></Box>
@@ -84,34 +91,30 @@ const ContactInfo: React.FC = () => {
                       p: 3,
                       borderRadius: 2,
                       textAlign: "center",
-                      transition: "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out",
-                      height: { xs: "400px", lg: "250px" },
-                      mt: { xs: 5, lg: 0 },
-                      
+                      height: { xs: "400px", md: "250px" },
                     }}
                   >
                     {/* Icon */}
                     <Box
                       sx={{
-                        width: {xs:150,lg:80},
-                        height: {xs:150,lg:80},
+                        width: { xs: 100, lg: 80 },
+                        height: { xs: 100, lg: 80 },
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        borderRadius: "50%", // Set border radius to 50%
-                        border: "2px solid #fc0000", // Add red border
-                        mb: { xs: 5, lg: 2 },
-                        fontSize: { xs: "100px", lg: "50px" },
+                        borderRadius: "50%",
+                        border: "2px solid #fc0000",
+                        mb: 2,
                       }}
                     >
                       <Box
                         component="span"
                         sx={{
-                          fontSize: { xs: "100px", lg: "50px" },
+                          fontSize: { xs: "50px", lg: "40px" },
                           display: "flex",
                           alignItems: "center",
                           justifyContent: "center",
-                          color:'white !important '
+                          color: "white",
                         }}
                       >
                         {item.icon}
@@ -119,7 +122,7 @@ const ContactInfo: React.FC = () => {
                     </Box>
 
                     {/* Title */}
-                    <Typography variant="h5" fontWeight="bold" color="white" sx={{ fontSize: { xs: "46px", lg: "24px" } }}>
+                    <Typography variant="h5" fontWeight="bold" color="white" sx={{ fontSize: { xs: "24px", lg: "20px" } }}>
                       {item.title}
                     </Typography>
 
@@ -134,9 +137,9 @@ const ContactInfo: React.FC = () => {
                           color: "white",
                           textDecoration: "none",
                           transition: "color 0.3s ease-in-out",
-                          "&:hover": { color: "#FF5722", textDecoration: "none" },
-                          mt: 2,
-                          fontSize: { xs: "36px", lg: "18px" },
+                          "&:hover": { color: "#FF5722" },
+                          mt: 1,
+                          fontSize: { xs: "16px", lg: "14px" },
                         }}
                       >
                         {detail.text}

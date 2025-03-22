@@ -89,12 +89,12 @@ const JobListing = () => {
       <Box sx={{ position: "relative", zIndex: 2, width: "100%" }}>
         {/* Title */}
        
-        <AnimatedText sx={{ textAlign: "center", mb: {xs:5,lg:3},my: {xs:5,lg:0}, fontWeight: "bold", color: "#fff" ,fontSize: { xs: '5em', lg: '3.2em' }}}>
+        <AnimatedText sx={{ textAlign: "center", mb: {xs:5,lg:5},my: {xs:5,lg:0}, fontWeight: "bold", color: "#fff" ,fontSize: { xs: '5em', lg: '3.2em' }}}>
         Featured Jobs
         </AnimatedText>
 
         {/* Category Tabs */}
-        <Box sx={{ display: "flex", justifyContent: "center", mb: 4 }}>
+        <Box sx={{ display: "flex", justifyContent: "center", mb: 4 ,mt:5}}>
           <Typography variant="h6">
 
               <Tabs
@@ -104,9 +104,9 @@ const JobListing = () => {
                 scrollButtons="auto"
                 centered
                 sx={{
-                  "& .MuiTabs-indicator": { backgroundColor: "#7c4dff" },
-                  "& .MuiTab-root": { textTransform: "none", fontSize: {xs:'30px',lg:"20px"}, color: "#fc0000" },
-                  "& .Mui-selected": { color: "#fff", fontWeight: "bold" },
+                  "& .MuiTabs-indicator": { backgroundColor: "#fff" },
+                  "& .MuiTab-root": { textTransform: "none", fontSize: {xs:'30px',lg:"20px"}, color: "#fff" },
+                  "& .Mui-selected": { color: "#fc0000", fontWeight: "bold" },
                 }}
               >
                 {categories.map((cat) => (
@@ -142,28 +142,40 @@ const JobListing = () => {
                 <CardContent >
                   <Box sx={{py:{xs:6,lg:0},}}>
 
-                      <Box sx={{ display: "flex", alignItems: "center", gap: 1,}}>
+                      <Box sx={{ display: "flex", alignItems: "center", justifyContent:"space-between",gap: 5,mb:3}}>
                         {/* Profile Icon */}
-                        <Box >
-                          <img src={shark} alt="Company Logo" width={60} height={60} />
+                        <Box 
+                          sx={{
+                          backgroundColor: "black",
+                          borderRadius: "50%",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          width: 100,
+                          height: 80,
+                          }}
+                        >
+                          <img src={shark} alt="Company Logo" width={40} height={40} />
                         </Box>
-                        <Typography variant="body2" sx={{ fontWeight: "bold", color: "#000", fontSize: {xs:'30px',lg:'16px'},textAlign:{xs:'center',lg:'center'} }}>
+                        <Box sx={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: 1, width: "100%" }}>
+                          <Typography variant="body2" sx={{ fontWeight: "bold", color: "#000", fontSize: {xs:'30px',lg:'16px'}, textAlign: {xs:'center',lg:'center'} }}>
                           {job.title}
-                        </Typography>
+                          </Typography>
+                          <Typography variant="body2" sx={{ color: "#757575", mb: 1, display: "flex", alignItems: "center", gap: 1, justifyContent: {xs:'start',lg:"start"}, fontSize: {xs:'30px',lg:'16px'}, pl: {xs:6,lg:0} }}>
+                          <SlBriefcase 
+                            style={{
+                            fontSize: isMobile ? "30px" : "16px", 
+                            }} 
+                          />
+                          {job.category}
+                          <CiLocationOn style={{ fontSize: isMobile ? "30px" : "16px" }} /> {job.location}
+                          </Typography>
+                        </Box>
                         <Box sx={{ flexGrow: 1 }} />
                       </Box>
 
                       {/* Category & Location with Icons */}
-                      <Typography variant="body2" sx={{ color: "#757575", mb: 1, display: "flex", alignItems: "center", gap: 1, justifyContent: {xs:'start',lg:"center"} ,fontSize:{xs:'30px',lg:'16px'},pl:{xs:6,lg:0}}}>
-                        <SlBriefcase 
-                        style={{
-                          
-                          fontSize: isMobile ? "30px" : "16px", 
-                          }} 
-                          />
-                            {job.category}
-                        <CiLocationOn style={{ fontSize: isMobile ? "30px" : "16px", }} /> {job.location}
-                      </Typography>
+                      
 
                       {/* Job Type Labels */}
                       <Box sx={{ display: "flex", gap: 1, alignItems: "center" ,mt:{xs:5,lg:0}}}>

@@ -136,7 +136,7 @@ const ServicesSection: React.FC = () => {
           {/* Main Title */}
 
           <AnimatedText sx={{ color: 'black', textAlign: "left", mb: 5, fontSize: { xs: '5em', lg: '3.2em' } }}>
-            Our Services
+             Services
           </AnimatedText>
 
         </Container>
@@ -155,147 +155,147 @@ const ServicesSection: React.FC = () => {
           768: { slidesPerView: 1 }, // ✅ Tablets: Show 1.5 cards
           1024: { slidesPerView: 2.5 }, // ✅ Larger screens: Show 2.5 cards
         }}
-        style={{ 
-          width: "100%", 
+        style={{
+          width: "100%",
           height: isMobile ? "700px" : "450px", // ✅ Responsive Swiper height
-          cursor:'none'
+          cursor: 'none'
         }}
       >
         {services.map((service) => (
           <SwiperSlide key={service.id} id={service.id} >
-             <FancyBox elevation={3} sx={{ border: "1px solid #444", width: "100%", cursor: "none !important", }} >
-<Box className="hover-lines"></Box>
-            <motion.div
-              initial="hidden"
-              animate={controls}
-              variants={slideUp}
-              onClick={() => navigate(`/services/${service.id}`)}
-              style={{
-                // height: "320px",
-                height: isMobile ? "700px" : "320px",
-                padding: "30px",
-                background: "#eeeeee",
-                borderRadius: "8px",
-                color: "black",
-                textAlign: "left",
-                transition: "0.3s",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "space-evenly",
-                border: "2px solid transparent",
-                backgroundColor: "#171717",
-                cursor: "none",
-              }}
-            >
-              {/* Service Title, Subtitle, and Description List */}
-              <Box  >
-                {/* Title in flex */}
-                <Box display="flex" alignItems="center" gap={3} sx={{ mt: 1 }}>
-                  <Box
-                    sx={{
-                      width: { xs: '160px', lg: '100px' },
-                      height: { xs: '160px', lg: '100px' },
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      borderRadius: "50%",
-                      border: "3px solid #fc0000",
-                      // backgroundColor: "rgba(255, 255, 255, 0.1)",
-                      overflow: "hidden",
-                      cursor:'none'
-                    }}
-                  >
-                    {/* <img src={service.image} alt={service.title} style={{ width: "60px", height: "60px" }} /> */}
+            <FancyBox elevation={3} sx={{ border: "1px solid #444", width: "100%", cursor: "none !important", backgroundColor: "#171717", }} >
+              <Box className="hover-lines"></Box>
+              <motion.div
+                initial="hidden"
+                animate={controls}
+                variants={slideUp}
+                onClick={() => navigate(`/services/${service.id}`)}
+                style={{
+                  // height: "320px",
+                  height: isMobile ? "700px" : "320px",
+                  padding: "30px",
+                  background: "#eeeeee",
+                  borderRadius: "8px",
+                  color: "black",
+                  textAlign: "left",
+                  transition: "0.3s",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-evenly",
+                  border: "2px solid transparent",
+                  backgroundColor: "#171717",
+                  cursor: "none",
+                }}
+              >
+                {/* Service Title, Subtitle, and Description List */}
+                <Box  >
+                  {/* Title in flex */}
+                  <Box display="flex" alignItems="center" gap={3} sx={{ mt: 1 }}>
                     <Box
-                      component="img"
-                      src={service.image}
-                      alt={service.title}
                       sx={{
-                        width: { xs: "100px", lg: "60px" }, // Image size responsive
-                        height:{ xs: "100px", lg: "60px" },
-                        filter: "brightness(0) invert(1)", // Makes image white
+                        width: { xs: '160px', lg: '100px' },
+                        height: { xs: '160px', lg: '100px' },
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        borderRadius: "50%",
+                        border: "3px solid #fc0000",
+                        // backgroundColor: "rgba(255, 255, 255, 0.1)",
+                        overflow: "hidden",
+                        cursor: 'none'
                       }}
-                    />
+                    >
+                      {/* <img src={service.image} alt={service.title} style={{ width: "60px", height: "60px" }} /> */}
+                      <Box
+                        component="img"
+                        src={service.image}
+                        alt={service.title}
+                        sx={{
+                          width: { xs: "100px", lg: "60px" }, // Image size responsive
+                          height: { xs: "100px", lg: "60px" },
+                          filter: "brightness(0) invert(1)", // Makes image white
+                        }}
+                      />
+                    </Box>
+                    <Typography variant="h5" color="#fff" fontWeight={800}
+                      sx={{
+                        fontSize: {
+                          xs: '40px',
+                          lg: '24px'
+                        },
+                      }}
+                    >
+                      {service.title}
+                    </Typography>
                   </Box>
-                  <Typography variant="h5" color="#fff" fontWeight={800}
+
+                  <Typography variant="body1" color="#fff" fontWeight={500} my={2}
                     sx={{
                       fontSize: {
-                        xs: '40px',
-                        lg: '24px'
+                        xs: '36px',
+                        lg: '22px'
                       },
-                    }}
-                  >
-                    {service.title}
-                  </Typography>
-                </Box>
-
-                <Typography variant="body1" color="#fff" fontWeight={500} my={2}
-                  sx={{
-                    fontSize: {
-                      xs: '36px',
-                      lg: '22px'
-                    },
-                  }}>
-                  {service.subtitle}
-                </Typography>
-
-                {/* List with Circular Bullets */}
-                <Box component="ul" sx={{
-                  padding: 0, listStyle: "none", margin: 0,
-                }}>
-                  {service.description.map((point, i) => (
-                    <Box component="li" key={i} sx={{
-                      display: "flex", alignItems: "center", gap: {
-                        xs: '15px',
-                        lg: '10px'
-                      }, mb: "8px", color: "#fff"
                     }}>
-                      <Box sx={{
-                        width: {
-                          xs: '15px',
-                          lg: '8px'
-                        },
-                        height: {
-                          xs: '15px',
-                          lg: '8px'
-                        },
-                        borderRadius: "50%",
-                        backgroundColor: "white",
-                        flexShrink: 0
-                      }} />
-                      <Typography variant="body2" sx={{
-                        color: "#fff",
-                        fontSize: {
-                          xs: '36px',
-                          lg: '18px'
-                        }
-                      }}>
-                        {point}
-                      </Typography>
-                    </Box>
-                  ))}
-                </Box>
-              </Box>
+                    {service.subtitle}
+                  </Typography>
 
-              {/* Get Started Button */}
-              <Box display="flex" alignItems="center" onClick={() => navigate(`/services/${service.id}`)} sx={{ cursor: "none" }}>
-                <Box sx={{
-                  color: "white", fontSize: {
-                    xs: '34px',
-                    lg: '16px'
-                  }, fontWeight: 500,cursor:'none'
-                }}>Read More</Box>
-                <IconButton sx={{
-                  color: "white", ml: 1, fontSize: {
-                    xs: '2.5rem',
-                    lg: '1.8rem'
-                  }
-                }}>
-                  <ArrowForward />
-                </IconButton>
-              </Box>
-            </motion.div>
-             </FancyBox>
+                  {/* List with Circular Bullets */}
+                  <Box component="ul" sx={{
+                    padding: 0, listStyle: "none", margin: 0,
+                  }}>
+                    {service.description.map((point, i) => (
+                      <Box component="li" key={i} sx={{
+                        display: "flex", alignItems: "center", gap: {
+                          xs: '15px',
+                          lg: '10px'
+                        }, mb: "8px", color: "#fff"
+                      }}>
+                        <Box sx={{
+                          width: {
+                            xs: '15px',
+                            lg: '8px'
+                          },
+                          height: {
+                            xs: '15px',
+                            lg: '8px'
+                          },
+                          borderRadius: "50%",
+                          backgroundColor: "white",
+                          flexShrink: 0
+                        }} />
+                        <Typography variant="body2" sx={{
+                          color: "#fff",
+                          fontSize: {
+                            xs: '36px',
+                            lg: '18px'
+                          }
+                        }}>
+                          {point}
+                        </Typography>
+                      </Box>
+                    ))}
+                  </Box>
+                </Box>
+
+                {/* Get Started Button */}
+                <Box display="flex" alignItems="center" onClick={() => navigate(`/services/${service.id}`)} sx={{ cursor: "none" }}>
+                  <Box sx={{
+                    color: "white", fontSize: {
+                      xs: '34px',
+                      lg: '16px'
+                    }, fontWeight: 500, cursor: 'none'
+                  }}>Read More</Box>
+                  <IconButton sx={{
+                    color: "#fc0000", ml: 1, fontSize: {
+                      xs: '2.5rem',
+                      lg: '1.8rem'
+                    }
+                  }}>
+                    <ArrowForward />
+                  </IconButton>
+                </Box>
+              </motion.div>
+            </FancyBox>
           </SwiperSlide>
         ))}
       </Swiper>
