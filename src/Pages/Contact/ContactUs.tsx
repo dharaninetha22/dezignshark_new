@@ -1,35 +1,83 @@
 import React, { useState } from "react";
-import { Box, Container, Grid, Typography, Button, MenuItem, Select } from "@mui/material";
+import { Box, Container, Grid, Typography, Button, MenuItem, Select, FormHelperText } from "@mui/material";
 import CustomInput from "../../Components/Inputs/CustomInput";
 import AnimatedText from "../../Components/Inputs/AnimatedText";
 import { contactusshark1, contactusshark3 } from "../../assets";
 import CustomButton from "../../Components/Inputs/CustomButton";
+import { useForm, Controller } from "react-hook-form";
+import { useMutation } from "react-query";
+import { contactForm } from "../../api/services";
+import { toast } from "react-toastify";
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
 
+const schema = yup.object().shape({
+  name: yup.string().required('Name is required'),
+  email: yup.string().email('Invalid email format').required('Email is required'),
+  phoneNumber: yup
+    .string()
+    .matches(/^[0-9]+$/, 'Mobile number must be numeric')
+    .required('Mobile number is required'),
+  message: yup.string().optional(),
+});
 
+interface FormData {
+  name: string;
+  email: string;
+  phoneNumber: string;
+  message?: string;
+}
 const ContactForm: React.FC = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    number: "",
-    message: "",
-    service: "", // Added service field
+  const [formValues, setFormValues] = useState({
+    name: '',
+    email: '',
+    phoneNumber: '',
+    message: '', // Optional field can default to an empty string
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const { control, handleSubmit, formState: { errors }, reset } = useForm<FormData>({
+    resolver: yupResolver(schema),
+  });
+
+  const mutation = useMutation({
+    mutationFn: (newFormData: FormData) => contactForm(newFormData),
+    onSuccess: () => {
+      toast.success('Successfully submitted!');
+      resetForm(); // Reset form on successful submission
+    },
+    onError: (error: any) => {
+      toast.error(`${error.response.data.message}`);
+    },
+  });
+
+  const resetForm = () => {
+    // Reset form state in react-hook-form
+    reset({
+      name: '',
+      email: '',
+      phoneNumber: '',
+      message: '',
+    });
+    // Reset local state
+    setFormValues({
+      name: '',
+      email: '',
+      phoneNumber: '',
+      message: '',
+    });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("Form Data Submitted:", formData);
+  const onSubmit = (data: FormData) => {
+    const temp = { ...data, type: 'contact' };
+    mutation.mutate(temp);
   };
 
   return (
-    <Box sx={{ backgroundColor: "black",  px: { xs: 6, lg: 0 },}}>
+    <Box sx={{ backgroundColor: "black", px: { xs: 6, lg: 0 }, }}>
       <Container maxWidth="lg">
         <Box sx={{ textAlign: "center", mb: 4 }}>
 
-          <AnimatedText sx={{ color: "white", textAlign: "left", fontWeight: 700, mt: { xs: 1, lg: 4 }, fontSize: { xs: "55px", lg: "45px" } ,}}>
+          <AnimatedText sx={{ color: "white", textAlign: "left", fontWeight: 700, mt: { xs: 1, lg: 4 }, fontSize: { xs: "55px", lg: "45px" }, }}>
             Struggling online? We’re here to help.
           </AnimatedText>
           {/* <Typography variant="h3" sx={{ fontStyle: "italic", mt: 1, color: "white", textAlign: "left" }}>
@@ -39,8 +87,8 @@ const ContactForm: React.FC = () => {
 
         <Grid container spacing={4} >
           {/* Form Section */}
-          <Grid item xs={12} lg={6} mt={2}>
-            <form onSubmit={handleSubmit}>
+          <Grid item xs={12} lg={6} mt={2} mb={2}>
+            <form onSubmit={handleSubmit(onSubmit)}>
               <Grid container spacing={2}>
                 {/* Name Field */}
                 <Grid item xs={12} lg={12} mb={1}>
@@ -56,21 +104,34 @@ const ContactForm: React.FC = () => {
                   >
                     Name *
                   </Typography>
-                  <CustomInput
-                    fullWidth
-                    placeholder="Enter Your Name"
+                  <Controller
                     name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    sx={{
-                      height: { xs: "60px", lg: "25px" }, // Increased height for mobile
-                      "&::placeholder": {
-                        fontSize: { xs: "30px", lg: "18px" }, // Increased placeholder font size for mobile
-                        color: 'white'
-                      },
-
-                    }}
+                    control={control}
+                    render={({ field }) => (
+                      <CustomInput
+                        placeholder="Your Name"
+                        fullWidth
+                        {...field}
+                        error={!!errors.name}
+                        required
+                        sx={{
+                          height: { xs: "60px", lg: "25px" }, // Increased height for mobile
+                  
+                          // Ensure input text is white
+                          "& .MuiInputBase-input": {
+                            color: "white !important",
+                          },
+                  
+                          // Ensure placeholder color is white
+                          "& .MuiInputBase-input::placeholder": {
+                            color: "rgba(255, 255, 255, 0.7) !important", 
+                          },
+                  
+                        }}
+                      />
+                    )}
                   />
+                  <FormHelperText error>{errors.name?.message}</FormHelperText>
                 </Grid>
                 {/* Phone Number Field */}
                 <Grid item xs={12} lg={6} mb={1}>
@@ -86,19 +147,34 @@ const ContactForm: React.FC = () => {
                   >
                     Phone Number *
                   </Typography>
-                  <CustomInput
-                    fullWidth
-                    placeholder="Enter Your Phone Number"
-                    name="number"
-                    value={formData.number}
-                    onChange={handleChange}
-                    sx={{
-                      height: { xs: "60px", lg: "25px" }, // Increased height for mobile
-                      "&::placeholder": {
-                        fontSize: { xs: "30px", lg: "18px" }, // Increased placeholder font size for mobile
-                      },
-                    }}
+                  <Controller
+                    name="phoneNumber"
+                    control={control}
+                    render={({ field }) => (
+                      <CustomInput
+                        placeholder="Enter Your Phone Number"
+                        fullWidth
+                        {...field}
+                        error={!!errors.phoneNumber}
+                        required
+                        sx={{
+                          "&.MuiInputBase-root .MuiInputBase-input": { color: "white" },
+                          height: { xs: "60px", lg: "25px" }, // Increased height for mobile
+                         // Ensure input text is white
+                         "& .MuiInputBase-input": {
+                          color: "white !important",
+                        },
+                
+                        // Ensure placeholder color is white
+                        "& .MuiInputBase-input::placeholder": {
+                          color: "rgba(255, 255, 255, 0.7) !important", 
+                        },
+                
+                        }}
+                      />
+                    )}
                   />
+                  <FormHelperText error>{errors.phoneNumber?.message}</FormHelperText>
                 </Grid>
                 {/* Email Field */}
                 <Grid item xs={12} lg={6} mb={1}>
@@ -114,19 +190,33 @@ const ContactForm: React.FC = () => {
                   >
                     Email *
                   </Typography>
-                  <CustomInput
-                    fullWidth
-                    placeholder="Enter Your Email"
+                  <Controller
                     name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    sx={{
-                      height: { xs: "60px", lg: "25px" }, // Increased height for mobile
-                      "&::placeholder": {
-                        fontSize: { xs: "30px", lg: "18px" }, // Increased placeholder font size for mobile
-                      },
-                    }}
+                    control={control}
+                    render={({ field }) => (
+                      <CustomInput
+                        placeholder="Enter Your Email"
+                        fullWidth
+                        {...field}
+                        error={!!errors.email}
+                        required
+                        sx={{
+                          "&.MuiInputBase-root .MuiInputBase-input": { color: "white" },
+                          height: { xs: "60px", lg: "25px" }, // Increased height for mobile
+                          // Ensure input text is white
+                          "& .MuiInputBase-input": {
+                            color: "white !important",
+                          },
+                  
+                          // Ensure placeholder color is white
+                          "& .MuiInputBase-input::placeholder": {
+                            color: "rgba(255, 255, 255, 0.7) !important", 
+                          },
+                        }}
+                      />
+                    )}
                   />
+                  <FormHelperText error>{errors.email?.message}</FormHelperText>
                 </Grid>
                 {/* Services Dropdown */}
                 <Grid item xs={12} lg={12}>
@@ -145,8 +235,6 @@ const ContactForm: React.FC = () => {
                   <Select
                     fullWidth
                     name="service"
-                    value={formData.service}
-                    onChange={(e) => setFormData({ ...formData, service: e.target.value })}
                     displayEmpty
                     sx={{
                       height: { xs: "60px", lg: "45px" },
@@ -160,9 +248,9 @@ const ContactForm: React.FC = () => {
                       },
 
                       // Ensuring text color for both placeholder and selected value
-                      "& .MuiSelect-select": {
-                        color: formData.service ? "white" : "rgba(255, 255, 255, 0.7)",
-                      },
+                      // "& .MuiSelect-select": {
+                      //   color: service ? "white" : "rgba(255, 255, 255, 0.7)",
+                      // },
 
                       // Dropdown icon color change
                       "& .MuiSvgIcon-root": {
@@ -230,20 +318,34 @@ const ContactForm: React.FC = () => {
                   >
                     Message *
                   </Typography>
-                  <CustomInput
-                    fullWidth
-                    placeholder="Enter Your Message"
-                    multiline
-                    rows={3}
+                  <Controller
                     name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    sx={{
-                      "&::placeholder": {
-                        fontSize: { xs: "30px", lg: "18px" }, // Increased placeholder font size for mobile
-                      },
-                    }}
+                    control={control}
+                    render={({ field }) => (
+                      <CustomInput
+                        placeholder="Enter Your Message"
+                        fullWidth
+                        multiline
+                        rows={3}
+                        {...field}
+                        error={!!errors.message}
+                        sx={{
+                          "&.MuiInputBase-root .MuiInputBase-input": { color: "white" },
+                          // Ensure input text is white
+                          "& .MuiInputBase-input": {
+                            color: "white !important",
+                          },
+                  
+                          // Ensure placeholder color is white
+                          "& .MuiInputBase-input::placeholder": {
+                            color: "rgba(255, 255, 255, 0.7) !important", 
+                          },
+                  
+                        }}
+                      />
+                    )}
                   />
+                  <FormHelperText error>{errors.message?.message}</FormHelperText>
                 </Grid>
                 {/* Submit Button */}
                 <Grid item xs={12}>
@@ -274,3 +376,5 @@ const ContactForm: React.FC = () => {
 };
 
 export default ContactForm;
+// Removed the conflicting local yupResolver function declaration
+

@@ -34,6 +34,22 @@ const App = () => {
     });
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (videoRef.current) {
+        const scrollPosition = window.scrollY;
+        const maxScroll = document.body.scrollHeight - window.innerHeight;
+        const volume = 1 - scrollPosition / maxScroll;
+        videoRef.current.volume = Math.max(0, Math.min(1, volume));
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <Container maxWidth="xl" sx={{ py: 5 }}>
       <Box

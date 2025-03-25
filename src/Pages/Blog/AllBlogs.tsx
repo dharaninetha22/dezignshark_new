@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom"; // ✅ Replaced Link with useNav
 import gsap from "gsap";
 import { blogData } from "./BlogDetails/BlogData";
 import AnimatedText from "../../Components/Inputs/AnimatedText";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const CardList: React.FC = () => {
     return (
@@ -21,7 +23,7 @@ const CardList: React.FC = () => {
 };
 
 // ✅ Card with GSAP Animation & Navigation
-const HoverCard: React.FC<{ title: string; category: string; description: string; image: string }> = ({ title, category, description, image }) => {
+const HoverCard: React.FC<{  id: string;title: string; category: string; description: string; image: string }> = ({id, title, category, description, image }) => {
     const cardRef = useRef<HTMLDivElement | null>(null);
     const imgRef = useRef<HTMLImageElement | null>(null);
     const navigate = useNavigate(); // ✅ Using useNavigate() for navigation
@@ -43,8 +45,21 @@ const HoverCard: React.FC<{ title: string; category: string; description: string
 
     // ✅ Handle navigation on click
     const handleNavigation = () => {
-        navigate(`/blog/${encodeURIComponent(title.toLowerCase().replace(/ /g, "-"))}`);
+        navigate(`/blog/${id}`);
     };
+
+    useEffect(() => {
+        AOS.init({
+          duration: 1000, // Animation duration
+          easing: "ease-in-out", // Smooth animation
+          offset: 100, // Trigger animations earlier/later
+          once: false, // Allows re-triggering when scrolling up
+          mirror: true, // ✅ Ensures animations work when scrolling up
+        });
+    
+        // Refresh AOS when page content updates
+        AOS.refresh();
+      }, []);
 
     return (
         <Container maxWidth="xl" sx={{px:{xs:2,lg:0}}}>
@@ -60,7 +75,7 @@ const HoverCard: React.FC<{ title: string; category: string; description: string
                         <AnimatedText sx={{ fontWeight: "bold", mt: 1, color: 'black',fontSize:{xs:'44px',lg:'30px'} }}>
                         {title}
                         </AnimatedText>
-                        <Typography variant="body2" color="#74787C" sx={{ mt: 1 ,fontSize:{xs:'21px',lg:'16px'}}}>{description}</Typography>
+                        <Typography variant="body2" color="#74787C" sx={{ mt: 1 ,fontSize:{xs:'21px',lg:'16px'}}}data-aos="fade-right">{description}</Typography>
 
                         {/* ✅ Read More Link (onClick triggers navigation) */}
                         <Box sx={{ mt: {xs:5,lg:2}, borderBottom: "1px solid #74787C", pb: 1, width:{xs:'148px',lg: "fit-content"} }} onClick={handleNavigation} style={{ cursor: "pointer" }}>

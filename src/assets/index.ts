@@ -24,6 +24,7 @@ import logosidebar from './images/home/logosidebar.png'
 import mobileviewbanner from './images/home/mobileviewbanner.png'
 import about3 from './images/home/about3.png'
 import about4 from './images/home/about4.png'
+import playicon from './images/home/play-button.png'
 
 
 import port1 from './images/home/portfolio1.png'
@@ -50,6 +51,8 @@ import sharkbgmaroon from './images/sharkbgmaroon.png'
 
 
 
+
+
 import mobile from './images/careers/mobile.png'
 import steps from './images/careers/steps.png'
 import servicebg  from './images/servicebg.jpg'
@@ -60,6 +63,7 @@ import contactusshark2 from  './images/home/contactusshark2.png'
 import contactusshark3 from  './images/home/contactusshark3.png'
 import mobilebgshark1 from './images/home/mobilebgshark1.png'
 import mobilebgshark2 from './images/home/mobilebgshark2.png'
+import whatsapp from './images/home/whatsapp.png'
 
 
 //about
@@ -110,6 +114,12 @@ import blogfimg2 from './images/blog/blogfimg2.jpg'
 import blogfimg3 from './images/blog/blogfimg3.jpg'
 import quote from './images/blog/quote.png'
 import buser from './images/blog/user.png'
+import top5blog1 from './images/home/top10blog1.png'
+import top5seo from './images/home/top5seostratagiesblog1.png'
+import blog1_inner1 from './images/blog/blog1-inner1.png'
+import blog1_inner2 from './images/blog/blog1-inner2.png'
+import blog2_inner1 from './images/blog/blog2-inner1.png'
+import blog2_inner2 from './images/blog/blog2-inner2.png'
 
 
 import slider1 from './logos/Slider/slider1.png';
@@ -186,7 +196,7 @@ export const SliderLogos = {
 export{
     dslogo,
     breadcrumbbanner,servicebg,shark,careersshark1,contactusshark1,contactusshark2,contactusshark3,sharkbgred,sharkbgmaroon,
-    mobilebgshark2,mobilebgshark1
+    mobilebgshark2,mobilebgshark1,whatsapp
 }
 
 export const AboutImages={
@@ -204,7 +214,7 @@ export const Home={
     testi,clientlogo,blog,bgfooterimg,
  imageeffect ,seoicon,branding,webicon,smmicon,contenticon,ppc,
  homenav,webbannerr,logosidebar,mobileviewbanner,about3,about4,
- port1,port2,port3,port5,port6,port7,brochure1,brochure2,brochure3,brochure4,downloadbrochure1
+ port1,port2,port3,port5,port6,port7,brochure1,brochure2,brochure3,brochure4,downloadbrochure1,playicon
 
     
 
@@ -222,7 +232,8 @@ export const Services={
 
 export const Blog={
     blogimg ,
-    blogsmall,blogfimg1,blogfimg2,blogfimg3,quote,buser
+    blogsmall,blogfimg1,blogfimg2,blogfimg3,quote,buser,top5blog1,top5seo,
+    blog1_inner1 ,blog1_inner2 ,blog2_inner1 ,blog2_inner2 
 }
 
 

@@ -328,9 +328,8 @@ const Footer = () => {
         <Box textAlign="center" mt={4} className="wptb-logo-button">
           <Button
             ref={btnRef}
-
             variant="outlined"
-            href="index.html"
+            onClick={() => navigate("/")} // ✅ Navigate to home page on click
             className="btn btn-default"
             sx={{
               fontSize: "24px",
@@ -342,10 +341,10 @@ const Footer = () => {
               position: "relative",
               overflow: "hidden",
               backgroundImage:
-                "linear-gradient(180deg, rgba(2,1,1,0) 0%, rgba(242,41,91,0) 100%)",
+          "linear-gradient(180deg, rgba(2,1,1,0) 0%, rgba(242,41,91,0) 100%)",
               "&:hover": {
-                borderColor: "#fff",
-                backgroundColor: "transparent",
+          borderColor: "#fff",
+          backgroundColor: "transparent",
               },
               width: '300px',
               height: "100px"
@@ -355,38 +354,38 @@ const Footer = () => {
             <span
               className="button-arrow-hover"
               style={{
-                marginRight: "12px",
-                position: "relative",
-                fontSize: "0",
-                display: "inline-block",
+          marginRight: "12px",
+          position: "relative",
+          fontSize: "0",
+          display: "inline-block",
               }}
             >
               {/* First Logo (Visible Initially) */}
               <Box
-                ref={logoFirstRef}
-                sx={{
-                  position: "absolute",
-                  left: '-113px',
-                  top: '-30px',
-                  width: "auto",
-                  height: "auto",
-                }}
+          ref={logoFirstRef}
+          sx={{
+            position: "absolute",
+            left: '-113px',
+            top: '-30px',
+            width: "auto",
+            height: "auto",
+          }}
               >
-                <img src={dslogo} alt="DigiCove Logo" />
+          <img src={dslogo} alt="DigiCove Logo" />
               </Box>
 
               {/* Second Logo (Hidden Initially, Appears on Hover) */}
               <Box
-                ref={logoSecondRef}
-                sx={{
-                  position: "absolute",
-                  left: '-113px',
-                  top: '-30px',
-                  width: "auto",
-                  height: "auto",
-                }}
+          ref={logoSecondRef}
+          sx={{
+            position: "absolute",
+            left: '-113px',
+            top: '-30px',
+            width: "auto",
+            height: "auto",
+          }}
               >
-                <img src={dslogo} alt="DigiCove Logo" />
+          <img src={dslogo} alt="DigiCove Logo" />
               </Box>
             </span>
 
@@ -395,15 +394,15 @@ const Footer = () => {
               ref={shineRef}
               className="shine-effect"
               style={{
-                content: '""',
-                background: "#fff",
-                position: "absolute",
-                height: "120%",
-                width: "15px",
-                opacity: 0.2,
-                left: "-45%",
-                top: "-10%",
-                transform: "rotate(15deg)",
+          content: '""',
+          background: "#fff",
+          position: "absolute",
+          height: "120%",
+          width: "15px",
+          opacity: 0.2,
+          left: "-45%",
+          top: "-10%",
+          transform: "rotate(15deg)",
               }}
             />
           </Button>
@@ -418,9 +417,33 @@ const Footer = () => {
           textAlign: "center",
         }}
       >
-        <Typography variant="body2" sx={{fontSize: {xs:"30px",lg:"16px"}}}>
-          Copyright ©2025 <Link href="index.html" color="inherit" sx={{ textDecoration: "none", color: '#fc0000' }}>DezignShark</Link>. All rights reserved {" "}
-        </Typography>
+        <Typography
+      variant="body2"
+      sx={{ fontSize: { xs: "30px", lg: "16px" } }}
+    >
+      Copyright ©2025{" "}
+      <Link
+                onClick={() => navigate("/")}
+
+        sx={{ textDecoration: "none", color: "#fc0000", fontSize:'22px' }}
+      >
+        DezignShark
+      </Link>
+      . All rights reserved{" "}
+      <Link
+        sx={{
+          textDecoration: "underline",
+          cursor: "pointer",
+          color: "white",
+          "&:hover": {
+        color: "red",
+          },
+        }}
+        onClick={() => navigate("/privacy-policy")}
+      >
+        Privacy Policy
+      </Link>
+    </Typography>
       </Box>
     </Box>
   );

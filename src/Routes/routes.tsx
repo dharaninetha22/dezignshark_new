@@ -15,6 +15,7 @@ import PopUpHeader from "../Pages/PopUpHeader";
 import JobDetails from "../Pages/Careers/JobDetails";
 import SectionTwo from "../Pages/Services/ServicesDetails/SectionTwo";
 import Faqs from "../Pages/Faqs";
+import PrivacyPolicy from "../Pages/PrivacyPolicy/PrivacyPolicy";
 
 
 
@@ -66,7 +67,7 @@ const router = createBrowserRouter([
         element: <Blog/>,
       },
       {
-        path: "/blog/:title",
+        path: "/blog/:id",
         element: <BlogContent/>,
       },
       {
@@ -80,6 +81,10 @@ const router = createBrowserRouter([
       {
         path: "/faqs",
         element: <Faqs/>,
+      },
+      {
+        path: "/privacy-policy",
+        element: <PrivacyPolicy/>,
       },
 
       

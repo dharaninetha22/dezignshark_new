@@ -34,6 +34,8 @@ import Animated from "../../About/Clients";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import EastIcon from '@mui/icons-material/East';
 import { shark } from "../../../assets";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 
 // Styled Components
@@ -116,6 +118,18 @@ const ServicesDetails = () => {
       });
     }
   }, []);
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, // Animation duration
+      easing: "ease-in-out", // Smooth animation
+      offset: 100, // Trigger animations earlier/later
+      once: false, // Allows re-triggering when scrolling up
+      mirror: true, // ✅ Ensures animations work when scrolling up
+    });
+
+    // Refresh AOS when page content updates
+    AOS.refresh();
+  }, []);
 
   // Handle Accordion Expansion
   const handleAccordionChange = (panel: number) => {
@@ -170,15 +184,16 @@ const ServicesDetails = () => {
                     key={index}
                     sx={{
                       color: "#74787C", textAlign: "justify", mt: index === 0 ? 3 : 2,
-
-
                     }}
+                    data-aos="fade-down"
+
+
                   >
                     {paragraph}
                   </Typography>
                 ))
                 : (
-                  <Typography sx={{ color: "#74787C", textAlign: "justify", mt: 1 }}>
+                  <Typography sx={{ color: "#74787C", textAlign: "justify", mt: 1 }} data-aos="fade-down">
                     {marketStrategy?.description ?? "No description available"}
                   </Typography>
                 )
@@ -194,7 +209,7 @@ const ServicesDetails = () => {
                 ))}
               </Box> */}
 
-              <Box mt={5}>
+              <Box mt={5} data-aos="fade-down">
                 {marketStrategy.checklist.map((item, index) => (
                   <Stack key={index} direction="row" spacing={2} alignItems="start">
                     {/* MUI Check Icon */}
@@ -294,7 +309,9 @@ const ServicesDetails = () => {
                     xs: '14px',
                     lg: '18px'
                   }
-                }}>{businessSections.description}</Typography>
+                }}
+                data-aos="fade-left"
+                >{businessSections.description}</Typography>
 
 
                 {/* <Box mt={5}>
@@ -315,7 +332,7 @@ const ServicesDetails = () => {
               </CardContent>
 
               <Grid container spacing={2}>
-                <Grid item xs={12} lg={4}>
+                <Grid item xs={12} lg={4 } data-aos="fade-down">
                   {businessSections.servicesList.map((service, index) => (
                     <Box key={index} sx={{ display: "flex", alignItems: "center", justifyContent: 'start', gap: 2, mt: 1 }}>
                       <FaCircle style={{ color: "#74787c", fontSize: "8px", marginRight: '5px' }} />
@@ -353,7 +370,9 @@ const ServicesDetails = () => {
                       xs: '14px',
                       lg: '18px'
                     }
-                  }}>{businessSections.challenge.description}</Typography>
+                  }}
+                  data-aos="fade-down"
+                  >{businessSections.challenge.description}</Typography>
                   <Typography sx={{
                     color: "#74787C", textAlign: "left", fontSize: {
                       xs: '14px',
@@ -365,7 +384,8 @@ const ServicesDetails = () => {
               </Grid>
 
               <Grid container spacing={2} mt={4}>
-                <Grid item xs={12} lg={12}><CardMedia component="img" image={businessSections.images.service2} /></Grid>
+                <Grid item xs={12} lg={12}>
+                  <CardMedia component="img" image={businessSections.images.service2} /></Grid>
                 {/* <Grid item xs={12}><CardMedia component="img" image={businessSections.images.service3} /></Grid> */}
 
                 <Grid item xs={12} md={12} sx={{ mx: "auto" }}>
@@ -408,7 +428,7 @@ const ServicesDetails = () => {
                     xs: '13px',
                     lg: '18px'
                   }
-                }}> {businessSections.feedback.challenge}</Typography>
+                }}data-aos="fade-down"> {businessSections.feedback.challenge}</Typography>
                 <Typography variant="h4" fontWeight="bold" sx={{ color: "black", mt: 3, textAlign: "left" }}>{businessSections.feedback.title2}</Typography>
                 <Grid item xs={12} md={12}>
                   {businessSections.feedback.points?.map((point, index) => (

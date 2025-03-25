@@ -6,6 +6,7 @@ import { breadcrumbbanner } from '../../assets'
 import TestimonialSlider from '../About/TestimonialSlider'
 import Clients from './Clients'
 import Breadcrumb from '../../Components/Breadcrumb'
+import ServiceSlider from './ServiceSlider'
 
 const index = () => {
   return (
@@ -16,7 +17,8 @@ const index = () => {
         backgroundImage={breadcrumbbanner}
         overlayText=" Services"
       />
-        <ServicesSection/>
+        {/* <ServicesSection/> */}
+        <ServiceSlider/>
         <TestimonialSlider/>
         {/* <Clients/> */}
       

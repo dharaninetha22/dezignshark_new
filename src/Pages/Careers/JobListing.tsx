@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { Box, Tabs, Tab, Typography, Card, CardContent, Chip, Grid, useMediaQuery, useTheme } from "@mui/material";
+import { Box, Tabs, Tab, Typography, Card, CardContent, Chip, Grid } from "@mui/material";
 import { gsap } from "gsap";
 import { CiLocationOn } from "react-icons/ci"; // Location Icon
 import { SlBriefcase } from "react-icons/sl"; // Job Icon
 import { servicebg, shark } from "../../assets";
 import { useNavigate } from "react-router-dom";
-import AnimatedText from "../../Components/Inputs/AnimatedText";
-
+import AOS from "aos";
+import "aos/dist/aos.css"; // Import AOS styles
 
 // Job Data
 const jobs = [
   { id: 1, title: "Junior Graphic Designer (Web)", category: "Design", location: "New York", type: "Full Time", urgent: true },
   { id: 2, title: "Finance Manager & Health", category: "Design", location: "New York", type: "Full Time", urgent: true },
-  { id: 3, title: "General Ledger Accountant", category: "Design", location: "New York", type: "Full Time", urgent: false },
-  { id: 4, title: "Assistant / Store Keeper", category: "Development", location: "New York", type: "Part Time", urgent: false },
+  // { id: 3, title: "General Ledger Accountant", category: "Design", location: "New York", type: "Full Time", urgent: false },
+  // { id: 4, title: "Assistant / Store Keeper", category: "Automotive Jobs", location: "New York", type: "Part Time", urgent: false },
   // { id: 5, title: "Group Marketing Manager", category: "Customer", location: "Miami", type: "Part Time", urgent: false },
   // { id: 6, title: "Product Sales Specialist", category: "Project Management", location: "New York", type: "Internship", urgent: false },
   // { id: 7, title: "UX/UI Designer Web", category: "Design", location: "Paris", type: "Freelance", urgent: false },
@@ -21,23 +21,31 @@ const jobs = [
   // { id: 9, title: "Senior/Staff Nurse", category: "Health and Care", location: "Paris", type: "Part Time", urgent: false },
 ];
 
-const categories = ["All Categories", "Design", "Development", "Marketing", ];
+const categories = ["All Categories", "Design", "Development", "Marketing",];
 
 const JobListing = () => {
   const [selectedCategory, setSelectedCategory] = useState("All Categories");
   const [filteredJobs, setFilteredJobs] = useState(jobs);
 
-   const navigate = useNavigate();
- const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("lg")); // Mobile detection
+  const navigate = useNavigate();
 
-  
-   const handleNavigation = (jobid: number) => {
+  const handleNavigation = (jobid: number) => {
     navigate(`/job/${jobid}`);
   };
 
 
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, // Animation duration
+      easing: "ease-in-out", // Smooth animation
+      offset: 100, // Trigger animations earlier/later
+      once: false, // Allows re-triggering when scrolling up
+      mirror: true, // ✅ Ensures animations work when scrolling up
+    });
 
+    // Refresh AOS when page content updates
+    AOS.refresh();
+  }, []);
   // Filtering Jobs
   useEffect(() => {
     const filtered =
@@ -60,12 +68,7 @@ const JobListing = () => {
     <Box
       sx={{
         p: 4,
-        minHeight: {
-          xs:'30vh',
-          lg:"100vh"
-        }
-        
-        ,
+        minHeight: "100vh",
         position: "relative",
         display: "flex",
         flexDirection: "column",
@@ -88,105 +91,94 @@ const JobListing = () => {
       {/* Content Wrapper */}
       <Box sx={{ position: "relative", zIndex: 2, width: "100%" }}>
         {/* Title */}
-       
-        <AnimatedText sx={{ textAlign: "center", mb: {xs:5,lg:5},my: {xs:5,lg:0}, fontWeight: "bold", color: "#fff" ,fontSize: { xs: '5em', lg: '3.2em' }}}>
-        Featured Jobs
-        </AnimatedText>
+        <Typography variant="h4" sx={{ textAlign: "center", mb: 3, fontWeight: "bold", color: "#fff" }} data-aos="fade-down">
+          Featured Jobs
+        </Typography>
 
         {/* Category Tabs */}
-        <Box sx={{ display: "flex", justifyContent: "center", mb: 4 ,mt:5}}>
+        <Box sx={{ display: "flex", justifyContent: "center", mb: 4 }}>
           <Typography variant="h6">
 
-              <Tabs
-                value={selectedCategory}
-                onChange={(event, newValue) => setSelectedCategory(newValue)}
-                variant="scrollable"
-                scrollButtons="auto"
-                centered
-                sx={{
-                  "& .MuiTabs-indicator": { backgroundColor: "#fff" },
-                  "& .MuiTab-root": { textTransform: "none", fontSize: {xs:'30px',lg:"20px"}, color: "#fff" },
-                  "& .Mui-selected": { color: "#fc0000", fontWeight: "bold" },
-                }}
-              >
-                {categories.map((cat) => (
-                  <Tab key={cat} label={cat} value={cat} />
-                ))}
-              </Tabs>
+            <Tabs
+              value={selectedCategory}
+              onChange={(event, newValue) => setSelectedCategory(newValue)}
+              variant="scrollable"
+              scrollButtons="auto"
+              centered
+              sx={{
+                "& .MuiTabs-indicator": { backgroundColor: "#7c4dff" },
+                "& .MuiTab-root": { textTransform: "none", fontSize: "24px", color: "#fc0000" },
+                "& .Mui-selected": { color: "#000", fontWeight: "bold" },
+              }}
+            >
+              {categories.map((cat) => (
+                <Tab key={cat} label={cat} value={cat} />
+              ))}
+            </Tabs>
           </Typography>
         </Box>
 
         {/* Job Cards Grid */}
-        <Grid container spacing={3} justifyContent="center" data-aos="fade-down" sx={{mt:{xs:5,lg:0}}}>
-          {filteredJobs.map((job) => (
-            <Grid item xs={12}  lg={6} key={job.id}>
-              <Card
-                className="job-card"
-                sx={{
-                  height: "100%", // Ensures equal height for all cards
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "space-between",
-                  background: "#ffffff",
-                  boxShadow: "0px 5px 15px rgba(0,0,0,0.1)",
-                  borderRadius: "12px",
-                  transition: "transform 0.3s",
-                  "&:hover": { transform: "scale(1.03)" },
-                  cursor: "none",
-                  
-                  
-                  
-                }}
-                onClick={() => handleNavigation(job.id)}
-              >
-                <CardContent >
-                  <Box sx={{py:{xs:6,lg:0},}}>
-
-                      <Box sx={{ display: "flex", alignItems: "center", justifyContent:"space-between",gap: 5,mb:3}}>
-                        {/* Profile Icon */}
-                        <Box 
-                          sx={{
-                          backgroundColor: "black",
-                          borderRadius: "50%",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          width: 100,
-                          height: 80,
-                          }}
-                        >
-                          <img src={shark} alt="Company Logo" width={40} height={40} />
+        <Grid container spacing={3} justifyContent="center" data-aos="fade-down">
+          {/* Job Cards Grid */}
+          {filteredJobs.length === 0 ? (
+            <Typography variant="h6" sx={{ textAlign: "center", color: "#fff", mt: 4 }}>
+              No jobs available for this category.
+            </Typography>
+          ) : (
+            <Grid container spacing={3} justifyContent="center" data-aos="fade-down">
+              {filteredJobs.map((job) => (
+                <Grid item xs={12} sm={6} md={4} key={job.id}>
+                  <Card
+                    className="job-card"
+                    sx={{
+                      height: "100%",
+                      display: "flex",
+                      flexDirection: "column",
+                      justifyContent: "space-between",
+                      background: "#ffffff",
+                      boxShadow: "0px 5px 15px rgba(0,0,0,0.1)",
+                      borderRadius: "12px",
+                      transition: "transform 0.3s",
+                      "&:hover": { transform: "scale(1.03)" },
+                    }}
+                    onClick={() => handleNavigation(job.id)}
+                  >
+                    <CardContent>
+                      <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+                        <Box>
+                          <img src={shark} alt="Company Logo" width={80} height={80} />
                         </Box>
-                        <Box sx={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: 1, width: "100%" }}>
-                          <Typography variant="body2" sx={{ fontWeight: "bold", color: "#000", fontSize: {xs:'30px',lg:'16px'}, textAlign: {xs:'center',lg:'center'} }}>
+                        <Typography variant="body2" sx={{ fontWeight: "bold", color: "#000", fontSize: "16px" }}>
                           {job.title}
-                          </Typography>
-                          <Typography variant="body2" sx={{ color: "#757575", mb: 1, display: "flex", alignItems: "center", gap: 1, justifyContent: {xs:'start',lg:"start"}, fontSize: {xs:'30px',lg:'16px'}, pl: {xs:6,lg:0} }}>
-                          <SlBriefcase 
-                            style={{
-                            fontSize: isMobile ? "30px" : "16px", 
-                            }} 
-                          />
-                          {job.category}
-                          <CiLocationOn style={{ fontSize: isMobile ? "30px" : "16px" }} /> {job.location}
-                          </Typography>
-                        </Box>
+                        </Typography>
                         <Box sx={{ flexGrow: 1 }} />
                       </Box>
 
-                      {/* Category & Location with Icons */}
-                      
+                      <Typography
+                        variant="body2"
+                        sx={{
+                          color: "#757575",
+                          mb: 1,
+                          display: "flex",
+                          alignItems: "center",
+                          gap: 1,
+                          justifyContent: "center",
+                        }}
+                      >
+                        <SlBriefcase style={{ fontSize: "16px" }} /> {job.category}
+                        <CiLocationOn style={{ fontSize: "16px" }} /> {job.location}
+                      </Typography>
 
-                      {/* Job Type Labels */}
-                      <Box sx={{ display: "flex", gap: 1, alignItems: "center" ,mt:{xs:5,lg:0}}}>
+                      <Box sx={{ display: "flex", gap: 1, alignItems: "center" }}>
                         <Chip
                           label={job.type}
                           sx={{
                             backgroundColor: "#e3f2fd",
                             color: "#1976d2",
-                            fontSize: {xs:'30px',lg:'14px'}, // 🔥 Increased Font Size
+                            fontSize: "18px",
                             fontWeight: "bold",
-                            padding: {xs:'32px 50px',lg:"5px 10px"},
+                            padding: "4px 10px",
                           }}
                         />
                         {job.urgent && (
@@ -195,19 +187,20 @@ const JobListing = () => {
                             sx={{
                               backgroundColor: "#fff3cd",
                               color: "#856404",
-                              fontSize: {xs:'25px',lg:'14px'}, // 🔥 Increased Font Size
+                              fontSize: "18px",
                               fontWeight: "bold",
-                              padding: {xs:'32px 50px',lg:"5px 10px"},
-
+                              padding: "4px 10px",
                             }}
                           />
                         )}
                       </Box>
-                  </Box>
-                </CardContent>
-              </Card>
+                    </CardContent>
+                  </Card>
+                </Grid>
+              ))}
             </Grid>
-          ))}
+          )}
+
         </Grid>
       </Box>
     </Box>

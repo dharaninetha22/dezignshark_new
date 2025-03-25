@@ -7,6 +7,8 @@ import AnimatedText from "../../Components/Inputs/AnimatedText";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward"; // MUI Icon
 import { useNavigate } from "react-router-dom";
 import Slider from "react-slick";
+import AOS from "aos";
+import "aos/dist/aos.css"; // Import AOS styles
 
 // Styled Content Box for Text Animation
 const Content = styled(Box)({
@@ -97,7 +99,12 @@ const ArrowIconLast = styled(ArrowIconStyled)({
   transform: "translateX(-200%) translateY(200%) translateZ(0)",
 });
 
-
+const images = [
+  { src: Home.brochure1 },
+  { src: Home.brochure2 },
+  { src: Home.brochure3 },
+  { src: Home.brochure4 },
+];
 
 const CreativeWorksSection: React.FC = () => {
   const itemRefs = useRef<Array<HTMLDivElement | null>>([]);
@@ -105,8 +112,8 @@ const CreativeWorksSection: React.FC = () => {
 
   // ✅ First column (All images with "type")
   const imagesFirstColumn = [
-    { image1: Home.port1, image2: Home.port1, displacementImage: Home.imageeffect, width: "660px", height: "450px", title: "Social Media Marketing" },
     { image1: Home.port2, image2: Home.port2, displacementImage: Home.imageeffect, width: "660px", height: "703px", title: "Web Development" },
+    { image1: Home.port1, image2: Home.port1, displacementImage: Home.imageeffect, width: "660px", height: "450px", title: "Social Media Marketing" },
     { image1: Home.port3, image2: Home.port3, displacementImage: Home.imageeffect, width: "660px", height: "703px", title: "SEO Results" },
   ];
 
@@ -120,7 +127,7 @@ const CreativeWorksSection: React.FC = () => {
 
   // ✅ Third column (Single additional image)
   const imagesThirdColumn = [
-    { image1: Home.brochure1, image2: Home.brochure1, displacementImage: Home.imageeffect, width: "1437px", height: "500px", title: "Project 6" },
+    { image1: Home.brochure1, image2: Home.brochure2, displacementImage: Home.imageeffect, width: "1437px", height: "500px", title: "Project 6" },
     { image1: Home.brochure2, image2: Home.brochure2, displacementImage: Home.imageeffect, width: "1437px", height: "500px", title: "Project 6" },
     { image1: Home.brochure3, image2: Home.brochure3, displacementImage: Home.imageeffect, width: "1437px", height: "500px", title: "Project 6" },
     { image1: Home.brochure4, image2: Home.brochure4, displacementImage: Home.imageeffect, width: "1437px", height: "500px", title: "Project 6" },
@@ -141,6 +148,30 @@ const CreativeWorksSection: React.FC = () => {
       }
     });
   }, []);
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, // Animation duration
+      easing: "ease-in-out", // Smooth animation
+      offset: 100, // Trigger animations earlier/later
+      once: false, // Allows re-triggering when scrolling up
+      mirror: true, // ✅ Ensures animations work when scrolling up
+    });
+
+    // Refresh AOS when page content updates
+    AOS.refresh();
+  }, []);
+
+  const carouselSettings = {
+    dots: true,
+    infinite: true,
+    speed: 1000,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    fade: true,
+    cssEase: "ease-in-out",
+  };
 
   return (
     <Box sx={{ py: 10,  }}>
@@ -148,13 +179,12 @@ const CreativeWorksSection: React.FC = () => {
         <Grid container spacing={4} sx={{mb:5,px: { xs: 6, lg: 0 }}}>
         <Grid item xs={12} lg={6}>
           <Box sx={{ textAlign: { xs: "center", md: "left" }, }}>
-            <AnimatedText> CREATIVE WORKS ARE OUR IDENTITY</AnimatedText>
+            <AnimatedText> Unlock Powerful Growth with Dezign Shark</AnimatedText>
           </Box>
         </Grid>
           <Grid item xs={12} lg={6}>
-            <Typography variant="body1" color="white" sx={{fontSize: { xs: '30px', lg: '18px' ,textAlign:'left'}}}>
-              We will implement a marketing strategy for your brand. If you would like to achieve more but do not know how – 
-              we will define new directions of your branding.
+            <Typography variant="body1" color="white" sx={{fontSize: { xs: '30px', lg: '18px' ,textAlign:'left'}}}  data-aos="fade-left">
+            At Dezign Shark, we go beyond traditional marketing—we craft high-impact, data-driven, and results-oriented digital marketing strategies that maximize ROI, amplify brand visibility, and accelerate business growth. Our 360-degree approach ensures your brand stands out in the competitive digital landscape with cutting-edge technology, creative excellence, and performance-driven campaigns. Ready to transform your digital presence? Let’s make it happen!
             </Typography>
           </Grid>
         </Grid>
@@ -172,7 +202,7 @@ const CreativeWorksSection: React.FC = () => {
                       key={index}
                       ref={(el) => (itemRefs.current[index] = el as HTMLDivElement | null)} // Explicit type casting
                       sx={{
-                        width: { xs: "100vw", lg: img.width }, // 100vw for mobile view, original width for desktop
+                        width: { xs: "95vw", lg: img.width }, // 100vw for mobile view, original width for desktop
                         height: img.height, // Original image height
                       }}
                     >
@@ -194,7 +224,7 @@ const CreativeWorksSection: React.FC = () => {
                       <ImageContainer
                         key={index}
                         sx={{
-                          width: { xs: "100vw", lg: item.width }, // 100vw for mobile view, original width for desktop
+                          width: { xs: "95vw", lg: item.width }, // 100vw for mobile view, original width for desktop
                           height: item.height, // Original image height
                         }}
                       >
@@ -221,7 +251,7 @@ const CreativeWorksSection: React.FC = () => {
                         key={index + imagesFirstColumn.length}
                         ref={(el) => (itemRefs.current[index + imagesFirstColumn.length] = el as HTMLDivElement | null)} // Explicit type casting
                         sx={{
-                          width: { xs: "100vw", lg: item.width }, // 100vw for mobile view, original width for desktop
+                          width: { xs: "95vw", lg: item.width }, // 100vw for mobile view, original width for desktop
                           height: item.height, // Original image height
                         }}
                       >
@@ -238,48 +268,75 @@ const CreativeWorksSection: React.FC = () => {
             </Grid>
           </Grid>
 
-          {/* Third Column: Single Image */}
-            <Grid item xs={12}>
-            <Box sx={{ width: "100%", }}>
-                <Slider
-                infinite={true}
-                speed={200}
-                slidesToShow={1}
-                slidesToScroll={1}
-                autoplay={true}
-                autoplaySpeed={2000}
-                pauseOnHover={false}
-                arrows={false} // Disable arrows
-                >
-              {imagesThirdColumn.map((img, index) => (
-                <Box
-                key={index}
-                sx={{
-                  width: { xs: "100vw", lg: img.width }, // 100vw for mobile view, original width for desktop
-                  height: img.height, // Original image height
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  overflow: "hidden",
-                }}
-                >
-                <img
-                  src={img.image1}
-                  alt={img.title}
-                  style={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
-                  }}
-                />
-                </Box>
-              ))}
+          {/* Third Column: Carousel */}
+          <Grid item xs={12}>
+            <Box
+              sx={{
+                maxWidth: "100%",
+                margin: "auto",
+                overflow: "hidden",
+                boxShadow: "0 0 60px -20px #223344",
+                position: "relative",
+              }}
+            >
+              <Slider {...carouselSettings}>
+                {images.map((img, index) => (
+                  <Box
+                    key={index}
+                    sx={{
+                      position: "relative",
+                      animation: "animate 2s ease-in-out",
+                    }}
+                  >
+                    <Box
+                      component="img"
+                      src={img.src}
+                      alt={`Slide ${index + 1}`}
+                      sx={{
+                        width: "100%",
+                        display: "block",
+
+                      }}
+                    />
+                    <Typography
+                      sx={{
+                        position: "absolute",
+                        top: "20px",
+                        left: "20px",
+                        color: "#f2f2f2",
+                        fontSize: "16px",
+                        backgroundColor: "rgba(173, 216, 230, 0.15)",
+                        backdropFilter: "blur(6px)",
+                        borderRadius: "10px",
+                        padding: "8px 12px",
+                      }}
+                    >
+                      {index + 1} / {images.length}
+                    </Typography>
+                  </Box>
+                ))}
               </Slider>
+              <style>
+                {`
+                  @keyframes animate {
+                    from {
+                      transform: scale(1.1) rotateY(10deg);
+                    }
+                    to {
+                      transform: scale(1) rotateY(0deg);
+                    }
+                  }
+                  .slick-dots li button:before {
+                    font-size: 14px;
+                    color: rgba(173, 216, 230, 0.5);
+                  }
+                  .slick-dots li.slick-active button:before {
+                    color: rgba(173, 216, 230, 0.9);
+                  }
+                `}
+              </style>
             </Box>
-            </Grid>
-
-
-           
+          </Grid>
         </Grid>
          <StyledButton
               onClick={() => window.location.href = "https://portfolio.dezignshark.com/folders"} // Navigate to the specified URL
@@ -298,7 +355,26 @@ const CreativeWorksSection: React.FC = () => {
                 <ArrowIconLast className="arrow-second" sx={{ fontSize: { xs: '30px', lg: '20px ' } }} />
               </ArrowContainer>
             </StyledButton>
-      </Container>
+      </Container><style>
+        {`
+          @keyframes animate {
+            from {
+              transform: scale(1.1) rotateY(10deg);
+            }
+            to {
+              transform: scale(1) rotateY(0deg);
+            }
+          }
+          .slick-dots li button:before {
+            font-size: 14px;
+            color: rgba(173, 216, 230, 0.5);
+          }
+          .slick-dots li.slick-active button:before {
+            color: rgba(173, 216, 230, 0.9);
+          }
+        `}
+      </style>
+
     </Box>
   );
 };

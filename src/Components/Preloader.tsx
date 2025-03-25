@@ -13,7 +13,7 @@ const Preloader: React.FC<PreloaderProps> = ({ videoSrc, onEnd }) => {
     const timer = setTimeout(() => {
       setIsVideoLoaded(true);
       onEnd();
-    }, 4000); // Fallback timeout in case the video doesn't end
+    }, 6000); // Fallback timeout in case the video doesn't end
 
     return () => clearTimeout(timer);
   }, [onEnd]);

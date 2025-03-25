@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Box, Grid, Card, Typography, Container } from "@mui/material";
 import { styled } from "@mui/system";
 import { useNavigate } from "react-router-dom"; // ✅ Navigation
@@ -6,6 +6,8 @@ import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline"; // ✅ Error Ic
 import AnimatedText from "../../Components/Inputs/AnimatedText";
 import { Home } from "../../assets";
 import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
+import AOS from "aos";
+import "aos/dist/aos.css"; // Import AOS styles
 
 // TypeScript Props Definition
 interface ServiceCardProps {
@@ -63,6 +65,18 @@ const FancyBox = styled(Card)({
 // Service Card Component
 const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, imageUrl, route }) => {
   const navigate = useNavigate();
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, // Animation duration
+      easing: "ease-in-out", // Smooth animation
+      offset: 100, // Trigger animations earlier/later
+      once: false, // Allows re-triggering when scrolling up
+      mirror: true, // ✅ Ensures animations work when scrolling up
+    });
+
+    // Refresh AOS when page content updates
+    AOS.refresh();
+  }, []);
 
   return (
     <FancyBox elevation={3} sx={{ border: "1px solid #444", width: "100%", cursor: "none !important", }} onClick={() => navigate(route)}>
@@ -84,7 +98,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, imageUrl,
           sx={{
             border: "2px solid red", // ✅ Adds red border
             borderRadius: "50%", // ✅ Optional: Adds rounded corners
-            padding: { xs: "0px", lg: "15px" }, // ✅ Optional: Adds space inside the border
+            padding: { xs: "0px", lg: "10px" }, // ✅ Optional: Adds space inside the border
             width: { xs: "150px", lg: "70px" }, // ✅ Width for the border
             height: { xs: "150px", lg: "70px" }, // ✅ Height for the border
             display: "flex",
@@ -106,10 +120,10 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, imageUrl,
           />
         </Box>
       </Box>
-      <Typography variant="h4" fontWeight={700} color="white" mb={2} textAlign="left">
+      <Typography variant="h4" fontWeight={700} color="white" mb={1} textAlign="left" data-aos="fade-down">
         {title}
       </Typography>
-      <Typography variant="body1" color="white" textAlign="left" sx={{ fontSize: { xs: '30px', lg: '18px' } }}>
+      <Typography variant="body1" color="white" textAlign="left" sx={{ fontSize: { xs: '30px', lg: '18px' } }} data-aos="fade-down">
         {description}
       </Typography>
 
@@ -127,10 +141,10 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, imageUrl,
 // Services Section Component
 const ServicesSection: React.FC = () => {
   const services: ServiceCardProps[] = [
-    { title: "Branding", description: "Create a powerful brand identity with expert branding & design. We craft unique logos, visuals, and messaging.", imageUrl: Home.branding, route: "/services/branding" },
-    { title: "Social Media Management", description: "Elevate your brand with expert Social Media Marketing (SMM). We create engaging, data-driven campaigns to boost.", imageUrl: Home.smmicon, route: "/services/social-media-marketing" },
-    { title: "Pay-Per-Click (PPC)", description: "Accelerate growth with result-driven Pay-Per-Click (PPC) advertising. Our targeted, data-backed campaigns maximize.", imageUrl: Home.ppc, route: "/services/pay-per-click" },
-    { title: "Search Engine Optimization", description: "Boost your online presence with expert SEO services. We help you rank higher on Google, improve brand credibility.", imageUrl: Home.seoicon, route: "/services/search-engine-optimization" },
+    { title: "Branding", description: "Your brand is your identity. Our expert branding solutions ensure memorable brand positioning, credibility, and impactful design.", imageUrl: Home.branding, route: "/services/branding" },
+    { title: "Social Media Management", description: "Our engaging content strategies help businesses build strong community connections, boost engagement, and increase brand awareness.", imageUrl: Home.smmicon, route: "/services/social-media-marketing" },
+    { title: "Pay-Per-Click (PPC)", description: "We execute data-driven PPC campaigns that guarantee amplified reach, optimized ad spend, and high-performing conversions.", imageUrl: Home.ppc, route: "/services/pay-per-click" },
+    { title: "Search Engine Optimization", description: "Rank higher on search engines with cutting-edge SEO services that ensure organic growth, targeted visibility, and sustainable digital dominance.", imageUrl: Home.seoicon, route: "/services/search-engine-optimization" },
   ];
 
   return (
@@ -138,11 +152,11 @@ const ServicesSection: React.FC = () => {
       <Container maxWidth="xl">
         <Box sx={{ py: 5 }}>
           <Box textAlign="center" mb={5}>
-            <AnimatedText sx={{ fontSize: { xs: '5.2em', lg: '3.2em' } }}> Services</AnimatedText>
+            <AnimatedText sx={{ fontSize: { xs: '5.2em', lg: '3.2em' } }}> Digital Marketing Services</AnimatedText>
           </Box>
           <Grid container spacing={3} justifyContent="center">
             {services.map((service, index) => (
-              <Grid item key={index} xs={12} lg={3} sx={{ display: "flex", width: "100%", mt: { xs: 8, lg: 0 }, }}>
+              <Grid item key={index} xs={12}  lg={3}sx={{ display: "flex", width: "100%", mt: { xs: 8, lg: 0 }, }}>
                 <ServiceCard {...service} />
               </Grid>
             ))}

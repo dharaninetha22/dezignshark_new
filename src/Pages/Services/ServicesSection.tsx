@@ -169,7 +169,7 @@ const ServicesSection: React.FC = () => {
                 initial="hidden"
                 animate={controls}
                 variants={slideUp}
-                onClick={() => navigate(`/services/${service.id}`)}
+                onClick={() => navigate(`/services/${service.id.toLowerCase().replace(/\s+/g, '-')}`)}
                 style={{
                   // height: "320px",
                   height: isMobile ? "700px" : "320px",
@@ -278,7 +278,7 @@ const ServicesSection: React.FC = () => {
                 </Box>
 
                 {/* Get Started Button */}
-                <Box display="flex" alignItems="center" onClick={() => navigate(`/services/${service.id}`)} sx={{ cursor: "none" }}>
+                <Box display="flex" alignItems="center" onClick={() => navigate(`/services/${service.id.toLowerCase().replace(/\s+/g, '-')}`)} sx={{ cursor: "none" }}>
                   <Box sx={{
                     color: "white", fontSize: {
                       xs: '34px',

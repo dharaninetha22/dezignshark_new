@@ -43,7 +43,7 @@ const About = () => {
                   >
 
             {/* <Banner/> */}
-            <AboutContent/>
+            {/* <AboutContent/> */}
             <ApproachSection/>
             
             {/* <Counter/> */}

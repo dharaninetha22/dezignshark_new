@@ -6,29 +6,35 @@ export const pageData = [
     marketStrategy: {
       title: "Search Engine Optimisation",
       subtitle:
-        " #1 Google Rankings Hire our expert SEO team to enhance your online presence and secure top rankings on search engine results pages (SERPs).",
+        " #1 Google Rankings – Stay Ahead of the Competition",
         description:
-        "",
+        "Our expert SEO specialists leverage cutting-edge strategies to boost your online visibility, drive organic traffic, and secure top rankings on search engine results pages (SERPs).",
         checklist: [
-        "Social media profile optimization.",
-        "Engaging content creation & campaign management.",
-        "Targeted audience growth & analytics tracking.",
+        "Comprehensive social media profile optimization to enhance brand presence.",
+        "Engaging, SEO-rich content creation that captivates your audience.",
+        "AI-powered campaign management & analytics tracking for measurable results.",
       ],
       rotatingText: "Search Engine Optimisation • ",
     },
     businessSections: {
       title: "What is Search Engine Optimization (SEO)?",
       description:
-        "Search Engine Optimization (SEO) is the strategic process of enhancing your website and content to achieve higher rankings on search engines like Google. As a leading SEO agency in Hyderabad, we recognize the impact of organic visibility on business success. While SEO is an ongoing effort, the long-term rewards—higher website traffic, increased conversions, and stronger brand authority—make it a crucial investment for any business.",
-      servicesList: ["Keyword Research", "On-Page SEO", "Techenical SEO", "Link Building", "SEO Analytics"],
+        "SEO is a data-driven, performance-focused digital marketing strategy designed to optimize your website’s ranking on Google and other search engines. As a top-rated SEO company in Hyderabad, we understand that organic search is a powerful revenue-driving channel. With our expertise, your brand will experience accelerated traffic growth, enhanced credibility, and maximized conversions.",
+      servicesList: [
+        "Strategic Keyword Research – Find and target high-intent search queries.", 
+        "On-Page SEO Optimization – Optimize content, metadata, and site structure.",
+         "Technical SEO Mastery – Improve site speed, mobile optimization & indexing", 
+         "High-Authority Link Building – Strengthen domain authority with quality backlinks.", 
+         "SEO Analytics & Performance Tracking – Data-backed decision-making for sustained growth."
+        ],
       challenge: {
         title: "Why SEO is Essential for Your Business?",
-        description: "A strong SEO strategy ensures your website appears in front of potential customers when they search for relevant products or services. As the best SEO company in Hyderabad, we design customized solutions tailored to your business goals, helping you attract high-intent traffic and maximize conversions.",
+        description: "Your customers are searching for you—will they find you or your competitors? A powerful SEO strategy ensures your website appears at the top when potential buyers are actively looking for products or services like yours. As the best SEO agency in Hyderabad, we create custom strategies designed to maximize visibility, attract high-converting traffic, and drive business success.",
         // solution: "Implement clear service standards and provide comprehensive training.",
       },
       feedback: {
-        title: "Trusted SEO Agency in Hyderabad",
-        challenge: "Without SEO, businesses miss a vital opportunity to expand their reach, attract relevant audiences, and establish brand credibility. As a top-rated SEO company in Hyderabad, we can craft a powerful SEO strategy to help you increase organic traffic, generate quality leads, and achieve sustainable growth. We provide tailored digital marketing solutions for startups, small businesses, and enterprises, helping brands establish and maintain a strong online presence. Partner with us to elevate your digital footprint and build lasting customer relationships.",
+        title: "Your Trusted SEO Partner in Hyderabad",
+        challenge: "Without SEO, your business is invisible online. Our top SEO consultants use proven, white-hat techniques to drive measurable growth, build brand credibility, and unlock new revenue opportunities. Whether you're a startup, SME, or enterprise, we provide scalable SEO solutions that adapt to your evolving business needs. Partner with us and lead the digital revolution.",
         // solution: " Establish a feedback system that encourages open communication. Acknowledge and address feedback promptly, and use it as an opportunity for improvement. Celebrate positive feedback internally.",
       },
       images: {
@@ -55,37 +61,37 @@ export const pageData = [
     id: "Pay-Per-Click",
     marketStrategy: {
       title: "Pay-Per-Click",
-      subtitle:'Top PPC Company in Hyderabad – Maximize Your Conversions Today',
+      subtitle:'High-Impact PPC for Maximum Conversions',
 
       description:
         "",
       
       checklist: [
-        "A/B tested high-converting ad creatives.",
-        "Data-driven bid management & audience segmentation.",
-        "Landing page optimization for better conversions.",
+        "AI-powered, high-converting ad creatives for unmatched performance.",
+        "Precision-targeted bid management & audience segmentation.",
+        "Conversion-optimized landing pages for peak efficiency.",
       ],
       rotatingText: "Pay-Per-Click • Pay-Per-Click •  ",
     },
     businessSections: {
-      title: "Why PPC Advertising is a Must for Your Business",
-      description: "Pay-per-click (PPC) advertising is the fastest way to gain online visibility and drive targeted leads. Whether you're a startup or an established business, an effective Google Ads strategy can put you ahead of the competition in no time. ",
-      servicesList: ["Transparent Conversion Tracking", "Advanced Targeting for High-Intent Leads", "Leverage Long-Tail Keywords for Maximum Impact", "Pay Only for Performance – No Wasted Budget"],
+      title: "Why PPC is a Game-Changer for Your Business",
+      description: "Pay-Per-Click (PPC) advertising is the fastest and most scalable way to dominate search results, attract high-intent customers, and maximize revenue. With the right strategy, Google Ads can position your brand ahead of competitors instantly. ",
+      servicesList: ["Transparent, data-driven conversion tracking.", "Advanced audience targeting for hyper-relevant leads.", "Smart bidding powered by AI to optimize ad spend.", "Zero wasted budget—pay only for real performance."],
       challenge: {
         // title: "Tech Implementation Challenge",
-        description: "As a leading PPC company in Hyderabad, we specialize in data-driven ad campaigns that increase ROI, generate high-quality leads, and drive conversions. Unlike generic marketing tactics, we focus on user intent, strategic ad placements, and smart bidding strategies to ensure that every ad click translates into revenue.",
-        solution: "If you want to scale your business without waiting for organic SEO growth, our Google Ads experts in Hyderabad can help you get fast, measurable results with customized PPC campaigns.",
+        description: "As the leading PPC agency in Hyderabad, we craft data-driven, performance-focused PPC campaigns that deliver measurable ROI, premium-quality leads, and rapid growth. We go beyond generic advertising—our strategic ad placements, audience psychology insights, and optimized bidding models ensure that every click translates into profit.",
+        solution: "",
       },
       feedback: {
-        title: "Why Choose Us as Your PPC Company in Hyderabad?",
-        challenge: "At DezignShark, our PPC specialists focus on ROI-driven strategies to help you get maximum conversions at minimum cost. Our process includes:",
+        title: "Why Partner with DezignShark for PPC Success?",
+        challenge: "",
         points:[
-          "In-depth keyword research to ensure precise audience targeting",
-          "Conversion-optimized ad copy and landing pages",
-          "Smart bidding strategies to reduce costs and increase results",
-          "Ongoing performance tracking & campaign optimization"
+          "Data-backed keyword research for precise targeting.",
+          "Persuasive, conversion-optimized ad copy & landing pages.",
+          "ROI-driven bidding strategies to reduce costs & boost revenue.",
+          "Continuous performance monitoring & strategic optimizations."
         ],
-        solution: "We are recommended by businesses across industries for our proven PPC strategies and exceptional results.",
+        solution: "Trusted by top businesses for high-impact, results-driven PPC marketing.",
       },
       images: {
         service1: Services.ppcbanner,
@@ -108,33 +114,33 @@ export const pageData = [
     id: "Social Media Marketing",
     marketStrategy: {
       title: "Social Media Marketing",
-      subtitle:'Boost Your Brand, Drive Sales & Generate Quality Leads',
+      subtitle:'Drive Engagement, Build Authority & Supercharge Sales',
       description:
-        "A strong social media presence allows you to connect with your audience, build trust, and create meaningful engagement that leads to business growth.At Dezign Shark, we specialize in crafting powerful social media marketing strategies that increase brand awareness, drive website traffic, and generate high-quality leads for businesses of all sizes.",
+        "Social media is more than just likes and shares—it’s the key to digital domination. At Dezign Shark, we create high-converting, performance-driven social media campaigns that drive brand engagement, maximize lead generation, and boost sales.",
       checklist: [
-        "Strategic social media management",
-        "Influencer collaborations for higher reach",
-        "Influencer collaborations for higher reach",
+        "Strategic content marketing for viral engagement",
+        "Influencer-led campaigns that amplify brand authority",
+        "AI-powered audience targeting for precision advertising",
       ],
       rotatingText: "Social Media Marketing •  ",
     },
     businessSections: {
-      title: "Maximize Your Online Presence & Brand Visibility",
-      description: "If you’re not using social media marketing, you’re missing out on a massive opportunity to grow your business. In today’s competitive landscape, social media is the key to standing out, driving customer engagement, and building a strong brand identity.As a Top Social Media Agency in Hyderabad, Dezign Shark helps businesses.",
-      servicesList: ["Strategy & Planning", "Content Creation & Curation", "Account Management & Optimization", "Analytics & Performance Tracking"],
+      title: "Unlock New Levels of Growth with Social Media Mastery",
+      description: "Ignoring social media is no longer an option. Our expert-led social media strategies put your business in front of the right audience with:",
+      servicesList: ["Engaging, brand-aligned content that sparks action", "Cutting-edge automation for enhanced audience engagement", "Advanced analytics & campaign optimization for continuous growth", ],
       challenge: {
-        description: "Looking for a result-driven social media agency in Hyderabad? Dezign Shark is your go-to partner for expert social media marketing solutions that drive real business growth. Our team of seasoned social media strategists stays ahead of industry trends, ensuring that your brand receives maximum visibility and engagement. No matter your business size, our custom social media marketing strategies are designed to boost engagement, generate leads, and increase conversions.",
+        description: "Looking for the best social media marketing agency in Hyderabad? Dezign Shark ensures your business stands out, attracts quality leads, and converts followers into paying customers.",
       },
       feedback: {
-        title: "Is Social Media Marketing Essential for Your Business?",
-        challenge: "Many businesses wonder whether social media is truly necessary for success. While some companies thrive without it, the reality is that social media is one of the most powerful tools for brand growth.",
-        title2:'Why is social media marketing essential?',
+        title: "Why Social Media is a Game-Changer for Business Growth",
+        challenge: "",
+        title2:'',
         points:[
-          "Increases brand awareness and attracts potential customers",
-          "Boosts customer engagement and builds trust with your audience",
-          "Provides valuable market insights to improve your marketing efforts"
+          "Drives customer engagement & brand advocacy",
+          "Strengthens credibility & positions you as an industry leader",
+          "Provides real-time analytics to optimize marketing ROI"
         ],
-        solution: "However, social media marketing requires a strategic approach. Without expert management, businesses may struggle with low engagement, negative feedback, or ineffective campaigns.",
+        solution: "Stop missing out on valuable opportunities. Let’s take your brand viral!",
       },
       images: {
         service1: Services.smbanner,
@@ -157,34 +163,35 @@ export const pageData = [
     id: "Web Development",
     marketStrategy: {
       title: "Web Development",
-      subtitle:'#1 Website Design Company in Hyderabad for SEO-Optimized, Mobile-Friendly Websites',
+      subtitle:'Hyderabad’s Best Website Design Company for Scalable, High-Conversion Websites',
       description: [
         
-        "Dezign Shark is a top-rated website design company in Hyderabad, offering custom web design solutions that drive traffic, generate leads, and boost conversions. Since 2023, we’ve been helping startups, small businesses, and enterprises establish a strong digital presence.",
+        "Dezign Shark is the go-to web development agency in Hyderabad, specializing in SEO-optimized, mobile-first, and results-driven website design. Our cutting-edge websites don’t just look great—they attract traffic, boost engagement, and drive revenue.",
       ],
       checklist: [
-        "Website Design & Development",
-        "Web Application Development",
-        "CMS Development",
+        "Custom Web Design & Business Websites",
+        "AI-Driven Web Applications for Next-Level Efficiency",
+        "CMS Development with Seamless Content Management",
       ],
       rotatingText: "Web Development • Web Development•  ",
     },
     businessSections: {
-      title: "Why Dezign Shark is Hyderabad’s Best Website Design Company?",
-      description: "At Dezign Shark, we craft custom, high-quality websites tailored to your brand and goals. Our SEO-optimized designs boost search rankings, ensuring better visibility. We build fast, mobile-friendly websites for a seamless user experience.",
+      title: "Why Dezign Shark? – A Web Design Company Built for Success",
+      description: "We specialize in SEO-powered, mobile-optimized websites designed to rank higher on search engines and increase conversions. Every project is crafted with a data-driven, UX-centric approach to deliver measurable business growth.",
       servicesList: [
-        "AI-Powered Web Development", 
-        "Conversion-Focused UX/UI Design", 
-        "Voice Search & Smart Device Optimization", 
-        "	High-Security Web Development"],
+        "AI-Infused Web Development for Smart Automations", 
+        "User-Centric UX/UI Design for Maximum Engagement", 
+        "Mobile-First & Voice Search Optimization for Future-Proof Results", 
+        "	Enterprise-Level Security & Data Protection"
+      ],
       challenge: {
         // title: "Tech Implementation Challenge",
-        description: "With affordable pricing, you get premium services without overspending. Our sites come with Google Analytics, Facebook Pixel, and Tag Manager for performance tracking. We also integrate social media to enhance engagement..",
+        description: "Our affordable web design services deliver premium features without premium pricing. We implement Google Analytics, Facebook Pixel, and advanced tracking tools to ensure data-backed decision-making.",
         // solution: "Provide clear adoption roadmaps and employee training programs.",
       },
       feedback: {
-        title: "What’s Included in Our Website Design Packages?",
-        challenge: "Our website design packages include a mobile-responsive, fast-loading website optimized for desktops, tablets, and mobile devices. We implement SEO best practices, including keyword-rich content, meta tags, and alt text for higher search rankings. Our services cover social media page setup and integration for seamless branding, along with advanced analytics tools like Google Analytics and Facebook Pixel for real-time insights. We create engaging, user-centric designs with intuitive navigation and conversion-driven layouts. Plus, we offer ongoing maintenance and support to keep your site running smoothly. Whether you need an e-commerce website, corporate site, or custom business development, we deliver high-performance solutions tailored to your goals. ",
+        title: "What’s Inside Our Website Design Packages?",
+        challenge: "We provide fully responsive, high-performance websites equipped with:SEO-Optimized, High-Converting Content,Fast-Loading, Mobile-Friendly Design ",
         // solution: "Focus on intuitive design, accessibility, and performance optimization.",
       },
       images: {
@@ -217,36 +224,36 @@ export const pageData = [
     id: "Graphic Designing",
     marketStrategy: {
       title: "Graphic Designing",
-      subtitle:"Top Graphic Designing Company in Hyderabad – Creative Designs That Inspire",
+      subtitle:"Data-Driven Graphic Design That Delivers Impact",
       description:
-        "At Dezign Shark, we are a leading graphic designing company in Hyderabad, specializing in brand storytelling through creative designs. Our goal is to help businesses stand out with unique, high-quality designs that resonate with their audience.",
+        "At Dezign Shark, we deliver strategic, high-impact graphic design solutions that drive engagement and maximize brand visibility. We specialize in creating compelling, data-backed designs that influence consumer behavior and set businesses apart.",
       checklist: [
-        "Stronger Brand Identity – Visually compelling designs create a lasting impression.",
-         "Higher Engagement – Eye-catching visuals capture attention and improve user experience.",
-          "More Conversions – Professional design builds trust and drives customer action.", 
-          "Competitive Edge – Unique, high-quality graphics set you apart in the market"
+        "Stronger Brand Identity – A cohesive, visually striking brand presence.",
+         "Increased Engagement – Eye-catching graphics drive interaction and retention.",
+          "Higher Conversions – Trust-building designs influence buying decisions.", 
+          "Market Differentiation – Unique designs establish a distinct competitive edge."
       ],
       rotatingText: "Graphic Designing • Graphic Designing • ",
     },
     businessSections: {
-      title: "Why Professional Graphic Design is a Game-Changer for Your Business",
-      description: "Graphic design goes beyond aesthetics—it influences decisions, strengthens brand identity, and boosts engagement. Here’s why it matters:",
+      title: "Why Professional Graphic Design Is Essential for Growth",
+      description: "Effective graphic design is more than aesthetics—it’s a strategic business asset. Our conversion-focused design solutions include:",
 
       servicesList: [
-        "Logo & Branding Design",
-         "Marketing Collaterals",
-          "Packaging Design", 
-          "Motion Graphics & Video Editing"
+        "Logo & Visual Identity Design",
+         "Marketing & Sales Collaterals",
+          "Product Packaging & Print Media", 
+          "Animated Motion Graphics & Digital Content"
          
         ],
       challenge: {
-        title: "Creative Excellence with a Business-Driven Approach",
-        description: "Our team of experienced and talented designers is committed to bringing your brand to life with creativity and expertise. We offer custom design solutions tailored to your industry, brand identity, and target audience, ensuring a unique and impactful presence. With a fast turnaround time and unlimited revisions, we prioritize delivering.",
+        title: "Cutting-Edge Creativity for Business Success",
+        description: "Our skilled design team brings together industry expertise, creative vision, and strategic insight to deliver:",
         solution: "high-quality designs while allowing room for perfection. Our services come at affordable pricing, providing premium designs at competitive rates to suit your budget. Trusted by over 100 brands, from startups to large enterprises, we help businesses create lasting impressions through exceptional design.",
       },
       feedback: {
-        title: "Transform Your Brand with Stunning Visuals",
-        challenge: "Our skilled designers create custom solutions tailored to your brand and audience. We ensure high-quality designs with fast delivery and unlimited revisions. Offering premium designs at competitive rates, we’ve earned the trust of 100+ brands, helping businesses from startups to enterprises make a lasting impact through creative and professional design. ",
+        title: "Stand Out with High-Performance Visuals",
+        challenge: "We merge data-driven design strategies with creative excellence to ensure your brand gains maximum visibility and engagement. Our goal is to deliver high-quality, persuasive designs that turn audiences into loyal customers. ",
         
       },
       images: {
@@ -270,13 +277,13 @@ export const pageData = [
     id: "Branding",
     marketStrategy: {
       title: "Branding",
-      subtitle:"Best Branding Company in Hyderabad – Elevate Your Brand Identity",
+      subtitle:"Build an Unstoppable Brand with Hyderabad’s Best Branding Agency",
       description:
-        "Your brand is more than just a logo it’s the face of your business, the emotion behind your message, and the first impression that lasts. Whether you’re a startup looking for a strong identity or an established business in need of a rebrand, we help you create a powerful brand that connects, inspires, and stands out..",
+        "Your brand is more than a logo—it’s your story, your reputation, and your competitive edge. At Dezign Shark, we craft high-impact, results-driven branding strategies that enhance visibility, build trust, and position you as an industry leader. Whether you're launching a new brand or refreshing an existing one, our cutting-edge branding solutions ensure you stand out and dominate the market.",
       checklist: [
-        "Stronger Brand Identity",
-        "Increased Customer Trust",
-        "Better Market Positioning",
+        "Strategic Brand Identity Development",
+        "Emotionally Engaging Brand Messaging",
+        "Market-Dominating Positioning Strategies",
       ],
       rotatingText: "Branding • Branding •  ",
     },
@@ -291,16 +298,16 @@ export const pageData = [
 
         
       ],
-      servicesList: ["Brand Strategy & Positioning", "Marketing Collateral Design", "Digital Branding & Social Media", "Rebranding & Brand Refresh"],
+      servicesList: ["Logo Design & Visual Identity", "Brand Strategy & Competitive Positioning", "Digital Branding & Social Media Presence", "Rebranding & Growth Acceleration"],
       challenge: {
         title: "Building Powerful Brands That Leave a Lasting Impression",
         description: "Our branding experts craft unique identities that resonate with your audience. From logo design to brand strategy, we create a cohesive and impactful presence. With fast delivery, unlimited revisions, and competitive pricing, we’ve helped 100+ brands, from startups to enterprises, build strong, memorable identities that leave a lasting impression.",
         
       },
       feedback: {
-        title: "Why Choose Us as Your Branding Company in Hyderabad?",
-        challenge: "At Dezign Shark, we craft brands that stand out and make a lasting impact. Our team of expert brand strategists and designers blends creativity with strategy to develop unique, high-quality branding solutions tailored to your business goals. ",
-        solution: " We ensure brand consistency across all platforms, from digital to offline marketing, helping you build a cohesive identity. With affordable, scalable solutions, we cater to businesses of all sizes, delivering exceptional results without compromising quality. Having successfully helped 100+ businesses establish strong brands, we are committed to transforming your business into a trusted and unforgettable brand. ",
+        title: "Why Choose Dezign Shark – The Best Branding Company in Hyderabad?",
+        challenge: "At Dezign Shark, we don’t just create brands—we craft powerful brand identities that make a lasting impact. Our team of expert brand strategists and designers blends creativity, strategy, and innovation to build a brand that truly represents your business. Whether it’s logo design, brand messaging, digital branding, or offline marketing, we ensure brand consistency across all platforms, helping you establish a strong, cohesive identity. ",
+        solution: " With affordable, scalable branding solutions, we cater to startups, SMEs, and enterprises, delivering exceptional results without compromising quality. Having successfully helped 100+ businesses thrive, we are committed to transforming your business into a trusted, recognizable, and unforgettable brand. If you're looking for the best branding agency in Hyderabad, let’s bring your brand vision to life! ",
       },
       images: {
         service1: Services.brandingbanner,

@@ -12,13 +12,15 @@ import Testimonials from "./Testimonials";
 import Blog from "./Blog";
 import FeatureGrid from "./FeatureGrid";
 import { sharkbgmaroon, sharkbgred,mobilebgshark2,mobilebgshark1 } from "../../assets";
+import Slider1 from "./Slider1";
 
 const Index = () => {
     return (
         <Box
             sx={{
             position: "relative",
-            backgroundImage: `url(${sharkbgmaroon})`,
+            // backgroundImage: `url(${sharkbgmaroon})`,
+            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(${sharkbgmaroon})`,
             backgroundAttachment: "fixed",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
@@ -39,7 +41,8 @@ const Index = () => {
             <About />
             {/* <Counter /> */}
             {/* <Client/> */}
-            {/* <FeatureGrid/> */}
+            <FeatureGrid/>
+            {/* <Slider1/> */}
             <Services />
             <Portfolio />
             {/* <Hovering/> */}

@@ -3,6 +3,7 @@ import { Box, Typography, Grid, Paper, Container, Card, styled } from "@mui/mate
 import { FiSend } from "react-icons/fi";
 import { MdLocationOn } from "react-icons/md";
 import { IoCallSharp } from "react-icons/io5";
+import AnimatedText from "../../Components/Inputs/AnimatedText";
 
 const FancyBox = styled(Card)({
   position: "relative",
@@ -122,9 +123,12 @@ const ContactInfo: React.FC = () => {
                     </Box>
 
                     {/* Title */}
-                    <Typography variant="h5" fontWeight="bold" color="white" sx={{ fontSize: { xs: "24px", lg: "20px" } }}>
+                    {/* <Typography variant="h5" fontWeight="bold" color="white" sx={{ fontSize: { xs: "24px", lg: "20px" } }}>
                       {item.title}
-                    </Typography>
+                    </Typography> */}
+                    <AnimatedText sx={{ color: "white", textAlign: "center", fontWeight: 700, mt: { xs: 1, lg: 1 }, fontSize: { xs: "35px", lg: "25px" }, }}>
+                      {item.title}
+                    </AnimatedText>
 
                     {/* Contact Details */}
                     {item.details.map((detail, index) => (

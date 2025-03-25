@@ -3,39 +3,14 @@ import Slider from "react-slick";
 import { Box, Typography, Container, Card, CardMedia, CardContent, styled, Button } from "@mui/material";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { Home } from "../../assets";
+import { Blog, Home } from "../../assets";
 import AnimatedText from "../../Components/Inputs/AnimatedText";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward"; // MUI Icon
 import { useNavigate } from "react-router-dom";
+import { blogData } from "../../Pages/Blog/BlogDetails/BlogData"; // Import blogData
 
 
-// Blog Data
-const blogs = [
-  {
-    image: Home.blog,
-    title: "How Data Backup & Recovery Can Save Your Business",
-    author: "Tyson Fritz",
-    link: "blog-details.html",
-  },
-  {
-    image: Home.blog,
-    title: "The Benefits of Cloud Computing for Small Businesses",
-    author: "Tyson Fritz",
-    link: "blog-details.html",
-  },
-  {
-    image: Home.blog,
-    title: "Top Cybersecurity Threats and How to Protect Your Business",
-    author: "Tyson Fritz",
-    link: "blog-details.html",
-  },
-  {
-    image: Home.blog,
-    title: "Search Engine Optimization For Streamline Solutions",
-    author: "Tyson Fritz",
-    link: "blog-details.html",
-  },
-];
+
 
 
 const StyledButton = styled(Button)({
@@ -103,6 +78,7 @@ const ArrowIconLast = styled(ArrowIconStyled)({
 
 const BlogCarousel: React.FC = () => {
   const navigate = useNavigate(); // Hook for navigation
+
   // Slick slider settings
   const sliderSettings = {
     dots: true,
@@ -156,8 +132,8 @@ const BlogCarousel: React.FC = () => {
         {/* Slick Slider Carousel */}
         <Box sx={{}}> {/* Negative margin ensures consistent spacing */}
           <Slider {...sliderSettings}>
-            {blogs.map((blog, index) => (
-              <Box key={index} sx={{}}> {/* Adds gap between slides */}
+            {blogData.map((blog) => (
+              <Box key={blog.id} > {/* Adds gap between slides */}
                 <Card
                   className="shine-overlay"
                   sx={{
@@ -166,6 +142,9 @@ const BlogCarousel: React.FC = () => {
                     boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
                     position: "relative",
                     transition: "transform 0.4s ease",
+                    height: { xs: '880px', lg: "550px" }, // Fixed height for all cards
+                    display: "flex",
+                    flexDirection: "column", // Ensure content stacks vertically
                     "&:hover .image": {
                       transform: "scale(1.1)",
                     },
@@ -173,20 +152,23 @@ const BlogCarousel: React.FC = () => {
                       animation: "shineAnimation 0.75s linear",
                       display: "block",
                     },
-                    backgroundColor: 'transparent',
+                    backgroundColor: "transparent",
                   }}
+                  onClick={() => navigate(`/blog/${blog.id}`)} // Navigate to blog details
                 >
                   {/* Blog Image with Hover Animation */}
-                  <Box sx={{ position: "relative", overflow: "hidden" }}>
+                  <Box sx={{ position: "relative", overflow: "hidden", height: "100%" }}> {/* Fixed height for image container */}
                     <CardMedia
                       component="img"
                       image={blog.image}
-                      alt="Blog"
+                      alt={blog.title} // Use blog title as alt text
                       className="image"
                       sx={{
                         width: "100%",
-                        // height: 250,
+                        height: "100%", // Ensure consistent height for images
+                        objectFit: "cover", // Ensure images fit properly
                         transition: "all 0.4s ease",
+
                       }}
                     />
 
@@ -217,16 +199,24 @@ const BlogCarousel: React.FC = () => {
                     borderTop: "none", // Removes border from the top
                     borderBottomLeftRadius: "15px", // Rounds bottom-left corner
                     borderBottomRightRadius: "15px", // Rounds bottom-right corner
+                    height: "40%", // Fixed height for content
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center", // Center content vertically
                     py: 5
                   }}>
                     <Typography variant="h6" sx={{ color: "#fff", mb: 1, textAlign: 'left', fontSize: { xs: '38px', lg: "16px" } }}>
-                      By <strong style={{ color: "#fc0000", }}>{blog.author}</strong>
+                      By <strong style={{ color: "#fc0000", }}>{blog.author.name}</strong>
                     </Typography>
-                    <Typography variant="h4" sx={{ fontWeight: "bold", color: "#fff", fontSize: "18px", textAlign: 'left' }}>
-                      <a href={blog.link} style={{ textDecoration: "none", color: "inherit" }}>
+                    {/* <Typography variant="h4" sx={{ fontWeight: "bold", color: "#fff", fontSize: "18px", textAlign: 'left' }}>
+                      
                         {blog.title}
-                      </a>
-                    </Typography>
+                     
+                    </Typography> */}
+
+                    <AnimatedText sx={{ fontWeight: "bold", mt: 1, color: 'white', fontSize: { xs: '44px', lg: '30px' },textAlign:'left' }}>
+                      {blog.title}
+                    </AnimatedText>
                   </CardContent>
                 </Card>
               </Box>
@@ -234,17 +224,17 @@ const BlogCarousel: React.FC = () => {
           </Slider>
         </Box>
         <StyledButton onClick={() => navigate("/blog")}
-           sx={{
-            width: {xs:'75%',lg:'100%'},
+          sx={{
+            width: { xs: '75%', lg: '100%' },
             height: { xs: '115px', lg: '55px' },
-            fontSize: {xs:"2.2rem",lg:"1.4rem"},
-            mt:{xs:5,lg:4}
+            fontSize: { xs: "2.2rem", lg: "1.4rem" },
+            mt: { xs: 5, lg: 4 }
           }}
-          >
-         Click to Enter Blogs Section
+        >
+          Click to Enter Blogs Section
           <ArrowContainer className="btn-arrow-hover">
-            <ArrowIconFirst className="arrow-first"  sx={{ fontSize: { xs: '40px', lg: '20px ' } }}/>
-            <ArrowIconLast className="arrow-second"  sx={{ fontSize: { xs: '40px', lg: '20px ' } }}/>
+            <ArrowIconFirst className="arrow-first" sx={{ fontSize: { xs: '40px', lg: '20px ' } }} />
+            <ArrowIconLast className="arrow-second" sx={{ fontSize: { xs: '40px', lg: '20px ' } }} />
           </ArrowContainer>
         </StyledButton>
       </Container>

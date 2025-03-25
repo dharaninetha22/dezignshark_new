@@ -52,8 +52,8 @@ const BlogItem: React.FC<{ post: BlogPost }> = ({ post }) => {
 
   // ✅ Handle navigation on click
   const handleNavigation = () => {
-    navigate(`/blog/${encodeURIComponent(post.title.toLowerCase().replace(/ /g, "-"))}`);
-  };
+    navigate(`/blog/${post.id}`); // ✅ Use post.id
+};
 
   return (
     <Box sx={{ marginBottom: 3, boxShadow: "none", borderRadius: "10px" ,pb:{xs:5,lg:0}}} onClick={handleNavigation} style={{ cursor: "pointer" }}>

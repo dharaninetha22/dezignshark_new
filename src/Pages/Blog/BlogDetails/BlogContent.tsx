@@ -1,6 +1,6 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Container, Typography, Box, Grid, Avatar, styled } from "@mui/material";
+import { Container, Typography, Box, Grid, Avatar, styled, Accordion, AccordionSummary, AccordionDetails, Divider } from "@mui/material";
 import { blogData } from "./BlogData";
 import Categories from "../Categories";
 import LatestBlogs from "../LatestBlogs";
@@ -10,9 +10,8 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Form from "./Form";
 import AnimatedText from "../../../Components/Inputs/AnimatedText";
-
-
-
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
 
 // Register GSAP ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
@@ -37,11 +36,17 @@ const GrowImage = styled("div")({
 });
 
 const BlogDetails: React.FC = () => {
-  const { title } = useParams<{ title?: string }>(); // Make title optional
+  const { title, id } = useParams<{ title?: string; id?: string }>(); // Move useParams to the top
   const titleRef = useRef<HTMLDivElement | null>(null);
   const imageRef = useRef<HTMLDivElement | null>(null);
+  const [expanded, setExpanded] = useState<number | false>(0);
 
-  // Move `useEffect` above early returns
+  const blog = blogData.find((b) => b.id === id); // Ensure blog is fetched before rendering
+
+  const handleAccordionChange = (panel: number) => {
+    setExpanded(expanded === panel ? false : panel);
+  };
+
   useEffect(() => {
     if (!titleRef.current) return;
 
@@ -85,16 +90,10 @@ const BlogDetails: React.FC = () => {
     }
   }, []);
 
-  if (!title) return <Typography>No blog found</Typography>;
-
-  const decodedTitle = decodeURIComponent(title).replace(/-/g, " ");
-  const blog = blogData.find((b) => b.title.toLowerCase() === decodedTitle.toLowerCase());
-
-  if (!blog) return <Typography>No blog found</Typography>;
+  if (!blog) return <Typography>No blog found</Typography>; // Ensure blog exists before rendering
 
   return (
     <Box>
-
       <Container maxWidth="lg">
         <Grid container spacing={2} alignItems="flex-start"
           sx={{
@@ -119,7 +118,7 @@ const BlogDetails: React.FC = () => {
             </Typography>
             <Typography
               ref={titleRef}
-              data-text="Creative Pattern Limited: A Designer UI/UX Complete Checklist."
+              data-text={blog.title}
               sx={{
                 color: "#FFF",
                 fontSize: { xs: 66, lg: 60 },
@@ -133,7 +132,7 @@ const BlogDetails: React.FC = () => {
               {blog.title}
             </Typography>
             <Box sx={{
-              display: "flex", alignItems: "center", justifyContent: { xs: 'center', lg: 'start' }, gap: 2, mt: { xs: 6, lg: 4 }, 
+              display: "flex", alignItems: "center", justifyContent: { xs: 'center', lg: 'start' }, gap: 2, mt: { xs: 6, lg: 4 },
             }}>
               <Avatar
                 alt={blog.author.name}
@@ -170,71 +169,185 @@ const BlogDetails: React.FC = () => {
                       style={{ backgroundImage: `url(${blog.bannerImage})` }}
                     />
                   </ThumbnailBanner>
-                  {/* <Typography variant="h3"
-                    sx={{
-                      color: 'black',
-                      textAlign: 'start',
-                      mt:4
-                    }}>
-                    {blog.title}
-                  </Typography> */}
 
                   <AnimatedText sx={{ color: "black", textAlign: "left", fontWeight: 700, mt: { xs: 5, lg: 4 }, fontSize: { xs: "44px", lg: "35px" } }}>
                     {blog.title}
                   </AnimatedText>
-                  {blog.blogContent.map((item, index) =>
-                    item.type === "text" ? (
-                      <Typography variant="body1"
-                        color="#74787c"
-                        textAlign='justify'
-                        mt={3}
-                        key={index}>
-                        {item.content}
-                      </Typography>
-                    ) : (
-                      // <Typography key={index} variant="h5">
-                      //   {item.quoteText}
-                      // </Typography>
-                      <Box
-                        key={index}
-                        sx={{
-                          display: "flex",
-                          alignItems: "center",
-                          gap: "25px",
-                          padding: "12px 0",
-                          borderTop: "1px solid #14141421",
-                          borderBottom: "1px solid #14141421",
-                          textAlign: { xs: "center", sm: "left" },
-                          mt: 5,
-                        }}
-                      >
-                        <img src={blog.quoteImage} alt="blog-quote" />
-                        <Typography variant="h6" color="black" sx={{fontSize: { xs: "32px", lg: "16px" }}}>
-                          “{item.quoteText}”
-                        </Typography>
-                      </Box>
-                    )
-                  )}
 
+                  <Typography variant="body2" sx={{ color: "#555", mt: 1, textAlign: 'left' }}>
+                    {blog.description}
+                  </Typography>
+                  {blog.subpoints.map((subpoint, index) => (
+                    <Box key={index} sx={{ mt: 2, textAlign: 'left' }}>
+                      {/* Subpoint Title */}
+                      <Typography variant="h5" sx={{ color: "#000", fontWeight: 700 }}>
+                        {subpoint.title}
+                      </Typography>
+
+                      {/* Subpoint Subtitle */}
+                      <Typography variant="body1" sx={{ color: "#555", mt: 1, }}>
+                        {subpoint.subtitle}
+                      </Typography>
+                      <Typography variant="body1" sx={{ color: "#555", mt: 1, fontWeight: 600 }}>
+                        {subpoint.listtitle}
+                      </Typography>
+
+                      {/* List of Key Points */}
+                      <ul style={{ marginTop: "12px", color: "#333" }}>
+                        {subpoint.list.map((point, idx) => (
+                          <li key={idx} style={{ marginBottom: "8px", fontSize: "16px" }}>
+                            <Typography variant="body2" sx={{ color: "black", fontSize: "20px" }}>
+
+                              {point}
+                            </Typography>
+                          </li>
+                        ))}
+                      </ul>
+                    </Box>
+                  ))}
                   <Grid container spacing={3} sx={{ mt: 6 }}>
                     {blog.blogImages.map((image, index) => (
-                      <Grid item xs={12} sm={6} key={index}>
+                      <Grid item xs={12} sm={12} key={index}>
                         <img src={image} alt="blog" width="100%" />
                       </Grid>
                     ))}
+
                     <Grid item xs={12} sm={12}>
-                      <Typography variant="h6" color="black" sx={{ textAlign: "left",fontSize: { xs: "44px", lg: "35px" } }}>
+                      {blog.subpoints2.map((subpoint, index) => (
+                        <Box key={index} sx={{ mt: 1, textAlign: 'left' }}>
+                          {/* Subpoint Title */}
+                          <Typography variant="h5" sx={{ color: "#000", fontWeight: 700 }}>
+                            {subpoint.title}
+                          </Typography>
+
+                          {/* Subpoint Subtitle */}
+                          <Typography variant="body1" sx={{ color: "#555", mt: 1, }}>
+                            {subpoint.subtitle}
+                          </Typography>
+
+                          {/* List of Key Points */}
+                          <ul style={{ marginTop: "12px", color: "#333" }}>
+                            {subpoint.list.map((point, idx) => (
+                              <li key={idx} style={{}}>
+                                <Typography variant="body2" sx={{ color: "black", fontSize: "20px" }}>
+
+                                  {point}
+                                </Typography>
+                              </li>
+                            ))}
+                          </ul>
+                        </Box>
+                      ))}
+                    </Grid>
+                    <Grid item xs={12} sm={12}>
+
+                      {blog.conclusion && (
+                        <Grid item xs={12} sm={12} sx={{ mt: 2 }}>
+                          <Typography variant="h6" color="black" sx={{ textAlign: "left", fontSize: { xs: "44px", lg: "35px" } }}>
+                            {blog.conclusion.title}
+                          </Typography>
+                          {/* <Typography
+                        variant="body1"
+                        color="#74787c"
+                        sx={{ mt: 3, textAlign: "justify" }}
+                      >
+                        {blog.conclusion.content}
+                      </Typography> */}
+
+                          <Box
+
+                            sx={{
+                              display: "flex",
+                              alignItems: "center",
+                              gap: "25px",
+                              padding: "12px 0",
+                              borderTop: "1px solid #14141421",
+                              borderBottom: "1px solid #14141421",
+                              textAlign: { xs: "center", sm: "left" },
+                              mt: 5,
+                            }}
+                          >
+                            <img src={blog.quoteImage} alt="blog-quote" />
+                            <Typography variant="h6" color="black" sx={{ fontSize: { xs: "32px", lg: "16px" } }}>
+                              “{blog.conclusion.content}”
+                            </Typography>
+
+                          </Box>
+                        </Grid>
+                      )}
+                    </Grid>
+                    <Grid item xs={12} sm={12}>
+                      <Typography variant="h6" color="black" sx={{ textAlign: "left", fontSize: { xs: "44px", lg: "35px" } }}>
                         {blog.extraContent.title}
                       </Typography>
                       <Typography
                         variant="body1"
                         color="#74787c"
-                        sx={{ mt: 3, textAlign: "justify" }}
+                        sx={{ mt: 3, textAlign: "justify" ,fontSize:'22px'}}
                       >
                         {blog.extraContent.description}
                       </Typography>
                     </Grid>
+                    
                   </Grid>
+
+
+                  <Grid item xs={12} sm={12}>
+                    <Box mt={1}>
+                      <Typography variant="h2" sx={{ color: 'black', textAlign: 'left', mt: 4 }}>
+                        {blog.faqData.title}
+                      </Typography>
+                      {blog.faqData.questions.map((faq, index) => (
+
+                        <Box key={index}>
+                          <Accordion
+                            expanded={expanded === index}
+                            onChange={() => handleAccordionChange(index)}
+                            sx={{ boxShadow: "none" }}
+                          >
+                            <AccordionSummary
+                              expandIcon={expanded === index ? <RemoveIcon /> : <AddIcon />}
+                              sx={{
+                                display: "flex",
+                                alignItems: "center",
+                              }}
+                            >
+                              {/* Question & Icon Side by Side */}
+                              <Box sx={{ display: "flex", alignItems: "center", width: "100%", justifyContent: "space-between" }}>
+                                <Typography
+                                  variant="body1"
+                                  color="black"
+                                  sx={{
+                                    textAlign: "left",
+                                    fontSize: { xs: "38px", lg: "18px" },
+                                    flexGrow: 1, // Makes sure text takes available space
+                                  }}
+                                >
+                                  {faq.question}
+                                </Typography>
+                              </Box>
+                            </AccordionSummary>
+                            <AccordionDetails>
+                              <Typography
+                                variant="body2"
+                                color="#74787C"
+                                sx={{
+                                  textAlign: "justify",
+                                  fontSize: { xs: "30px", lg: "18px" },
+                                }}
+                              >
+                                {faq.answer}
+                              </Typography>
+                            </AccordionDetails>
+                          </Accordion>
+
+                          {/* Divider below every FAQ */}
+                          <Divider />
+                        </Box>
+                      ))}
+                    </Box>
+                  </Grid>
+
                   <Box>
                     <Form />
                   </Box>
@@ -244,7 +357,7 @@ const BlogDetails: React.FC = () => {
                 <Grid item xs={12} lg={4} mt={6}>
                   <Categories />
                   <LatestBlogs />
-                  <GalleryPost />
+                  {/* <GalleryPost /> */}
                   <PopularTags />
                 </Grid>
               </Grid>
